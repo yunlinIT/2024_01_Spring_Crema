@@ -29,104 +29,102 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Main Page</title>
-  <style>
-    /* 배경 이미지 스타일 설정 */
-    .background-image {
-      /* 배경 이미지 URL 지정 */
-      background-image: url('https://velog.velcdn.com/images/yunlinit/post/19af9bf9-7b10-4c41-abaf-7af2ac3991d4/image.jpg');
-      /* 이미지를 가득 채우도록 설정 */
-      background-size: cover;
-      /* 이미지가 반복되지 않도록 설정 */
-      background-repeat: no-repeat;
-      /* 이미지의 위치를 가운데 정렬 */
-      background-position: center;
-      /* 선택적으로 이미지에 대한 기타 스타일을 지정할 수 있습니다. */
-      /* 페이지의 전체 높이를 이미지의 높이와 동일하게 설정하여 스크롤이 가능하도록 합니다. */
-      height: 100vh;
-      /* overflow를 숨겨서 스크롤이 생기지 않도록 합니다. */
-      overflow: auto;
-      /* 배경 이미지 아래쪽에 간격 추가 */
-      margin-bottom: 235px;
-      /* 조절하고 싶은 간격(px)을 지정하세요. */
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Main Page</title>
+<style>
+/* 배경 이미지 스타일 설정 */
+.background-image {
+	/* 배경 이미지 URL 지정 */
+	background-image:
+		url('https://velog.velcdn.com/images/yunlinit/post/19af9bf9-7b10-4c41-abaf-7af2ac3991d4/image.jpg');
+	/* 이미지를 가득 채우도록 설정 */
+	background-size: cover;
+	/* 이미지가 반복되지 않도록 설정 */
+	background-repeat: no-repeat;
+	/* 이미지의 위치를 가운데 정렬 */
+	background-position: center;
+	/* 선택적으로 이미지에 대한 기타 스타일을 지정할 수 있습니다. */
+	/* 페이지의 전체 높이를 이미지의 높이와 동일하게 설정하여 스크롤이 가능하도록 합니다. */
+	height: 100vh;
+	/* overflow를 숨겨서 스크롤이 생기지 않도록 합니다. */
+	overflow: auto;
+	/* 배경 이미지 아래쪽에 간격 추가 */
+	margin-bottom: 235px;
+	/* 조절하고 싶은 간격(px)을 지정하세요. */
+}
 
-    .Main1 {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
+.Main1 {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
 
-    .Vector,
-    .CrMa,
-    .ForTheBestCoffeeMoments,
-    .MyCafeFinder {
-      color: white;
-      text-align: center;
-      word-wrap: break-word;
-      opacity: 0; /* 처음에는 투명하게 설정 */
-      transition: opacity 2s ease; /* 투명도 변화에 애니메이션 적용 */
-    }
+.Vector, .CrMa, .ForTheBestCoffeeMoments, .MyCafeFinder {
+	color: white;
+	text-align: center;
+	word-wrap: break-word;
+	opacity: 0; /* 처음에는 투명하게 설정 */
+	transition: opacity 2s ease; /* 투명도 변화에 애니메이션 적용 */
+}
 
-    .Vector {
-      font-size: 25px;
-      font-family: Gill Sans MT;
-      font-weight: 1000;
-      letter-spacing: 3.20px;
-      position: absolute;
-      top: 705px;
-      left: 50%;
-      transform: translateX(-50%) rotate(90deg);
-    }
+.Vector {
+	font-size: 25px;
+	font-family: Gill Sans MT;
+	font-weight: 1000;
+	letter-spacing: 3.20px;
+	position: absolute;
+	top: 705px;
+	left: 50%;
+	transform: translateX(-50%) rotate(90deg);
+}
 
-    .CrMa {
-      font-size: 220px;
-      font-family: Bavarian;
-      font-weight: 400;
-      position: absolute;
-      top: 240px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+.CrMa {
+	font-size: 220px;
+	font-family: Bavarian;
+	font-weight: 400;
+	position: absolute;
+	top: 240px;
+	left: 50%;
+	transform: translateX(-50%);
+}
 
-    .ForTheBestCoffeeMoments {
-      font-size: 16px;
-      font-family: Gill Sans MT;
-      font-weight: 400;
-      letter-spacing: 3.20px;
-      position: absolute;
-      top: 569px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+.ForTheBestCoffeeMoments {
+	font-size: 16px;
+	font-family: Gill Sans MT;
+	font-weight: 400;
+	letter-spacing: 3.20px;
+	position: absolute;
+	top: 569px;
+	left: 50%;
+	transform: translateX(-50%);
+}
 
-    .MyCafeFinder {
-      font-size: 32px;
-      font-family: GeosansLight;
-      font-weight: 500;
-      letter-spacing: 6.40px;
-      position: absolute;
-      top: 214px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  </style>
+.MyCafeFinder {
+	font-size: 32px;
+	font-family: GeosansLight;
+	font-weight: 500;
+	letter-spacing: 6.40px;
+	position: absolute;
+	top: 214px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+</style>
 </head>
 
 <body>
 
-  <div class="background-image">
-    <div class="Main1">
-      <div class="Vector">〉〉</div>
-      <div class="CrMa">Crèma</div>
-      <div class="ForTheBestCoffeeMoments">FOR THE BEST COFFEE MOMENTS </div>
-      <div class="MyCafeFinder">MY CAFE FINDER</div>
-    </div>
-  </div>
+	<div class="background-image">
+		<div class="Main1">
+			<div class="Vector">〉〉</div>
+			<div class="CrMa">Crèma</div>
+			<div class="ForTheBestCoffeeMoments">FOR THE BEST COFFEE MOMENTS</div>
+			<div class="MyCafeFinder">MY CAFE FINDER</div>
+		</div>
+	</div>
 
-  <script>
+	<script>
     // 요소들이 화면에 나타나는 시점을 계산하는 함수
     function appearOnScroll() {
       var vector = document.querySelector('.Vector');
@@ -182,28 +180,15 @@
 
 
 <!-- 날씨위젯 -->
-<div class = "weather-widget" style="margin-left:20; margin-bottom:20; position: relative"><div id="ww_dd38e1ffbef2c" v='1.3' loc='id' a='{"t":"responsive","lang":"ko","sl_lpl":1,"ids":["wl2308"],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"#FFFFFF00","cl_font":"rgba(120,120,120,1)","cl_cloud":"#d4d4d4","cl_persp":"#2196F3","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","sl_tof":"3","el_wfc":3,"cl_odd":"#00000000"}' style="width: 230px;">More forecasts: <a href="https://oneweather.org/seoul/30_days/" id="ww_dd38e1ffbef2c_u" target="_blank">Weather forecast Seoul 30 days</a></div>
-<script async src="https://app2.weatherwidget.org/js/?id=ww_dd38e1ffbef2c"></script></div>
-
-
-
-
-<script>
-    // 폰트 크기를 조절하는 함수
-    function changeFontSize() {
-        var weatherWidget = document.getElementById("ww_dd38e1ffbef2c");
-        var temperatureElement = weatherWidget.querySelector(".ww_temperature");
-
-        // 폰트 크기 조절
-        if (temperatureElement) {
-            temperatureElement.style.fontSize = "12px"; // 변경할 폰트 크기 설정
-        }
-    }
-
-    // 페이지 로드 후 폰트 크기 조절 함수 호출
-    window.addEventListener("load", changeFontSize);
-</script>
-
+<div class="weather-widget" style="margin-left: 20px; margin-bottom: 20px; position: relative">
+    <div id="ww_dd38e1ffbef2c" v='1.3' loc='id'
+        a='{"t":"responsive","lang":"ko","sl_lpl":1,"ids":["wl2308"],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"#FFFFFF00","cl_font":"rgba(120,120,120,1)","cl_cloud":"#d4d4d4","cl_persp":"#2196F3","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","sl_tof":"3","el_wfc":3,"cl_odd":"#00000000"}'
+        style="width: 230px;">
+        More forecasts:
+        <a href="https://oneweather.org/seoul/30_days/" id="ww_dd38e1ffbef2c_u" target="_blank">Weather forecast Seoul 30days</a>
+    </div>
+    <script async src="https://app2.weatherwidget.org/js/?id=ww_dd38e1ffbef2c"></script>
+</div>
 
 
 
@@ -237,78 +222,216 @@
 
 <!-- 검색어박스 -->
 <!-- 코드펜에서는 한참 아래에 있지만, 스프링에 적용시키면 박스 안에 제대로 들어가있음. -->
-<div class="search-box" style="width: 593px; height: 82px; top: 1750px; left: 5%; position: absolute">
-	<div class="how-about-here"
-		style="width: 589px; height: 39px; left: 4px; top: 0px; position: absolute; color: #6D6D6D; font-size: 14px; font-family: Pretendard; font-weight: 500; letter-spacing: 1.40px; word-wrap: break-word">오늘은
-		이런 카페 어떠세요?</div>
-	<div class="line"
-		style="height: 37px; padding-top: 31px; padding-bottom: 6px; padding-left: 1px; padding-right: 8px; left: 3px; top: 45px; position: absolute; background: rgba(255, 255, 255, 0); justify-content: flex-start; align-items: center; display: inline-flex">
-		<div
-			style="width: 302px; height: 43px; color: #A9A9A9; font-size: 14px; font-family: Pretendard; font-weight: 400; letter-spacing: 1.40px; word-wrap: break-word">
-			<input type="text" placeholder="테라스 카페" class="input input-sm input-ghost w-full max-w-xs" />
-			<div class="search-btn"
-				style="width: 24px; height: 24px; padding-top: 3px; padding-bottom: 2.25px; padding-left: 3px; padding-right: 2.25px; left: 300px; top: 47px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
-				<a href=""
-					style="width: 589px; height: 39px; left: 20px; top: -27px; position: absolute; color: #6D6D6D; font-size: 20px; font-family: Pretendard; font-weight: 500; letter-spacing: 1px; word-wrap: break-word">GO</a>
-			</div>
-			<div style="width: 308px; height: 0px; border: 1px gray solid;"></div>
-		</div>
-
-
-	</div>
-	<div class "search-keyword" style="height: 30px; padding-left: 6px; left: 0px; top: 46px; position: absolute; background: rgba(255, 255, 255, 0); justify-content: flex-end; align-items: center; display: inline-flex">
-
-	</div>
+<div class="search-box">
+  <div class="how-about-here">오늘은 이런 카페 어떠세요?</div>
+    <div class="input-container">
+      <input type="text" placeholder="테라스 카페" class="input input-sm w-full max-w-xs" />
+    </div>
+    <div class="search-btn">
+      <a href="#">GO</a>
+    </div>
+  <div class="search-keyword"></div>
 </div>
+
+<style>
+   .search-box {
+  width: 350px;
+  height: 82px;
+  top: 1770px;
+  left: 5%;
+  position: absolute;
+}
+
+.how-about-here {
+  width: 589px;
+  height: 39px;
+  left: 4px;
+  top: 0px;
+  position: absolute;
+  color: #6D6D6D;
+  font-size: 14px;
+  font-family: Pretendard;
+  font-weight: 500;
+  letter-spacing: 1.40px;
+  word-wrap: break-word;
+}
+
+.line {
+  height: 37px;
+  padding: 6px 0 6px 1px;
+  left: 3px;
+  top: 39px;
+  position: absolute;
+  background: rgba(255, 255, 255, 0);
+  justify-content: flex-start;
+  align-items: center;
+  display: flex; /* 수정된 부분 */
+  width: 100%;
+}
+
+.input-container {
+  width: calc(100% - 50px); /* 수정된 부분 */
+  position: relative;
+    margin-top: 30px;
+}
+
+.input {
+  width: 100%;
+  height: 43px;
+  color: #A9A9A9;
+  font-size: 14px;
+  font-family: Pretendard;
+  font-weight: 400;
+  letter-spacing: 1.40px;
+  word-wrap: break-word;
+  padding-left: 6px;
+}
+
+.search-btn {
+  width: 50px;
+  height: 43px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-btn a {
+  color: #6D6D6D;
+  font-size: 20px;
+  font-family: Pretendard;
+  font-weight: 500;
+  letter-spacing: 1px;
+  word-wrap: break-word;
+}
+
+.search-btn {
+  position: absolute;
+  right: 0;
+  top: 30;
+}
+
+  </style>
+
+
+
+
+
 
 
 
 
 <!-- 카페추천 박스 -->
 
-<div class="CafeRecom mx-auto" style="width: 1440px; height: 1129px; position: relative; background: white">
-
-	<div class="NewCafe" style="left: 131px; top: 240px; position: absolute; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 12px; display: inline-flex">
-		<div style="width: 346px; height: 30px; color: black; font-size: 16px; font-family: Pretendard; font-weight: 500; word-wrap: break-word">크레마 신규 카페 </div>
-		<div style="width: 373px; height: 558px; position: relative">
-			<img class="NewCafeImg" style="width: 346px; height: 507px; left: 0px; top: 0px; position: absolute" src="https://velog.velcdn.com/images/yunlinit/post/5eb36e34-5c06-43ee-bd12-87a687399533/image.png" />
-			<div class="InfoBox" style="width: 319px; height: 103px; left: 54px; top: 455px; position: absolute; background: white; border-radius: 20px; border: 1px rgba(168.94, 168.94, 168.94, 0.49) solid">
-				<div style="width: 280px; height: 40px; left: 10%; top: 25%; position: absolute; color: #333333; font-size: 20px; font-family: Pretendard; font-weight: 600; word-wrap: break-word">파티세리러츠</div>
-				<div class="74121" style="width: 280px; height: 40px; left: 10%; top: 55%; position: absolute; color: #333333; font-size: 14px; font-family: Pretendard; font-weight: 400; word-wrap: break-word">대전 서구 둔산로74번길 12 1층
-				</div>
+<div class="CafeRecom mx-auto">
+	<div class="NewCafe">
+		<div>크레마 신규 카페</div>
+		<div>
+			<img class="NewCafeImg"
+				src="https://velog.velcdn.com/images/yunlinit/post/5eb36e34-5c06-43ee-bd12-87a687399533/image.png" />
+			<div class="InfoBox">
+				<div class="name">파티세리러츠</div>
+				<div class="address">대전 서구 둔산로74번길 12 1층</div>
 			</div>
-
 		</div>
 	</div>
-	<div class="PopularCafe" style="left: 547px; top: 241px; position: absolute; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 11px; display: inline-flex">
-		<div style="width: 346px; height: 30px; color: black; font-size: 16px; font-family: Pretendard; font-weight: 500; word-wrap: break-word">크레마 인기 카페</div>
-		<div style="width: 373px; height: 558px; position: relative">
-			<img class="PopularCafeImg" style="width: 346px; height: 507px; left: 0px; top: 0px; position: absolute" src="https://velog.velcdn.com/images/yunlinit/post/15f7855c-973d-46bc-bf54-4b83e7145181/image.png" />
-			<div class="InfoBox" style="width: 319px; height: 103px; left: 54px; top: 455px; position: absolute; background: white; border-radius: 20px; border: 1px rgba(168.94, 168.94, 168.94, 0.49) solid">
-				<div style="width: 280px; height: 40px; left: 10%; top: 25%; position: absolute; color: #333333; font-size: 20px; font-family: Pretendard; font-weight: 600; word-wrap: break-word">빈이어</div>
-				<div class="74121" style="width: 280px; height: 40px; left: 10%; top: 55%; position: absolute; color: #333333; font-size: 14px; font-family: Pretendard; font-weight: 400; word-wrap: break-word">대전 서구 계룡로 399 2층
-				</div>
+	<div class="PopularCafe">
+		<div>크레마 인기 카페</div>
+		<div>
+			<img class="PopularCafeImg"
+				src="https://velog.velcdn.com/images/yunlinit/post/15f7855c-973d-46bc-bf54-4b83e7145181/image.png" />
+			<div class="InfoBox">
+				<div class="name">빈이어</div>
+				<div class="address">대전 서구 계룡로 399 2층</div>
 			</div>
-
 		</div>
 	</div>
-	<div class="RecomCafe" style="left: 963px; top: 240px; position: absolute; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 12px; display: inline-flex">
-		<div style="width: 346px; height: 30px; color: black; font-size: 16px; font-family: Pretendard; font-weight: 500; word-wrap: break-word">크레마 추천 카페</div>
-		<div style="width: 373px; height: 558px; position: relative">
-			<img class="RecomCafeImg" style="width: 346px; height: 507px; left: 0px; top: 0px; position: absolute" src="https://velog.velcdn.com/images/yunlinit/post/da2e88df-3296-44d8-b8c5-0affaaa7392c/image.png" />
-
-			<div class="InfoBox" style="width: 319px; height: 103px; left: 54px; top: 455px; position: absolute; background: white; border-radius: 20px; border: 1px rgba(168.94, 168.94, 168.94, 0.49) solid">
-				<div style="width: 280px; height: 40px; left: 10%; top: 25%; position: absolute; color: #333333; font-size: 20px; font-family: Pretendard; font-weight: 600; word-wrap: break-word">코너</div>
-				<div class="74121" style="width: 280px; height: 40px; left: 10%; top: 55%; position: absolute; color: #333333; font-size: 14px; font-family: Pretendard; font-weight: 400; word-wrap: break-word">대전 동구 홍도로46번길 67 101호
-				</div>
+	<div class="RecomCafe">
+		<div>크레마 추천 카페</div>
+		<div>
+			<img class="RecomCafeImg"
+				src="https://velog.velcdn.com/images/yunlinit/post/da2e88df-3296-44d8-b8c5-0affaaa7392c/image.png" />
+			<div class="InfoBox">
+				<div class="name">코너</div>
+				<div class="address">대전 동구 홍도로46번길 67 101호</div>
 			</div>
 		</div>
 	</div>
 </div>
 
+<style>
+.CafeRecom {
+	width: 1440px;
+	height: 1129px;
+	position: relative;
+	background: white;
+	margin: auto;
+}
 
+.NewCafe, .PopularCafe, .RecomCafe {
+	position: absolute;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-start;
+	gap: 12px;
+	display: inline-flex;
+}
 
+.NewCafe, .PopularCafe, .RecomCafe {
+	width: 346px;
+	left: 131px; /* 수정 필요 */
+	top: 240px; /* 수정 필요 */
+}
 
+.PopularCafe {
+	left: 547px; /* 수정 필요 */
+	top: 241px; /* 수정 필요 */
+}
+
+.RecomCafe {
+	left: 963px; /* 수정 필요 */
+	top: 240px; /* 수정 필요 */
+}
+
+.NewCafe div, .PopularCafe div, .RecomCafe div {
+	width: 100%;
+	height: auto;
+	color: black;
+	font-size: 16px;
+	font-family: Pretendard;
+	word-wrap: break-word;
+}
+
+.InfoBox {
+	width: 319px;
+	height: 103px;
+	left: 54px; /* 수정 필요 */
+	top: 480px; /* 수정 필요 */
+	position: absolute;
+	background: white;
+	border-radius: 20px;
+	border: 1px rgba(168.94, 168.94, 168.94, 0.49) solid;
+}
+
+.InfoBox div {
+	width: 100%;
+	height: 50px;
+	color: #333333;
+	font-family: Pretendard;
+	word-wrap: break-word;
+	padding-top: 15px;
+	padding-left: 15px;
+}
+
+.InfoBox .name {
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.InfoBox .address {
+	font-size: 14px;
+	font-weight: 400;
+}
+</style>
 
 
 </div>
