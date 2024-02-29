@@ -260,6 +260,57 @@
 
 	</div>
 </div>
+
+
+
+
+<!-- 카페추천 박스 -->
+
+<div class="CafeRecom mx-auto" style="width: 1440px; height: 1129px; position: relative; background: white">
+
+	<div class="NewCafe" style="left: 131px; top: 240px; position: absolute; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 12px; display: inline-flex">
+		<div style="width: 346px; height: 30px; color: black; font-size: 16px; font-family: Pretendard; font-weight: 500; word-wrap: break-word">크레마 신규 카페 </div>
+		<div style="width: 373px; height: 558px; position: relative">
+			<img class="NewCafeImg" style="width: 346px; height: 507px; left: 0px; top: 0px; position: absolute" src="https://velog.velcdn.com/images/yunlinit/post/5eb36e34-5c06-43ee-bd12-87a687399533/image.png" />
+			<div class="InfoBox" style="width: 319px; height: 103px; left: 54px; top: 455px; position: absolute; background: white; border-radius: 20px; border: 1px rgba(168.94, 168.94, 168.94, 0.49) solid">
+				<div style="width: 280px; height: 40px; left: 10%; top: 25%; position: absolute; color: #333333; font-size: 20px; font-family: Pretendard; font-weight: 600; word-wrap: break-word">파티세리러츠</div>
+				<div class="74121" style="width: 280px; height: 40px; left: 10%; top: 55%; position: absolute; color: #333333; font-size: 14px; font-family: Pretendard; font-weight: 400; word-wrap: break-word">대전 서구 둔산로74번길 12 1층
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="PopularCafe" style="left: 547px; top: 241px; position: absolute; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 11px; display: inline-flex">
+		<div style="width: 346px; height: 30px; color: black; font-size: 16px; font-family: Pretendard; font-weight: 500; word-wrap: break-word">크레마 인기 카페</div>
+		<div style="width: 373px; height: 558px; position: relative">
+			<img class="PopularCafeImg" style="width: 346px; height: 507px; left: 0px; top: 0px; position: absolute" src="https://velog.velcdn.com/images/yunlinit/post/15f7855c-973d-46bc-bf54-4b83e7145181/image.png" />
+			<div class="InfoBox" style="width: 319px; height: 103px; left: 54px; top: 455px; position: absolute; background: white; border-radius: 20px; border: 1px rgba(168.94, 168.94, 168.94, 0.49) solid">
+				<div style="width: 280px; height: 40px; left: 10%; top: 25%; position: absolute; color: #333333; font-size: 20px; font-family: Pretendard; font-weight: 600; word-wrap: break-word">빈이어</div>
+				<div class="74121" style="width: 280px; height: 40px; left: 10%; top: 55%; position: absolute; color: #333333; font-size: 14px; font-family: Pretendard; font-weight: 400; word-wrap: break-word">대전 서구 계룡로 399 2층
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="RecomCafe" style="left: 963px; top: 240px; position: absolute; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 12px; display: inline-flex">
+		<div style="width: 346px; height: 30px; color: black; font-size: 16px; font-family: Pretendard; font-weight: 500; word-wrap: break-word">크레마 추천 카페</div>
+		<div style="width: 373px; height: 558px; position: relative">
+			<img class="RecomCafeImg" style="width: 346px; height: 507px; left: 0px; top: 0px; position: absolute" src="https://velog.velcdn.com/images/yunlinit/post/da2e88df-3296-44d8-b8c5-0affaaa7392c/image.png" />
+
+			<div class="InfoBox" style="width: 319px; height: 103px; left: 54px; top: 455px; position: absolute; background: white; border-radius: 20px; border: 1px rgba(168.94, 168.94, 168.94, 0.49) solid">
+				<div style="width: 280px; height: 40px; left: 10%; top: 25%; position: absolute; color: #333333; font-size: 20px; font-family: Pretendard; font-weight: 600; word-wrap: break-word">코너</div>
+				<div class="74121" style="width: 280px; height: 40px; left: 10%; top: 55%; position: absolute; color: #333333; font-size: 14px; font-family: Pretendard; font-weight: 400; word-wrap: break-word">대전 동구 홍도로46번길 67 101호
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
 </div>
 
 
