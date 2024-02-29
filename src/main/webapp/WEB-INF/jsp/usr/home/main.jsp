@@ -234,7 +234,8 @@
 </div>
 
 <style>
-   .search-box {
+
+.search-box {
   width: 350px;
   height: 82px;
   top: 1770px;
