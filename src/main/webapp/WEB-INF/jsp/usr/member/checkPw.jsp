@@ -5,8 +5,8 @@
 
 
 <section>
-	<div class="Login">
-		<div class="LoginBox">
+	<div class="checkPw">
+		<div class="checkPwBox">
 			<div class="Rectangle6">
 				<section class="mt-8 text-xl px-4">
 					<div class="mx-auto">
@@ -61,7 +61,7 @@
 
 
 
-.Login {
+.checkPw {
 	width: 100%;
 	height: 100vh;
 	display: flex;
@@ -71,7 +71,7 @@
 	font-family: Pretendard;
 }
 
-.LoginBox {
+.checkPwBox {
 	width: 500px;
 	height: 311px;
 	position: relative;

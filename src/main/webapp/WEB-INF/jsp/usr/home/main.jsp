@@ -18,6 +18,9 @@
         // 배경 이미지 크기를 동적으로 조절
         backgroundImage.style.backgroundSize = 100 + scroll / 5 + '%';
     });
+    
+
+    
 </script>
 
 
@@ -60,18 +63,19 @@
 	height: 100%;
 }
 
-.Vector, .CrMa, .ForTheBestCoffeeMoments, .MyCafeFinder {
+.CrMa, .ForTheBestCoffeeMoments, .MyCafeFinder {
 	color: white;
 	text-align: center;
 	word-wrap: break-word;
 	opacity: 0; /* 처음에는 투명하게 설정 */
-	transition: opacity 2s ease; /* 투명도 변화에 애니메이션 적용 */
+	transition: opacity 3s ease; /* 투명도 변화에 애니메이션 적용 */
 }
 
 .Vector {
 	font-size: 25px;
 	font-family: Gill Sans MT;
 	font-weight: 1000;
+	color: white;
 	letter-spacing: 3.20px;
 	position: absolute;
 	top: 705px;
@@ -138,10 +142,10 @@
       var cafeFinderDelay = cafeFinder.getBoundingClientRect().top - window.innerHeight;
 
       // 투명도를 0에서 1로 변경하여 나타나게 함
-      if (vectorDelay < 0) setTimeout(() => vector.style.opacity = 0.9, 200); // 0.5초 지연
-      if (crmaDelay < 0) setTimeout(() => crma.style.opacity = 0.9, 200); // 0.5초 지연
-      if (coffeeMomentsDelay < 0) setTimeout(() => coffeeMoments.style.opacity = 0.9, 200); // 0.5초 지연
-      if (cafeFinderDelay < 0) setTimeout(() => cafeFinder.style.opacity = 0.9, 200); // 0.5초 지연
+      if (vectorDelay < 0) setTimeout(() => vector.style.opacity = 0.9, 150); // 0.15초 지연
+      if (crmaDelay < 0) setTimeout(() => crma.style.opacity = 0.9, 100); // 0.15초 지연
+      if (coffeeMomentsDelay < 0) setTimeout(() => coffeeMoments.style.opacity = 0.9, 150); // 0.15초 지연
+      if (cafeFinderDelay < 0) setTimeout(() => cafeFinder.style.opacity = 0.9, 150); // 0.15초 지연
     }
 
     // 스크롤 이벤트 리스너 등록
@@ -150,20 +154,26 @@
     // 초기에 한 번 호출하여 초기 화면에서도 적용되게 함
     appearOnScroll();
 
-    // 스크롤 내릴 때 요소들이 다시 투명해지는 효과
-    window.addEventListener('scroll', function() {
-      // 스크롤된 양 계산
-      var scroll = window.scrollY;
+   
+//////////////////////아래 로직 작동 안됨////////////////////
 
-      // 스크롤된 양에 따라 투명도 조절
-      var opacity = 1 - scroll / 500; // 500은 투명도가 0이 되는 스크롤 양입니다.
+//     // 스크롤 내릴 때 요소들이 다시 투명해지는 효과
+//     window.addEventListener('scroll', function() {
+//       // 스크롤된 양 계산
+//       var scroll = window.scrollY;
 
-      // 각 요소에 투명도 적용
-      var elements = document.querySelectorAll('.Vector, .CrMa, .ForTheBestCoffeeMoments, .MyCafeFinder');
-      elements.forEach(function(element) {
-        element.style.opacity = opacity;
-      });
-    });
+//       // 스크롤된 양에 따라 투명도 조절
+//       var opacity = 1 - scroll / 500; // 500은 투명도가 0이 되는 스크롤 양입니다.
+
+//       // 각 요소에 투명도 적용
+//       var elements = document.querySelectorAll('.Vector, .CrMa, .ForTheBestCoffeeMoments, .MyCafeFinder');
+//       elements.forEach(function(element) {
+//         element.style.opacity = opacity;
+//       });
+//     });
+    
+////////////////////여기까지////////////////////////////////    
+    
   </script>
 
 </body>

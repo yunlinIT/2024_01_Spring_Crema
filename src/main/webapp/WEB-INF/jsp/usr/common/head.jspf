@@ -26,7 +26,7 @@
     var header = document.querySelector('header');
 
     // 스크롤이 일정 양 이상 되면 헤더를 나타나게 함
-    if (scroll > 950) {
+    if (scroll > 870) {
       header.style.opacity = 1;
     } else {
       header.style.opacity = 0;
