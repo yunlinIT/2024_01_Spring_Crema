@@ -12,7 +12,6 @@
 		<div class="JoinBox">
 			<div class="Rectangle6">
 				<section class="mt-8 text-xl px-4">
-					<div class="mx-auto">
 						<form action="../member/doJoin" method="POST">
 
 							<input type="hidden" name="afterLoginUri" value="${param.afterLoginUri}" />

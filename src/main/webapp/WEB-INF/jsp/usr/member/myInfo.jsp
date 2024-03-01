@@ -5,60 +5,59 @@
 
 
 <section>
-	<div class="Join">
-		<div class="JoinBox">
+	<div class="MyInfo">
+		<div class="MyInfoBox">
 			<div class="Rectangle6">
 				<section class="mt-8 text-xl px-4">
-					<div class="mx-auto">
-
-						<div class="title">회원정보</div>
-
-						<div class="regDate">
-							<span class="material-symbols-outlined"> calendar_month </span>
-							<div class="ContentName">가입날짜</div>
-							${rq.loginedMember.regDate }
-						</div>
-						<div class="loginId">
-							<span class="material-symbols-outlined"> person_edit </span>
-							<div class="ContentName">아이디</div>
-							${rq.loginedMember.loginId }
-						</div>
-						<div class="name">
-							<span class="material-symbols-outlined"> person </span>
-							<div class="ContentName">이름</div>
-							${rq.loginedMember.name }
-						</div>
-						<div class="nickname">
-							<span class="material-symbols-outlined"> person_edit </span>
-							<div class="ContentName">닉네임</div>
-							${rq.loginedMember.nickname }
-						</div>
-						<div class="cellphoneNum">
-							<span class="material-symbols-outlined"> call </span>
-							<div class="ContentName">전화번호</div>
-							${rq.loginedMember.cellphoneNum }
-						</div>
-						<div class="email">
-							<span class="material-symbols-outlined"> mail </span>
-							<div class="ContentName">이메일</div>
-							${rq.loginedMember.email }
-						</div>
 
 
-						<a class="modifyBtn btn btn-sm" href="../member/checkPw" >회원정보 수정</a>
+					<div class="title">회원정보</div>
 
-						<div class="btns">
-
-							<button class="backBtn" type="button" onclick="history.back();">뒤로가기</button>
-
-							<a class="loginBtn" href="../member/login">회원탈퇴</a>
-
-						</div>
+					<div class="regDate">
+						<span class="material-symbols-outlined"> calendar_month </span>
+						<div class="ContentName">가입날짜</div>
+						<div class="content">${rq.loginedMember.regDate }</div>
 					</div>
-				</section>
+					<div class="loginId">
+						<span class="material-symbols-outlined"> person_edit </span>
+						<div class="ContentName">아이디</div>
+						<div class="content">${rq.loginedMember.loginId }</div>
+					</div>
+					<div class="name">
+						<span class="material-symbols-outlined"> person </span>
+						<div class="ContentName">이름</div>
+						<div class="content">${rq.loginedMember.name }</div>
+					</div>
+					<div class="nickname">
+						<span class="material-symbols-outlined"> person_edit </span>
+						<div class="ContentName">닉네임</div>
+						<div class="content">${rq.loginedMember.nickname }</div>
+					</div>
+					<div class="cellphoneNum">
+						<span class="material-symbols-outlined"> call </span>
+						<div class="ContentName">전화번호</div>
+						<div class="content">${rq.loginedMember.cellphoneNum }</div>
+					</div>
+					<div class="email">
+						<span class="material-symbols-outlined"> mail </span>
+						<div class="ContentName">이메일</div>
+						<div class="content">${rq.loginedMember.email }</div>
+					</div>
+
+
+					<a class="modifyBtn btn btn-sm" href="../member/checkPw">회원정보 수정</a>
+
+					<div class="btns">
+
+						<button class="backBtn" type="button" onclick="history.back();">뒤로가기</button>
+						<a class="toMyPageBtn" href="../member/myPage">마이페이지로 이동</a>
+						
+						<a class="loginBtn" href="../member/login">회원탈퇴</a>
+
+
+					</div>
 			</div>
-		</div>
-	</div>
+
 </section>
 
 <style>
@@ -68,7 +67,7 @@
 	margin-left: 10px;
 }
 
-.Join {
+.MyInfo {
 	width: 100%;
 	height: 100vh;
 	display: flex;
@@ -78,7 +77,7 @@
 	font-family: Pretendard;
 }
 
-.JoinBox {
+.MyInfoBox {
 	width: 500px;
 	height: 311px;
 	position: relative;
@@ -88,8 +87,20 @@
 	color: #a9a9a9;
 	font-size: 14px;
 	font-weight: 500;
-	margin-right: 60px;
-	margin-left: 40px;
+	left: 60px;
+	position: absolute;
+	display: flex;
+}
+
+.content {
+	color: #666666;
+	font-size: 14px;
+	font-weight: 500;
+	position: absolute;
+	font-size: 14px;
+	font-weight: 500;
+	position: absolute;
+	left: 150px;
 }
 
 .regDate {
@@ -100,10 +111,6 @@
 	position: absolute;
 	display: flex;
 	align-items: center;
-	color: #666666;
-	font-size: 14px;
-	font-weight: 500;
-	right: 0px;
 }
 
 .loginId {
@@ -114,10 +121,6 @@
 	position: absolute;
 	display: flex;
 	align-items: center;
-	color: #666666;
-	font-size: 14px;
-	font-weight: 500;
-	right: 0px;
 }
 
 .name {
@@ -128,10 +131,6 @@
 	position: absolute;
 	display: flex;
 	align-items: center;
-	color: #666666;
-	font-size: 14px;
-	font-weight: 500;
-	right: 0px;
 }
 
 .nickname {
@@ -142,10 +141,6 @@
 	position: absolute;
 	display: flex;
 	align-items: center;
-	color: #666666;
-	font-size: 14px;
-	font-weight: 500;
-	right: 0px;
 }
 
 .cellphoneNum {
@@ -156,10 +151,6 @@
 	position: absolute;
 	display: flex;
 	align-items: center;
-	color: #666666;
-	font-size: 14px;
-	font-weight: 500;
-	right: 0px;
 }
 
 .email {
@@ -170,10 +161,6 @@
 	position: absolute;
 	display: flex;
 	align-items: center;
-	color: #666666;
-	font-size: 14px;
-	font-weight: 500;
-	right: 0px;
 }
 
 .regDate .material-symbols-outlined, .loginId .material-symbols-outlined,
@@ -213,7 +200,7 @@
 	position: absolute;
 	left: 40%;
 	bottom: 30px;
-		font-size: 13px;
+	font-size: 13px;
 }
 
 .backBtn {
@@ -226,6 +213,18 @@
 	font-size: 12px;
 	font-weight: 600;
 }
+
+.toMyPageBtn {
+	width: 100px;
+	height: 39px;
+	position: absolute;
+	left: 30px;
+	bottom: 12px;
+	color: #a9a9a9;
+	font-size: 12px;
+	font-weight: 600;
+}
+
 </style>
 
 

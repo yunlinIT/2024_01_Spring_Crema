@@ -10,42 +10,42 @@
 		<div class="JoinBox">
 			<div class="Rectangle6">
 				<section class="mt-8 text-xl px-4">
-					<div class="mx-auto">
-					
-							<div class="title">마이페이지</div>
-
-							<div class="MyInfo">
-								<span class="material-symbols-outlined"> person_edit </span>
-								<div class="ContentName">나의 회원정보</div>
-								<a class="MyInfoBtn" href="../member/myInfo">바로가기</a>
-							</div>
-							<div class="MyWrite">
-								<span class="material-symbols-outlined"> edit_note </span>
-								<div class="ContentName">나의 게시글</div>
-								<a class="MyInfoBtn" href="">0 개</a>
-							</div>
-							<div class="MyReply">
-								<span class="material-symbols-outlined"> mode_comment </span>
-								<div class="ContentName">나의 댓글</div>
-								<a class="MyInfoBtn" href="">0 개</a>
-							</div>
-							<div class="MyQna">
-								<span class="material-symbols-outlined"> live_help </span>
-								<div class="ContentName">나의 질문</div>
-								<a class="MyInfoBtn" href="">0 개</a>
-							</div>
-							<div class="MyLike">
-								<span class="material-symbols-outlined"> favorite </span>
-								<div class="ContentName">나의 찜 목록</div>
-								<a class="MyInfoBtn" href="">0 개</a>
-							</div>
 
 
-						<div class="btns">
-							<button class="backBtn btn btn-sm" type="button" onclick="history.back();">뒤로가기</button>
+					<div class="title">마이페이지</div>
 
-						</div>
+					<div class="MyInfo">
+						<span class="material-symbols-outlined"> person_edit </span>
+						<div class="ContentName">나의 회원정보</div>
+						<a class="MyInfoBtn" href="../member/myInfo">바로가기</a>
 					</div>
+					<div class="MyWrite">
+						<span class="material-symbols-outlined"> edit_note </span>
+						<div class="ContentName">나의 게시글</div>
+						<a class="MyWriteBtn" href="">0 개</a>
+					</div>
+					<div class="MyReply">
+						<span class="material-symbols-outlined"> mode_comment </span>
+						<div class="ContentName">나의 댓글</div>
+						<a class="MyReplyBtn" href="">0 개</a>
+					</div>
+					<div class="MyQna">
+						<span class="material-symbols-outlined"> live_help </span>
+						<div class="ContentName">나의 질문</div>
+						<a class="MyQnaBtn" href="">0 개</a>
+					</div>
+					<div class="MyLike">
+						<span class="material-symbols-outlined"> favorite </span>
+						<div class="ContentName">나의 찜 목록</div>
+						<a class="MyLikeBtn" href="">0 개</a>
+					</div>
+
+
+					<div class="btns">
+						<button class="backBtn btn btn-sm" type="button" onclick="history.back();">뒤로가기</button>
+
+					</div>
+
 				</section>
 			</div>
 		</div>
@@ -79,72 +79,102 @@
 	color: #a9a9a9;
 	font-size: 14px;
 	font-weight: 500;
-	margin-right: 60px;
-	margin-left: 40px;
+	left: 60px;
+	position: absolute;
+	display: flex;
 }
 
 .MyInfo {
 	width: 400px;
 	height: 24px;
-	left: 120px;
+	left: 115px;
 	top: 160px;
 	position: absolute;
 	display: flex;
-	align-items: center;
 }
 
 .MyInfoBtn {
 	color: #666666;
 	font-size: 14px;
 	font-weight: 500;
-	right: 0px;
+	position: absolute;
+	right: 140px;
 }
 
 .MyWrite {
 	width: 400px;
 	height: 24px;
-	left: 120px;
+	left: 115px;
 	top: 230px;
 	position: absolute;
 	display: flex;
-	align-items: center;
+}
+
+.MyWriteBtn {
+	color: #666666;
+	font-size: 14px;
+	font-weight: 500;
+	position: absolute;
+	right: 140px;
 }
 
 .MyReply {
 	width: 400px;
 	height: 24px;
-	left: 120px;
+	left: 115px;
 	top: 300px;
 	position: absolute;
 	display: flex;
-	align-items: center;
+}
+
+.MyReplyBtn {
+	color: #666666;
+	font-size: 14px;
+	font-weight: 500;
+	position: absolute;
+	right: 140px;
 }
 
 .MyQna {
 	width: 400px;
 	height: 24px;
-	left: 120px;
+	left: 115px;
 	top: 370px;
 	position: absolute;
 	display: flex;
-	align-items: center;
+}
+
+.MyQnaBtn {
+	color: #666666;
+	font-size: 14px;
+	font-weight: 500;
+	position: absolute;
+	right: 140px;
 }
 
 .MyLike {
 	width: 400px;
 	height: 24px;
-	left: 120px;
+	left: 115px;
 	top: 440px;
 	position: absolute;
 	display: flex;
-	align-items: center;
+}
+
+.MyLikeBtn {
+	color: #666666;
+	font-size: 14px;
+	font-weight: 500;
+	position: absolute;
+	right: 140px;
 }
 
 .MyInfo .material-symbols-outlined, .MyWrite .material-symbols-outlined,
 	.MyReply .material-symbols-outlined, .MyQna .material-symbols-outlined,
 	.MyLike .material-symbols-outlined {
 	/* 변경 */
-	margin-right: 30px;
+	position: absolute;
+	left: 0px;
 	color: #666666;
 }
 
