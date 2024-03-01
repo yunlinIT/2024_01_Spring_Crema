@@ -14,22 +14,26 @@
 				<section class="mt-8 text-xl px-4">
 					<div class="mx-auto">
 						<form action="../member/doLogin" method="POST">
+
 							<input type="hidden" name="afterLoginUri" value="${param.afterLoginUri}" />
-							로그인
+							<div class="title">로그인</div>
+
 							<div class="IdBox">
-								<span class="material-symbols-outlined"> person </span> 
-								<input id="loginId" class="input input-sm w-full max-w-xs" autocomplete="off" type="text" placeholder="아이디를 입력해주세요" name="loginId" />
+								<span class="material-symbols-outlined"> person </span> <input id="loginId"
+									class="input input-sm w-full max-w-xs" autocomplete="off" type="text" placeholder="아이디를 입력해주세요" name="loginId" />
 							</div>
 							<div class="PwBox">
-								<span class="material-symbols-outlined"> lock </span> 
-								<input id="loginPw" class="input input-sm w-full max-w-xs" autocomplete="off" type="password" placeholder="비밀번호를 입력해주세요" name="loginPw" />
+								<span class="material-symbols-outlined"> lock </span> <input id="loginPw" class="input input-sm w-full max-w-xs"
+									autocomplete="off" type="password" placeholder="비밀번호를 입력해주세요" name="loginPw" />
 							</div>
 
 							<input class="loginBtn btn btn-sm" type="submit" value="로그인" />
-						
+
 						</form>
 						<div class="btns">
 							<button class="backBtn" type="button" onclick="history.back();">뒤로가기</button>
+							<a class="joinBtn" href="../member/join">회원가입</a>
+
 						</div>
 					</div>
 				</section>
@@ -39,6 +43,12 @@
 </section>
 
 <style>
+.title {
+	font-weight: 600;
+	color: #666666;
+	margin-left: 10px;
+}
+
 .Login {
 	width: 100%;
 	height: 100vh;
@@ -46,6 +56,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	font-family: Pretendard;
 }
 
 .LoginBox {
@@ -54,26 +65,6 @@
 	position: relative;
 }
 
-.PwBox {
-	width: 222px;
-	height: 24px;
-	left: 120px;
-	top: 161px;
-	position: absolute;
-	display: flex;
-	align-items: center;
-}
-
-.Pw {
-	width: 41px;
-	height: 24px;
-	left: 0px;
-	top: 0px;
-	text-align: center;
-	color: #333333;
-	font-size: 11px;
-	font-weight: 600;
-}
 
 .IdBox {
 	width: 215px;
@@ -85,9 +76,21 @@
 	align-items: center;
 }
 
-.IdBox .material-symbols-outlined,
-.PwBox .material-symbols-outlined { /* 변경 */
-	margin-right: 5px;
+
+.PwBox {
+	width: 222px;
+	height: 24px;
+	left: 120px;
+	top: 160px;
+	position: absolute;
+	display: flex;
+	align-items: center;
+}
+
+.IdBox .material-symbols-outlined, .PwBox .material-symbols-outlined {
+	/* 변경 */
+	margin-right: 30px;
+	color: #666666;
 }
 
 .Rectangle6 {
@@ -101,18 +104,23 @@
 	border: 1px #a9a9a9 solid;
 }
 
-.btn {
-	font-family: Pretendard;
-	word-wrap: break-word;
-	text-align: center;
-}
-
 .backBtn {
 	width: 74px;
 	height: 39px;
 	position: absolute;
 	right: 15px;
-	bottom: 15px;
+	bottom: 20px;
+	color: #a9a9a9;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.joinBtn {
+	width: 74px;
+	height: 39px;
+	position: absolute;
+	right: 0px;
+	top: 40px;
 	color: #a9a9a9;
 	font-size: 12px;
 	font-weight: 600;
@@ -123,7 +131,7 @@
 	height: 39px;
 	position: absolute;
 	left: 40%;
-	bottom: 15px;
+	bottom: 30px;
 }
 </style>
 

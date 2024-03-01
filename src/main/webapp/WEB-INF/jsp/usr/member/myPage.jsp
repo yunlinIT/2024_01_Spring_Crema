@@ -1,60 +1,187 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="MYPAGE"></c:set>
+<c:set var="pageTitle" value=""></c:set>
 <%@ include file="../common/head.jspf"%>
 
-<div>1${loginedMember }</div>
-<div>2${rq.loginedMember }</div>
-<div>${loginedMember.loginId }</div>
-<div>${rq.loginedMember.loginId }</div>
-<div>${rq.loginedMember.getLoginId() }</div>
-<section class="mt-8 text-xl px-4 ">
-	<div class="">
-		<table class="table-box-1 " border="1">
-			<colgroup>
-				<col width="200" />
-			</colgroup>
-
-			<tbody>
-				<tr>
-					<th>가입일</th>
-					<td>${rq.loginedMember.regDate }</td>
-				</tr>
-				<tr>
-					<th>아이디</th>
-					<td>${rq.loginedMember.loginId }</td>
-				</tr>
-				<tr>
-					<th>이름</th>
-					<td>${rq.loginedMember.name }</td>
-				</tr>
-				<tr>
-					<th>닉네임</th>
-					<td>${rq.loginedMember.nickname }</td>
-				</tr>
-				<tr>
-					<th>전화번호</th>
-					<td>${rq.loginedMember.cellphoneNum }</td>
-				</tr>
-				<tr>
-					<th>이메일</th>
-					<td>${rq.loginedMember.email }</td>
-				</tr>
-				<tr>
-					<th></th>
-					<td>
-						<a href="../member/checkPw" class="btn btn-active btn-ghost">회원정보 수정</a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<div class="btns">
-		<button class="btn-text-link btn btn-active btn-ghost" type="button" onclick="history.back();">뒤로가기</button>
 
 
+<section>
+	<div class="Join">
+		<div class="JoinBox">
+			<div class="Rectangle6">
+				<section class="mt-8 text-xl px-4">
+					<div class="mx-auto">
+					
+							<input type="hidden" name="afterLoginUri" value="${param.afterLoginUri}" />
+							<div class="title">마이페이지</div>
+
+							<div class="MyInfo">
+								<span class="material-symbols-outlined"> person_edit </span>
+								<div class="ContentName">나의 회원정보</div>
+								<a class="MyInfoBtn" href="../member/myInfo">수정</a>
+							</div>
+							<div class="MyWrite">
+								<span class="material-symbols-outlined"> edit_note </span>
+								<div class="ContentName">나의 게시글</div>
+								<a class="MyInfoBtn" href="">0 개</a>
+							</div>
+							<div class="MyReply">
+								<span class="material-symbols-outlined"> mode_comment </span>
+								<div class="ContentName">나의 댓글</div>
+								<a class="MyInfoBtn" href="">0 개</a>
+							</div>
+							<div class="MyQna">
+								<span class="material-symbols-outlined"> live_help </span>
+								<div class="ContentName">나의 질문</div>
+								<a class="MyInfoBtn" href="">0 개</a>
+							</div>
+							<div class="MyLike">
+								<span class="material-symbols-outlined"> favorite </span>
+								<div class="ContentName">나의 찜 목록</div>
+								<a class="MyInfoBtn" href="">0 개</a>
+							</div>
+
+
+						<div class="btns">
+							<button class="backBtn btn btn-sm" type="button" onclick="history.back();">뒤로가기</button>
+							<a class="joinBtn" href="../member/login">회원탈퇴</a>
+
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
 	</div>
 </section>
+
+<style>
+.title {
+	font-weight: 600;
+	color: #666666;
+	margin-left: 10px;
+}
+
+.Join {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	margin-top: 170px;
+	align-items: center;
+	font-family: Pretendard;
+}
+
+.JoinBox {
+	width: 500px;
+	height: 311px;
+	position: relative;
+}
+
+.ContentName {
+	color: #a9a9a9;
+	font-size: 14px;
+	font-weight: 500;
+	margin-right: 60px;
+	margin-left: 40px;
+}
+
+.MyInfo {
+	width: 400px;
+	height: 24px;
+	left: 120px;
+	top: 160px;
+	position: absolute;
+	display: flex;
+	align-items: center;
+}
+
+.MyInfoBtn {
+	color: #666666;
+	font-size: 14px;
+	font-weight: 500;
+	right: 0px;
+}
+
+.MyWrite {
+	width: 400px;
+	height: 24px;
+	left: 120px;
+	top: 230px;
+	position: absolute;
+	display: flex;
+	align-items: center;
+}
+
+.MyReply {
+	width: 400px;
+	height: 24px;
+	left: 120px;
+	top: 300px;
+	position: absolute;
+	display: flex;
+	align-items: center;
+}
+
+.MyQna {
+	width: 400px;
+	height: 24px;
+	left: 120px;
+	top: 370px;
+	position: absolute;
+	display: flex;
+	align-items: center;
+}
+
+.MyLike {
+	width: 400px;
+	height: 24px;
+	left: 120px;
+	top: 440px;
+	position: absolute;
+	display: flex;
+	align-items: center;
+}
+
+.MyInfo .material-symbols-outlined, .MyWrite .material-symbols-outlined,
+	.MyReply .material-symbols-outlined, .MyQna .material-symbols-outlined,
+	.MyLike .material-symbols-outlined {
+	/* 변경 */
+	margin-right: 30px;
+	color: #666666;
+}
+
+.Rectangle6 {
+	width: 500px;
+	height: 670px;
+	left: 0px;
+	top: 0px;
+	position: absolute;
+	background: rgba(255, 255, 255, 0);
+	border-radius: 15px;
+	border: 1px #a9a9a9 solid;
+}
+
+.joinBtn {
+	width: 74px;
+	height: 39px;
+	position: absolute;
+	right: 0px;
+	top: 40px;
+	color: #a9a9a9;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.backBtn {
+	width: 100px;
+	height: 39px;
+	position: absolute;
+	left: 40%;
+	bottom: 30px;
+}
+</style>
+
+
 
 
 
