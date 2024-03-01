@@ -12,13 +12,12 @@
 				<section class="mt-8 text-xl px-4">
 					<div class="mx-auto">
 					
-							<input type="hidden" name="afterLoginUri" value="${param.afterLoginUri}" />
 							<div class="title">마이페이지</div>
 
 							<div class="MyInfo">
 								<span class="material-symbols-outlined"> person_edit </span>
 								<div class="ContentName">나의 회원정보</div>
-								<a class="MyInfoBtn" href="../member/myInfo">수정</a>
+								<a class="MyInfoBtn" href="../member/myInfo">바로가기</a>
 							</div>
 							<div class="MyWrite">
 								<span class="material-symbols-outlined"> edit_note </span>
@@ -44,7 +43,6 @@
 
 						<div class="btns">
 							<button class="backBtn btn btn-sm" type="button" onclick="history.back();">뒤로가기</button>
-							<a class="joinBtn" href="../member/login">회원탈퇴</a>
 
 						</div>
 					</div>

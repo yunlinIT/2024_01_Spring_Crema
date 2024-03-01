@@ -45,16 +45,16 @@
 									name="cellphoneNum" />
 							</div>
 							<div class="EmailBox">
-								<span class="material-symbols-outlined"> mail </span><input id="email" class="input input-sm w-full max-w-xs"
+								<span class="material-symbols-outlined"> mail </span> <input id="email" class="input input-sm w-full max-w-xs"
 									autocomplete="off" type="text" placeholder="이메일을 입력해주세요" name="email" />
 							</div>
 
-							<input class="loginBtn btn btn-sm" type="submit" value="회원가입" />
+							<input class="joinBtn btn btn-sm" type="submit" value="회원가입" />
 
 						</form>
 						<div class="btns">
 							<button class="backBtn" type="button" onclick="history.back();">뒤로가기</button>
-							<a class="joinBtn" href="../member/login">로그인</a>
+							<a class="loginBtn" href="../member/login">로그인</a>
 
 						</div>
 					</div>
@@ -188,7 +188,7 @@
 	font-weight: 600;
 }
 
-.joinBtn {
+.loginBtn {
 	width: 74px;
 	height: 39px;
 	position: absolute;
@@ -199,7 +199,7 @@
 	font-weight: 600;
 }
 
-.loginBtn {
+.joinBtn {
 	width: 100px;
 	height: 39px;
 	position: absolute;
