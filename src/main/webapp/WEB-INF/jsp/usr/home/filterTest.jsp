@@ -4,7 +4,15 @@
 
 <%@ include file="../common/head.jspf"%>
 
-<section>
+<!-- 페이지제목 -->
+
+<div class="page-title">
+	<div class="text-wrapper result">카페찾기</div>
+</div>
+
+<!-- 필터바 -->
+
+<section class="filter-bar">
 	<div class="search-filter">
 
 		<div class="text-wrapper-3">필터</div>
@@ -119,26 +127,234 @@
 		</div>
 
 	</div>
-
 </section>
 
 
+
+
+<!-- 검색결과 -->
+
+<section class="search-result-list">
+	<div class="search-result">
+		<div class="show-result-by">
+			<div class="text-wrapper show-all">검색결과</div>
+		</div>
+
+		<div class="content-info-box content-1">
+
+			<img class="cafe-img-box"
+				src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg" />
+
+			<div class="name-address">
+				<div class="cafe-name">빈이어</div>
+				<p class="cafe-address">대전 서구 계룡로 399 2층</p>
+			</div>
+
+			<div class="like-count">
+				<span class="material-symbols-outlined heart"> favorite </span>
+				<div class="like-count-num">0</div>
+			</div>
+
+			<div class="review-count">
+				<div class="title-review">리뷰</div>
+				<div class="review-count-num">0</div>
+			</div>
+
+			<div class="show-distance">
+				<div class="num-km-group">
+					<div class="km">km</div>
+					<div class="distance-num">8.2</div>
+				</div>
+			</div>
+
+			<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반</div>
+		</div>
+
+		<div class="content-info-box content-2" style="top: 50px;">
+
+			<img class="cafe-img-box"
+				src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg" />
+
+			<div class="name-address">
+				<div class="cafe-name">빈이어</div>
+				<p class="cafe-address">대전 서구 계룡로 399 2층</p>
+			</div>
+
+			<div class="like-count">
+				<span class="material-symbols-outlined heart"> favorite </span>
+				<div class="like-count-num">0</div>
+			</div>
+
+			<div class="review-count">
+				<div class="title-review">리뷰</div>
+				<div class="review-count-num">0</div>
+			</div>
+
+			<div class="show-distance">
+				<div class="num-km-group">
+					<div class="km">km</div>
+					<div class="distance-num">8.2</div>
+				</div>
+			</div>
+
+			<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반</div>
+		</div>
+
+		<div class="content-info-box content-3" style="top: 100px;">
+
+			<img class="cafe-img-box"
+				src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg" />
+
+			<div class="name-address">
+				<div class="cafe-name">빈이어</div>
+				<p class="cafe-address">대전 서구 계룡로 399 2층</p>
+			</div>
+
+			<div class="like-count">
+				<span class="material-symbols-outlined heart"> favorite </span>
+				<div class="like-count-num">0</div>
+			</div>
+
+			<div class="review-count">
+				<div class="title-review">리뷰</div>
+				<div class="review-count-num">0</div>
+			</div>
+
+			<div class="show-distance">
+				<div class="num-km-group">
+					<div class="km">km</div>
+					<div class="distance-num">8.2</div>
+				</div>
+			</div>
+
+			<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반</div>
+		</div>
+
+
+		<div class="content-info-box content-4" style="top: 150px;">
+
+			<img class="cafe-img-box"
+				src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg" />
+
+			<div class="name-address">
+				<div class="cafe-name">빈이어</div>
+				<p class="cafe-address">대전 서구 계룡로 399 2층</p>
+			</div>
+
+			<div class="like-count">
+				<span class="material-symbols-outlined heart"> favorite </span>
+				<div class="like-count-num">0</div>
+			</div>
+
+			<div class="review-count">
+				<div class="title-review">리뷰</div>
+				<div class="review-count-num">0</div>
+			</div>
+
+			<div class="show-distance">
+				<div class="num-km-group">
+					<div class="km">km</div>
+					<div class="distance-num">8.2</div>
+				</div>
+			</div>
+
+			<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반</div>
+		</div>
+
+		<div class="content-info-box content-5" style="top: 200px;">
+
+			<img class="cafe-img-box"
+				src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg" />
+
+			<div class="name-address">
+				<div class="cafe-name">빈이어</div>
+				<p class="cafe-address">대전 서구 계룡로 399 2층</p>
+			</div>
+
+			<div class="like-count">
+				<span class="material-symbols-outlined heart"> favorite </span>
+				<div class="like-count-num">0</div>
+			</div>
+
+			<div class="review-count">
+				<div class="title-review">리뷰</div>
+				<div class="review-count-num">0</div>
+			</div>
+
+			<div class="show-distance">
+				<div class="num-km-group">
+					<div class="km">km</div>
+					<div class="distance-num">8.2</div>
+				</div>
+			</div>
+
+			<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반</div>
+		</div>
+
+		<div class="content-info-box content-6" style="top: 250px;">
+
+			<img class="cafe-img-box"
+				src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg" />
+
+			<div class="name-address">
+				<div class="cafe-name">빈이어</div>
+				<p class="cafe-address">대전 서구 계룡로 399 2층</p>
+			</div>
+
+			<div class="like-count">
+				<span class="material-symbols-outlined heart"> favorite </span>
+				<div class="like-count-num">0</div>
+			</div>
+
+			<div class="review-count">
+				<div class="title-review">리뷰</div>
+				<div class="review-count-num">0</div>
+			</div>
+
+			<div class="show-distance">
+				<div class="num-km-group">
+					<div class="km">km</div>
+					<div class="distance-num">8.2</div>
+				</div>
+			</div>
+
+			<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반</div>
+		</div>
+
+	</div>
+</section>
+
+
+
+<!-- 페이지제목 css -->
+
 <style>
+.page-title {
+	position: relative;
+	top: 100px;
+	left: 20.5%;
+	font-family: "Pretendard";
+	font-weight: 600;
+	font-size: 25px;
+}
+</style>
 
-
+<!-- 필터 css -->
+<style>
 .search-filter {
-	position: fixed;
+	position: relative;
 	width: 309px;
 	height: 908px;
 	background-color: #ffffff;
-	top: 70px;
+	top: 150px;
+	left: 18%;
 }
 
 .search-filter .filter-facility {
 	position: absolute;
 	width: 293px;
 	height: 196px;
-	top: 654px;
+	top: 593px;
 	left: 16px;
 	overflow: hidden;
 }
@@ -292,7 +508,7 @@
 	position: absolute;
 	width: 293px;
 	height: 276px;
-	top: 332px;
+	top: 300px;
 	left: 16px;
 	overflow: hidden;
 }
@@ -424,9 +640,236 @@
 	letter-spacing: 0;
 	line-height: normal;
 }
+</style>
 
+<!-- 검색결과 css -->
+<style>
+.search-result {
+	position: absolute;
+	top: 200px;
+	right: 30%;
+}
 
+.show-result-by {
+	position: relative;
+	width: 786px;
+	height: 33px;
+	left: 40%;
+	background-color: #ffffff;
+	overflow: hidden;
+}
 
+.content-info-box {
+	position: relative;
+	width: 817px;
+	height: 247px;
+	left: 40%;
+}
+
+.show-result-by .text-wrapper {
+	position: absolute;
+	width: 788px;
+	height: 35px;
+	top: -3px;
+	left: 1px;
+	font-family: "Inter-SemiBold", Helvetica;
+	font-weight: 600;
+	color: #333333;
+	font-size: 20px;
+	letter-spacing: 0;
+	line-height: normal;
+}
+
+.content-info-box .hashtag {
+	position: absolute;
+	width: 245px;
+	height: 15px;
+	top: 227px;
+	left: 490px;
+}
+
+.hashtag {
+	position: absolute;
+	width: 245px;
+	height: 15px;
+	top: 0px;
+	left: 0;
+	font-family: "Pretendard";
+	font-weight: 600;
+	color: #666666;
+	font-size: 12px;
+	letter-spacing: 0;
+	line-height: normal;
+	left: 0;
+	font-family: "Pretendard";
+	font-weight: 600;
+	color: #666666;
+	font-size: 12px;
+	font-family: "Pretendard";
+	font-weight: 600;
+	color: #666666;
+	font-size: 12px;
+}
+
+.content-info-box .show-distance {
+	position: absolute;
+	width: 41px;
+	height: 15px;
+	top: 60px;
+	left: 490px;
+	background-color: #e3e3e3;
+	border-radius: 5px;
+}
+
+.content-info-box .num-km-group {
+	width: 35px;
+	height: 15px;
+	left: 6px;
+	position: relative;
+	top: -1px;
+}
+
+.content-info-box .km {
+	position: absolute;
+	width: 20px;
+	height: 15px;
+	top: 2px;
+	left: 15px;
+	font-family: "Pretendard";
+	font-weight: 600;
+	color: #000000;
+	font-size: 10px;
+	letter-spacing: 0;
+	line-height: normal;
+}
+
+.content-info-box .distance-num {
+	position: absolute;
+	width: 20px;
+	height: 15px;
+	top: 2px;
+	left: 0;
+	font-family: "Pretendard";
+	font-weight: 600;
+	color: #000000;
+	font-size: 10px;
+	letter-spacing: 0;
+	line-height: normal;
+}
+
+.content-info-box .title-review {
+	position: absolute;
+	width: 25px;
+	height: 15px;
+	top: 0px;
+	left: 0;
+	font-family: "Pretendard";
+	font-weight: 600;
+	color: #000000;
+	font-size: 12px;
+	letter-spacing: 0;
+	line-height: normal;
+}
+
+.content-info-box .review-count {
+	position: absolute;
+	width: 41px;
+	height: 15px;
+	top: 85px;
+	left: 535px;
+}
+
+.content-info-box .review-count-num {
+	left: 24px;
+	position: absolute;
+	width: 20px;
+	height: 15px;
+	top: 0px;
+	font-family: "Pretendard";
+	font-weight: 600;
+	color: #000000;
+	font-size: 10px;
+	letter-spacing: 0;
+	line-height: normal;
+}
+
+.like-count .material-symbols-outlined {
+	position: absolute;
+	width: 12px;
+	height: 12px;
+	top: -1.5px;
+	left: 0;
+	font-size: 15px;
+	color: red;
+}
+
+.content-info-box .like-count {
+	position: absolute;
+	width: 36px;
+	height: 15px;
+	top: 85px;
+	left: 492px;
+}
+
+.content-info-box .like-count-num {
+	left: 18px;
+	position: absolute;
+	width: 20px;
+	height: 15px;
+	top: 0px;
+	font-family: "Pretendard";
+	font-weight: 600;
+	color: #000000;
+	font-size: 10px;
+	letter-spacing: 0;
+	line-height: normal;
+}
+
+.content-info-box .name-address {
+	position: absolute;
+	width: 296px;
+	height: 43px;
+	top: 6px;
+	left: 490px;
+}
+
+.content-info-box .cafe-name {
+	height: 24px;
+	top: 5px;
+	font-family: "Pretendard";
+	font-weight: 600;
+	font-size: 20px;
+	position: absolute;
+	width: 296px;
+	left: 0;
+	color: #000000;
+	letter-spacing: 0;
+	line-height: normal;
+}
+
+.content-info-box .cafe-address {
+	height: 20px;
+	top: 30px;
+	font-family: Pretendard;
+	font-weight: 500;
+	font-size: 14px;
+	position: absolute;
+	width: 296px;
+	left: 0;
+	color: #666666;
+	letter-spacing: 0;
+	line-height: normal;
+}
+
+.content-info-box .cafe-img-box {
+	position: absolute;
+	width: 467px;
+	height: 247px;
+	top: 0;
+	left: 0;
+	object-fit: cover; /* 이미지를 박스에 맞게 crop */
+	border-radius: 20px;
+}
 </style>
 
 
