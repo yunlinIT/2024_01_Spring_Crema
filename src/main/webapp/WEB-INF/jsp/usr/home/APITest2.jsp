@@ -4,6 +4,7 @@
 
 <%@ include file="../common/head.jspf"%>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,5 +30,11 @@
 	</script>
 </body>
 </html>
+
+
+
+
+
+
 
 <%@ include file="../common/foot.jspf"%>
