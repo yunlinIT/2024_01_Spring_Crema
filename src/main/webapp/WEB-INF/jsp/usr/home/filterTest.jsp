@@ -332,7 +332,7 @@
 .page-title {
 	position: relative;
 	top: 100px;
-	left: 20.5%;
+	left: 18.8%;
 	font-family: "Pretendard";
 	font-weight: 600;
 	font-size: 25px;
