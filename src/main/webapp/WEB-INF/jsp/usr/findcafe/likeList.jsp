@@ -162,8 +162,8 @@ font-size: 25px;
 				src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg" />
 
 			<div class="name-address">
-				<div class="cafe-name">코너</div>
-				<p class="cafe-address">대전 동구 홍도로46번길 67 101호</p>
+				<div class="cafe-name">빈이어</div>
+				<p class="cafe-address">대전 서구 계룡로 399 2층</p>
 			</div>
 
 			<div class="like-count">
@@ -183,7 +183,7 @@ font-size: 25px;
 				</div>
 			</div>
 
-			<div class="hashtag">#넓은 #테라스 #아늑한 #심플 #데이트</div>
+			<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반 #데이트</div>
 		</div>
 		<div class="content-info-box content-2" style="top: 50px;">
 
@@ -212,7 +212,7 @@ font-size: 25px;
 				</div>
 			</div>
 
-			<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반</div>
+			<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반 #데이트</div>
 		</div>
 
 		<div class="content-info-box content-3" style="top: 100px;">
@@ -242,7 +242,7 @@ font-size: 25px;
 				</div>
 			</div>
 
-			<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반</div>
+			<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반 #데이트</div>
 		</div>
 
 
@@ -273,7 +273,7 @@ font-size: 25px;
 				</div>
 			</div>
 
-			<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반</div>
+			<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반 #데이트</div>
 		</div>
 
 		<div class="content-info-box content-5" style="top: 200px;">
@@ -303,7 +303,7 @@ font-size: 25px;
 				</div>
 			</div>
 
-			<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반</div>
+			<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반 #데이트</div>
 		</div>
 
 		<div class="content-info-box content-6" style="top: 250px;">
@@ -333,7 +333,7 @@ font-size: 25px;
 				</div>
 			</div>
 
-			<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반</div>
+			<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반 #데이트</div>
 		</div>
 	</section>
 </section>
@@ -669,7 +669,7 @@ font-size: 25px;
 <style>
 .search-result {
 	position: relative;
-	margin-left: 430px;
+/* 	margin-left: 430px; */
 }
 
 .show-result-by {
@@ -702,7 +702,7 @@ font-size: 25px;
 
 .content-info-box .hashtag {
 	position: absolute;
-	width: 245px;
+	width: 296px;
 	height: 15px;
 	top: 227px;
 	left: 490px;
@@ -710,7 +710,7 @@ font-size: 25px;
 
 .hashtag {
 	position: absolute;
-	width: 245px;
+	width: 296px;
 	height: 15px;
 	top: 0px;
 	left: 0;

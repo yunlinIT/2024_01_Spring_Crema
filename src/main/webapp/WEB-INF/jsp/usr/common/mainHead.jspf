@@ -2,17 +2,39 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
+
 <style>
 header {
 	position: fixed;
 	top: 0;
 	width: 100%;
 	z-index: 1000;
-	background-color: white; /* 투명한 배경색 설정 */
-	opacity: 1; /* 처음에는 투명도를 0으로 설정하여 숨김 */
+	background-color: transparent; /* 투명한 배경색 설정 */
+	opacity: 0; /* 처음에는 투명도를 0으로 설정하여 숨김 */
 	transition: opacity 0.5s ease; /* 투명도 변화에 애니메이션 적용 */
 }
 </style>
+
+<script>
+	window.addEventListener('scroll', function() {
+		var scroll = window.scrollY;
+		var header = document.querySelector('header');
+
+		// 스크롤이 일정 양 이상 되면 헤더를 나타나게 함
+		if (scroll > 870) {
+			header.style.opacity = 1;
+		} else {
+			header.style.opacity = 0;
+		}
+	});
+
+	document.addEventListener('DOMContentLoaded', function() {
+		var header = document.querySelector('header');
+		header.style.opacity = 1; // 페이지가 로드될 때 헤더를 표시
+
+		// 필요한 경우 추가적인 초기화 작업 수행
+	});
+</script>
 
 
 
