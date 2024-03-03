@@ -10,5 +10,11 @@ public class UsrFindCafeController {
 
 		return "/usr/findcafe/searchList";
 	}
+	
+	@RequestMapping("/usr/findcafe/likeList")
+	public String likeList() {
+
+		return "/usr/findcafe/likeList";
+	}
 
 }

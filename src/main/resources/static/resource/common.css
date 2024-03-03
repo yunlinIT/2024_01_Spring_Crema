@@ -160,8 +160,7 @@ header>div>ul>li {
 header>div>ul>li>a {
 	color: black;
 	font-size: 18px;
-		font-family: 'Pretendard';
-	font-weight: 500;
+	
 }
 
 /* .login-box>tbody>tr>td>input { */
@@ -180,7 +179,7 @@ header>div>ul>li>a {
 /* 	.modify-box>tbody>tr:nth-child(7)>td>input { */
 /* } */
 .table-box-1 th, .table-box-1 td {
-	border: 1px solid rgb(192, 192, 192) 28, 128, 128);
+	border: 1px solid rgb(192, 192, 192)(28, 128, 128);
 	padding: 10px;
 	/* 	text-align: center; */
 }

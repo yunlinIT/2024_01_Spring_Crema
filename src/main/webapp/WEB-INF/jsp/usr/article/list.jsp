@@ -17,9 +17,9 @@
 	<table class="table-box-1 table mx-auto custom-table" style="width: 50%;">
 		<colgroup>
 			<col style="width: 8%" />
-			<col style="width: 57%" />
-			<col style="width: 12%" />
-			<col style="width: 12%" />
+			<col style="width: 50%" />
+			<col style="width: 10%" />
+			<col style="width: 15%" />
 			<col style="width: 5%" />
 			<col style="width: 5%" />
 			<col style="width: 5%" />

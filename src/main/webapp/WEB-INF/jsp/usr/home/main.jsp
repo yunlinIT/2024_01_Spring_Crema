@@ -283,7 +283,7 @@
 .input-container {
   width: calc(100% - 50px); /* 수정된 부분 */
   position: relative;
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .input {
