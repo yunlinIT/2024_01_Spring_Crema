@@ -71,9 +71,19 @@ header {
 			</a>
 			<div class="flex-grow"></div>
 			<ul class="flex">
-<!-- 				<li> -->
-<!-- 					<a class="hover:underline" href="/">HOME</a> -->
-<!-- 				</li> -->
+				<!-- 				<li> -->
+				<!-- 					<a class="hover:underline" href="/">HOME</a> -->
+				<!-- 				</li> -->
+				<c:if test="${rq.isLogined() }">
+					<li>
+						<a class="hover:underline" href="../findcafe/searchList">나의 찜</a>
+					</li>
+				</c:if>
+
+				<!-- 				<li> -->
+				<!-- 					<a class="hover:underline" href="../findcafe/searchList">나의 찜</a> -->
+				<!-- 				</li> -->
+
 				<li>
 					<a class="hover:underline" href="../findcafe/searchList">카페찾기</a>
 				</li>
@@ -91,10 +101,8 @@ header {
 						</li>
 					</ul>
 				</li>
-					</li> 
-				<li>
-					<a class="hover:underline" href="../findcafe/searchList">나의 찜</a>
 				</li>
+
 				<c:if test="${!rq.isLogined() }">
 					<li>
 						<a class="hover:underline" href="../member/login"">로그인</a>

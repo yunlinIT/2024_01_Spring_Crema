@@ -8,11 +8,11 @@
 	<div class="mx-auto overflow-x-auto">
 
 
+		<h1 style="text-align: center; font-size: 25; margin-top: 100px;">${board.name}</h1>
+		<div class="area-for-badge mx-auto" style="width: 50%; position: relative;">
+			<div class="badge badge-outline" style="margin-bottom: 10px;">${articlesCount }개</div>
+		</div>
 
-
-
-		<h1 style="text-align: center; font-size: 25; margin-top: 100px">${board.name}</h1>
-		<div class="badge badge-outline" style="margin-left: 480px; margin-bottom: 20px">${articlesCount }개</div>
 	</div>
 	<table class="table-box-1 table mx-auto custom-table" style="width: 50%;">
 		<colgroup>
@@ -26,9 +26,9 @@
 		</colgroup>
 		<thead>
 			<tr>
-				<th style = "background-color: #f9f9f9f9;">번호</th>
+				<th style="background-color: #f9f9f9f9;">번호</th>
 				<th style="text-align: center; background-color: #f9f9f9f9;">제목</th>
-				<th style = "background-color: #f9f9f9f9;">작성자</th>
+				<th style="background-color: #f9f9f9f9;">작성자</th>
 				<th style="text-align: center; background-color: #f9f9f9f9;">날짜</th>
 				<th style="text-align: center; background-color: #f9f9f9f9;">조회수</th>
 				<th style="text-align: center; background-color: #f9f9f9f9;">좋아요</th>
@@ -59,11 +59,15 @@
 		</tbody>
 	</table>
 	
-
-
-
+	<!-- 	글쓰기버튼 -->
+	<div class="area-for-writeBtn mx-auto" style="width: 50%; position: relative;">
+		
+		<a class="writeBtn btn btn-sm" href="../article/write" style="position: absolute; right: 15px; top: 15px;">글쓰기</a>
+	</div>
+	
+	
 	<!-- 	동적 페이징 -->
-	<div class="pagination flex justify-center mt-3" ">
+	<div class="pagination flex justify-center mt-3" style="margin-top: 50px;">
 		<c:set var="paginationLen" value="3" />
 		<c:set var="startPage" value="${page -  paginationLen  >= 1 ? page - paginationLen : 1}" />
 		<c:set var="endPage" value="${page +  paginationLen  <= pagesCount ? page + paginationLen : pagesCount}" />
@@ -78,31 +82,33 @@
 		</c:if>
 
 		<c:forEach begin="${startPage }" end="${endPage }" var="i">
-			<a class="btn btn-circle btn-ghost btn-xs ${param.page == i ? 'btn-active' : '' }" style="margin-left: 5px; margin-right: 5px;" href="${baseUri }&page=${i }">${i }</a>
+			<a class="btn btn-circle btn-ghost btn-xs ${param.page == i ? 'btn-active' : '' }"
+				style="margin-left: 5px; margin-right: 5px;" href="${baseUri }&page=${i }">${i }</a>
 		</c:forEach>
 
 		<c:if test="${endPage < pagesCount }">
 			<button class="btn btn-xs btn-circle btn-disabled" style="margin-left: 5px; margin-right: 5px;">...</button>
-			<a class="btn btn-circle btn-ghost btn-xs" style="margin-left: 5px; margin-right: 5px;" href="${baseUri }&page=${pagesCount }">${pagesCount }</a>
+			<a class="btn btn-circle btn-ghost btn-xs" style="margin-left: 5px; margin-right: 5px;"
+				href="${baseUri }&page=${pagesCount }">${pagesCount }</a>
 		</c:if>
 
 	</div>
 
-			<div class="mb-4 flex justify-center" style="margin-top: 100px; ">
-			<div class="flex"></div>
-			<form action="">
-				<input type="hidden" name="boardId" value="${param.boardId }" />
-				<select data-value="${param.searchKeywordTypeCode }" class="select select-bordered select-sm w-full max-w-xs"
-					style="width: 100px;" name="searchKeywordTypeCode">
-					<option value="title">제목</option>
-					<option value="body">내용</option>
-					<option value="title,body">제목+내용</option>
-				</select>
-				<input value="${param.searchKeyword }" name="searchKeyword" type="text" placeholder="검색어를 입력해주세요"
-					class="input-sm input input-bordered w-48 max-w-xs" style="margin-top: 5px;" />
-				<button class="btn btn-ghost btn-sm" type="submit">검색</button>
-			</form>
-		</div>
+	<div class="mb-4 flex justify-center" style="margin-top: 50px;">
+		<div class="flex"></div>
+		<form action="">
+			<input type="hidden" name="boardId" value="${param.boardId }" />
+			<select data-value="${param.searchKeywordTypeCode }" class="select select-bordered select-sm w-full max-w-xs"
+				style="width: 100px;" name="searchKeywordTypeCode">
+				<option value="title">제목</option>
+				<option value="body">내용</option>
+				<option value="title,body">제목+내용</option>
+			</select>
+			<input value="${param.searchKeyword }" name="searchKeyword" type="text" placeholder="검색어를 입력해주세요"
+				class="input-sm input input-bordered w-48 max-w-xs" style="margin-top: 5px;" />
+			<button class="btn btn-ghost btn-sm" type="submit">검색</button>
+		</form>
+	</div>
 
 </section>
 

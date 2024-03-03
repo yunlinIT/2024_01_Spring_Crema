@@ -19,9 +19,10 @@ public interface ArticleRepository {
 			regDate = NOW(),
 			updateDate = NOW(),
 			memberId = #{memberId},
+			boardId = #{boardId},
 			title = #{title}, `body` = #{body}
 			""")
-	public void writeArticle(int memberId, String title, String body);
+	public void writeArticle(int memberId, String title, String body, int boardId);
 
 	@Select("SELECT LAST_INSERT_ID()")
 	public int getLastInsertId();
@@ -130,7 +131,7 @@ public interface ArticleRepository {
 			FROM article AS A
 			INNER JOIN `member` AS M
 			ON A.memberId = M.id
-			LEFT JOIN `reply` AS R 
+			LEFT JOIN `reply` AS R
 			ON A.id = R.relId
 			WHERE 1
 			<if test="boardId != 0">
