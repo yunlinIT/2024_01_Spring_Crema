@@ -157,6 +157,13 @@ header>div>ul>li {
 	margin-right: 30px;
 }
 
+header>div>ul>li>a {
+	color: black;
+	font-size: 18px;
+		font-family: 'Pretendard';
+	font-weight: 500;
+}
+
 /* .login-box>tbody>tr>td>input { */
 /* 	padding-left: 10px; */
 /* } */
@@ -176,7 +183,6 @@ header>div>ul>li {
 	border: 1px solid rgb(192, 192, 192) 28, 128, 128);
 	padding: 10px;
 	/* 	text-align: center; */
-	color
 }
 
 /*네비게이션 2차메뉴 */
