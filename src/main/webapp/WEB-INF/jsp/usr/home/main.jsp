@@ -341,7 +341,7 @@
 <div class="CafeRecom mx-auto">
 	<div class="NewCafe">
 		<div>크레마 신규 카페</div>
-		<div>
+		<div class ="hover-img-zoom-in">
 			<img class="NewCafeImg"
 				src="https://velog.velcdn.com/images/yunlinit/post/5eb36e34-5c06-43ee-bd12-87a687399533/image.png" />
 			<div class="InfoBox">
@@ -350,9 +350,10 @@
 			</div>
 		</div>
 	</div>
+	
 	<div class="PopularCafe">
 		<div>크레마 인기 카페</div>
-		<div>
+		<div class ="hover-img-zoom-in">
 			<img class="PopularCafeImg"
 				src="https://velog.velcdn.com/images/yunlinit/post/15f7855c-973d-46bc-bf54-4b83e7145181/image.png" />
 			<div class="InfoBox">
@@ -363,9 +364,9 @@
 	</div>
 	<div class="RecomCafe">
 		<div>크레마 추천 카페</div>
-		<div>
+		<div class ="hover-img-zoom-in">
 			<img class="RecomCafeImg"
-				src="https://velog.velcdn.com/images/yunlinit/post/da2e88df-3296-44d8-b8c5-0affaaa7392c/image.png" />
+				src="https://velog.velcdn.com/images/yunlinit/post/c17b45c9-344d-4f29-afdb-2e30e89a24e3/image.jpg" />
 			<div class="InfoBox">
 				<div class="name">코너</div>
 				<div class="address">대전 동구 홍도로46번길 67 101호</div>
@@ -375,6 +376,7 @@
 </div>
 
 <style>
+
 .CafeRecom {
 	width: 1440px;
 	height: 1129px;
@@ -447,6 +449,22 @@
 	font-size: 14px;
 	font-weight: 400;
 }
+
+
+.hover-img-zoom-in img {
+  transition: all 0.2s linear;
+}
+.hover-img-zoom-in:hover img {
+  transform: scale(1.1);
+}
+
+.hover-img-zoom-in {
+  width: 400px;
+  margin: 0px auto;
+  overflow: hidden;
+}
+
+
 </style>
 
 
