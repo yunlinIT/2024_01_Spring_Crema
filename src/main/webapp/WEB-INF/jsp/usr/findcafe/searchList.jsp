@@ -132,8 +132,6 @@
 	</section>
 
 
-
-
 	<!-- 검색결과 -->
 
 	<section class="search-result">
@@ -141,14 +139,12 @@
 			<div class="text-wrapper">전체보기</div>
 		</div>
 
-
-
 		<a href="cafeDetail" class="linkbox１">
 			<div class="content-info-box content-1">
-				<div class="hover-img-zoom-in1">
-					<!-- 여기 문제 -->
-					<img class="cafe-img-box"
-						src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg" />
+				<div class="cafe-img-box">
+					<img
+						src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg"
+						alt="카페 이미지" />
 				</div>
 				<div class="name-address">
 					<div class="cafe-name">빈이어</div>
@@ -174,19 +170,21 @@
 				<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반 #데이트</div>
 			</div>
 		</a>
+
 		<a href="cafeDetail" class="linkbox１">
 			<div class="content-info-box content-2" style="top: 50px;">
-
-				<img class="cafe-img-box"
-					src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg" />
-
+				<div class="cafe-img-box">
+					<img
+						src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg"
+						alt="카페 이미지" />
+				</div>
 				<div class="name-address">
 					<div class="cafe-name">빈이어</div>
 					<p class="cafe-address">대전 서구 계룡로 399 2층</p>
 				</div>
 
 				<div class="like-count">
-					<span class="material-symbols-outlined heart"> favorite </span>
+					<span class="material-symbols-outlined"> favorite </span>
 					<div class="like-count-num">0</div>
 				</div>
 
@@ -201,23 +199,24 @@
 						<div class="distance-num">8.2</div>
 					</div>
 				</div>
-
 				<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반 #데이트</div>
 			</div>
 		</a>
+
 		<a href="cafeDetail" class="linkbox１">
 			<div class="content-info-box content-3" style="top: 100px;">
-
-				<img class="cafe-img-box"
-					src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg" />
-
+				<div class="cafe-img-box">
+					<img
+						src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg"
+						alt="카페 이미지" />
+				</div>
 				<div class="name-address">
 					<div class="cafe-name">빈이어</div>
 					<p class="cafe-address">대전 서구 계룡로 399 2층</p>
 				</div>
 
 				<div class="like-count">
-					<span class="material-symbols-outlined heart"> favorite </span>
+					<span class="material-symbols-outlined"> favorite </span>
 					<div class="like-count-num">0</div>
 				</div>
 
@@ -232,24 +231,24 @@
 						<div class="distance-num">8.2</div>
 					</div>
 				</div>
-
 				<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반 #데이트</div>
 			</div>
 		</a>
 
-		<a href="cafeDetail" class="linkbox１">
+<a href="cafeDetail" class="linkbox１">
 			<div class="content-info-box content-4" style="top: 150px;">
-
-				<img class="cafe-img-box"
-					src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg" />
-
+				<div class="cafe-img-box">
+					<img
+						src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg"
+						alt="카페 이미지" />
+				</div>
 				<div class="name-address">
 					<div class="cafe-name">빈이어</div>
 					<p class="cafe-address">대전 서구 계룡로 399 2층</p>
 				</div>
 
 				<div class="like-count">
-					<span class="material-symbols-outlined heart"> favorite </span>
+					<span class="material-symbols-outlined"> favorite </span>
 					<div class="like-count-num">0</div>
 				</div>
 
@@ -264,75 +263,74 @@
 						<div class="distance-num">8.2</div>
 					</div>
 				</div>
-
 				<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반 #데이트</div>
 			</div>
 		</a>
-		
-		<a href="cafeDetail"class="linkbox１">
-		<div class="content-info-box content-5" style="top: 200px;">
 
-			<img class="cafe-img-box"
-				src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg" />
-
-			<div class="name-address">
-				<div class="cafe-name">빈이어</div>
-				<p class="cafe-address">대전 서구 계룡로 399 2층</p>
-			</div>
-
-			<div class="like-count">
-				<span class="material-symbols-outlined heart"> favorite </span>
-				<div class="like-count-num">0</div>
-			</div>
-
-			<div class="review-count">
-				<div class="title-review">리뷰</div>
-				<div class="review-count-num">0</div>
-			</div>
-
-			<div class="show-distance">
-				<div class="num-km-group">
-					<div class="km">km</div>
-					<div class="distance-num">8.2</div>
+<a href="cafeDetail" class="linkbox１">
+			<div class="content-info-box content-5" style="top: 200px;">
+				<div class="cafe-img-box">
+					<img
+						src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg"
+						alt="카페 이미지" />
 				</div>
-			</div>
-
-			<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반 #데이트</div>
-		</div>
-		</a>
-		
-		<a href="cafeDetail"class="linkbox１">
-		<div class="content-info-box content-6" style="top: 250px;">
-
-			<img class="cafe-img-box"
-				src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg" />
-
-			<div class="name-address">
-				<div class="cafe-name">빈이어</div>
-				<p class="cafe-address">대전 서구 계룡로 399 2층</p>
-			</div>
-
-			<div class="like-count">
-				<span class="material-symbols-outlined heart"> favorite </span>
-				<div class="like-count-num">0</div>
-			</div>
-
-			<div class="review-count">
-				<div class="title-review">리뷰</div>
-				<div class="review-count-num">0</div>
-			</div>
-
-			<div class="show-distance">
-				<div class="num-km-group">
-					<div class="km">km</div>
-					<div class="distance-num">8.2</div>
+				<div class="name-address">
+					<div class="cafe-name">빈이어</div>
+					<p class="cafe-address">대전 서구 계룡로 399 2층</p>
 				</div>
-			</div>
 
-			<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반 #데이트</div>
-		</div>
+				<div class="like-count">
+					<span class="material-symbols-outlined"> favorite </span>
+					<div class="like-count-num">0</div>
+				</div>
+
+				<div class="review-count">
+					<div class="title-review">리뷰</div>
+					<div class="review-count-num">0</div>
+				</div>
+
+				<div class="show-distance">
+					<div class="num-km-group">
+						<div class="km">km</div>
+						<div class="distance-num">8.2</div>
+					</div>
+				</div>
+				<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반 #데이트</div>
+			</div>
 		</a>
-		
+
+<a href="cafeDetail" class="linkbox１">
+			<div class="content-info-box content-6" style="top: 250px;">
+				<div class="cafe-img-box">
+					<img
+						src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg"
+						alt="카페 이미지" />
+				</div>
+				<div class="name-address">
+					<div class="cafe-name">빈이어</div>
+					<p class="cafe-address">대전 서구 계룡로 399 2층</p>
+				</div>
+
+				<div class="like-count">
+					<span class="material-symbols-outlined"> favorite </span>
+					<div class="like-count-num">0</div>
+				</div>
+
+				<div class="review-count">
+					<div class="title-review">리뷰</div>
+					<div class="review-count-num">0</div>
+				</div>
+
+				<div class="show-distance">
+					<div class="num-km-group">
+						<div class="km">km</div>
+						<div class="distance-num">8.2</div>
+					</div>
+				</div>
+				<div class="hashtag">#모던 #아늑한 #디저트맛집 #반려동물동반 #데이트</div>
+			</div>
+		</a>
+
 	</section>
 </section>
 
@@ -886,29 +884,27 @@
 	line-height: normal;
 }
 
-.hover-img-zoom-in>img {
-	transition: all 0.2s linear;
-}
-
-.hover-img-zoom-in:hover>img {
-	transform: scale(1.1);
-}
-
-.hover-img-zoom-in {
-	width: 400px;
-	margin: 0px auto;
-	overflow: hidden;
-}
-
+/* 라페 리스트 이미지 hover 하면 이미지 확대 효과 */
 .content-info-box .cafe-img-box {
-	position: absolute;
+	position: relative; /* 상대적 위치 설정 */
 	width: 467px;
 	height: 247px;
-	top: 0;
-	left: 0;
-	object-fit: cover; /* 이미지를 박스에 맞게 crop */
 	border-radius: 20px;
-	/* 	border: 3px solid pink; */
+	overflow: hidden; /* 내용이 넘치는 경우 숨김 처리 */
+}
+
+.content-info-box .cafe-img-box img {
+	position: absolute; /* 절대적 위치 설정 */
+	width: 100%; /* 부모 요소에 대해 100% 너비를 갖도록 설정 */
+	height: 100%; /* 부모 요소에 대해 100% 높이를 갖도록 설정 */
+	top: 0; /* 부모 요소의 맨 위에 위치 */
+	left: 0; /* 부모 요소의 맨 왼쪽에 위치 */
+	object-fit: cover; /* 이미지를 박스에 맞게 crop */
+	transition: transform 0.2s linear; /* 변형 효과 설정 */
+}
+
+.content-info-box .cafe-img-box:hover img {
+	transform: scale(1.1); /* 이미지 확대 효과 */
 }
 </style>
 
