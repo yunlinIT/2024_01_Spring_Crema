@@ -213,13 +213,12 @@
 				style="left: 0px; top: 230px; position: relative; color: 6D6D6D; font-size: 16px; font-family: Pretendard; font-weight: 300; letter-spacing: 1px; word-wrap: break-word">크레마는
 				오늘같은 날씨에 가기 좋은 카페를 추천해드려요.</div>
 			<div class="weather-comment"
-				style="width: 595px; height: 53px; left: 0px; top: 310px; position: relative; color: 6D6D6D; font-size: 18px; font-family: Pretendard; font-weight: 350; letter-spacing: 1.50px; word-wrap: break-word">바스락거리는
-				셔츠 한장만 걸쳐도 햇살의 온기와 시원한 바람이 어우러지는 날 달콤쌉싸름한 커피 한잔이 생각나요.</div>
+				style="width: 595px; height: 53px; left: 0px; top: 310px; position: relative; color: 6D6D6D; font-size: 18px; font-family: Pretendard; font-weight: 350; letter-spacing: 1.50px; word-wrap: break-word">바람이 부드럽게 스치는 서늘한 날, 한 모금의 커피 향기가 나를 감싸 안아요.</div>
 
 		</div>
 		<div class="weather-img-box">
 			<img class="Weather-img" style="height: 100%; right: 0; top: 0px; position: absolute;"
-				src="https://velog.velcdn.com/images/yunlinit/post/a9ded344-3246-4eb4-bffd-edf07671303c/image.png" />
+				src="https://velog.velcdn.com/images/yunlinit/post/3654e399-5a73-4acf-a263-e24167d3871d/image.jpg" />
 		</div>
 	</div>
 
