@@ -84,40 +84,35 @@ header {
 				<img src=https://i.ibb.co/XVsJbck/logo-removebg-preview.png " width="200" />
 			</a>
 			<div class="menu_box_1 flex-grow"></div>
-			<ul class="flex">
-
-				<c:if test="${rq.isLogined() }">
-					<li><a class="hover:underline" href="../findcafe/likeList">나의 찜</a></li>
-				</c:if>
-
+			<ul class="flex flex1">
 
 				<li><a class="hover:underline" href="../findcafe/searchList">카페찾기</a></li>
 				<li><a class="hover:underline" href="../article/list?boardId=1&page=1">커뮤니티</a>
+
 					<ul>
 						<li><a class="hover:underline" href="../article/list?boardId=1&page=1">크레마 소식</a></li>
 						<li><a class="hover:underline" href="../article/list?boardId=2&page=1">자유게시판</a></li>
 						<li><a class="hover:underline" href="../article/list?boardId=3&page=1">질문게시판</a></li>
-					</ul></li>
 
+					</ul></li>
+			</ul>
+
+
+			<ul class="flex flex2">
 				<c:if test="${!rq.isLogined() }">
 					<li><a class="hover:underline" href="../member/login"">로그인</a></li>
 					<li><a class="hover:underline" href="../member/join">회원가입</a></li>
 				</c:if>
 				<c:if test="${rq.isLogined() }">
-					<li><a class="hover:underline" href="../article/write">글쓰기</a></li>
+					<li><a class="hover:underline" href="../findcafe/likeList">나의 찜</a></li>
 					<li><a class="hover:underline" href="/usr/member/myPage">마이페이지</a></li>
 					<li><a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="hover:underline"
 							href="../member/doLogout">로그아웃</a></li>
 				</c:if>
 			</ul>
-
 		</div>
 
-			<div class="bg"></div>
-
-
 	</header>
-
 
 
 
