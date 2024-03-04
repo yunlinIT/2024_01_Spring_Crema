@@ -16,5 +16,11 @@ public class UsrFindCafeController {
 
 		return "/usr/findcafe/likeList";
 	}
+	
+	@RequestMapping("/usr/findcafe/cafeDetail")
+	public String cafeDetail() {
+
+		return "/usr/findcafe/cafeDetail";
+	}
 
 }

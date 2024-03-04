@@ -188,19 +188,16 @@
 </div>
 <!-- 이미지 아래 페이지 내용 추가 -->
 
-
 <!-- 날씨위젯 -->
 <div class="weather-widget" style="margin-left: 20px; margin-bottom: 20px; position: relative">
-	<div id="ww_dd38e1ffbef2c" v='1.3' loc='id'
-		a='{"t":"responsive","lang":"ko","sl_lpl":1,"ids":["wl2308"],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"#FFFFFF00","cl_font":"rgba(120,120,120,1)","cl_cloud":"#d4d4d4","cl_persp":"#2196F3","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","sl_tof":"3","el_wfc":3,"cl_odd":"#00000000"}'
-		style="width: 230px;">
-		More forecasts:
-		<a href="https://oneweather.org/seoul/30_days/" id="ww_dd38e1ffbef2c_u" target="_blank">Weather forecast Seoul
-			30days</a>
-	</div>
-	<script async src="https://app2.weatherwidget.org/js/?id=ww_dd38e1ffbef2c"></script>
+    <div id="ww_dd38e1ffbef2c" v='1.3' loc='id'
+        a='{"t":"responsive","lang":"ko","sl_lpl":1,"ids":["wl2308"],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"#FFFFFF00","cl_font":"rgba(120,120,120,1)","cl_cloud":"#d4d4d4","cl_persp":"#2196F3","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","sl_tof":"3","el_wfc":3,"cl_odd":"#00000000"}'
+        style="width: 230px;">
+        More forecasts:
+        <a href="https://oneweather.org/seoul/30_days/" id="ww_dd38e1ffbef2c_u" target="_blank">Weather forecast Seoul 30days</a>
+    </div>
+    <script async src="https://app2.weatherwidget.org/js/?id=ww_dd38e1ffbef2c"></script>
 </div>
-
 
 
 <!-- 날씨 테마 섹션 -->
@@ -250,7 +247,7 @@
 .search-box {
 	/*   width: 350px; */
 	height: 82px;
-	top: 1640px;
+	top: 1740px;
 	left: 5%;
 	position: absolute;
 }
