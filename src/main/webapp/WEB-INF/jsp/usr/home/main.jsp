@@ -191,13 +191,14 @@
 
 <!-- 날씨위젯 -->
 <div class="weather-widget" style="margin-left: 20px; margin-bottom: 20px; position: relative">
-    <div id="ww_dd38e1ffbef2c" v='1.3' loc='id'
-        a='{"t":"responsive","lang":"ko","sl_lpl":1,"ids":["wl2308"],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"#FFFFFF00","cl_font":"rgba(120,120,120,1)","cl_cloud":"#d4d4d4","cl_persp":"#2196F3","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","sl_tof":"3","el_wfc":3,"cl_odd":"#00000000"}'
-        style="width: 230px;">
-        More forecasts:
-        <a href="https://oneweather.org/seoul/30_days/" id="ww_dd38e1ffbef2c_u" target="_blank">Weather forecast Seoul 30days</a>
-    </div>
-    <script async src="https://app2.weatherwidget.org/js/?id=ww_dd38e1ffbef2c"></script>
+	<div id="ww_dd38e1ffbef2c" v='1.3' loc='id'
+		a='{"t":"responsive","lang":"ko","sl_lpl":1,"ids":["wl2308"],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"#FFFFFF00","cl_font":"rgba(120,120,120,1)","cl_cloud":"#d4d4d4","cl_persp":"#2196F3","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","sl_tof":"3","el_wfc":3,"cl_odd":"#00000000"}'
+		style="width: 230px;">
+		More forecasts:
+		<a href="https://oneweather.org/seoul/30_days/" id="ww_dd38e1ffbef2c_u" target="_blank">Weather forecast Seoul
+			30days</a>
+	</div>
+	<script async src="https://app2.weatherwidget.org/js/?id=ww_dd38e1ffbef2c"></script>
 </div>
 
 
@@ -233,95 +234,99 @@
 <!-- 검색어박스 -->
 <!-- 코드펜에서는 한참 아래에 있지만, 스프링에 적용시키면 박스 안에 제대로 들어가있음. -->
 <div class="search-box">
-  <div class="how-about-here">오늘은 이런 카페 어떠세요?</div>
-    <div class="input-container">
-      <input type="text" placeholder="테라스 카페" class="input input-sm w-full max-w-xs" />
-    </div>
-    <div class="search-btn">
-      <a href="#">GO</a>
-    </div>
-  <div class="search-keyword"></div>
+	<div class="how-about-here">오늘은 이런 카페 어떠세요?</div>
+
+	<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs max-w-xs"> <input
+		type="text" class="grow" placeholder="테라스 카페" /> <a href="/">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
+								<path fill-rule="evenodd"
+					d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+					clip-rule="evenodd" /></svg></a>
 </div>
 
-<style>
 
+
+<style>
 .search-box {
-  width: 350px;
-  height: 82px;
-  top: 1770px;
-  left: 5%;
-  position: absolute;
+	/*   width: 350px; */
+	height: 82px;
+	top: 1640px;
+	left: 5%;
+	position: absolute;
+}
+
+.search-menu-item {
+	margin-top: 30px;
 }
 
 .how-about-here {
-  width: 589px;
-  height: 39px;
-  left: 4px;
-  top: 0px;
-  position: absolute;
-  color: #6D6D6D;
-  font-size: 14px;
-  font-family: Pretendard;
-  font-weight: 500;
-  letter-spacing: 1.40px;
-  word-wrap: break-word;
+	width: 589px;
+	height: 39px;
+	left: 4px;
+	top: 0px;
+	position: absolute;
+	color: #6D6D6D;
+	font-size: 14px;
+	font-family: Pretendard;
+	font-weight: 500;
+	letter-spacing: 1.40px;
+	word-wrap: break-word;
 }
 
 .line {
-  height: 37px;
-  padding: 6px 0 6px 1px;
-  left: 3px;
-  top: 39px;
-  position: absolute;
-  background: rgba(255, 255, 255, 0);
-  justify-content: flex-start;
-  align-items: center;
-  display: flex; /* 수정된 부분 */
-  width: 100%;
+	height: 37px;
+	padding: 6px 0 6px 1px;
+	left: 3px;
+	top: 39px;
+	position: absolute;
+	background: rgba(255, 255, 255, 0);
+	justify-content: flex-start;
+	align-items: center;
+	display: flex; /* 수정된 부분 */
+	width: 100%;
 }
 
 .input-container {
-  width: calc(100% - 50px); /* 수정된 부분 */
-  position: relative;
-  margin-top: 30px;
+	width: calc(100% - 50px); /* 수정된 부분 */
+	position: relative;
+	margin-top: 30px;
 }
 
 .input {
-  width: 100%;
-  height: 43px;
-  color: #A9A9A9;
-  font-size: 14px;
-  font-family: Pretendard;
-  font-weight: 400;
-  letter-spacing: 1.40px;
-  word-wrap: break-word;
-  padding-left: 6px;
+	width: 100%;
+	height: 43px;
+	color: #A9A9A9;
+	font-size: 14px;
+	font-family: Pretendard;
+	font-weight: 400;
+	letter-spacing: 1.40px;
+	word-wrap: break-word;
+	padding-left: 6px;
 }
 
 .search-btn {
-  width: 50px;
-  height: 43px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	width: 50px;
+	height: 43px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .search-btn a {
-  color: #6D6D6D;
-  font-size: 20px;
-  font-family: Pretendard;
-  font-weight: 500;
-  letter-spacing: 1px;
-  word-wrap: break-word;
+	color: #6D6D6D;
+	font-size: 20px;
+	font-family: Pretendard;
+	font-weight: 500;
+	letter-spacing: 1px;
+	word-wrap: break-word;
 }
 
 .search-btn {
-  position: absolute;
-  right: 0;
-  top: 30;
+	position: absolute;
+	right: 0;
+	top: 30;
 }
-
-  </style>
+</style>
 
 
 

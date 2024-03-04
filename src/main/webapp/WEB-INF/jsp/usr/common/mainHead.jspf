@@ -76,7 +76,8 @@ header {
 
 </head>
 
-<body>
+
+	<body>
 	<header>
 
 		<div class="top_bar h-20 flex mx-auto items-center text-3xl">
@@ -99,6 +100,8 @@ header {
 
 
 			<ul class="flex flex2">
+
+
 				<c:if test="${!rq.isLogined() }">
 					<li><a class="hover:underline" href="../member/login"">로그인</a></li>
 					<li><a class="hover:underline" href="../member/join">회원가입</a></li>
@@ -113,8 +116,6 @@ header {
 		</div>
 
 	</header>
-
-
 
 
 	<h1 style="font-size: 2rem;">${pageTitle }</h1>
