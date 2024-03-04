@@ -422,8 +422,8 @@
 .InfoBox {
 	width: 319px;
 	height: 103px;
-	left: 54px; /* 수정 필요 */
-	top: 480px; /* 수정 필요 */
+	left: 54px;
+	top: 480px;
 	position: absolute;
 	background: white;
 	border-radius: 20px;

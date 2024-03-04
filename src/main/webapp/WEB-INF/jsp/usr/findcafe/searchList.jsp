@@ -142,10 +142,10 @@
 		</div>
 
 		<div class="content-info-box content-1">
-
-			<img class="cafe-img-box"
-				src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg" />
-
+			<div class="hover-img-zoom-in1">  	<!-- 여기 문제 -->
+				<img class="cafe-img-box"
+					src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg" />
+			</div>
 			<div class="name-address">
 				<div class="cafe-name">빈이어</div>
 				<p class="cafe-address">대전 서구 계룡로 399 2층</p>
@@ -333,10 +333,13 @@
 .page-title {
 	position: relative;
 	top: 100px;
-	text-align: center; font-family : "Pretendard";
-	font-weight: 600;
-	font-family: "Pretendard"; font-weight : 600;
+	text-align: center;
+	font-family: "Pretendard"; font-weight : 600; font-family :
+	"Pretendard"; font-weight : 600;
 	font-size: 30px;
+	font-weight: 600;
+	font-family: "Pretendard";
+	font-weight: 600;
 }
 
 /* 카페검색결과 */
@@ -866,6 +869,21 @@
 	line-height: normal;
 }
 
+.hover-img-zoom-in > img {
+	transition: all 0.2s linear;
+}
+
+.hover-img-zoom-in:hover > img {
+	transform: scale(1.1);
+}
+
+.hover-img-zoom-in {
+  width: 400px;
+  margin: 0px auto;
+  overflow: hidden;
+
+}
+
 .content-info-box .cafe-img-box {
 	position: absolute;
 	width: 467px;
@@ -874,7 +892,9 @@
 	left: 0;
 	object-fit: cover; /* 이미지를 박스에 맞게 crop */
 	border-radius: 20px;
+	border: 3px solid pink;
 }
+
 </style>
 
 
