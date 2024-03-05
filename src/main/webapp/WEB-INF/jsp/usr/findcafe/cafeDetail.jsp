@@ -75,9 +75,9 @@
 				<div class="review-count-num">3</div>
 			</div>
 
-			<span class="material-symbols-outlined clock-circle" style="color: #a9a9a9"> schedule </span> <span
-				class="material-symbols-outlined phone" style="color: #a9a9a9"> call </span> <span
-				class="material-symbols-outlined store" style="color: #a9a9a9"> storefront </span>
+			<span class="material-symbols-outlined clock-circle" style="color: #a9a9a9"> schedule </span>
+			<span class="material-symbols-outlined phone" style="color: #a9a9a9"> call </span>
+			<span class="material-symbols-outlined store" style="color: #a9a9a9"> storefront </span>
 
 			<p class="hashtag">#모던 #아늑한 #디저트맛집 #데이트 #반려동물동반</p>
 		</div>
@@ -115,20 +115,32 @@
 </div>
 
 <div class="slide-overlay">
-	<button class="close-btn">close</button>
+	<button class="close-btn">
+		<span class="material-symbols-outlined close"> close </span>
+	</button>
 	<button class="slide-btn --prev">
-		<span class="material-symbols-outlined"> chevron_left </span>
+		<span class="material-symbols-outlined left "> chevron_left </span>
 	</button>
 	<button class="slide-btn --next">
-		<span class="material-symbols-outlined"> chevron_right </span>
+		<span class="material-symbols-outlined right"> chevron_right </span>
 	</button>
 	<div class="slide__container">
 		<ul class="slides">
-			<li><img src="" alt="이미지1"></li>
-			<li><img src="" alt="이미지2"></li>
-			<li><img src="" alt="이미지3"></li>
-			<li><img src="" alt="이미지4"></li>
-			<li><img src="" alt="이미지5"></li>
+			<li>
+				<img src="" alt="이미지1">
+			</li>
+			<li>
+				<img src="" alt="이미지2">
+			</li>
+			<li>
+				<img src="" alt="이미지3">
+			</li>
+			<li>
+				<img src="" alt="이미지4">
+			</li>
+			<li>
+				<img src="" alt="이미지5">
+			</li>
 		</ul>
 	</div>
 </div>
@@ -143,7 +155,7 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.6);
+	background-color: rgba(0, 0, 0, 0.8);
 	display: none;
 	z-index: 999; /* 다른 요소 위에 보이도록 설정 */
 }
@@ -151,17 +163,17 @@
 .slide__container {
 	position: absolute;
 	height: 100%; /* 이미지에 맞게 자동 조정되도록 변경 */
-	max-width: 80%; /* 최대 너비 설정 */
-	max-height: 80%; /* 최대 높이 설정 */
+ 	max-width: 80%; /* 최대 너비 설정 */ 
+ 	max-height: 70%; /* 최대 높이 설정 */ 
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+ 	transform: translate(-50%, -45%); 
 	overflow: hidden;
+	
 }
 
 .slide__container>img {
 	position: absolute;
-	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	max-width: 100%; /* 이미지의 원본 비율을 유지하면서 이미지의 더 긴쪽에 맞춤 */
@@ -186,7 +198,7 @@
 
 /*------------- 요기부터 수정 하지마~-------------*/
 .slide-btn {
-	color: #666666;
+	color: white;
 	font-size: 200px;
 	font-weight: 800;
 	position: absolute;
@@ -194,7 +206,7 @@
 	height: 50px;
 	border-radius: 50%;
 	border: none;
-	background-color: white;
+	background-color: transparent;
 	cursor: pointer;
 	top: 50%;
 	transform: translateY(-50%);
@@ -207,19 +219,41 @@
 
 .--next {
 	right: 20%;
+	
 }
 
+ .close { 
+	text-align: center; 
+	font-size: 50px;
+ }
+ 
+ .left, .right { 
+	text-align: center; 
+	font-size: 60px;
+ }
+ 
+ 
+
 .close-btn {
+
+	right: 20%;
+	color: white;
+	font-weight: 600;
 	position: absolute;
-	padding: 1em;
-	top: 40%;
-	right: 15%;
-	color: red;
+/*  	width: 50px;  */
+/*  	height: 50px;  */
+/*  	border-radius: 50%;  */
+/*  	border: none;  */
+	background-color: transparent;
+	cursor: pointer;
+	top: 15%;
+	transform: translateY(-50%);
+	z-index: 999; /* 다른 요소 위에 보이도록 설정 */
 }
 
 #bullets {
 	position: absolute;
-	bottom: 5%;
+	bottom: 3%;
 	left: 50%;
 	transform: translateX(-50%);
 }
