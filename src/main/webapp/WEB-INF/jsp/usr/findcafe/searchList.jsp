@@ -10,8 +10,9 @@
 </div>
 
 
-<!-- 카페 검색결과 상세보기  -->
+<!-- 카페 검색결과 페이지  -->
 <section class="find-cafe">
+
 	<!-- 필터바 -->
 	<section class="filter-bar">
 
@@ -235,7 +236,7 @@
 			</div>
 		</a>
 
-<a href="cafeDetail" class="linkbox１">
+		<a href="cafeDetail" class="linkbox１">
 			<div class="content-info-box content-4" style="top: 150px;">
 				<div class="cafe-img-box">
 					<img
@@ -267,7 +268,7 @@
 			</div>
 		</a>
 
-<a href="cafeDetail" class="linkbox１">
+		<a href="cafeDetail" class="linkbox１">
 			<div class="content-info-box content-5" style="top: 200px;">
 				<div class="cafe-img-box">
 					<img
@@ -299,7 +300,7 @@
 			</div>
 		</a>
 
-<a href="cafeDetail" class="linkbox１">
+		<a href="cafeDetail" class="linkbox１">
 			<div class="content-info-box content-6" style="top: 250px;">
 				<div class="cafe-img-box">
 					<img
@@ -884,7 +885,7 @@
 	line-height: normal;
 }
 
-/* 라페 리스트 이미지 hover 하면 이미지 확대 효과 */
+/* 카페 리스트 이미지 hover 하면 이미지 확대 효과 */
 .content-info-box .cafe-img-box {
 	position: relative; /* 상대적 위치 설정 */
 	width: 467px;

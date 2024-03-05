@@ -445,6 +445,7 @@
 	font-weight: 400;
 }
 
+/* hover시 이미지 확대 효과 */
 
 .hover-img-zoom-in img {
   transition: all 0.2s linear;

@@ -10,50 +10,28 @@
 
 <div class="cafe-detail-page">
 
-	<div class="cafe-detail-page">
-		<div class="detail-imgs">
-			<div class="cafe-img-box-big li">
-				<a
-					href="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg">
-					<img class="big-img"
-						src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg"
-						alt="이미지1" />
-				</a>
-			</div>
-			<div class="cafe-img-box1 li">
-				<a
-					href="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230827_60%2F1693138311417unuel_JPEG%2FKakaoTalk_20230827_210945131_05.jpg">
-					<img class="sm-img1"
-						src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230827_60%2F1693138311417unuel_JPEG%2FKakaoTalk_20230827_210945131_05.jpg
-						alt=" 이미지2" />
-				</a>
-			</div>
-			<div class="cafe-img-box2 li">
-				<a
-					href="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231124_5%2F1700804165871ysxEr_JPEG%2FIMG_4819.jpeg">
-					<img class="sm-img2"
-						src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231124_5%2F1700804165871ysxEr_JPEG%2FIMG_4819.jpeg"
-						alt="이미지3" />
-				</a>
-			</div>
-			<div class="cafe-img-box3 li">
-				<a
-					href="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231116_176%2F17000645900099ILlk_JPEG%2F1F8F17A6-BA64-451E-99D8-F02979F38561.jpeg">
-					<img class="sm-img3"
-						src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231116_176%2F17000645900099ILlk_JPEG%2F1F8F17A6-BA64-451E-99D8-F02979F38561.jpeg"
-						alt="이미지4" />
-				</a>
-			</div>
-			<div class="cafe-img-box4 li">
-				<a
-					href="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230827_57%2F1693138302167NjXBQ_JPEG%2FKakaoTalk_20230827_210945131_01.jpg">
-					<img class="sm-img4"
-						src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230827_57%2F1693138302167NjXBQ_JPEG%2FKakaoTalk_20230827_210945131_01.jpg"
-						alt="이미지5" />
-				</a>
-			</div>
-		</div>
+	<div class="detail-imgs">
 
+		<div class="cafe-img-box-big">
+			<img class="big-img"
+				src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg" />
+		</div>
+		<div class="cafe-img-box1">
+			<img class="sm-img1"
+				src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231116_2%2F1700064596615RjksM_JPEG%2FIMG_3764.jpeg" />
+		</div>
+		<div class="cafe-img-box2">
+			<img class="sm-img2"
+				src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231124_5%2F1700804165871ysxEr_JPEG%2FIMG_4819.jpeg" />
+		</div>
+		<div class="cafe-img-box3">
+			<img class="sm-img3"
+				src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231116_176%2F17000645900099ILlk_JPEG%2F1F8F17A6-BA64-451E-99D8-F02979F38561.jpeg" />
+		</div>
+		<div class="cafe-img-box4">
+			<img class="sm-img4"
+				src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230827_57%2F1693138302167NjXBQ_JPEG%2FKakaoTalk_20230827_210945131_01.jpg" />
+		</div>
 
 
 	</div>
@@ -114,138 +92,28 @@
 	</div>
 </div>
 
-<div class="slide-overlay">
-	<button class="close-btn">close</button>
-	<button class="slide-btn --prev">
-		<span class="material-symbols-outlined"> chevron_left </span>
-	</button>
-	<button class="slide-btn --next">
-		<span class="material-symbols-outlined"> chevron_right </span>
-	</button>
-	<div class="slide__container">
-		<ul class="slides">
-			<li><img src="" alt="이미지1"></li>
-			<li><img src="" alt="이미지2"></li>
-			<li><img src="" alt="이미지3"></li>
-			<li><img src="" alt="이미지4"></li>
-			<li><img src="" alt="이미지5"></li>
-		</ul>
-	</div>
-</div>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="slick/slick.min.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+      $('.detail-imgs').slick({
+        setting-name: setting-value
+      });
+    });
+    
+    
+    $('.single-item-rtl').slick({
+    	  rtl: true
+    	});
+  </script>
 
 
 
 <style>
-/* 슬라이드 팝업창 */
-.slide-overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.6);
-	display: none;
-	z-index: 999; /* 다른 요소 위에 보이도록 설정 */
-}
-
-.slide__container {
-	position: absolute;
-	height: 100%; /* 이미지에 맞게 자동 조정되도록 변경 */
-	max-width: 80%; /* 최대 너비 설정 */
-	max-height: 80%; /* 최대 높이 설정 */
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	overflow: hidden;
-}
-
-.slide__container>img {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	max-width: 100%; /* 이미지의 원본 비율을 유지하면서 이미지의 더 긴쪽에 맞춤 */
-	max-height: 100%; /* 이미지의 원본 비율을 유지하면서 이미지의 더 긴쪽에 맞춤 */
-}
-
-.slides {
-	display: flex; /* Flexbox를 사용하여 이미지를 가로로 나열 */
-	justify-content: center;
-}
-
-.slides>li {
-	flex: 0 0 auto; /* Flex 아이템이 컨테이너 크기에 맞게 자동으로 크기 조정 */
-	list-style: none; /* 목록 마커 제거 */
-	margin-right:; /* 이미지 간격 조정 */
-	display: none; /* 이미지 간격 없애고 숨김 */
-}
-
-.slides>li:first-child {
-	display: block; /* 첫 번째 이미지만 보이도록 설정 */
-}
-
-/*------------- 요기부터 수정 하지마~-------------*/
-.slide-btn {
-	color: #666666;
-	font-size: 200px;
-	font-weight: 800;
-	position: absolute;
-	width: 50px;
-	height: 50px;
-	border-radius: 50%;
-	border: none;
-	background-color: white;
-	cursor: pointer;
-	top: 50%;
-	transform: translateY(-50%);
-	z-index: 999; /* 다른 요소 위에 보이도록 설정 */
-}
-
-.--prev {
-	left: 20%;
-}
-
-.--next {
-	right: 20%;
-}
-
-.close-btn {
-	position: absolute;
-	padding: 1em;
-	top: 40%;
-	right: 15%;
-	color: red;
-}
-
-#bullets {
-	position: absolute;
-	bottom: 5%;
-	left: 50%;
-	transform: translateX(-50%);
-}
-
-#bullets>li {
-	float: left;
-	margin: 0 8px;
-	list-style: none; /* 목록 마커 제거 */
-}
-
-#bullets>li>a {
-	display: block;
-	text-decoration: none;
-	color: transparent;
-	width: 1em;
-	height: 1em;
-	background-color: rgb(165, 165, 165);
-	border-radius: 50%;
-	transition: 0.2s;
-}
-
-#bullets>li>a.on {
-	background-color: white;
-}
-
-/* -----------------여기는 기본 레이아웃------------------------- */
 .cafe-detail-page {
 	margin: 0 auto; /* 화면 좌우 가운데 정렬 */
 	/* 그 외의 스타일 속성들 */
@@ -267,16 +135,6 @@
 	position: relative;
 }
 
-/* .cafe-detail-page .detail-section { */
-/* 	position: absolute; */
-/* 	width: 1287px; */
-/* 	height: 908px; */
-/* 	top: 116px; */
-/* 	left: 78px; */
-/* 	background-color: #ffffff; */
-/* 	overflow: hidden; */
-/* 	overflow-y: scroll; */
-/* } */
 .cafe-detail-page .section-under-imgs {
 	position: absolute;
 	width: 1160px;
@@ -661,9 +519,8 @@
 	position: absolute;
 	width: 1149px;
 	height: 466px;
-	top: -60px;
+	top: 19px;
 	overflow: hidden;
-	background-color: white;
 }
 
 .cafe-detail-page .sm-img4 {
@@ -700,7 +557,6 @@
 	left: 621px;
 }
 
-/* 제일 큰 사진 */
 .cafe-detail-page .big-img {
 	position: absolute;
 	width: 614px;
@@ -711,117 +567,8 @@
 }
 </style>
 
-<script>
 
 
-const overlay = document.querySelector(".slide-overlay");
-const slides = document.querySelectorAll(".slides > li > img");
-const thumbnails = document.querySelectorAll(
-  ".cafe-detail-page .detail-imgs .li img"
-);
-const photoCount = slides.length;
-const duration = 400;
-let bullets = 0;
-let photoIndex = 0;
-
-thumbnails.forEach((thumbnail, index) => {
-  thumbnail.addEventListener("click", (e) => {
-    e.preventDefault();
-    overlay.style.display = "block";
-    photoIndex = index;
-    setCurrentSlide(photoIndex);
-  });
-});
-
-document.querySelector(".close-btn").addEventListener("click", () => {
-  overlay.style.display = "none";
-});
-
-function setCurrentSlide(index) {
-  slides.forEach((slide, i) => {
-    slide.src = thumbnails[(index + i) % thumbnails.length].src;
-  });
-}
-
-function createBullets() {
-  const bulletsList = document.createElement("ul");
-  bulletsList.setAttribute("id", "bullets");
-  overlay.appendChild(bulletsList);
-  slides.forEach((slide, index) => {
-    const a = document.createElement("a");
-    a.setAttribute("href", "#");
-    a.innerHTML = `${index}`;
-    const li = document.createElement("li");
-    li.appendChild(a);
-    bulletsList.appendChild(li);
-  });
-  return (bullets = document.querySelectorAll("#bullets > li > a"));
-}
-createBullets();
-bulletLink();
-
-function bulletLink() {
-  bullets.forEach((bullet, index) => {
-    bullet.addEventListener("click", (e) => {
-      e.preventDefault();
-      const clickedIndex = index;
-      let step = clickedIndex - photoIndex;
-      photoIndex = clickedIndex;
-      bulletClassReset();
-      bullets[clickedIndex].classList.add("on");
-      slides.forEach((slide, i) => {
-        slide.src = thumbnails[(photoIndex + i) % thumbnails.length].src;
-      });
-    });
-  });
-}
-
-thumbnails.forEach((thumbnail, index) => {
-  thumbnail.addEventListener("click", (e) => {
-    e.preventDefault();
-    const clickedIndex = index;
-    photoIndex = clickedIndex;
-    bulletClassReset();
-    bullets[clickedIndex].classList.add("on");
-    slides.forEach((slide, i) => {
-      slide.src = thumbnails[(photoIndex + i) % thumbnails.length].src;
-    });
-  });
-});
-
-document.querySelector(".--next").addEventListener("click", nextSlideImage);
-document.querySelector(".--prev").addEventListener("click", prevSlideImage);
-
-function nextSlideImage() {
-  photoIndex++;
-  photoIndex %= photoCount;
-  bulletClassReset();
-  bullets[photoIndex].classList.add("on");
-  slides.forEach((slide, i) => {
-    slide.src = thumbnails[(photoIndex + i) % thumbnails.length].src;
-  });
-}
-
-function prevSlideImage() {
-  photoIndex--;
-  if (photoIndex < 0) {
-    photoIndex = photoCount - 1;
-  }
-  bulletClassReset();
-  bullets[photoIndex].classList.add("on");
-  slides.forEach((slide, i) => {
-    slide.src = thumbnails[(photoIndex + i) % thumbnails.length].src;
-  });
-}
-
-function bulletClassReset() {
-  bullets.forEach((bullet) => {
-    bullet.classList.remove("on");
-  });
-}
-
-
-</script>
 
 
 
