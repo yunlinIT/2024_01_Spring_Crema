@@ -188,66 +188,146 @@
 <!-- 이미지 아래 페이지 내용 추가 -->
 
 <!-- 날씨위젯 -->
-<div class="weather-widget" style="margin-left: 20px; margin-bottom: 20px; position: relative">
+<div class="weather-widget" style="margin-left: 20px; margin-bottom: 50px; position: relative; ">
     <div id="ww_dd38e1ffbef2c" v='1.3' loc='id'
         a='{"t":"responsive","lang":"ko","sl_lpl":1,"ids":["wl2308"],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"#FFFFFF00","cl_font":"rgba(120,120,120,1)","cl_cloud":"#d4d4d4","cl_persp":"#2196F3","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","sl_tof":"3","el_wfc":3,"cl_odd":"#00000000"}'
         style="width: 230px;">
         More forecasts:
-        <a href="https://oneweather.org/seoul/30_days/" id="ww_dd38e1ffbef2c_u" target="_blank">Weather forecast Seoul 30days</a>
+        <a href="https://oneweather.org/seoul/30_days/" id="ww_dd38e1ffbef2c_u" target="_blank">Weather forecast Seoul
+            30days</a>
     </div>
     <script async src="https://app2.weatherwidget.org/js/?id=ww_dd38e1ffbef2c"></script>
 </div>
 
+<style>
+.weather-widget {
+    margin-left: 20px;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.weather-widget #ww_dd38e1ffbef2c {
+    width: 230px;
+}
+
+/* You can add more CSS rules for styling the weather widget as needed */
+
+</style>
+
 
 <!-- 날씨 테마 섹션 -->
-<div class="weather-section mx-auto" style="width: 100%; height: auto; background: rgba(232.69, 215.26, 202.63, 0.19)">
-
-	<div class="recommendation mx-auto" style="width: 100%; height: 600px; left: 0px; top: 0px; position: relative">
-		<div class="indent" style="padding-left: 100px;">
-			<div class="cremaRecommends" style="width: 595px; height: 20px; left: 0px; top: 50px; position: relative">
-				<span
-					style="color: black; font-size: 80px; font-family: Graditen; font-weight: 400; letter-spacing: 8px; word-wrap: break-word">CREMA<br /></span><span
-					style="color: black; font-size: 64px; font-family: GeosansLight; font-style: italic; font-weight: 500; letter-spacing: 6.40px; word-wrap: break-word">RECOMMENDS</span>
+<div class="weather-section mx-auto">
+	<div class="recommendation mx-auto">
+		<div class="indent">
+			<div class="cremaRecommends">
+				<span>CREMA<br /></span> <span>RECOMMENDS</span>
 			</div>
-			<div class="Recommends mx-auto"
-				style="left: 0px; top: 230px; position: relative; color: 6D6D6D; font-size: 16px; font-family: Pretendard; font-weight: 300; letter-spacing: 1px; word-wrap: break-word">크레마는
-				오늘같은 날씨에 가기 좋은 카페를 추천해드려요.</div>
-			<div class="weather-comment"
-				style="width: 595px; height: 53px; left: 0px; top: 310px; position: relative; color: 6D6D6D; font-size: 18px; font-family: Pretendard; font-weight: 350; letter-spacing: 1.50px; word-wrap: break-word">바람이 부드럽게 스치는 서늘한 날, 한 모금의 커피 향기가 나를 감싸 안아요.</div>
-
+			<div class="Recommends mx-auto">크레마는 오늘같은 날씨에 가기 좋은 카페를 추천해드려요.</div>
+			<div class="weather-comment">바람이 부드럽게 스치는 서늘한 날, 한 모금의 커피 향기가 나를 감싸 안아요.</div>
 		</div>
 		<div class="weather-img-box">
-			<img class="Weather-img" style="height: 100%; right: 0; top: 0px; position: absolute;"
+			<img class="Weather-img"
 				src="https://velog.velcdn.com/images/yunlinit/post/3654e399-5a73-4acf-a263-e24167d3871d/image.jpg" />
+		</div>
+
+		<div class="search-box">
+			<div class="how-about-here">오늘은 이런 카페 어떠세요?</div>
+
+			<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs max-w-xs"> <input
+				type="text" class="grow" placeholder="테라스 카페" /> <a href="/">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
+								<path fill-rule="evenodd"
+							d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+							clip-rule="evenodd" /></svg>
+				</a>
 		</div>
 	</div>
 
 </div>
 
+<!-- 날씨테마 CSS -->
+
+<style>
+.weather-section {
+	width: 100%;
+	height: auto;
+	background: rgba(232.69, 215.26, 202.63, 0.19);
+}
+
+.recommendation {
+	width: 100%;
+	height: 600px;
+	position: relative;
+}
+
+.indent {
+	padding-left: 100px;
+	padding-top: 50px;
+}
+
+.cremaRecommends {
+	width: 595px;
+	height: 20px;
+	position: relative;
+}
+
+.cremaRecommends span {
+	font-size: 80px;
+	font-family: Graditen;
+	font-weight: 400;
+	letter-spacing: 8px;
+	word-wrap: break-word;
+	color: black;
+}
+
+.Recommends {
+	color: #6D6D6D;
+	font-size: 16px;
+	font-family: Pretendard;
+	font-weight: 300;
+	letter-spacing: 1px;
+	word-wrap: break-word;
+	position: relative;
+	top: 230px;
+}
+
+.weather-comment {
+	width: 600px;
+	height: 53px;
+	position: relative;
+	/* 	color: #6D6D6D; */
+	color: #755a44;
+	font-style: italic; font-size : 18px;
+	font-family: Pretendard;
+	font-weight: 500;
+	letter-spacing: 1.5px;
+	word-wrap: break-word;
+	top: 270px;
+	font-size: 18px;
+}
+
+.weather-img-box {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+}
+
+.Weather-img {
+	height: 100%;
+}
+</style>
 
 
-<!-- 검색어박스 -->
-<!-- 코드펜에서는 한참 아래에 있지만, 스프링에 적용시키면 박스 안에 제대로 들어가있음. -->
-<div class="search-box">
-	<div class="how-about-here">오늘은 이런 카페 어떠세요?</div>
-
-	<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs max-w-xs"> <input
-		type="text" class="grow" placeholder="테라스 카페" /> <a href="/">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
-								<path fill-rule="evenodd"
-					d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-					clip-rule="evenodd" /></svg></a>
-</div>
-
-
-
+<!-- 검색어박스 CSS-->
 <style>
 .search-box {
 	/*   width: 350px; */
 	height: 82px;
-	top: 1740px;
-	left: 5%;
+	top: 75%;
 	position: absolute;
+	padding-left: 100px;
+	z-index: 999;
 }
 
 .search-menu-item {
@@ -257,7 +337,7 @@
 .how-about-here {
 	width: 589px;
 	height: 39px;
-	left: 4px;
+	/* 	padding-left: 100px; */
 	top: 0px;
 	position: absolute;
 	color: #6D6D6D;
@@ -336,7 +416,7 @@
 <div class="CafeRecom mx-auto">
 	<div class="NewCafe">
 		<div>크레마 신규 카페</div>
-		<div class ="hover-img-zoom-in">
+		<div class="hover-img-zoom-in">
 			<img class="NewCafeImg"
 				src="https://velog.velcdn.com/images/yunlinit/post/5eb36e34-5c06-43ee-bd12-87a687399533/image.png" />
 			<div class="InfoBox">
@@ -345,10 +425,10 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="PopularCafe">
 		<div>크레마 인기 카페</div>
-		<div class ="hover-img-zoom-in">
+		<div class="hover-img-zoom-in">
 			<img class="PopularCafeImg"
 				src="https://velog.velcdn.com/images/yunlinit/post/15f7855c-973d-46bc-bf54-4b83e7145181/image.png" />
 			<div class="InfoBox">
@@ -359,7 +439,7 @@
 	</div>
 	<div class="RecomCafe">
 		<div>크레마 추천 카페</div>
-		<div class ="hover-img-zoom-in">
+		<div class="hover-img-zoom-in">
 			<img class="RecomCafeImg"
 				src="https://velog.velcdn.com/images/yunlinit/post/c17b45c9-344d-4f29-afdb-2e30e89a24e3/image.jpg" />
 			<div class="InfoBox">
@@ -371,7 +451,6 @@
 </div>
 
 <style>
-
 .CafeRecom {
 	width: 1440px;
 	height: 1129px;
@@ -446,21 +525,19 @@
 }
 
 /* hover시 이미지 확대 효과 */
-
 .hover-img-zoom-in img {
-  transition: all 0.2s linear;
+	transition: all 0.2s linear;
 }
+
 .hover-img-zoom-in:hover img {
-  transform: scale(1.1);
+	transform: scale(1.1);
 }
 
 .hover-img-zoom-in {
-  width: 400px;
-  margin: 0px auto;
-  overflow: hidden;
+	width: 400px;
+	margin: 0px auto;
+	overflow: hidden;
 }
-
-
 </style>
 
 
