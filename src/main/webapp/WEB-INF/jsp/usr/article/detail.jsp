@@ -248,22 +248,26 @@ function doModifyReply(replyId) {
 		<div class="list-btn">목록</div>
 	</div>
 	<div class="detail-section">
-		<div class="title">제목</div>
-		<div class="writer">작성자</div>
-		<div class="regDate">작성날짜</div>
+		<div class="title">${article.title }</div>
+		<div class="writer">${article.extra__writer }</div>
+		<div class="regDate">${article.regDate }</div>
 		<div class="view-count">
-			<div class="viewcount-name">조회수</div>
-			<div class="viewcount-num">12</div>
+			<div class="viewcount-name article-detail__hit-count">조회수</div>
+			<div class="viewcount-num">${article.hitCount }</div>
 		</div>
 		<div class="top-line"></div>
-		<div class="body">내용</div>
+		<div class="body">${article.body }</div>
 		<div class="like-dislike-btns">
-			<img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/0d23288b2a9c4c01c4883be9a171dbabebb1aa1bfb89116982ad6671edae836c?" class="img" />
+			<img loading="lazy"
+				src="https://cdn.builder.io/api/v1/image/assets/TEMP/0d23288b2a9c4c01c4883be9a171dbabebb1aa1bfb89116982ad6671edae836c?"
+				class="img" />
 			<div class="like">좋아요</div>
-			<div class="like-count-num">2</div>
-			<img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/8241ca91ab185bfc7bd356aeacd5953fd0becc3f4d7454f6810f388b3a34f539?" class="img-2" />
+			<div class="like-count-num" id="likeCount">${article.goodReactionPoint }</div>
+			<img loading="lazy"
+				src="https://cdn.builder.io/api/v1/image/assets/TEMP/8241ca91ab185bfc7bd356aeacd5953fd0becc3f4d7454f6810f388b3a34f539?"
+				class="img-2" />
 			<div class="dislike">싫어요</div>
-			<div class="dislike-count-num">1</div>
+			<div class="dislike-count-num" id="DislikeCount">${article.badReactionPoint }</div>
 		</div>
 		<div class="bottom-line"></div>
 	</div>
@@ -294,26 +298,29 @@ function doModifyReply(replyId) {
 
 <style>
 .detail-page {
-	margin: 100px auto 0; /* 수정된 부분: 상단 마진을 100px로 지정하여 요소를 브라우저 위에서 100px 아래로 내립니다. */
+	margin: 100px auto 0;
+	/* 수정된 부분: 상단 마진을 100px로 지정하여 요소를 브라우저 위에서 100px 아래로 내립니다. */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	font-weight: 400;
 	white-space: nowrap;
 	padding: 0 20px;
-	max-width: 1200px;
+	max-width: 1100px;
 }
 
-@media (max-width: 991px) {
+@media ( max-width : 991px) {
 	.detail-page {
 		white-space: initial;
 	}
 }
+
 .page-title {
 	color: #333;
 	font: 20px Inter, sans-serif;
 	font-weight: 600;
 }
+
 .page-btns {
 	align-self: stretch;
 	display: flex;
@@ -326,23 +333,27 @@ function doModifyReply(replyId) {
 	font-weight: 600;
 	text-align: center;
 }
-@media (max-width: 991px) {
+
+@media ( max-width : 991px) {
 	.page-btns {
 		max-width: 100%;
 		flex-wrap: wrap;
 		white-space: initial;
 	}
 }
+
 .modify-delete-btns {
 	display: flex;
 	margin-top: 11px;
 	gap: 15px;
 }
-@media (max-width: 991px) {
+
+@media ( max-width : 991px) {
 	.modify-delete-btns {
 		white-space: initial;
 	}
 }
+
 .modify-btn {
 	font-family: Pretendard, sans-serif;
 	border-radius: 5px;
@@ -352,12 +363,14 @@ function doModifyReply(replyId) {
 	justify-content: center;
 	padding: 7px 23px;
 }
-@media (max-width: 991px) {
+
+@media ( max-width : 991px) {
 	.modify-btn {
 		white-space: initial;
 		padding: 0 20px;
 	}
 }
+
 .delete-btn {
 	font-family: Pretendard, sans-serif;
 	border-radius: 5px;
@@ -367,12 +380,14 @@ function doModifyReply(replyId) {
 	justify-content: center;
 	padding: 7px 23px;
 }
-@media (max-width: 991px) {
+
+@media ( max-width : 991px) {
 	.delete-btn {
 		white-space: initial;
 		padding: 0 20px;
 	}
 }
+
 .list-btn {
 	font-family: Pretendard, sans-serif;
 	border-radius: 5px;
@@ -383,12 +398,14 @@ function doModifyReply(replyId) {
 	justify-content: center;
 	padding: 7px 23px;
 }
-@media (max-width: 991px) {
+
+@media ( max-width : 991px) {
 	.list-btn {
 		white-space: initial;
 		padding: 0 20px;
 	}
 }
+
 .detail-section {
 	align-self: stretch;
 	display: flex;
@@ -398,43 +415,51 @@ function doModifyReply(replyId) {
 	font-size: 12px;
 	color: #333;
 }
-@media (max-width: 991px) {
+
+@media ( max-width : 991px) {
 	.detail-section {
 		max-width: 100%;
 		white-space: initial;
 	}
 }
+
 .title {
 	width: 100%;
 	font: 500 20px Pretendard, sans-serif;
 }
-@media (max-width: 991px) {
+
+@media ( max-width : 991px) {
 	.title {
 		max-width: 100%;
 	}
 }
+
 .writer {
 	font-family: Pretendard, sans-serif;
 	font-weight: 600;
 	margin-top: 15px;
 	width: 100%;
 }
-@media (max-width: 991px) {
+
+@media ( max-width : 991px) {
 	.writer {
 		max-width: 100%;
 	}
 }
+
 .regDate {
 	color: #a9a9a9;
 	font-family: Pretendard, sans-serif;
 	margin-top: 10px;
 	width: 100%;
 }
-@media (max-width: 991px) {
+
+@media ( max-width : 991px) {
 	.regDate {
 		max-width: 100%;
 	}
 }
+
 .view-count {
 	align-self: start;
 	display: flex;
@@ -442,39 +467,47 @@ function doModifyReply(replyId) {
 	gap: 7px;
 	color: #a9a9a9;
 }
-@media (max-width: 991px) {
+
+@media ( max-width : 991px) {
 	.view-count {
 		white-space: initial;
 	}
 }
+
 .viewcount-name {
 	font-family: Pretendard, sans-serif;
 }
+
 .viewcount-num {
 	font-family: Pretendard, sans-serif;
 }
+
 .top-line {
 	background-color: #a9a9a9;
-	width: 1069px;
+	width: 1170px;
 	max-width: 100%;
 	height: 1px;
 	margin: 14px 12px 0 0;
 }
-@media (max-width: 991px) {
+
+@media ( max-width : 991px) {
 	.top-line {
 		margin-right: 10px;
 	}
 }
+
 .body {
 	font-family: Pretendard, sans-serif;
 	margin-top: 16px;
 	width: 100%;
 }
-@media (max-width: 991px) {
+
+@media ( max-width : 991px) {
 	.body {
 		max-width: 100%;
 	}
 }
+
 .like-dislike-btns {
 	align-self: start;
 	display: flex;
@@ -482,12 +515,14 @@ function doModifyReply(replyId) {
 	gap: 4px;
 	margin: 294px 0 -2px;
 }
-@media (max-width: 991px) {
+
+@media ( max-width : 991px) {
 	.like-dislike-btns {
 		margin-top: 40px;
 		white-space: initial;
 	}
 }
+
 .img {
 	aspect-ratio: 1;
 	object-fit: auto;
@@ -495,42 +530,51 @@ function doModifyReply(replyId) {
 	width: 12px;
 	fill: rgba(255, 255, 255, 0);
 }
+
 .like {
 	font-family: Pretendard, sans-serif;
 }
+
 .like-count-num {
 	font-family: Pretendard, sans-serif;
 }
+
 .img-2 {
 	aspect-ratio: 1;
 	object-fit: auto;
 	object-position: center;
 	width: 12px;
 }
+
 .dislike {
 	font-family: Pretendard, sans-serif;
 }
+
 .dislike-count-num {
 	font-family: Pretendard, sans-serif;
 	margin: auto 0;
 }
+
 .bottom-line {
 	background-color: #a9a9a9;
 	margin-top: 33px;
-	width: 1069px;
+	width: 1170px;
 	max-width: 100%;
 	height: 1px;
 	margin: 14px 12px 0 0;
 }
-@media (max-width: 991px) {
+
+@media ( max-width : 991px) {
 	.top-lin {
 		max-width: 100%;
 	}
 }
+
 .reply-section {
 	align-self: flex-start; /* 부모 요소 왼쪽에 붙이기 위해 추가 */
 	margin-top: 20px; /* 필요한 경우 위쪽 여백 조정 */
 }
+
 .reply-count {
 	display: flex;
 	margin-top: 24px;
@@ -538,112 +582,132 @@ function doModifyReply(replyId) {
 	color: #333;
 	font-weight: 500;
 }
-@media (max-width: 991px) {
+
+@media ( max-width : 991px) {
 	.reply-count {
 		white-space: initial;
 	}
 }
+
 .reply-title {
 	font: 15px Pretendard, sans-serif;
 }
+
 .reply-count-num {
 	margin-top: 2px;
 	font: 12px Pretendard, sans-serif;
 }
+
 .reply {
 	display: flex;
 	margin-top: 32px;
 	justify-content: space-between;
 	gap: 20px;
 }
-@media (max-width: 991px) {
+
+@media ( max-width : 991px) {
 	.reply {
 		white-space: initial;
 	}
 }
+
 .reply-box {
 	display: flex;
 	flex-direction: column;
 	font-size: 12px;
 	color: #333;
 }
-@media (max-width: 991px) {
+
+@media ( max-width : 991px) {
 	.reply-box {
 		white-space: initial;
 	}
 }
+
 .reply-writer {
 	font-family: Pretendard, sans-serif;
 	font-weight: 600;
 }
+
 .reply-body {
 	font-family: Pretendard, sans-serif;
 	margin-top: 8px;
 }
+
 .reply-regDate {
 	color: #a9a9a9;
 	margin-top: 13px;
 	font: 10px Pretendard, sans-serif;
 }
+
 .re-reply-btn {
 	color: #a9a9a9;
 	align-self: end;
 	margin-top: 42px;
 	font: 10px Pretendard, sans-serif;
 }
-@media (max-width: 991px) {
+
+@media ( max-width : 991px) {
 	.re-reply-btn {
 		margin-top: 40px;
 	}
 }
+
 .re-reply {
 	display: flex;
 	justify-content: space-between;
 	gap: 20px;
 	margin: 17px 0 0 15px;
 }
-@media (max-width: 991px) {
+
+@media ( max-width : 991px) {
 	.re-reply {
 		margin-left: 10px;
 		white-space: initial;
 	}
 }
+
 .re-reply-box {
 	display: flex;
 	flex-direction: column;
 	font-size: 12px;
 	color: #333;
 }
-@media (max-width: 991px) {
+
+@media ( max-width : 991px) {
 	.re-reply-box {
 		white-space: initial;
 	}
 }
+
 .re-reply-writer {
 	font-family: Pretendard, sans-serif;
 	font-weight: 600;
 }
+
 .re-reply-body {
 	font-family: Pretendard, sans-serif;
 	margin-top: 8px;
 }
+
 .re-reply-regDate {
 	color: #a9a9a9;
 	margin-top: 13px;
 	font: 10px Pretendard, sans-serif;
 }
+
 .re-re-reply-bnt {
 	color: #a9a9a9;
 	align-self: end;
 	margin-top: 42px;
 	font: 10px Pretendard, sans-serif;
 }
-@media (max-width: 991px) {
+
+@media ( max-width : 991px) {
 	.re-re-reply-bnt {
 		margin-top: 40px;
 	}
 }
-
 </style>
 
 <section class="mt-8 text-xl px-4 ">
@@ -726,8 +790,8 @@ function doModifyReply(replyId) {
 					<tr>
 						<th>내용</th>
 						<td>
-							<textarea class="input input-bordered input-primary w-full max-w-xs" autocomplete="off"
-								placeholder="내용을 입력해주세요" name="body"> </textarea>
+							<textarea class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" placeholder="내용을 입력해주세요"
+								name="body"> </textarea>
 						</td>
 					</tr>
 					<tr>
