@@ -45,6 +45,12 @@ public class UsrArticleController {
 	}
 
 	// 액션 메서드
+	
+	@RequestMapping("/usr/article/writeEmail")
+	public String sendEmail(HttpServletRequest req) {
+
+		return "usr/article/writeEmail";
+	}
 
 	@RequestMapping("/usr/article/list")
 	public String showList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int boardId,

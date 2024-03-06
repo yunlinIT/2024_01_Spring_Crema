@@ -66,9 +66,10 @@ header {
 				<li><a class="hover:underline" href="../article/list?boardId=1&page=1">커뮤니티</a>
 
 					<ul>
-						<li><a class="hover:underline" href="../article/list?boardId=1&page=1">크레마 소식</a></li>
+						<li><a class="hover:underline" href="../article/list?boardId=1&page=1">크레마소식</a></li>
 						<li><a class="hover:underline" href="../article/list?boardId=2&page=1">자유게시판</a></li>
 						<li><a class="hover:underline" href="../article/list?boardId=3&page=1">질문게시판</a></li>
+						<li><a class="hover:underline" href="../article/writeEmail">제휴문의</a></li>
 
 					</ul></li>
 			</ul>
