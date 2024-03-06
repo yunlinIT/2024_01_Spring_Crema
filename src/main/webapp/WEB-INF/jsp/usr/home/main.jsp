@@ -70,6 +70,19 @@
 	transition: opacity 3s ease; /* 투명도 변화에 애니메이션 적용 */
 }
 
+.CrMa {
+	font-size: 220px;
+/* 	font-family: Bavarian; */
+	font-weight: 400;
+	position: absolute;
+	top: 300px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+
+
+
 .Vector {
 	font-size: 25px;
 	font-family: Gill Sans MT;
@@ -82,19 +95,9 @@
 	transform: translateX(-50%) rotate(90deg);
 }
 
-.CrMa {
-	font-size: 220px;
-	font-family: Bavarian;
-	font-weight: 400;
-	position: absolute;
-	top: 240px;
-	left: 50%;
-	transform: translateX(-50%);
-}
-
 .ForTheBestCoffeeMoments {
 	font-size: 16px;
-	font-family: Gill Sans MT;
+	font-family: Cantarell;
 	font-weight: 400;
 	letter-spacing: 3.20px;
 	position: absolute;
@@ -105,8 +108,8 @@
 
 .MyCafeFinder {
 	font-size: 32px;
-	font-family: GeosansLight;
-	font-weight: 500;
+ font-family: "Julius Sans One", sans-serif;
+/* 	font-weight: 500; */
 	letter-spacing: 6.40px;
 	position: absolute;
 	top: 214px;
@@ -121,7 +124,7 @@
 	<div class="background-image">
 		<div class="Main1">
 			<div class="Vector">〉〉</div>
-			<div class="CrMa">Crèma</div>
+			<div class="CrMa"><img src="https://velog.velcdn.com/images/yunlinit/post/29de0688-d442-4346-8d16-16101822b4b3/image.png" alt="Crèma" /></div>
 			<div class="ForTheBestCoffeeMoments">FOR THE BEST COFFEE MOMENTS</div>
 			<div class="MyCafeFinder">MY CAFE FINDER</div>
 		</div>
@@ -153,25 +156,7 @@
     // 초기에 한 번 호출하여 초기 화면에서도 적용되게 함
     appearOnScroll();
 
-   
-//////////////////////아래 로직 작동 안됨////////////////////
 
-//     // 스크롤 내릴 때 요소들이 다시 투명해지는 효과
-//     window.addEventListener('scroll', function() {
-//       // 스크롤된 양 계산
-//       var scroll = window.scrollY;
-
-//       // 스크롤된 양에 따라 투명도 조절
-//       var opacity = 1 - scroll / 500; // 500은 투명도가 0이 되는 스크롤 양입니다.
-
-//       // 각 요소에 투명도 적용
-//       var elements = document.querySelectorAll('.Vector, .CrMa, .ForTheBestCoffeeMoments, .MyCafeFinder');
-//       elements.forEach(function(element) {
-//         element.style.opacity = opacity;
-//       });
-//     });
-    
-////////////////////여기까지////////////////////////////////    
     
   </script>
 
@@ -200,17 +185,6 @@
 </div>
 
 <style>
-.weather-widget {
-    margin-left: 20px;
-    margin-bottom: 50px;
-    position: relative;
-}
-
-.weather-widget #ww_dd38e1ffbef2c {
-    width: 230px;
-}
-
-/* You can add more CSS rules for styling the weather widget as needed */
 
 </style>
 
@@ -272,12 +246,14 @@
 }
 
 .cremaRecommends span {
-	font-size: 80px;
-	font-family: Graditen;
+	font-size: 70px;
+  font-family: "Vidaloka", serif;
 	font-weight: 400;
-	letter-spacing: 8px;
+	letter-spacing: 1px;
 	word-wrap: break-word;
-	color: black;
+	color: #66666;
+	
+	
 }
 
 .Recommends {

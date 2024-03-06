@@ -163,6 +163,45 @@
 	font-display: swap;
 }
 
+
+/* CANTARELL 폰트 */
+
+.cantarell-regular {
+  font-family: "Cantarell", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.cantarell-regular-italic {
+  font-family: "Cantarell", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.cantarell-bold {
+  font-family: "Cantarell", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.cantarell-bold-italic {
+  font-family: "Cantarell", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Julius Sans One 폰트 */
+
+.julius-sans one-regular {
+  font-family: "Julius Sans One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
+
+
 /* 롯데마트드림 폰트*/
 @font-face {
 	font-family: 'LotteMartDream';
