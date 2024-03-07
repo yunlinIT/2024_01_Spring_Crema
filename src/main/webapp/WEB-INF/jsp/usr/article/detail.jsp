@@ -238,15 +238,32 @@ function doModifyReply(replyId) {
 }
 </script>
 
+<!-- 상세보기페이지 -->
+
 <section class="detail-page">
+
+	<!-- 글 상세보기 부분 -->
+
 	<div class="page-title">자유게시판</div>
+
+	<!-- 	상단버튼들 -->
+
+
 	<div class="page-btns">
 		<div class="modify-delete-btns">
-			<div class="modify-btn">수정</div>
-			<div class="delete-btn">삭제</div>
+			<c:if test="${article.userCanModify }">
+				<a class="modify-btn" href="../article/modify?id=${article.id }">수정</a>
+			</c:if>
+			<c:if test="${article.userCanDelete }">
+				<a class="delete-btn" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
+					href="../article/doDelete?id=${article.id }">삭제</a>
+			</c:if>
 		</div>
-		<div class="list-btn">목록</div>
+		<button class="list-btn" type="button" onclick="history.back();">목록</button>
 	</div>
+
+	<!-- 	본문 부분 -->
+
 	<div class="detail-section">
 		<div class="title">${article.title }</div>
 		<div class="writer">${article.extra__writer }</div>
@@ -258,24 +275,51 @@ function doModifyReply(replyId) {
 		<div class="top-line"></div>
 		<div class="body">${article.body }</div>
 		<div class="like-dislike-btns">
-			<img loading="lazy"
-				src="https://cdn.builder.io/api/v1/image/assets/TEMP/0d23288b2a9c4c01c4883be9a171dbabebb1aa1bfb89116982ad6671edae836c?"
-				class="img" />
-			<div class="like">좋아요</div>
+			<!-- 좋아요 버튼 -->
+			<span class="img-2 material-symbols-outlined heart"> favorite </span>
+			<button class="like" id="likeButton" onclick="doGoodReaction(${param.id})">좋아요</button>
 			<div class="like-count-num" id="likeCount">${article.goodReactionPoint }</div>
-			<img loading="lazy"
-				src="https://cdn.builder.io/api/v1/image/assets/TEMP/8241ca91ab185bfc7bd356aeacd5953fd0becc3f4d7454f6810f388b3a34f539?"
-				class="img-2" />
-			<div class="dislike">싫어요</div>
+
+			<!-- 싫어요 버튼 -->
+
+			<span class="img material-symbols-outlined thumb_down"> thumb_down </span>
+			<button class="dislike" id="DislikeButton" onclick="doBadReaction(${param.id})">싫어요</button>
 			<div class="dislike-count-num" id="DislikeCount">${article.badReactionPoint }</div>
 		</div>
 		<div class="bottom-line"></div>
 	</div>
 
+
+
+	<!-- 댓글 작성 부분 -->
+
 	<div class="reply-section">
+		<div class="write-review" style="font-weight: 600; width: 1050px">댓글 작성</div>
+		</br>
+
+		<c:if test="${rq.isLogined() }">
+			<form action="../reply/doWrite" method="POST" onsubmit="ReplyWrite__submit(this); return false;">
+				<input type="hidden" name="relTypeCode" value="article" /> <input type="hidden" name="relId" value="${article.id }" />
+
+
+				<textarea class="input input input-bordered input-md w-full " autocomplete="off" placeholder="댓글을 남겨주세요" name="body"> </textarea>
+				<div></div>
+				<input class="btn btn-sm mt-4" type="submit" value="등록" />
+			</form>
+		</c:if>
+		<c:if test="${!rq.isLogined() }">
+			<a href="../member/login" style="text-decoration: underline; font-weight: 600;">로그인</a> 후 이용해주세요.
+				</c:if>
+		</br>
+
+
+
+
+		<!-- 댓글 목록 부분 -->
+
 		<div class="reply-count">
-			<div class="reply-title">댓글</div>
-			<div class=" reply-count-num">4개</div>
+			<div class="reply-title" style="font-weight: 600; font-size: 17px;">댓글</div>
+			<div class=" reply-count-num" style="font-weight: 700; font-size: 13px">4개</div>
 		</div>
 		<div class="reply">
 			<div class="reply-box">
@@ -356,12 +400,14 @@ function doModifyReply(replyId) {
 
 .modify-btn {
 	font-family: Pretendard, sans-serif;
+	font-size: 12px;
 	border-radius: 5px;
 	border: 1px solid #fff;
 	background-color: #333;
 	aspect-ratio: 2.74;
 	justify-content: center;
 	padding: 7px 23px;
+	border-radius: 5px
 }
 
 @media ( max-width : 991px) {
@@ -373,6 +419,7 @@ function doModifyReply(replyId) {
 
 .delete-btn {
 	font-family: Pretendard, sans-serif;
+	font-size: 12px;
 	border-radius: 5px;
 	border: 1px solid #fff;
 	background-color: #333;
@@ -390,6 +437,7 @@ function doModifyReply(replyId) {
 
 .list-btn {
 	font-family: Pretendard, sans-serif;
+	font-size: 12px;
 	border-radius: 5px;
 	border: 1px solid #fff;
 	background-color: #333;
@@ -426,6 +474,7 @@ function doModifyReply(replyId) {
 .title {
 	width: 100%;
 	font: 500 20px Pretendard, sans-serif;
+	font-size: 21px;
 }
 
 @media ( max-width : 991px) {
@@ -437,8 +486,10 @@ function doModifyReply(replyId) {
 .writer {
 	font-family: Pretendard, sans-serif;
 	font-weight: 600;
+	font-size: 14px;
 	margin-top: 15px;
 	width: 100%;
+	margin-top: 15px;
 }
 
 @media ( max-width : 991px) {
@@ -500,6 +551,8 @@ function doModifyReply(replyId) {
 	font-family: Pretendard, sans-serif;
 	margin-top: 16px;
 	width: 100%;
+	font-size: 14px;
+	font-weight: 500;
 }
 
 @media ( max-width : 991px) {
@@ -523,35 +576,45 @@ function doModifyReply(replyId) {
 	}
 }
 
-.img {
+.thumb_down {
 	aspect-ratio: 1;
 	object-fit: auto;
 	object-position: center;
 	width: 12px;
 	fill: rgba(255, 255, 255, 0);
+	margin-top: 1px;
+	margin-left: 10px;
+	font-size: 16px;
 }
 
 .like {
 	font-family: Pretendard, sans-serif;
+	font-weight: 600;
 }
 
 .like-count-num {
 	font-family: Pretendard, sans-serif;
+	font-weight: 600;
 }
 
-.img-2 {
+.heart {
 	aspect-ratio: 1;
 	object-fit: auto;
 	object-position: center;
 	width: 12px;
+	color: red;
+	margin-top: 1px;
+	font-size: 16px;
 }
 
 .dislike {
 	font-family: Pretendard, sans-serif;
+	font-weight: 600;
 }
 
 .dislike-count-num {
 	font-family: Pretendard, sans-serif;
+	font-weight: 600;
 	margin: auto 0;
 }
 
@@ -710,103 +773,13 @@ function doModifyReply(replyId) {
 }
 </style>
 
-<section class="mt-8 text-xl px-4 ">
-	<div class="">
-		<table class="table-box-1 " border="1">
-			<tbody>
-				<tr>
-					<th>번호</th>
-					<td>${article.id }${goodRP}${badRP}</td>
-				</tr>
-				<tr>
-					<th>작성날짜</th>
-					<td>${article.regDate }</td>
-				</tr>
-				<tr>
-					<th>수정날짜</th>
-					<td>${article.updateDate }</td>
-				</tr>
-				<tr>
-					<th>작성자</th>
-					<td>${article.extra__writer }</td>
-				</tr>
-				<tr>
-					<th>좋아요</th>
-					<td id="likeCount">${article.goodReactionPoint }</td>
-				</tr>
-				<tr>
-					<th>싫어요</th>
-					<td id="DislikeCount">${article.badReactionPoint }</td>
-				</tr>
-				<tr>
-					<th>추천 ${usersReaction }</th>
-					<td>
-						<!-- href="/usr/reactionPoint/doGoodReaction?relTypeCode=article&relId=${param.id }&replaceUri=${rq.currentUri}" -->
-						<button id="likeButton" class="btn btn-outline btn-success" onclick="doGoodReaction(${param.id})">좋아요</button>
-
-						<button id="DislikeButton" class="btn btn-outline btn-error" onclick="doBadReaction(${param.id})">싫어요</button>
-					</td>
-				</tr>
-				<tr>
-					<th>조회수</th>
-					<td>
-						<span class="article-detail__hit-count">${article.hitCount }</span>
-					</td>
-				</tr>
-				<tr>
-					<th>제목</th>
-					<td>${article.title }</td>
-				</tr>
-				<tr>
-					<th>내용</th>
-					<td>${article.body }</td>
-				</tr>
-
-			</tbody>
-		</table>
-		<div class="btns mt-5">
-			<button class="btn btn-outline" type="button" onclick="history.back();">뒤로가기</button>
-			<c:if test="${article.userCanModify }">
-				<a class="btn btn-outline" href="../article/modify?id=${article.id }">수정</a>
-			</c:if>
-			<c:if test="${article.userCanDelete }">
-				<a class="btn btn-outline" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
-					href="../article/doDelete?id=${article.id }">삭제</a>
-			</c:if>
-		</div>
-	</div>
-</section>
 
 
 
+<!-- 옛날 댓글리스트 -->
 
 <section class="mt-5 px-3">
-	<c:if test="${rq.isLogined() }">
-		<form action="../reply/doWrite" method="POST" onsubmit="ReplyWrite__submit(this); return false;">
-			<input type="hidden" name="relTypeCode" value="article" />
-			<input type="hidden" name="relId" value="${article.id }" />
-			<table class="write-box table-box-1" border="1">
-				<tbody>
-					<tr>
-						<th>내용</th>
-						<td>
-							<textarea class="input input-bordered input-primary w-full max-w-xs" autocomplete="off" placeholder="내용을 입력해주세요"
-								name="body"> </textarea>
-						</td>
-					</tr>
-					<tr>
-						<th></th>
-						<td>
-							<input class="btn btn-outline btn-info" type="submit" value="댓글 작성" />
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</form>
-	</c:if>
-	<c:if test="${!rq.isLogined() }">
-		<a class="btn btn-outline btn-ghost" href="../member/login">LOGIN</a> 하고 댓글 써
-	</c:if>
+
 	<div class="mx-auto">
 		<h2>댓글 리스트(${repliesCount })</h2>
 		<table class="table-box-1 table" border="1">
@@ -834,30 +807,24 @@ function doModifyReply(replyId) {
 					<tr class="hover">
 						<td>${reply.id }</td>
 						<td>${reply.regDate.substring(0,10) }</td>
-						<td>
-							<span id="reply-${reply.id }">${reply.body }</span>
+						<td><span id="reply-${reply.id }">${reply.body }</span>
 							<form method="POST" id="modify-form-${reply.id }" style="display: none;" action="/usr/reply/doModify">
 								<input type="text" value="${reply.body }" name="reply-text-${reply.id }" />
-							</form>
-						</td>
+							</form></td>
 						<td>${reply.extra__writer }</td>
 						<td>${reply.goodReactionPoint }</td>
 						<td>${reply.badReactionPoint }</td>
-						<td>
-							<c:if test="${reply.userCanModify }">
+						<td><c:if test="${reply.userCanModify }">
 								<%-- 							href="../reply/modify?id=${reply.id }" --%>
 								<button onclick="toggleModifybtn('${reply.id}');" id="modify-btn-${reply.id }" style="white-space: nowrap;"
 									class="btn btn-outline">수정</button>
 								<button onclick="doModifyReply('${reply.id}');" style="white-space: nowrap; display: none;"
 									id="save-btn-${reply.id }" class="btn btn-outline">저장</button>
-							</c:if>
-						</td>
-						<td>
-							<c:if test="${reply.userCanDelete }">
+							</c:if></td>
+						<td><c:if test="${reply.userCanDelete }">
 								<a style="white-space: nowrap;" class="btn btn-outline"
 									onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;" href="../reply/doDelete?id=${reply.id }">삭제</a>
-							</c:if>
-						</td>
+							</c:if></td>
 					</tr>
 				</c:forEach>
 			</tbody>
