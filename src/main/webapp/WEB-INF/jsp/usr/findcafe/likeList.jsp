@@ -403,14 +403,7 @@ font-size: 25px;
 	border: 1px rgba(0, 0, 0, 0.06) solid;
 }
 
-.search-filter .filter-theme {
-	position: absolute;
-	width: 293px;
-	height: 276px;
-	top: 332px;
-	left: 16px;
-	overflow: hidden;
-}
+
 
 .search-filter .filter-btn-7 {
 	top: 225px;
