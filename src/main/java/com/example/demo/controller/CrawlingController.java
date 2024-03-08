@@ -24,7 +24,7 @@ public class CrawlingController {
 			// 드라이버 옵션
 			ChromeOptions options = new ChromeOptions();
 			// 웹 페이지 안열리게
-			options.addArguments("headless");
+			// options.addArguments("headless");
 			// 웹 드라이버
 			WebDriver driver = new ChromeDriver(options);
 			driver.get("https://www.daum.net/");

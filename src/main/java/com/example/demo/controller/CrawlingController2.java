@@ -45,6 +45,8 @@ public class CrawlingController2 {
 				dto.setImg(img);
 
 				list.add(dto);
+				
+				System.out.println(data);
 			}
 			return ResponseEntity.ok(1);
 		} catch (Exception e) {
@@ -53,6 +55,6 @@ public class CrawlingController2 {
 		} finally {
 			driver.close();
 		}
-
+		
 	}
 }
