@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class CrawlingDTO {
+public class CrawlingDTO_안됨 {
     private String data;
     private String img;
 
-    private List<CrawlingDTO> list;
+    private List<CrawlingDTO_안됨> list;
 }

@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.crawling;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,16 +12,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.example.demo.dto.CrawlingDTO;
+import com.example.demo.dto.CrawlingDTO_안됨;
 
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
-public class CrawlingController2 {
+public class CrawlingController2_안됨 {
 
 	@GetMapping("/crawling")
 	public ResponseEntity<Integer> crawling(HttpServletRequest request) {
-		List<CrawlingDTO> list = new ArrayList<>();
+		List<CrawlingDTO_안됨> list = new ArrayList<>();
 
 		String WEB_DRIVER_ID = "webdriver.chrome.driver";
 		String WEB_DRIVER_PATH = "c:/work/sts-4.21.0.RELEASE-workspace/2024_01_Spring_Crema/src/main/resources/chromedriver.exe";
@@ -40,7 +40,7 @@ public class CrawlingController2 {
 				WebElement imgs = element.findElement(By.tagName("img"));
 				String img = imgs.getAttribute("src");
 
-				CrawlingDTO dto = new CrawlingDTO();
+				CrawlingDTO_안됨 dto = new CrawlingDTO_안됨();
 				dto.setData(data);
 				dto.setImg(img);
 

@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.crawling;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class CrawlingController {
+public class CrawlingController_안됨 {
 
 	@RequestMapping("/weather.json")
 	public List<HashMap<String, Object>> weather() {
