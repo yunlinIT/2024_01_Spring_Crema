@@ -110,7 +110,7 @@ public class WebCrawler4 {
 		}
 
 		// 사이트에서 전체 매장을 찾은 뒤 코드를 읽는다
-		List<WebElement> elements = driver.findElements(By.cssSelector("#_pcmap_list_scroll_container ul li:nth-child(14) div.CHC5F a.tzwk0 div div span.TYaxT"));
+		List<WebElement> elements = driver.findElements(By.className("TYaxT"));
 //        List<WebElement> elements = driver.findElements(By.xpath("//*[@id=\"baseMap\"]/div/div[1]/div[4]/*/salt-marker/div/div/div[2]/div[1]/strong"));
 
 		for (WebElement e : elements) {
@@ -185,6 +185,24 @@ public class WebCrawler4 {
 				callTemp.add(1, null);
 				coffeeInfoms.put(key, callTemp);
 			}
+			
+			
+			// 시설정보 있는 경우
+			try {
+				WebElement facilEle = driver.findElement(By.className("xPvPE"));
+//                System.out.println(callEle.getText());
+				ArrayList<String> facilTemp = coffeeInfoms.get(key);
+				facilTemp.add(1, facilEle.getText());
+				coffeeInfoms.put(key, facilTemp);
+			} catch (Exception ex) {
+				System.out.println(ex.toString());
+				// 시설정보 정보 없는 경우 null처리
+				ArrayList<String> facilTemp = coffeeInfoms.get(key);
+				facilTemp.add(1, null);
+				coffeeInfoms.put(key, facilTemp);
+			}
+			
+			
 
 			// 메뉴정보를 저장할 문자열
 			// 메뉴와 가격은 ':', 메뉴 간은 ';'로 구분
