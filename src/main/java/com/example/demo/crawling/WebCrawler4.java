@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -109,7 +110,7 @@ public class WebCrawler4 {
 		}
 
 		// 사이트에서 전체 매장을 찾은 뒤 코드를 읽는다
-		List<WebElement> elements = driver.findElements(By.className("_3Yilt"));
+		List<WebElement> elements = driver.findElements(By.cssSelector("#_pcmap_list_scroll_container ul li:nth-child(14) div.CHC5F a.tzwk0 div div span.TYaxT"));
 //        List<WebElement> elements = driver.findElements(By.xpath("//*[@id=\"baseMap\"]/div/div[1]/div[4]/*/salt-marker/div/div/div[2]/div[1]/strong"));
 
 		for (WebElement e : elements) {
@@ -127,15 +128,52 @@ public class WebCrawler4 {
 			driver.switchTo().frame(driver.findElement(By.id("entryIframe"))); // 옆 iframe으로 이동
 
 			// 주소
-			WebElement addEle = driver.findElement(By.className("_2yqUQ"));
+			WebElement addEle = driver.findElement(By.className("LDgIH"));
 //            System.out.println(addEle.getText());
 			ArrayList<String> addTemp = coffeeInfoms.get(key);
 			addTemp.add(0, addEle.getText());
 			coffeeInfoms.put(key, addTemp);
+			
+			
+			
+			
+			// 영업시간 있는 경우
+			try {
+			    // 버튼을 클릭하여 영업 시간 요소를 표시
+			    WebElement button = driver.findElement(By.className("gKP9i"));
+			    button.click();
+
+			    // 영업 시간 요소 가져오기
+			    WebElement dayElement = driver.findElement(By.xpath("//span[@class='i8cJw']"));
+			    String day = dayElement.getText();
+
+			    WebElement timeElement = driver.findElement(By.xpath("//div[@class='w9QyJ']//div[@class='H3ua4']"));
+			    String openingHours = timeElement.getText();
+
+			    // 영업 시간 및 영업요일을 해시맵에 추가
+			    ArrayList<String> timeTemp = coffeeInfoms.get(key);
+			    timeTemp.add(0, day + " " + openingHours); // 영업요일과 영업 시간 함께 저장
+			    coffeeInfoms.put(key, timeTemp);
+			} catch (Exception ex) {
+			    // 예외 처리: 영업 시간 요소를 찾을 수 없는 경우
+			    System.out.println(ex.toString());
+			    
+			    // 영업 시간 정보가 없는 경우 null 처리
+			    ArrayList<String> timeTemp = coffeeInfoms.get(key);
+			    timeTemp.add(0, null);
+			    coffeeInfoms.put(key, timeTemp);
+			}
+
+
+
+
+
+			
+			
 
 			// 전화번호 있는 경우
 			try {
-				WebElement callEle = driver.findElement(By.className("_3ZA0S"));
+				WebElement callEle = driver.findElement(By.className("xlx7Q"));
 //                System.out.println(callEle.getText());
 				ArrayList<String> callTemp = coffeeInfoms.get(key);
 				callTemp.add(1, callEle.getText());
@@ -153,25 +191,25 @@ public class WebCrawler4 {
 			String menuInfo = "";
 
 			try {
-				List<WebElement> menuEles = driver.findElements(By.className("_1q3GD"));
-				List<WebElement> priceEles = driver.findElements(By.className("_2nGYH"));
+				List<WebElement> menuEles = driver.findElements(By.className("VQvNX"));
+				List<WebElement> priceEles = driver.findElements(By.className("gl2cc"));
 				for (int i = 0; i < menuEles.size(); i++) {
 					String temp = menuEles.get(i).getText() + ":" + priceEles.get(i).getText() + ";";
 					menuInfo = menuInfo + temp;
 				}
 			} catch (Exception ex) {
-				System.out.println("인기 메뉴정보 없음");
+				System.out.println("메뉴정보 없음");
 			}
-			try {
-				List<WebElement> menuEles = driver.findElements(By.className("_3K2xG"));
-				List<WebElement> priceEles = driver.findElements(By.className("_3GJcI"));
-				for (int i = 0; i < menuEles.size(); i++) {
-					String temp = menuEles.get(i).getText() + ":" + priceEles.get(i).getText() + ";";
-					menuInfo = menuInfo + temp;
-				}
-			} catch (Exception ex) {
-				System.out.println("일반 메뉴정보 없음");
-			}
+//			try {
+//				List<WebElement> menuEles = driver.findElements(By.className("_3K2xG"));
+//				List<WebElement> priceEles = driver.findElements(By.className("_3GJcI"));
+//				for (int i = 0; i < menuEles.size(); i++) {
+//					String temp = menuEles.get(i).getText() + ":" + priceEles.get(i).getText() + ";";
+//					menuInfo = menuInfo + temp;
+//				}
+//			} catch (Exception ex) {
+//				System.out.println("일반 메뉴정보 없음");
+//			}
 			ArrayList<String> menuTemp = coffeeInfoms.get(key);
 			menuTemp.add(2, menuInfo);
 			coffeeInfoms.put(key, menuTemp);
@@ -182,7 +220,7 @@ public class WebCrawler4 {
 		}
 
 		// 창 닫기
-		driver.close();
+//		driver.close();
 	}
 
 	// db에 해시맵의 정보 업데이트
@@ -249,10 +287,10 @@ public class WebCrawler4 {
 //           System.out.println(test.coffeeInfoms.size());
 //       }
 
-		test.crawlMap("종암로");
+		test.crawlMap("서구");
 //       System.out.println(test.coffeeInfoms.size());
 
-		System.out.println(test.coffeeInfoms.get("스타벅스 종암DT점"));
+		System.out.println(test.coffeeInfoms.get("빈이어"));
 
 		// DB업데이트
 //        test.uploadDB();
