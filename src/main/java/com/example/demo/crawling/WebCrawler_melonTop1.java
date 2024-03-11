@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class WebCrawler {
+public class WebCrawler_melonTop1 {
 
     public void crawl() {
         // 크롬 드라이버 경로 설정 (크롬 드라이버 설치 필요)
@@ -54,7 +54,7 @@ public class WebCrawler {
     }
 
     public static void main(String[] args) {
-        WebCrawler webCrawler = new WebCrawler();
+        WebCrawler_melonTop1 webCrawler = new WebCrawler_melonTop1();
         webCrawler.crawl();
     }
 }
