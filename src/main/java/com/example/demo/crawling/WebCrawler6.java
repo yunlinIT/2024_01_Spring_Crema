@@ -91,19 +91,65 @@ public class WebCrawler6 {
                 phoneNumber = null;
             }
             
-            // 영업시간 있는 경우
-            String businessHours;
-            try {
-                WebElement button = driver.findElement(By.className("RMgN0"));
-                button.click();
-                WebElement dayElement = driver.findElement(By.xpath("//span[@class='i8cJw']"));
-                String day = dayElement.getText();
-                WebElement timeElement = driver.findElement(By.xpath("//div[@class='w9QyJ']//div[@class='H3ua4']"));
-                String openingHours = timeElement.getText();
-                businessHours = day + " " + openingHours;
-            } catch (Exception ex) {
-                businessHours = null;
-            }
+            // 영업시간 1개 있는 경우
+          String businessHours;
+          try {
+              WebElement button = driver.findElement(By.className("RMgN0"));
+              button.click();
+              WebElement dayElement = driver.findElement(By.xpath("//span[@class='i8cJw']"));
+              String day = dayElement.getText();
+              WebElement timeElement = driver.findElement(By.xpath("//div[@class='w9QyJ']//div[@class='H3ua4']"));
+              String openingHours = timeElement.getText();
+              businessHours = day + " " + openingHours;
+          } catch (Exception ex) {
+              businessHours = null;
+          }
+          
+//          // 영업시간이 여러개인 경우
+//          String businessHours;
+//          try {
+//              WebElement button = driver.findElement(By.className("RMgN0"));
+//              button.click();
+//              List<WebElement> dayElements = driver.findElements(By.xpath("//span[@class='i8cJw']"));
+//              List<WebElement> timeElements = driver.findElements(By.xpath("//div[@class='H3ua4']"));
+//              StringBuilder businessHoursBuilder = new StringBuilder();
+//              for (int j = 0; j < dayElements.size(); j++) {
+//                  String day = dayElements.get(j).getText();
+//                  String time = timeElements.get(j).getText();
+//                  String temp = day + " " + time + "; ";
+//                  businessHoursBuilder.append(temp);
+//              }
+//              businessHours = businessHoursBuilder.toString();
+//          } catch (Exception ex) {
+//              businessHours = null;
+//          }
+          
+          // 영업시간을 조건별로 보여주기
+//          String businessHours;
+//          try {
+//              WebElement button = driver.findElement(By.className("RMgN0"));
+//              button.click();
+//              List<WebElement> dayElements = driver.findElements(By.xpath("//span[@class='i8cJw']"));
+//              List<WebElement> timeElements = driver.findElements(By.xpath("//div[@class='H3ua4']"));
+//              
+//              // 영업시간이 한 개인 경우
+//              if (dayElements.size() == 1 && timeElements.size() <= 2) {
+//                  String day = dayElements.get(0).getText();
+//                  String time = timeElements.get(0).getText();
+//                  businessHours = day + " " + time;
+//              } else { // 영업시간이 여러 개인 경우
+//                  StringBuilder businessHoursBuilder = new StringBuilder();
+//                  for (int j = 0; j < dayElements.size(); j++) {
+//                      String day = dayElements.get(j).getText();
+//                      String time = timeElements.get(j).getText();
+//                      String temp = day + " " + time + "; ";
+//                      businessHoursBuilder.append(temp);
+//                  }
+//                  businessHours = businessHoursBuilder.toString();
+//              }
+//          } catch (Exception ex) {
+//              businessHours = null;
+//          }
             
             // 메뉴정보를 저장할 문자열
             // 메뉴와 가격은 ':', 메뉴 간은 ';'로 구분
