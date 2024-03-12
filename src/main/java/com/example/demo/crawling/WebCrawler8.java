@@ -1,5 +1,6 @@
 package com.example.demo.crawling;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -10,8 +11,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class WebCrawler7 {
+public class WebCrawler8 {
 
     private WebDriver driver;
     private String url;
@@ -37,7 +40,7 @@ public class WebCrawler7 {
         
         // 네이버 지도 검색창에 원하는 검색어 입력 후 엔터
         WebElement inputSearch = driver.findElement(By.className("input_search"));
-        String inputKey = " 동구 카페";
+        String inputKey = " 서구 카페";
         inputSearch.sendKeys(location + inputKey);
         inputSearch.sendKeys(Keys.ENTER);
 
@@ -68,7 +71,9 @@ public class WebCrawler7 {
         List<WebElement> elements = driver.findElements(By.className("TYaxT"));
 
         for (WebElement e : elements) {
-            e.click();
+            Actions actions = new Actions(driver); // 새로운 Actions 객체 생성
+            actions.moveToElement(e).click().perform(); // 해당 요소로 스크롤하고 클릭
+
             String key = e.getText();
 
             try {
@@ -90,7 +95,6 @@ public class WebCrawler7 {
             } catch (Exception ex) {
                 phoneNumber = null;
             }
-            
 
             // 영업시간이 여러개인 경우
             String businessHours;
@@ -111,8 +115,6 @@ public class WebCrawler7 {
                 businessHours = null;
             }
 
-
-            
             // 메뉴정보를 저장할 문자열
             // 메뉴와 가격은 ':', 메뉴 간은 ';'로 구분
             String menuInfo;
@@ -129,6 +131,7 @@ public class WebCrawler7 {
                 menuInfo = null;
             }
             
+            // 시설정보
             String facilities;
             try {
                 WebElement facilitiesElement = driver.findElement(By.className("xPvPE"));
@@ -136,6 +139,23 @@ public class WebCrawler7 {
             } catch (Exception ex) {
                 facilities = null;
             }
+            
+            List<String> imageUrls = new ArrayList<>();
+            try {
+                List<WebElement> imageElements = driver.findElements(By.xpath("//div[@class='K0PDV _div']"));
+                for (WebElement element : imageElements) {
+                    String styleAttribute = element.getAttribute("style");
+                    String url = styleAttribute.split("url\\(")[1].split("\\)")[0].replaceAll("'", "").replaceAll("\"", "");
+                    imageUrls.add(url);
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+            for (String imageUrl : imageUrls) {
+                System.out.println("Image URL: " + imageUrl);
+            }
+            
 
             // Output data
             System.out.println("Name: " + key);
@@ -144,16 +164,16 @@ public class WebCrawler7 {
             System.out.println("Business Hours: " + businessHours);
             System.out.println("Menu Info: " + menuInfo);
             System.out.println("Facilities: " + facilities);
-
-            driver.switchTo().parentFrame();
-            driver.switchTo().frame("searchIframe");
+            for (String imageUrl : imageUrls) {
+                System.out.println("Image URL: " + imageUrl);
+            }
         }
 
-//        driver.quit();
+        driver.quit();
     }
 
     public static void main(String[] args) {
-        WebCrawler7 crawler = new WebCrawler7();
+        WebCrawler8 crawler = new WebCrawler8();
         crawler.crawlMap("대전");
     }
 }
