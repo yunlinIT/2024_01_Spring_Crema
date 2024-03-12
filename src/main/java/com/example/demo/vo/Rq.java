@@ -104,4 +104,10 @@ public class Rq {
 		return currentUri;
 	}
 
+	public void jsprintReplace(String resultCode, String msg, String replaceUri) {
+		resp.setContentType("text/html; charset=UTF-8");
+		print(Ut.jsReplace(resultCode, msg, replaceUri));
+
+	}
+
 }

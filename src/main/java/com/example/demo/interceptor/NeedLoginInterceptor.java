@@ -21,7 +21,7 @@ public class NeedLoginInterceptor implements HandlerInterceptor {
 		if (!rq.isLogined()) {
 			System.out.println("==============로그인 하고 써============");
 
-			rq.printHistoryBack("로그인 후 이용해주세요");
+			rq.jsprintReplace("F-A", "로그인 후 이용해주세요", "../member/login");
 
 			return false;
 

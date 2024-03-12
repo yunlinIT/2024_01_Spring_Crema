@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="게시글 상세보기"></c:set>
 <%@ include file="../common/head.jspf"%>
+<%@ include file="../common/toastUiEditorLib.jspf"%>
 
 <!-- <iframe src="http://localhost:8081/usr/article/doIncreaseHitCountRd?id=372" frameborder="0"></iframe> -->
 
@@ -273,7 +274,8 @@ function doModifyReply(replyId) {
 			<div class="viewcount-num">${article.hitCount }</div>
 		</div>
 		<div class="top-line"></div>
-		<div class="body">${article.body }</div>
+		<div class="body"><div class="toast-ui-viewer">
+							<script type="text/x-template">${article.body}</script></div>
 		<div class="like-dislike-btns">
 			<!-- 좋아요 버튼 -->
 			<span class="img-2 material-symbols-outlined heart"> favorite </span>
@@ -364,6 +366,11 @@ function doModifyReply(replyId) {
 
 	</div>
 </section>
+
+<script>
+
+</script>
+
 
 <style>
 .detail-page {
