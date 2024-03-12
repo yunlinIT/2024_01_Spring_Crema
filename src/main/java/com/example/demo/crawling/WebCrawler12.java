@@ -1,6 +1,9 @@
-package com.example.demo.crawling;
+package com.example.demo.crawling; //WebCrawler8에서 오류 해결중
 
+import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -9,11 +12,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class WebCrawler7 {
-	
-	// 이미지 크롤링 로직 없음. 카페 데이터 잘 가져옴.
+public class WebCrawler12 {
 
     private WebDriver driver;
     private String url;
@@ -25,42 +27,34 @@ public class WebCrawler7 {
         System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
 
         ChromeOptions options = new ChromeOptions();
-        options.setCapability("ignoreProtectedModeSettings", true);
+        options.setCapability("pageLoadStrategy", "eager"); // 페이지 로드 전략 설정
+        options.addArguments("--headless"); // 헤드리스 모드 설정 (화면 표시 X)
         driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         url = "https://map.naver.com/v5/";
         driver.get(url);
 
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        
         // 네이버 지도 검색창에 원하는 검색어 입력 후 엔터
         WebElement inputSearch = driver.findElement(By.className("input_search"));
-        String inputKey = " 동구 카페";
+        String inputKey = " 서구 카페";
         inputSearch.sendKeys(location + inputKey);
         inputSearch.sendKeys(Keys.ENTER);
 
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        
         // 데이터가 iframe 안에 있는 경우(HTML 안 HTML) 이동
-        driver.switchTo().frame("searchIframe");
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("searchIframe"));
+        
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("searchIframe"));
 
         // 원하는 요소를 찾기(스크롤할 창)
         WebElement scrollBox = driver.findElement(By.id("_pcmap_list_scroll_container"));
 
-        Actions builder = new Actions(driver);
-
         for (int i = 0; i < 6; i++) {
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollBox);
             try {
-                Thread.sleep(3000);
+                Thread.sleep(3000); // 스크롤 후 잠시 대기
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -70,11 +64,13 @@ public class WebCrawler7 {
         List<WebElement> elements = driver.findElements(By.className("TYaxT"));
 
         for (WebElement e : elements) {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", e);
             e.click();
+
             String key = e.getText();
 
             try {
-                Thread.sleep(2000);
+                Thread.sleep(2000); // 요소 클릭 후 잠시 대기
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
@@ -92,7 +88,6 @@ public class WebCrawler7 {
             } catch (Exception ex) {
                 phoneNumber = null;
             }
-            
 
             // 영업시간이 여러개인 경우
             String businessHours;
@@ -113,8 +108,6 @@ public class WebCrawler7 {
                 businessHours = null;
             }
 
-
-            
             // 메뉴정보를 저장할 문자열
             // 메뉴와 가격은 ':', 메뉴 간은 ';'로 구분
             String menuInfo;
@@ -131,12 +124,27 @@ public class WebCrawler7 {
                 menuInfo = null;
             }
             
+            // 시설정보
             String facilities;
             try {
                 WebElement facilitiesElement = driver.findElement(By.className("xPvPE"));
                 facilities = facilitiesElement.getText();
             } catch (Exception ex) {
                 facilities = null;
+            }
+            
+            // 이미지 url 5개 가져오기
+            List<String> imageUrls = new ArrayList<>();
+            try {
+                wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='K0PDV _div']")));
+                List<WebElement> imageElements = driver.findElements(By.xpath("//div[@class='K0PDV _div']"));
+                for (WebElement element : imageElements) {
+                    String styleAttribute = element.getAttribute("style");
+                    String url = styleAttribute.split("url\\(")[1].split("\\)")[0].replaceAll("'", "").replaceAll("\"", "");
+                    imageUrls.add(url);
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
 
             // Output data
@@ -146,16 +154,16 @@ public class WebCrawler7 {
             System.out.println("Business Hours: " + businessHours);
             System.out.println("Menu Info: " + menuInfo);
             System.out.println("Facilities: " + facilities);
-
-            driver.switchTo().parentFrame();
-            driver.switchTo().frame("searchIframe");
+            for (String imageUrl : imageUrls) {
+                System.out.println("Image URL: " + imageUrl);
+            }
         }
 
-//        driver.quit();
+        driver.quit();
     }
 
     public static void main(String[] args) {
-        WebCrawler7 crawler = new WebCrawler7();
+        WebCrawler12 crawler = new WebCrawler12();
         crawler.crawlMap("대전");
     }
 }

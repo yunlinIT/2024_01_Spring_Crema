@@ -15,6 +15,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebCrawler8 {
+	
+	//이미지url 크롤링 후, 그 다음 카페 크롤링 실패
 
     private WebDriver driver;
     private String url;
@@ -140,6 +142,7 @@ public class WebCrawler8 {
                 facilities = null;
             }
             
+            // 이미지 url 5개 가져오기
             List<String> imageUrls = new ArrayList<>();
             try {
                 List<WebElement> imageElements = driver.findElements(By.xpath("//div[@class='K0PDV _div']"));
@@ -169,7 +172,7 @@ public class WebCrawler8 {
             }
         }
 
-        driver.quit();
+//        driver.quit();
     }
 
     public static void main(String[] args) {
