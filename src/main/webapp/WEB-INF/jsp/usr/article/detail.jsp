@@ -311,7 +311,7 @@ function doModifyReply(replyId) {
 			</form>
 		</c:if>
 		<c:if test="${!rq.isLogined() }">
-			<a href="../member/login" style="text-decoration: underline; font-weight: 600;">로그인</a> 후 이용해주세요.
+			<a href="${rq.loginUri }" style="text-decoration: underline; font-weight: 600;">로그인</a> 후 이용해주세요.
 				</c:if>
 		</br>
 
