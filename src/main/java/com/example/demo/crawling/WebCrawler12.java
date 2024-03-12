@@ -1,5 +1,4 @@
 package com.example.demo.crawling; //WebCrawler8에서 오류 해결중
-
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,11 +41,7 @@ public class WebCrawler12 {
         inputSearch.sendKeys(Keys.ENTER);
 
         // 데이터가 iframe 안에 있는 경우(HTML 안 HTML) 이동
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("searchIframe"));
-        
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("searchIframe"));
+        driver.switchTo().frame("searchIframe");
 
         // 원하는 요소를 찾기(스크롤할 창)
         WebElement scrollBox = driver.findElement(By.id("_pcmap_list_scroll_container"));
@@ -136,6 +131,7 @@ public class WebCrawler12 {
             // 이미지 url 5개 가져오기
             List<String> imageUrls = new ArrayList<>();
             try {
+                WebDriverWait wait = new WebDriverWait(driver, 10);
                 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='K0PDV _div']")));
                 List<WebElement> imageElements = driver.findElements(By.xpath("//div[@class='K0PDV _div']"));
                 for (WebElement element : imageElements) {
