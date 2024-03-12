@@ -134,16 +134,6 @@ public class WebCrawler13 {
             } catch (Exception ex) {
                 facilities = null;
             }
-
-         // 이미지 url 5개 가져오기
-//            List<WebElement> imageElements = driver.findElements(By.cssSelector("div.K0PDV._div"));
-//
-//            for (int i = 0; i < 5 && i < imageElements.size(); i++) {
-//                WebElement imageElement = imageElements.get(i);
-//                String styleAttribute = imageElement.getAttribute("style");
-//                String imageUrl = styleAttribute.split("url\\(")[1].split("\\)")[0].replaceAll("'", "").replaceAll("\"", "");
-//                System.out.println("Image URL: " + imageUrl);
-//            }
             
             
             List<WebElement> imageElements = driver.findElements(By.cssSelector("div.K0PDV._div"));
