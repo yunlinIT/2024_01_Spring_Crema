@@ -1,7 +1,5 @@
 package com.example.demo.crawling;
-
-import java.time.Duration;
-import java.util.ArrayList;
+//성공한 로직
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -12,13 +10,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class WebCrawler8 {
-	
-	//이미지url 크롤링 후, 그 다음 카페 크롤링 실패
-
+public class WebCrawler13 {
+    
     private WebDriver driver;
     private String url;
 
@@ -43,7 +37,7 @@ public class WebCrawler8 {
         
         // 네이버 지도 검색창에 원하는 검색어 입력 후 엔터
         WebElement inputSearch = driver.findElement(By.className("input_search"));
-        String inputKey = " 서구 카페";
+        String inputKey = " 동구 카페";
         inputSearch.sendKeys(location + inputKey);
         inputSearch.sendKeys(Keys.ENTER);
 
@@ -74,9 +68,7 @@ public class WebCrawler8 {
         List<WebElement> elements = driver.findElements(By.className("TYaxT"));
 
         for (WebElement e : elements) {
-            Actions actions = new Actions(driver); // 새로운 Actions 객체 생성
-            actions.moveToElement(e).click().perform(); // 해당 요소로 스크롤하고 클릭
-
+            e.click();
             String key = e.getText();
 
             try {
@@ -142,26 +134,28 @@ public class WebCrawler8 {
             } catch (Exception ex) {
                 facilities = null;
             }
-            
-            // 이미지 url 5개 가져오기
-            List<String> imageUrls = new ArrayList<>();
-            try {
-            	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-                wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='K0PDV _div']")));
-                List<WebElement> imageElements = driver.findElements(By.xpath("//div[@class='K0PDV _div']"));
-                for (WebElement element : imageElements) {
-                    String styleAttribute = element.getAttribute("style");
-                    String url = styleAttribute.split("url\\(")[1].split("\\)")[0].replaceAll("'", "").replaceAll("\"", "");
-                    imageUrls.add(url);
-                }
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
 
-            for (String imageUrl : imageUrls) {
+         // 이미지 url 5개 가져오기
+//            List<WebElement> imageElements = driver.findElements(By.cssSelector("div.K0PDV._div"));
+//
+//            for (int i = 0; i < 5 && i < imageElements.size(); i++) {
+//                WebElement imageElement = imageElements.get(i);
+//                String styleAttribute = imageElement.getAttribute("style");
+//                String imageUrl = styleAttribute.split("url\\(")[1].split("\\)")[0].replaceAll("'", "").replaceAll("\"", "");
+//                System.out.println("Image URL: " + imageUrl);
+//            }
+            
+            
+            List<WebElement> imageElements = driver.findElements(By.cssSelector("div.K0PDV._div"));
+
+            for (WebElement imageElement : imageElements) {
+                String styleAttribute = imageElement.getAttribute("style");
+                // 스타일 속성에서 URL 추출
+                String imageUrl = extractImageUrlFromStyleAttribute(styleAttribute);
                 System.out.println("Image URL: " + imageUrl);
             }
-            
+
+
 
             // Output data
             System.out.println("Name: " + key);
@@ -170,16 +164,26 @@ public class WebCrawler8 {
             System.out.println("Business Hours: " + businessHours);
             System.out.println("Menu Info: " + menuInfo);
             System.out.println("Facilities: " + facilities);
-            for (String imageUrl : imageUrls) {
-                System.out.println("Image URL: " + imageUrl);
-            }
+
+            driver.switchTo().parentFrame();
+            driver.switchTo().frame("searchIframe");
         }
 
 //        driver.quit();
     }
+    // 스타일 속성에서 이미지 URL 추출하는 메서드
+    private String extractImageUrlFromStyleAttribute(String styleAttribute) {
+    	String imageUrl = "";
+        if (styleAttribute != null && styleAttribute.contains("background-image: url(")) {
+            int startIndex = styleAttribute.indexOf("url(") + 4;
+            int endIndex = styleAttribute.indexOf(")", startIndex);
+            imageUrl = styleAttribute.substring(startIndex, endIndex).replaceAll("'", "").replaceAll("\"", "");
+        }
+        return imageUrl;
+	}
 
-    public static void main(String[] args) {
-        WebCrawler8 crawler = new WebCrawler8();
+	public static void main(String[] args) {
+        WebCrawler13 crawler = new WebCrawler13();
         crawler.crawlMap("대전");
     }
 }
