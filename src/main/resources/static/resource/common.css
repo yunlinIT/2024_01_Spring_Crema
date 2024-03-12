@@ -249,6 +249,21 @@ html>body {
 	font-weight: 500;
 }
 
+
+
+/* 테마 */
+.btn-theme-toggle>span:first-child {
+	display: none;
+}
+
+html[data-theme="dark"] .btn-theme-toggle>span:first-child {
+	display: inline;
+}
+
+html[data-theme="dark"] .btn-theme-toggle>span:last-child {
+	display: none;
+}
+
 /* 라이브러리 */
 
 /* 커스텀 */
@@ -297,6 +312,18 @@ header>div>ul>li>ul {
 	z-index: 999;
 	transition:left .7s, visibility .1s; /* 서서히 왼쪽에서 오른쪽 방향으로 나타나게 */
 
+}
+
+
+
+/* /* 어두운 테마에서의 네비게이션 2차 메뉴 배경색 */ */
+/* html[data-theme='dark'] header>div>ul>li>ul { */
+/*     background-color: #333333; 또는 어두운 테마에 적합한 다른 색상 */
+/* } */
+
+/* 네비게이션 2차 메뉴 호버 스타일 */
+header>div>ul>li:hover>ul {
+    display: block;
 }
 
 

@@ -18,14 +18,15 @@ header {
 
 
 <!DOCTYPE html>
-<html>
+<html data-theme="light">
 <head>
 <meta charset="UTF-8">
 <title>${pageTitle }</title>
 <link rel="stylesheet" href="/resource/common.css" />
 <script src="/resource/common.js" defer="defer"></script>
 <!-- 테일윈드 불러오기 -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" /> -->
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
 
 <!-- daisy ui 불러오기 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/4.6.1/full.css" />
@@ -63,6 +64,37 @@ header {
 <link rel="stylesheet" href="./css/slick/slick.css" />
 <link rel="stylesheet" href="./css/slick/slick-theme.css" />
 
+
+<script>
+  // 테마를 전환하는 함수
+  function Theme__toggle() {
+    const theme = localStorage.getItem('theme') ?? 'light';
+
+    if (theme == 'light') {
+      localStorage.setItem('theme', 'dark');
+      Theme__applyTo('dark'); // 테마를 어두운 테마로 설정
+    } else {
+      localStorage.setItem('theme', 'light');
+      Theme__applyTo('light'); // 테마를 밝은 테마로 설정
+    }
+  }
+
+  // 특정 테마를 적용하는 함수
+  function Theme__applyTo(themeName) {
+    $('html').attr('data-theme', themeName);
+  }
+
+  // 초기 테마 설정 함수
+  function Theme__init() {
+    const theme = localStorage.getItem('theme') ?? 'light';
+    Theme__applyTo(theme);
+  }
+
+  // 문서 로드 완료 시 초기 테마 설정
+  $(document).ready(function () {
+    Theme__init();
+  });
+</script>
 
 
 </head>
@@ -103,7 +135,10 @@ header {
 						</a>
 
 				</label></li>
-
+<li class=""><a class="h-full px-3 flex items-center btn-theme-toggle" href="javascript:Theme__toggle();">
+						<span>🌞</span>
+						<span>🌚</span>
+					</a></li>
 				<c:if test="${!rq.isLogined() }">
 					<li><a class="hover:underline" href="${rq.loginUri }">로그인</a></li>
 					<li><a class="hover:underline" href="../member/join">회원가입</a></li>
