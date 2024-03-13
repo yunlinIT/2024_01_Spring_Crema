@@ -2,24 +2,46 @@ package com.example.demo.repository;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
+import com.example.demo.vo.Article;
 import com.example.demo.vo.Cafe;
 
 @Mapper
 public interface CafeRepository {
 
-    @Insert("""
-            INSERT INTO cafe (
-                regDate, updateDate, name, address, businessHours,
-                phoneNum, facilities, goodReactionPoint, reviewCount, hashtag,
-                area, theme, status
-            )
-            VALUES (
-                #{regDate}, #{updateDate}, #{name}, #{address}, #{businessHours},
-                #{phoneNum}, #{facilities}, #{goodReactionPoint}, #{reviewCount}, #{hashtag},
-                #{area}, #{theme}, #{status}
-            )
-            """)
+	@Insert("""
+	        INSERT INTO 
+	        cafe SET
+	        regDate = NOW(), 
+	        updateDate = NOW(), 
+	        name = #{name}, 
+	        address = #{address}, 
+	        businessHours = #{businessHours},
+	        phoneNum = #{phoneNum}, 
+	        facilities = #{facilities}, 
+	        cafeImgUrl1 = #{cafeImgUrl1}, 
+	        cafeImgUrl2 = #{cafeImgUrl2}, 
+	        cafeImgUrl3 = #{cafeImgUrl3}, 
+	        cafeImgUrl4 = #{cafeImgUrl4}, 
+	        cafeImgUrl5 = #{cafeImgUrl5}, 
+	        goodReactionPoint = #{goodReactionPoint}, 
+	        reviewCount = #{reviewCount}, 
+	        hashtag = #{hashtag}
+	        """)
+
     void insertCafe(Cafe cafe);
+	
+	
+	
+	@Select("""
+			SELECT COUNT(name)
+			FROM cafe
+			WHERE name = #{name}
+			""")
+	public int countDuplicateCafeName(String name);	
+	
+	
 }
+
 

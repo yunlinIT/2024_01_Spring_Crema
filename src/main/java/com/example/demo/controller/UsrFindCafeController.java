@@ -42,30 +42,11 @@ public class UsrFindCafeController {
 	public void crawlAndSaveData() {
 		List<Cafe> cafes = WebCrawler13.crawlCafes();
 		
-		System.out.println(cafes);
+		//System.out.println(cafes);
 		
-	    cafeService.saveCafeDataFromWebCrawler();
+	    cafeService.saveCafeDataFromWebCrawler(cafes);
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 
 }

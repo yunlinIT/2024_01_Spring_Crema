@@ -1,21 +1,18 @@
 package com.example.demo.crawling;
 
 import java.util.ArrayList;
-//성공한 로직
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
 
 import com.example.demo.vo.Cafe;
 
-public class WebCrawler13 {
+public class WebCrawler133 {
 
 	private static WebDriver driver;
 	private static String url;
@@ -61,7 +58,7 @@ public class WebCrawler13 {
 
 		for (WebElement e : elements) {
 			e.click();
-			String key = e.getText();
+			String name = e.getText();
 
 			try {
 				Thread.sleep(2000);
@@ -130,87 +127,39 @@ public class WebCrawler13 {
 				facilities = null;
 			}
 
-//            List<String> imageUrls = new ArrayList<>();
-//            List<WebElement> imageElements = driver.findElements(By.cssSelector("div.K0PDV._div"));
-//
-//            for (WebElement imageElement : imageElements) {
-//                String styleAttribute = imageElement.getAttribute("style");
-//                // 스타일 속성에서 URL 추출
-//                String imageUrl = extractImageUrlFromStyleAttribute(styleAttribute);
-//                imageUrls.add(imageUrl); // 이미지 URL을 리스트에 추가
-//            }
-
-//            String imageUrl = "";
-//            List<WebElement> imageElements = driver.findElements(By.cssSelector("div.K0PDV._div"));
-//            for (WebElement imageElement : imageElements) {
-//                String styleAttribute = imageElement.getAttribute("style");
-//                // 스타일 속성에서 URL 추출
-//                imageUrl = extractImageUrlFromStyleAttribute(styleAttribute);
-//                System.out.println("Image URL: " + imageUrl);
-//            }
-			Cafe cafe = new Cafe();
-
-			String imageUrl = "";
+			List<String> imageUrls = new ArrayList<>();
 			List<WebElement> imageElements = driver.findElements(By.cssSelector("div.K0PDV._div"));
-//            List<String> imageUrls = new ArrayList<>();
-			for (int i = 0; i < imageElements.size(); i++) {
-				WebElement imageElement = imageElements.get(i);
 
+			for (WebElement imageElement : imageElements) {
 				String styleAttribute = imageElement.getAttribute("style");
-
-				// 스타일 속성에서 URL 추출
-				imageUrl = extractImageUrlFromStyleAttribute(styleAttribute);
-
-//                imageUrls.add(i, imageUrl);
-
-				switch (i) {
-				case 0:
-					cafe.setCafeImgUrl1(imageUrl);
-					break;
-				case 1:
-					cafe.setCafeImgUrl2(imageUrl);
-					break;
-				case 2:
-					cafe.setCafeImgUrl3(imageUrl);
-					break;
-				case 3:
-					cafe.setCafeImgUrl4(imageUrl);
-					break;
-				case 4:
-					cafe.setCafeImgUrl5(imageUrl);
-					break;
-
-				}
-	            System.out.println("Image URL: " + imageUrl);
+				String imageUrl = extractImageUrlFromStyleAttribute(styleAttribute);
+				imageUrls.add(imageUrl); // 이미지 URL을 리스트에 추가
 			}
 
-			cafe.setName(key);
+			// 카페 객체 생성 및 리스트에 추가
+			Cafe cafe = new Cafe();
+			cafe.setName(name);
 			cafe.setAddress(address);
 			cafe.setPhoneNum(phoneNumber);
 			cafe.setBusinessHours(businessHours);
 			cafe.setFacilities(facilities);
-//			cafe.setCafeImgUrl1(imageUrls.get(0)); // Cafe 객체에 이미지 URL 리스트 설정
-//			cafe.setCafeImgUrl2(imageUrls.get(1));
-//			cafe.setCafeImgUrl3(imageUrls.get(2));
-//			cafe.setCafeImgUrl4(imageUrls.get(3));
-//			cafe.setCafeImgUrl5(imageUrls.get(4));
+//			cafe.setCafeImgUrls(imageUrls); // Cafe 객체에 이미지 URL 리스트 설정
 			cafes.add(cafe);
 
 			// Output data
-			System.out.println("Name: " + key);
+			System.out.println("Name: " + name);
 			System.out.println("Address: " + address);
 			System.out.println("Phone Number: " + phoneNumber);
 			System.out.println("Business Hours: " + businessHours);
 			System.out.println("Menu Info: " + menuInfo);
 			System.out.println("Facilities: " + facilities);
-//            System.out.println("Image URL: " + imageUrls);
-//            System.out.println("Image URL: " + imageUrls);
+			System.out.println("Image URL: " + imageUrls);
 
 			driver.switchTo().parentFrame();
 			driver.switchTo().frame("searchIframe");
 		}
 
-//        driver.quit();
+		driver.quit();
 
 		return cafes;
 	}
@@ -226,8 +175,8 @@ public class WebCrawler13 {
 		return imageUrl;
 	}
 
-//	public static void main(String[] args) {
-//        WebCrawler13 crawler = new WebCrawler13();
-//        crawler.crawlCafes();
-//    }
+	public static void main(String[] args) {
+		WebCrawler13 crawler = new WebCrawler13();
+		
+	}
 }

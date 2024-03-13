@@ -16,18 +16,19 @@ public class CafeService {
     @Autowired
     private CafeRepository cafeRepository;
 
-
-
-    public void saveCafeDataFromWebCrawler() {
-        WebCrawler13 crawler = new WebCrawler13(); // WebCrawler13 클래스의 인스턴스 생성
-        List<Cafe> cafes = crawler.crawlCafes(); // 생성된 인스턴스를 통해 메서드 호출
-    
+    // 웹 크롤러를 통해 카페 데이터를 가져와서 저장하는 메서드
+    public void saveCafeDataFromWebCrawler(List<Cafe> cafes) {
 
         for (Cafe cafe : cafes) {
-            cafeRepository.insertCafe(cafe);
+        	// select name count(0) (insert)) 
+           
+            int count = cafeRepository.countDuplicateCafeName(cafe.getName());
+            
+            if (count == 0) {
+            	 cafeRepository.insertCafe(cafe); 
+            } 
         }
-
-
     }
-
 }
+
+

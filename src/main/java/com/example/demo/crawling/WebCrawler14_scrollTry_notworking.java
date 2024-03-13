@@ -152,6 +152,7 @@ public class WebCrawler14_scrollTry_notworking {
             
             
             // 이미지 url (여기 해결해야함)
+            
             List<WebElement> imageElements = driver.findElements(By.cssSelector("div.K0PDV._div"));
             for (WebElement imageElement : imageElements) {
                 String styleAttribute = imageElement.getAttribute("style");
