@@ -332,16 +332,16 @@ R.badReactionPoint = RP_SUM.badReactionPoint;
 
 CREATE TABLE cafe (
     `id` INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '카페 번호', 
-    `regDate` DATETIME NOT NULL COMMENT '등록 날짜', 
-    `updateDate` DATETIME NOT NULL COMMENT '수정 날짜', 
+    `regDate` DATETIME COMMENT '등록 날짜', 
+    `updateDate` DATETIME COMMENT '수정 날짜', 
     `name` CHAR(50) NOT NULL COMMENT '카페 상호명', 
-    `address` CHAR(100) NOT NULL COMMENT '카페 주소', 
-    `businessHours` CHAR(100) NOT NULL COMMENT '영업시간', 
-    `phoneNum` CHAR(20) NOT NULL COMMENT '전화번호', 
-    `facilities` INT(10) UNSIGNED  NOT NULL COMMENT '시설', 
+    `address` CHAR(100) COMMENT '카페 주소', 
+    `businessHours` TEXT COMMENT '영업시간', 
+    `phoneNum` CHAR(20) COMMENT '전화번호', 
+    `facilities` TEXT COMMENT '시설', 
     `goodReactionPoint` INT(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '찜수', 
     `reviewCount` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '리뷰 수', 
-    `hashtag` CHAR(100) NOT NULL COMMENT '해쉬태그', 
+    `hashtag` CHAR(200) COMMENT '해쉬태그', 
     `cafeImgUrl1` TEXT COMMENT '카페 사진1',
     `cafeImgUrl2` TEXT COMMENT '카페 사진2',
     `cafeImgUrl3` TEXT COMMENT '카페 사진3',
@@ -365,6 +365,8 @@ SELECT * FROM reactionPoint;
 SELECT * FROM `reply`;
 
 SELECT * FROM cafe;
+
+DESC cafe;
 
 
 
