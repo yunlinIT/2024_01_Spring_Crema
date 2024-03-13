@@ -13,13 +13,13 @@ import org.openqa.selenium.interactions.Actions;
 
 public class WebCrawler13 {
     
-    private WebDriver driver;
-    private String url;
+    private static WebDriver driver;
+    private static String url;
 
     public static String WEB_DRIVER_ID = "webdriver.chrome.driver";
     public static String WEB_DRIVER_PATH = "C:/work/chromedriver.exe";
 
-    public void crawlMap(String location) {
+    public static void crawlMap() {
         System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
 
         ChromeOptions options = new ChromeOptions();
@@ -37,8 +37,8 @@ public class WebCrawler13 {
         
         // 네이버 지도 검색창에 원하는 검색어 입력 후 엔터
         WebElement inputSearch = driver.findElement(By.className("input_search"));
-        String inputKey = " 서구 카페";
-        inputSearch.sendKeys(location + inputKey);
+        String inputKey = "대전 서구 카페";
+        inputSearch.sendKeys(inputKey);
         inputSearch.sendKeys(Keys.ENTER);
 
         try {
@@ -183,7 +183,7 @@ public class WebCrawler13 {
 //        driver.quit();
     }
     // 스타일 속성에서 이미지 URL 추출하는 메서드
-    private String extractImageUrlFromStyleAttribute(String styleAttribute) {
+    private static String extractImageUrlFromStyleAttribute(String styleAttribute) {
     	String imageUrl = "";
         if (styleAttribute != null && styleAttribute.contains("background-image: url(")) {
             int startIndex = styleAttribute.indexOf("url(") + 4;
@@ -193,8 +193,8 @@ public class WebCrawler13 {
         return imageUrl;
 	}
 
-	public static void main(String[] args) {
-        WebCrawler13 crawler = new WebCrawler13();
-        crawler.crawlMap("대전");
-    }
+//	public static void main(String[] args) {
+//        WebCrawler13 crawler = new WebCrawler13();
+//        crawler.crawlMap("대전");
+//    }
 }
