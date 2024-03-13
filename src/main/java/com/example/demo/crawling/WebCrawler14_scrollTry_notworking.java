@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 
-public class WebCrawler14 {
+public class WebCrawler14_scrollTry_notworking {
     
     private WebDriver driver;
     private String url;
@@ -150,6 +150,8 @@ public class WebCrawler14 {
                 facilities = null;
             }
             
+            
+            // 이미지 url (여기 해결해야함)
             List<WebElement> imageElements = driver.findElements(By.cssSelector("div.K0PDV._div"));
             for (WebElement imageElement : imageElements) {
                 String styleAttribute = imageElement.getAttribute("style");
@@ -185,7 +187,7 @@ public class WebCrawler14 {
     }
 
     public static void main(String[] args) {
-        WebCrawler14 crawler = new WebCrawler14();
+        WebCrawler14_scrollTry_notworking crawler = new WebCrawler14_scrollTry_notworking();
         crawler.crawlMap("대전");
     }
 }

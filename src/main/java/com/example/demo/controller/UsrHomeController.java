@@ -26,10 +26,10 @@ public class UsrHomeController {
 		WebCrawler2_melonTop100.crawl();
 		return "/usr/home/main";
 	}
-	
-	@RequestMapping("/usr/home/main/crawlcafe")
-	public String crawlcafe() {
-		WebCrawler13.crawlMap();
-		return "/usr/home/main";
-	}
+//	
+//	@RequestMapping("/usr/home/main/crawlcafe")
+//	public String crawlcafe() {
+//		WebCrawler13.crawlMap();
+//		return "/usr/home/main";
+//	}
 }

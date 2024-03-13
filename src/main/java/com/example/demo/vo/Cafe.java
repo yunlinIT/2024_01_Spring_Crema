@@ -16,9 +16,14 @@ public class Cafe {
 	private String businessHours;
 	private String phoneNum;
 	private String facilities;
+	private String cafeImgUrl1;
+	private String cafeImgUrl2;
+	private String cafeImgUrl3;
+	private String cafeImgUrl4;
+	private String cafeImgUrl5;
 	
 	private int goodReactionPoint;
 	private int reviewCount;
-	private String hastag;
+	private String hashtag;
 
 }

@@ -1,15 +1,17 @@
 package com.example.demo.crawling;
-//성공한 로직
+
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
+
+import com.example.demo.vo.Cafe;
+import com.example.demo.vo.CafeImg;
 
 public class WebCrawler13 {
     
@@ -19,7 +21,7 @@ public class WebCrawler13 {
     public static String WEB_DRIVER_ID = "webdriver.chrome.driver";
     public static String WEB_DRIVER_PATH = "C:/work/chromedriver.exe";
 
-    public static void crawlMap() {
+    public static List<Cafe> crawlCafes() {
         System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
 
         ChromeOptions options = new ChromeOptions();
@@ -50,44 +52,14 @@ public class WebCrawler13 {
         // 데이터가 iframe 안에 있는 경우(HTML 안 HTML) 이동
         driver.switchTo().frame("searchIframe");
 
-//        // 원하는 요소를 찾기(스크롤할 창)
-//        WebElement scrollBox = driver.findElement(By.id("_pcmap_list_scroll_container"));
-//
-//        Actions builder = new Actions(driver);
-//
-//        for (int i = 0; i < 6; i++) {
-//            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollBox);
-//            try {
-//                Thread.sleep(3000);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        }
-        
+        List<Cafe> cafes = new ArrayList<>();
 
-//        // 원하는 요소를 찾기(스크롤할 창)
-//        WebElement scrollBox = driver.findElement(By.id("_pcmap_list_scroll_container"));
-//
-//        Actions builder = new Actions(driver);
-//
-//     // 10개의 요소를 가져오기 위해 스크롤을 수행합니다.
-//     for (int i = 0; i < 15; i++) {
-//         // JavaScript를 사용하여 scrollBox 요소가 화면에 보이도록 스크롤합니다.
-//         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollBox);
-//         try {
-//             // 스크롤 후 충분한 시간을 기다립니다. 페이지가 로드되고 요소가 나타날 때까지 대기합니다.
-//             Thread.sleep(3000);
-//         } catch (InterruptedException e) {
-//             e.printStackTrace();
-//         }
-//     }
-        
         // 사이트에서 전체 매장을 찾은 뒤 코드를 읽는다
         List<WebElement> elements = driver.findElements(By.className("TYaxT"));
 
         for (WebElement e : elements) {
             e.click();
-            String key = e.getText();
+            String name = e.getText();
 
             try {
                 Thread.sleep(2000);
@@ -156,7 +128,6 @@ public class WebCrawler13 {
                 facilities = null;
             }
             
-            
             List<WebElement> imageElements = driver.findElements(By.cssSelector("div.K0PDV._div"));
 
             for (WebElement imageElement : imageElements) {
@@ -166,35 +137,44 @@ public class WebCrawler13 {
                 System.out.println("Image URL: " + imageUrl);
             }
 
-
-
+            // 카페 객체 생성 및 리스트에 추가
+            Cafe cafe = new Cafe();
+            cafe.setName(name);
+            cafe.setAddress(address);
+            cafe.setPhoneNum(phoneNumber);
+            cafe.setBusinessHours(businessHours);
+            cafe.setFacilities(facilities);
+            cafes.add(cafe);
+            
+            
+            
             // Output data
-            System.out.println("Name: " + key);
+            System.out.println("Name: " + name);
             System.out.println("Address: " + address);
             System.out.println("Phone Number: " + phoneNumber);
             System.out.println("Business Hours: " + businessHours);
             System.out.println("Menu Info: " + menuInfo);
             System.out.println("Facilities: " + facilities);
-
+            System.out.println("Image URL: " + imageUrl);
+            
             driver.switchTo().parentFrame();
             driver.switchTo().frame("searchIframe");
         }
 
-//        driver.quit();
+        driver.quit();
+        
+        return cafes;
     }
+
+   
     // 스타일 속성에서 이미지 URL 추출하는 메서드
     private static String extractImageUrlFromStyleAttribute(String styleAttribute) {
-    	String imageUrl = "";
+        String imageUrl = "";
         if (styleAttribute != null && styleAttribute.contains("background-image: url(")) {
             int startIndex = styleAttribute.indexOf("url(") + 4;
             int endIndex = styleAttribute.indexOf(")", startIndex);
             imageUrl = styleAttribute.substring(startIndex, endIndex).replaceAll("'", "").replaceAll("\"", "");
         }
         return imageUrl;
-	}
-
-//	public static void main(String[] args) {
-//        WebCrawler13 crawler = new WebCrawler13();
-//        crawler.crawlMap("대전");
-//    }
+    }
 }

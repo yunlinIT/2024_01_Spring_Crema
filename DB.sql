@@ -329,6 +329,39 @@ ON R.id = RP_SUM.relId
 SET R.goodReactionPoint = RP_SUM.goodReactionPoint,
 R.badReactionPoint = RP_SUM.badReactionPoint;
 
+
+
+
+
+CREATE TABLE cafe (
+    `id` INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '카페 번호', 
+    `regDate` DATETIME NOT NULL COMMENT '등록 날짜', 
+    `updateDate` DATETIME NOT NULL COMMENT '수정 날짜', 
+    `name` CHAR(50) NOT NULL COMMENT '카페 상호명', 
+    `address` CHAR(100) NOT NULL COMMENT '카페 주소', 
+    `businessHours` CHAR(100) NOT NULL COMMENT '영업시간', 
+    `phoneNum` CHAR(20) NOT NULL COMMENT '전화번호', 
+    `facilities` INT(10) UNSIGNED  NOT NULL COMMENT '시설', 
+    `goodReactionPoint` INT(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '찜수', 
+    `reviewCount` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '리뷰 수', 
+    `hashtag` CHAR(100) NOT NULL COMMENT '해쉬태그', 
+    
+    `boardId` INT(10) UNSIGNED COMMENT '게시판 번호', 
+    `area` INT(10) UNSIGNED  COMMENT '지역', 
+    `theme` INT(10) UNSIGNED  COMMENT '분위기', 
+    `status` TINYINT(1) UNSIGNED  COMMENT '상태. 운영 여부 (0=운영중, 1=폐업)'
+);
+
+CREATE TABLE cafeImg
+(
+    `id` INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '사진 번호', 
+    `regDate` DATETIME NOT NULL COMMENT '등록 날짜', 
+    `updateDate` DATETIME NOT NULL COMMENT '수정 날짜', 
+    `cafeId` INT(10) UNSIGNED NOT NULL COMMENT '카페 번호', 
+    `cafeImgUrl` TEXT NOT NULL COMMENT '카페 사진'
+);
+
+
 ###############################################
 
 SELECT * FROM article;
@@ -340,6 +373,10 @@ SELECT * FROM `board`;
 SELECT * FROM reactionPoint;
 
 SELECT * FROM `reply`;
+
+SELECT * FROM cafe;
+
+SELECT * FROM cafeImg;
 
 
 
