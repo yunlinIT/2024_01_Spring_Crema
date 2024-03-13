@@ -37,7 +37,7 @@ public class WebCrawler13 {
         
         // 네이버 지도 검색창에 원하는 검색어 입력 후 엔터
         WebElement inputSearch = driver.findElement(By.className("input_search"));
-        String inputKey = " 동구 카페";
+        String inputKey = " 서구 카페";
         inputSearch.sendKeys(location + inputKey);
         inputSearch.sendKeys(Keys.ENTER);
 
@@ -50,19 +50,37 @@ public class WebCrawler13 {
         // 데이터가 iframe 안에 있는 경우(HTML 안 HTML) 이동
         driver.switchTo().frame("searchIframe");
 
-        // 원하는 요소를 찾기(스크롤할 창)
-        WebElement scrollBox = driver.findElement(By.id("_pcmap_list_scroll_container"));
+//        // 원하는 요소를 찾기(스크롤할 창)
+//        WebElement scrollBox = driver.findElement(By.id("_pcmap_list_scroll_container"));
+//
+//        Actions builder = new Actions(driver);
+//
+//        for (int i = 0; i < 6; i++) {
+//            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollBox);
+//            try {
+//                Thread.sleep(3000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
+        
 
-        Actions builder = new Actions(driver);
-
-        for (int i = 0; i < 6; i++) {
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollBox);
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+//        // 원하는 요소를 찾기(스크롤할 창)
+//        WebElement scrollBox = driver.findElement(By.id("_pcmap_list_scroll_container"));
+//
+//        Actions builder = new Actions(driver);
+//
+//     // 10개의 요소를 가져오기 위해 스크롤을 수행합니다.
+//     for (int i = 0; i < 15; i++) {
+//         // JavaScript를 사용하여 scrollBox 요소가 화면에 보이도록 스크롤합니다.
+//         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", scrollBox);
+//         try {
+//             // 스크롤 후 충분한 시간을 기다립니다. 페이지가 로드되고 요소가 나타날 때까지 대기합니다.
+//             Thread.sleep(3000);
+//         } catch (InterruptedException e) {
+//             e.printStackTrace();
+//         }
+//     }
         
         // 사이트에서 전체 매장을 찾은 뒤 코드를 읽는다
         List<WebElement> elements = driver.findElements(By.className("TYaxT"));
@@ -76,8 +94,11 @@ public class WebCrawler13 {
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
-
+            
+            // 부모 iframe으로 전환
             driver.switchTo().parentFrame();
+            
+            // entryIframe으로 전환
             driver.switchTo().frame(driver.findElement(By.id("entryIframe")));
             
             // 주소 
