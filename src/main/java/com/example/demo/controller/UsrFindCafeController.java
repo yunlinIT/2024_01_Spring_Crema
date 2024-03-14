@@ -38,14 +38,16 @@ public class UsrFindCafeController {
 	}
 	
 	
-	@GetMapping("/crawl")
-	public void crawlAndSaveData() {
-		List<Cafe> cafes = WebCrawler13.crawlCafes();
-		
-		//System.out.println(cafes);
-		
-	    cafeService.saveCafeDataFromWebCrawler(cafes);
-	}
+//	@GetMapping("/crawl")
+//	public String crawlAndSaveData() {
+//		List<Cafe> cafes = WebCrawler13.crawlCafes();
+//		
+//		//System.out.println(cafes);
+//		
+//	    cafeService.saveCafeDataFromWebCrawler(cafes);
+//	    
+//	    return "/usr/home/main";
+//	}
 
 
 

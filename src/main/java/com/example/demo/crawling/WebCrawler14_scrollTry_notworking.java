@@ -187,8 +187,8 @@ public class WebCrawler14_scrollTry_notworking {
         return imageUrl;
     }
 
-    public static void main(String[] args) {
-        WebCrawler14_scrollTry_notworking crawler = new WebCrawler14_scrollTry_notworking();
-        crawler.crawlMap("대전");
-    }
+//    public static void main(String[] args) {
+//        WebCrawler14_scrollTry_notworking crawler = new WebCrawler14_scrollTry_notworking();
+//        crawler.crawlMap("대전");
+//    }
 }

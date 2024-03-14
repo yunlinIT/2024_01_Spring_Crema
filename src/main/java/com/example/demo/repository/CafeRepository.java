@@ -9,6 +9,16 @@ import com.example.demo.vo.Cafe;
 
 @Mapper
 public interface CafeRepository {
+	
+	
+	@Select("""
+			SELECT COUNT(name)
+			FROM cafe
+			WHERE name = #{name}
+			""")
+	public int countDuplicateCafeName(String name);	
+	
+	
 
 	@Insert("""
 	        INSERT INTO 
@@ -30,17 +40,11 @@ public interface CafeRepository {
 	        hashtag = #{hashtag}
 	        """)
 
-    void insertCafe(Cafe cafe);
+   public void insertCafe(Cafe cafe);
 	
 	
 	
-	@Select("""
-			SELECT COUNT(name)
-			FROM cafe
-			WHERE name = #{name}
-			""")
-	public int countDuplicateCafeName(String name);	
-	
+
 	
 }
 

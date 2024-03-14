@@ -20,8 +20,7 @@ public class CafeService {
     public void saveCafeDataFromWebCrawler(List<Cafe> cafes) {
 
         for (Cafe cafe : cafes) {
-        	// select name count(0) (insert)) 
-           
+        	           
             int count = cafeRepository.countDuplicateCafeName(cafe.getName());
             
             if (count == 0) {

@@ -48,8 +48,8 @@ public class WebCrawler4_naverBlogNewArticles {
     }
 
 
-    public static void main(String[] args) {
-        WebCrawler4_naverBlogNewArticles webCrawler = new WebCrawler4_naverBlogNewArticles();
-        webCrawler.crawl();
-    }
+//    public static void main(String[] args) {
+//        WebCrawler4_naverBlogNewArticles webCrawler = new WebCrawler4_naverBlogNewArticles();
+//        webCrawler.crawl();
+//    }
 }

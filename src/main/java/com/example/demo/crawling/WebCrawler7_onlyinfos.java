@@ -154,8 +154,8 @@ public class WebCrawler7_onlyinfos {
 //        driver.quit();
     }
 
-    public static void main(String[] args) {
-        WebCrawler7_onlyinfos crawler = new WebCrawler7_onlyinfos();
-        crawler.crawlMap("대전");
-    }
+//    public static void main(String[] args) {
+//        WebCrawler7_onlyinfos crawler = new WebCrawler7_onlyinfos();
+//        crawler.crawlMap("대전");
+//    }
 }
