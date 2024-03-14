@@ -3,8 +3,7 @@ package com.example.demo.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.crawling.WebCrawler13;
-import com.example.demo.crawling.WebCrawler2_melonTop100;
+//import com.example.demo.crawling.WebCrawler2_melonTop100;
 
 @Controller
 public class UsrHomeController {
@@ -21,11 +20,11 @@ public class UsrHomeController {
 		return "redirect:/usr/home/main";
 	}
 
-	@RequestMapping("/usr/home/main/crawl")
-	public String crawl() {
-		WebCrawler2_melonTop100.crawl();
-		return "/usr/home/main";
-	}
+//	@RequestMapping("/usr/home/main/crawl")
+//	public String crawl() {
+//		WebCrawler2_melonTop100.crawl();
+//		return "/usr/home/main";
+//	}
 //	
 //	@RequestMapping("/usr/home/main/crawlcafe")
 //	public String crawlcafe() {

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.crawling.WebCrawler13;
 import com.example.demo.repository.CafeRepository;
 import com.example.demo.vo.Cafe;
 

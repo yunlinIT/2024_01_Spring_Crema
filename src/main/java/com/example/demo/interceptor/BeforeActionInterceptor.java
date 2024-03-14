@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import com.example.demo.crawling.WebCrawler13;
@@ -27,21 +26,23 @@ public class BeforeActionInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Object handler) throws Exception {
 
 		rq.initBeforeActionInterceptor();
-		crawlAndSaveData();
+		System.err.println("000000000000000000000000000000000000000000");
+//		crawlAndSaveData();
+		System.err.println("11111111111111111111111111111111111111");
 		return HandlerInterceptor.super.preHandle(req, resp, handler);
 	}
 	
 	
 	
-
-	public void crawlAndSaveData() {
-		List<Cafe> cafes = WebCrawler13.crawlCafes();
-		
-		//System.out.println(cafes);
-		
-	    cafeService.saveCafeDataFromWebCrawler(cafes);
-	    
-
-	}
+//
+//	public void crawlAndSaveData() {
+//		List<Cafe> cafes = WebCrawler13.crawlCafes();
+//		
+//		//System.out.println(cafes);
+//		
+//	    cafeService.saveCafeDataFromWebCrawler(cafes);
+//	    
+//
+//	}
 	
 }
