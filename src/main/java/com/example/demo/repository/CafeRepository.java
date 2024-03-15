@@ -50,6 +50,52 @@ public interface CafeRepository {
 			""")
 	public List<Cafe> getForPrintCafes();
 
+	
+	
 
+	@Select("""
+				SELECT *
+				FROM cafe
+				WHERE id = #{id}
+				GROUP BY id
+				""")	
+	public Cafe getForPrintCafe(int id);
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

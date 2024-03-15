@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.repository.CafeRepository;
+import com.example.demo.vo.Article;
 import com.example.demo.vo.Cafe;
 
 
@@ -31,6 +32,18 @@ public class CafeService {
 	public List<Cafe> getForPrintCafes() {
 		return cafeRepository.getForPrintCafes();
 	}
+
+	public Cafe getForPrintCafe(int id) {
+		Cafe cafe = cafeRepository.getForPrintCafe(id);
+		return cafe;
+	}
+	
+	
+	
+	
+	
+	
+	
 }
 
 

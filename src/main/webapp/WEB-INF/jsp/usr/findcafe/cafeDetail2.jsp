@@ -14,41 +14,41 @@
 		<div class="detail-imgs">
 			<div class="cafe-img-box-big li">
 				<a
-					href="${cafe.cafeImgUrl1}">
+					href="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg">
 					<img class="big-img"
-						src="${cafe.cafeImgUrl1}"
+						src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg"
 						alt="이미지1" />
 				</a>
 			</div>
 			<div class="cafe-img-box1 li">
 				<a
-					href="${cafe.cafeImgUrl2}">
+					href="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230827_60%2F1693138311417unuel_JPEG%2FKakaoTalk_20230827_210945131_05.jpg">
 					<img class="sm-img1"
-						src="${cafe.cafeImgUrl2}"
+						src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230827_60%2F1693138311417unuel_JPEG%2FKakaoTalk_20230827_210945131_05.jpg
 						alt=" 이미지2" />
 				</a>
 			</div>
 			<div class="cafe-img-box2 li">
 				<a
-					href="${cafe.cafeImgUrl3}">
+					href="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231124_5%2F1700804165871ysxEr_JPEG%2FIMG_4819.jpeg">
 					<img class="sm-img2"
-						src="${cafe.cafeImgUrl3}"
+						src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231124_5%2F1700804165871ysxEr_JPEG%2FIMG_4819.jpeg"
 						alt="이미지3" />
 				</a>
 			</div>
 			<div class="cafe-img-box3 li">
 				<a
-					href="${cafe.cafeImgUrl4}">
+					href="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231116_176%2F17000645900099ILlk_JPEG%2F1F8F17A6-BA64-451E-99D8-F02979F38561.jpeg">
 					<img class="sm-img3"
-						src="${cafe.cafeImgUrl4}"
+						src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231116_176%2F17000645900099ILlk_JPEG%2F1F8F17A6-BA64-451E-99D8-F02979F38561.jpeg"
 						alt="이미지4" />
 				</a>
 			</div>
 			<div class="cafe-img-box4 li">
 				<a
-					href="${cafe.cafeImgUrl5}">
+					href="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230827_57%2F1693138302167NjXBQ_JPEG%2FKakaoTalk_20230827_210945131_01.jpg">
 					<img class="sm-img4"
-						src="${cafe.cafeImgUrl5}"
+						src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230827_57%2F1693138302167NjXBQ_JPEG%2FKakaoTalk_20230827_210945131_01.jpg"
 						alt="이미지5" />
 				</a>
 			</div>
@@ -61,18 +61,18 @@
 	<div class="info-and-review section-under-imgs">
 		<!-- 카페 정보 -->
 		<div class="cafe-info">
-			<div class="cafe-name">${cafe.name}</div>
-			<p class="cafe-address">${cafe.address}</p>
-			<div class="cafe-time">${cafe.businessHours}</div>
-			<div class="cafe-phone">${cafe.phoneNum}</div>
-			<p class="cafe-facility">${cafe.facilities}</p>
+			<div class="cafe-name">빈이어</div>
+			<p class="cafe-address">대전 서구 계룡로 399 2층</p>
+			<div class="cafe-time">매일 12:00 - 22:00</div>
+			<div class="cafe-phone">0507-1335-1396</div>
+			<p class="cafe-facility">무선 인터넷, 포장, 반려동물 동반, 배달</p>
 			<div class="like-count">
 				<span class="material-symbols-outlined heart"> favorite </span>
 				<div class="like-count-num">2</div>
 			</div>
 			<div class="review-count">
 				<div class="review-badge">리뷰</div>
-				<div class="review-count-num">${cafe.reviewCount}</div>
+				<div class="review-count-num">3</div>
 			</div>
 
 			<span class="material-symbols-outlined clock-circle" style="color: #a9a9a9"> schedule </span>
