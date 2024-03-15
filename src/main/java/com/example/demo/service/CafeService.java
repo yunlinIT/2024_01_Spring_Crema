@@ -27,6 +27,10 @@ public class CafeService {
             } 
         }
     }
+
+	public List<Cafe> getForPrintCafes() {
+		return cafeRepository.getForPrintCafes();
+	}
 }
 
 
