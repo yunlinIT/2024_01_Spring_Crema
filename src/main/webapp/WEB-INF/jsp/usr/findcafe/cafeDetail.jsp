@@ -13,43 +13,28 @@
 	<div class="cafe-detail-page">
 		<div class="detail-imgs">
 			<div class="cafe-img-box-big li">
-				<a
-					href="${cafe.cafeImgUrl1}">
-					<img class="big-img"
-						src="${cafe.cafeImgUrl1}"
-						alt="이미지1" />
+				<a href="${cafe.cafeImgUrl1}">
+					<img class="big-img" src="${cafe.cafeImgUrl1}" alt="이미지1" />
 				</a>
 			</div>
 			<div class="cafe-img-box1 li">
-				<a
-					href="${cafe.cafeImgUrl2}">
-					<img class="sm-img1"
-						src="${cafe.cafeImgUrl2}"
-						alt=" 이미지2" />
+				<a href="${cafe.cafeImgUrl2}">
+					<img class="sm-img1" src="${cafe.cafeImgUrl2}" alt=" 이미지2" />
 				</a>
 			</div>
 			<div class="cafe-img-box2 li">
-				<a
-					href="${cafe.cafeImgUrl3}">
-					<img class="sm-img2"
-						src="${cafe.cafeImgUrl3}"
-						alt="이미지3" />
+				<a href="${cafe.cafeImgUrl3}">
+					<img class="sm-img2" src="${cafe.cafeImgUrl3}" alt="이미지3" />
 				</a>
 			</div>
 			<div class="cafe-img-box3 li">
-				<a
-					href="${cafe.cafeImgUrl4}">
-					<img class="sm-img3"
-						src="${cafe.cafeImgUrl4}"
-						alt="이미지4" />
+				<a href="${cafe.cafeImgUrl4}">
+					<img class="sm-img3" src="${cafe.cafeImgUrl4}" alt="이미지4" />
 				</a>
 			</div>
 			<div class="cafe-img-box4 li">
-				<a
-					href="${cafe.cafeImgUrl5}">
-					<img class="sm-img4"
-						src="${cafe.cafeImgUrl5}"
-						alt="이미지5" />
+				<a href="${cafe.cafeImgUrl5}">
+					<img class="sm-img4" src="${cafe.cafeImgUrl5}" alt="이미지5" />
 				</a>
 			</div>
 		</div>
@@ -57,15 +42,31 @@
 
 
 	</div>
+
+
+
 	<!-- 사진 아래 부분 -->
+
 	<div class="info-and-review section-under-imgs">
 		<!-- 카페 정보 -->
 		<div class="cafe-info">
 			<div class="cafe-name">${cafe.name}</div>
 			<p class="cafe-address">${cafe.address}</p>
-			<div class="cafe-time">${cafe.businessHours}</div>
 			<div class="cafe-phone">${cafe.phoneNum}</div>
 			<p class="cafe-facility">${cafe.facilities}</p>
+			<div class="cafe-businessHours">
+				<script>
+            		// ${cafe.businessHours}를 세미콜론으로 분할하여 배열로 만듭니다.
+            var businessHoursArray = "${cafe.businessHours}".split(';');
+
+            		// 분할된 각 시간대를 화면에 표시합니다.
+            businessHoursArray.forEach(function(hour) {
+                document.write('<div>' + hour + '</div>');
+            });
+            
+            console.log('${cafe.businessHours}');
+       			</script>
+			</div>
 			<div class="like-count">
 				<span class="material-symbols-outlined heart"> favorite </span>
 				<div class="like-count-num">2</div>
@@ -75,9 +76,9 @@
 				<div class="review-count-num">${cafe.reviewCount}</div>
 			</div>
 
-			<span class="material-symbols-outlined clock-circle" style="color: #a9a9a9"> schedule </span>
-			<span class="material-symbols-outlined phone" style="color: #a9a9a9"> call </span>
-			<span class="material-symbols-outlined store" style="color: #a9a9a9"> storefront </span>
+			<span class="material-symbols-outlined clock-circle" style="color: #a9a9a9"> schedule </span> <span
+				class="material-symbols-outlined phone" style="color: #a9a9a9"> call </span> <span
+				class="material-symbols-outlined store" style="color: #a9a9a9"> storefront </span>
 
 			<p class="hashtag">#모던 #아늑한 #디저트맛집 #데이트 #반려동물동반</p>
 		</div>
@@ -114,6 +115,9 @@
 	</div>
 </div>
 
+
+
+
 <div class="slide-overlay">
 	<button class="close-btn">
 		<span class="material-symbols-outlined close"> close </span>
@@ -126,21 +130,11 @@
 	</button>
 	<div class="slide__container">
 		<ul class="slides">
-			<li>
-				<img src="" alt="이미지1">
-			</li>
-			<li>
-				<img src="" alt="이미지2">
-			</li>
-			<li>
-				<img src="" alt="이미지3">
-			</li>
-			<li>
-				<img src="" alt="이미지4">
-			</li>
-			<li>
-				<img src="" alt="이미지5">
-			</li>
+			<li><img src="" alt="이미지1"></li>
+			<li><img src="" alt="이미지2"></li>
+			<li><img src="" alt="이미지3"></li>
+			<li><img src="" alt="이미지4"></li>
+			<li><img src="" alt="이미지5"></li>
 		</ul>
 	</div>
 </div>
@@ -163,13 +157,12 @@
 .slide__container {
 	position: absolute;
 	height: 100%; /* 이미지에 맞게 자동 조정되도록 변경 */
- 	max-width: 80%; /* 최대 너비 설정 */ 
- 	max-height: 70%; /* 최대 높이 설정 */ 
+	max-width: 80%; /* 최대 너비 설정 */
+	max-height: 70%; /* 최대 높이 설정 */
 	top: 50%;
 	left: 50%;
- 	transform: translate(-50%, -45%); 
+	transform: translate(-50%, -45%);
 	overflow: hidden;
-	
 }
 
 .slide__container>img {
@@ -191,6 +184,14 @@
 	margin-right:; /* 이미지 간격 조정 */
 	display: none; /* 이미지 간격 없애고 숨김 */
 }
+
+
+
+
+
+
+
+
 
 .slides>li:first-child {
 	display: block; /* 첫 번째 이미지만 보이도록 설정 */
@@ -219,31 +220,27 @@
 
 .--next {
 	right: 20%;
-	
 }
 
- .close { 
-	text-align: center; 
+.close {
+	text-align: center;
 	font-size: 50px;
- }
- 
- .left, .right { 
-	text-align: center; 
+}
+
+.left, .right {
+	text-align: center;
 	font-size: 60px;
- }
- 
- 
+}
 
 .close-btn {
-
 	right: 20%;
 	color: white;
 	font-weight: 600;
 	position: absolute;
-/*  	width: 50px;  */
-/*  	height: 50px;  */
-/*  	border-radius: 50%;  */
-/*  	border: none;  */
+	/*  	width: 50px;  */
+	/*  	height: 50px;  */
+	/*  	border-radius: 50%;  */
+	/*  	border: none;  */
 	background-color: transparent;
 	cursor: pointer;
 	top: 15%;
@@ -331,7 +328,7 @@
 	position: absolute;
 	width: 1155px;
 	height: 811px;
-	top: 309px;
+	top: 500px;
 	left: 0;
 	overflow: hidden;
 }
@@ -513,7 +510,7 @@
 
 .cafe-detail-page .cafe-info {
 	width: 621px;
-	height: 309px;
+	height: 500px;
 	left: 0;
 	overflow: hidden;
 	position: absolute;
@@ -547,10 +544,10 @@
 	line-height: normal;
 }
 
-.cafe-detail-page .cafe-time {
+.cafe-detail-page .cafe-businessHours {
 	width: 796px;
 	height: 17px;
-	top: 173px;
+	top: 265px;
 	left: 44px;
 	font-weight: 500;
 	color: #333333;
@@ -565,7 +562,7 @@
 	position: absolute;
 	width: 796px;
 	height: 17px;
-	top: 219px;
+	top: 173px;
 	left: 44px;
 	font-weight: 500;
 	color: #333333;
@@ -578,7 +575,7 @@
 .cafe-detail-page .cafe-facility {
 	width: 796px;
 	height: 17px;
-	top: 265px;
+	top: 219px;
 	left: 44px;
 	font-weight: 500;
 	color: #333333;
@@ -658,7 +655,7 @@
 	position: absolute;
 	width: 24px;
 	height: 24px;
-	top: 171px;
+	top: 265px;
 	left: 6px;
 }
 
@@ -666,7 +663,7 @@
 	position: absolute;
 	width: 24px;
 	height: 24px;
-	top: 217px;
+	top: 173px;
 	left: 6px;
 }
 
@@ -674,7 +671,7 @@
 	position: absolute;
 	width: 24px;
 	height: 24px;
-	top: 263px;
+	top: 219px;
 	left: 6px;
 }
 

@@ -93,7 +93,9 @@
 		</c:if>
 
 	</div>
-
+	
+	
+	<!-- 검색창 -->
 	<div class="mb-4 flex justify-center" style="margin-top: 50px;">
 		<div class="flex"></div>
 		<form action="">

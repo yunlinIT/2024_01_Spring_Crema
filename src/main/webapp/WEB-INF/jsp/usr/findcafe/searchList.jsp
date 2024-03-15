@@ -167,9 +167,32 @@
 			</a>
 		</c:forEach>
 	</section>
+
+
+
 </section>
 
+	<!-- 페이지네이션 -->
+	<div class="pagination flex justify-center mt-3" style="margin-top: 50px; margin-left: 200px;">
+		<c:set var="paginationLen" value="3" />
+		<c:set var="startPage" value="${page - paginationLen >= 1 ? page - paginationLen : 1}" />
+		<c:set var="endPage" value="${page + paginationLen <= pagesCount ? page + paginationLen : pagesCount}" />
 
+		<c:if test="${startPage > 1 }">
+			<a class="btn btn-circle btn-ghost btn-xs" style="margin-left: 5px; margin-right: 5px;" href="?page=1">1</a>
+			<button class="btn btn-xs btn-circle btn-disabled" style="margin-left: 5px; margin-right: 5px;">...</button>
+		</c:if>
+
+		<c:forEach begin="${startPage }" end="${endPage }" var="i">
+			<a class="btn btn-circle btn-ghost btn-xs ${param.page == i ? 'btn-active' : '' }"
+				style="margin-left: 5px; margin-right: 5px;" href="?page=${i }">${i }</a>
+		</c:forEach>
+
+		<c:if test="${endPage < pagesCount }">
+			<button class="btn btn-xs btn-circle btn-disabled" style="margin-left: 5px; margin-right: 5px;">...</button>
+			<a class="btn btn-circle btn-ghost btn-xs" style="margin-left: 5px; margin-right: 5px;" href="?page=${pagesCount }">${pagesCount }</a>
+		</c:if>
+	</div>
 
 
 

@@ -29,13 +29,21 @@ public class CafeService {
         }
     }
 
-	public List<Cafe> getForPrintCafes() {
-		return cafeRepository.getForPrintCafes();
+	public List<Cafe> getForPrintCafes(int itemsInAPage, int page) {
+		
+		int limitFrom = (page - 1) * itemsInAPage;
+		int limitTake = itemsInAPage;
+		
+		return cafeRepository.getForPrintCafes(limitFrom, limitTake);
 	}
 
 	public Cafe getForPrintCafe(int id) {
 		Cafe cafe = cafeRepository.getForPrintCafe(id);
 		return cafe;
+	}
+
+	public int getCafesCount() {
+		return cafeRepository.getArticlesCount();
 	}
 	
 	

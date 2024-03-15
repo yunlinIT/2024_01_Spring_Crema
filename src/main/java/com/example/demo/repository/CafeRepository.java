@@ -40,19 +40,7 @@ public interface CafeRepository {
 			""")
 
 	public void insertCafe(Cafe cafe);
-
 	
-	
-	
-	@Select("""
-			SELECT id, name, address, goodReactionPoint, reviewCount, hashtag, cafeImgUrl1
-			FROM cafe
-			""")
-	public List<Cafe> getForPrintCafes();
-
-	
-	
-
 	@Select("""
 				SELECT *
 				FROM cafe
@@ -61,9 +49,27 @@ public interface CafeRepository {
 				""")	
 	public Cafe getForPrintCafe(int id);
 
+	@Select("""
+			<script>
+			SELECT id, name, address, goodReactionPoint, reviewCount, hashtag, cafeImgUrl1
+			FROM cafe
+			GROUP BY id
+			ORDER BY id DESC
+			<if test="limitFrom >= 0 ">
+				LIMIT #{limitFrom}, #{limitTake}
+			</if>
+			</script>
+			""")
+	public List<Cafe> getForPrintCafes(int limitFrom, int limitTake);
+	
 
 	
-	
+	@Select("""
+			SELECT COUNT(*)
+			FROM cafe 
+			ORDER BY id DESC
+			""")
+	public int getArticlesCount();
 	
 	
 	

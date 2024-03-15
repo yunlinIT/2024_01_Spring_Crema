@@ -50,12 +50,24 @@ public class UsrFindCafeController {
 	}
 
 	@RequestMapping("/usr/findcafe/searchList")
-	public String showsearchList(HttpServletRequest req, Model model) {
+	public String showsearchList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int page) {
 
 		Rq rq = (Rq) req.getAttribute("rq");
 
-		List<Cafe> cafes = cafeService.getForPrintCafes();
+		int cafesCount = cafeService.getCafesCount();
 
+		// 한페이지에 글 10개씩이야
+		// 글 20개 -> 2 page
+		// 글 24개 -> 3 page
+		int itemsInAPage = 5;
+
+		int pagesCount = (int) Math.ceil(cafesCount / (double) itemsInAPage);
+
+		List<Cafe> cafes = cafeService.getForPrintCafes(itemsInAPage, page);
+
+		model.addAttribute("page", page);
+		model.addAttribute("pagesCount", pagesCount);
+		model.addAttribute("articlesCount", cafesCount);
 		model.addAttribute("cafes", cafes);
 
 		return "/usr/findcafe/searchList";
