@@ -349,8 +349,52 @@ CREATE TABLE cafe (
     `cafeImgUrl5` TEXT COMMENT '카페 사진5'
 );
 
+CREATE TABLE cafeReview (
+    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    updateDate DATETIME NOT NULL,
+    memberId INT(10) UNSIGNED NOT NULL,
+    cafeId INT(10) NOT NULL COMMENT '관련 데이터 번호',
+    `body`TEXT NOT NULL
+);
 
 
+# update join -> 기존 cafe의 reviewCount 값을 CafeReview(CR) 테이블에서 가져온 데이터로 채운다
+UPDATE cafe AS C
+INNER JOIN (
+    SELECT CR.cafeId, COUNT(CR.cafeId) AS cafeReviewCount
+    FROM cafeReview AS CR
+    GROUP BY CR.cafeId
+) AS CR_COUNT
+ON C.id = CR_COUNT.cafeId
+SET C.reviewCount = CR_COUNT.cafeReviewCount;
+
+
+
+
+# 2번 회원이 10번 카페에 리뷰 작성
+INSERT INTO cafeReview
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+cafeId = 10,
+`body` = '분위기가 너무 좋아요';
+
+# 2번 회원이 10번 카페에 리뷰 작성
+INSERT INTO cafeReview
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+cafeId = 10,
+`body` = '단골이에요';
+
+# 3번 회원이 10번 카페에 리뷰 작성
+INSERT INTO cafeReview
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 3,
+cafeId = 10,
+`body` = '커피맛이 좋아요';
 
 ###############################################
 
@@ -368,6 +412,19 @@ SELECT * FROM cafe;
 
 DESC cafe;
 
+SELECT * FROM cafeReview;
+
+DELETE * FROM cafeReview;
+
+
+
+
+SELECT CR.*, M.nickname AS extra__writer
+    FROM cafeReview AS CR
+    INNER JOIN `member` AS M
+    ON CR.memberId = M.id
+    WHERE cafeId = 10
+    ORDER BY CR.id ASC;
 
 
 SELECT goodReactionPoint

@@ -40,13 +40,13 @@ public interface CafeRepository {
 			""")
 
 	public void insertCafe(Cafe cafe);
-	
+
 	@Select("""
-				SELECT *
-				FROM cafe
-				WHERE id = #{id}
-				GROUP BY id
-				""")	
+			SELECT *
+			FROM cafe
+			WHERE id = #{id}
+			GROUP BY id
+			""")
 	public Cafe getForPrintCafe(int id);
 
 	@Select("""
@@ -61,47 +61,26 @@ public interface CafeRepository {
 			</script>
 			""")
 	public List<Cafe> getForPrintCafes(int limitFrom, int limitTake);
-	
 
-	
 	@Select("""
 			SELECT COUNT(*)
-			FROM cafe 
+			FROM cafe
 			ORDER BY id DESC
 			""")
-	public int getArticlesCount();
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public int getCafesCount();
+
+	@Select("""
+			UPDATE cafe AS C
+			INNER JOIN (
+			    SELECT CR.cafeId, COUNT(CR.cafeId) AS cafeReviewCount
+			    FROM cafeReview AS CR
+			    GROUP BY CR.cafeId
+			) AS CR_COUNT
+			ON C.id = CR_COUNT.cafeId
+			SET C.reviewCount = CR_COUNT.cafeReviewCount;
+
+						""")
+	public void updateReviewCount();
+
 
 }

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.repository.CafeRepository;
-import com.example.demo.vo.Article;
 import com.example.demo.vo.Cafe;
 
 
@@ -43,9 +42,17 @@ public class CafeService {
 	}
 
 	public int getCafesCount() {
-		return cafeRepository.getArticlesCount();
+		return cafeRepository.getCafesCount();
 	}
-	
+
+
+	public void updateReviewCount() {
+		cafeRepository.updateReviewCount();
+	}
+
+
+
+
 	
 	
 	

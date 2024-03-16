@@ -10,12 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.crawling.WebCrawler13;
+import com.example.demo.repository.CafeRepository;
+import com.example.demo.service.CafeReviewService;
 import com.example.demo.service.CafeService;
-import com.example.demo.vo.Article;
-import com.example.demo.vo.Board;
 import com.example.demo.vo.Cafe;
-import com.example.demo.vo.Reply;
-import com.example.demo.vo.ResultData;
+import com.example.demo.vo.CafeReview;
 import com.example.demo.vo.Rq;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,6 +24,12 @@ public class UsrFindCafeController {
 
 	@Autowired
 	private CafeService cafeService;
+	
+	@Autowired
+	private CafeRepository cafeRepository;
+	
+	@Autowired
+	private CafeReviewService cafeReviewService;
 
 	@RequestMapping("/usr/findcafe/likeList")
 	public String likeList() {
@@ -32,11 +37,6 @@ public class UsrFindCafeController {
 		return "/usr/findcafe/likeList";
 	}
 
-//	@RequestMapping("/usr/findcafe/cafeDetail")
-//	public String cafeDetail() {
-//
-//		return "/usr/findcafe/cafeDetail";
-//	}
 
 	@GetMapping("/crawl")
 	public String crawlAndSaveData() {
@@ -55,7 +55,11 @@ public class UsrFindCafeController {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		int cafesCount = cafeService.getCafesCount();
+		
+		cafeRepository.updateReviewCount();
+		
 
+	
 		// 한페이지에 글 10개씩이야
 		// 글 20개 -> 2 page
 		// 글 24개 -> 3 page
@@ -67,7 +71,7 @@ public class UsrFindCafeController {
 
 		model.addAttribute("page", page);
 		model.addAttribute("pagesCount", pagesCount);
-		model.addAttribute("articlesCount", cafesCount);
+		model.addAttribute("cafes", cafesCount);
 		model.addAttribute("cafes", cafes);
 
 		return "/usr/findcafe/searchList";
@@ -85,18 +89,25 @@ public class UsrFindCafeController {
 //			model.addAttribute("userCanMakeReaction", usersReactionRd.isSuccess());
 //		}
 
-//		List<Reply> replies = replyService.getForPrintReplies(rq.getLoginedMemberId(), "article", id);
-//
-//		int repliesCount = replies.size();
+		List<CafeReview> cafeReviews = cafeReviewService.getForPrintCafeReviews(rq.getLoginedMemberId(), id);
+
+		int cafeReviewsCount = cafeReviews.size();
 
 		model.addAttribute("cafe", cafe);
-//		model.addAttribute("replies", replies);
-//		model.addAttribute("repliesCount", repliesCount);
+		model.addAttribute("cafeReviews", cafeReviews);
+		model.addAttribute("cafeReviewsCount", cafeReviewsCount);
 //		model.addAttribute("isAlreadyAddGoodRp",
 //				reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id, "article"));
 //		model.addAttribute("isAlreadyAddBadRp",
 //				reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "article"));
 
+
+		
+		
+		
+		
+		
+		
 		return "usr/findcafe/cafeDetail";
 
 	}

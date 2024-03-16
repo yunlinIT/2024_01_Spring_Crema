@@ -23,6 +23,23 @@ public class UsrMemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	
+	@RequestMapping("/usr/member/doDeleteId")
+	@ResponseBody
+	public String doDeleteId(HttpServletRequest req, @RequestParam(defaultValue = "/") String afterLogoutUri) {
+		Rq rq = (Rq) req.getAttribute("rq");
+		System.err.println("rq.loginedId: " + rq.getLoginedMember().getLoginId());
+		if (!rq.isLogined()) {
+			return Ut.jsHistoryBack("F-A", "로그인 후 이용해주세요");
+		}
+
+		memberService.deleteId(rq.getLoginedMember().getLoginId());
+		rq.logout();
+
+		return Ut.jsReplace("S-1", "탈퇴가 완료되었습니다", afterLogoutUri);
+	}
+	
+	
 	@RequestMapping("/usr/member/getLoginIdDup")
 	@ResponseBody
 	public ResultData getLoginIdDup(String loginId) {
@@ -95,7 +112,11 @@ public class UsrMemberController {
 			return Ut.jsHistoryBack("F-4", Ut.f("비밀번호가 일치하지 않습니다"));
 		}
 
-		rq.login(member);
+		if (member.getDelStatus() == 0) {
+			rq.login(member);
+		} else {
+			return Ut.jsHistoryBack("F-5", Ut.f("%s(은)는 탈퇴한 회원입니다.", loginId));
+		}
 
 		if (afterLoginUri.length() > 0) {
 			return Ut.jsReplace("S-1", Ut.f("%s님 환영합니다", member.getNickname()), afterLoginUri);

@@ -76,9 +76,9 @@
 				<div class="review-count-num">${cafe.reviewCount}</div>
 			</div>
 
-			<span class="material-symbols-outlined clock-circle" style="color: #a9a9a9"> schedule </span> <span
-				class="material-symbols-outlined phone" style="color: #a9a9a9"> call </span> <span
-				class="material-symbols-outlined store" style="color: #a9a9a9"> storefront </span>
+			<span class="material-symbols-outlined clock-circle" style="color: #a9a9a9"> schedule </span>
+			<span class="material-symbols-outlined phone" style="color: #a9a9a9"> call </span>
+			<span class="material-symbols-outlined store" style="color: #a9a9a9"> storefront </span>
 
 			<p class="hashtag">#모던 #아늑한 #디저트맛집 #데이트 #반려동물동반</p>
 		</div>
@@ -96,24 +96,52 @@
 
 				<div class="write-review-section">
 					<div class="write-review">리뷰 작성</div>
-					<div class="review-input-area">
-						<input type="text" placeholder="리뷰를 남겨주세요" class="review-input-box input input-bordered input-md w-full " />
-						<button class="review-write-btn btn btn-sm">등록</button>
-					</div>
+
+					<c:if test="${rq.isLogined() }">
+						<div class="review-input-area">
+							<!--ReplyWrite__submit 자바스크립트필요 -->
+							<form action="../cafeReview/doWrite" method="POST">
+								<input type="hidden" name="cafeId" value="${cafe.id }" />
+								<input type="text" autocomplete="off" placeholder="리뷰를 남겨주세요" name="body"
+									class="review-input-box input input-bordered input-md w-full " />
+								<!-- 								<button class="review-write-btn btn btn-sm">등록</button> -->
+								<input class="review-write-btn btn btn-sm" type="submit" value="등록" />
+							</form>
+						</div>
+					</c:if>
+					<c:if test="${!rq.isLogined() }">
+						<a href="${rq.loginUri }" style="text-decoration: underline; font-weight: 600;">로그인</a> 후 이용해주세요.
+				</c:if>
 				</div>
+
+
+
+
 				<!-- 리뷰 목록 -->
 				<div class="review-list">
-					<div class="review-title">리뷰</div>
+					<div class="review-title">리뷰 (${cafeReviewsCount})</div>
 
-					<div class="show-review-box">
-						<div class="user-nickname">crema_user2</div>
-						<p class="review-body">맛있어요!</p>
-					</div>
+					<c:forEach var="cafeReview" items="${cafeReviews }">
+						<div class="show-review-box">
+							<div class="user-nickname 리뷰작성자">${cafeReview.extra__writer }
+							<div id="reviewRegDate-${cafeReview.id }" style ="font-size: 11px; font-weight: 300;color: #a9a9a9;">${cafeReview.regDate }</div>
+							</div>
+							<p class="review-body 리뷰내용">
+								<span id="review-${cafeReview.id }">${cafeReview.body }</span>
+							
+							</p>
+						</div>
+					</c:forEach>
 				</div>
+
+
+
+
 			</div>
 		</div>
 	</div>
 </div>
+
 
 
 
@@ -130,11 +158,21 @@
 	</button>
 	<div class="slide__container">
 		<ul class="slides">
-			<li><img src="" alt="이미지1"></li>
-			<li><img src="" alt="이미지2"></li>
-			<li><img src="" alt="이미지3"></li>
-			<li><img src="" alt="이미지4"></li>
-			<li><img src="" alt="이미지5"></li>
+			<li>
+				<img src="" alt="이미지1">
+			</li>
+			<li>
+				<img src="" alt="이미지2">
+			</li>
+			<li>
+				<img src="" alt="이미지3">
+			</li>
+			<li>
+				<img src="" alt="이미지4">
+			</li>
+			<li>
+				<img src="" alt="이미지5">
+			</li>
 		</ul>
 	</div>
 </div>
@@ -173,6 +211,14 @@
 	max-height: 100%; /* 이미지의 원본 비율을 유지하면서 이미지의 더 긴쪽에 맞춤 */
 }
 
+.slide__container>img {
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	max-width: 100%; /* 이미지의 원본 비율을 유지하면서 이미지의 더 긴쪽에 맞춤 */
+	max-height: 100%; /* 이미지의 원본 비율을 유지하면서 이미지의 더 긴쪽에 맞춤 */
+}
+
 .slides {
 	display: flex; /* Flexbox를 사용하여 이미지를 가로로 나열 */
 	justify-content: center;
@@ -184,14 +230,6 @@
 	margin-right:; /* 이미지 간격 조정 */
 	display: none; /* 이미지 간격 없애고 숨김 */
 }
-
-
-
-
-
-
-
-
 
 .slides>li:first-child {
 	display: block; /* 첫 번째 이미지만 보이도록 설정 */
@@ -237,10 +275,6 @@
 	color: white;
 	font-weight: 600;
 	position: absolute;
-	/*  	width: 50px;  */
-	/*  	height: 50px;  */
-	/*  	border-radius: 50%;  */
-	/*  	border: none;  */
 	background-color: transparent;
 	cursor: pointer;
 	top: 15%;
@@ -294,20 +328,10 @@
 .cafe-detail-page {
 	background-color: #ffffff;
 	width: 1155px;
-	height: 1024px;
+	/* 	height: 1024px; */
 	position: relative;
 }
 
-/* .cafe-detail-page .detail-section { */
-/* 	position: absolute; */
-/* 	width: 1287px; */
-/* 	height: 908px; */
-/* 	top: 116px; */
-/* 	left: 78px; */
-/* 	background-color: #ffffff; */
-/* 	overflow: hidden; */
-/* 	overflow-y: scroll; */
-/* } */
 .cafe-detail-page .section-under-imgs {
 	position: absolute;
 	width: 1160px;
@@ -317,26 +341,24 @@
 }
 
 .cafe-detail-page .review-group {
-	position: absolute;
 	width: 1155px;
-	height: 1120px;
 	top: 10px;
 	left: 5px;
+	padding-bottom: 20px; /* review-box 밑에 20px 공간을 만듭니다 */
 }
 
 .cafe-detail-page .review-section {
 	position: absolute;
 	width: 1155px;
-	height: 811px;
 	top: 500px;
 	left: 0;
-	overflow: hidden;
+	bottom: 0;
 }
 
 .cafe-detail-page .review-box {
 	position: absolute;
 	width: 1155px;
-	height: 130px;
+	/* 	height: 50px; */
 	top: 401px;
 	left: 0;
 	background-color: #f5f5f5;
@@ -358,8 +380,8 @@
 
 .cafe-detail-page .review-body {
 	position: absolute;
-	width: 1084px;
-	height: 70px;
+	width: 1130px;
+	height: 40px;
 	top: 47px;
 	left: 17px;
 	font-weight: 500;
@@ -367,14 +389,18 @@
 	font-size: 15px;
 	letter-spacing: 0;
 	line-height: 20px;
+	 overflow-y: auto;
+	
 }
 
 .cafe-detail-page .review-list {
 	position: absolute;
 	width: 1155px;
-	height: 531px;
+	/* 	height: 100%; */
 	top: 223px;
 	left: 0;
+	display: flex;
+	flex-direction: column;
 }
 
 .cafe-detail-page .review-box-2 {
@@ -405,12 +431,14 @@
 
 .cafe-detail-page .show-review-box {
 	top: 53px;
-	position: absolute;
+	/* 	position: absolute; */
 	width: 1155px;
-	height: 130px;
+	height: 100px;
 	left: 0;
 	background-color: #f5f5f5;
 	border-radius: 10px;
+	margin-bottom: 20px;
+	position: relative;
 }
 
 .cafe-detail-page .review-title {
@@ -428,7 +456,7 @@
 
 .cafe-detail-page .write-review-section {
 	width: 1171px;
-	height: 129px;
+	height: 100%;
 	top: 59px;
 	position: absolute;
 	left: 0;
@@ -857,4 +885,6 @@ function bulletClassReset() {
 
 
 
-<%@ include file="../common/foot.jspf"%>
+
+
+<%-- <%@ include file="../common/foot.jspf"%> --%>

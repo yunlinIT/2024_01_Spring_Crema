@@ -153,7 +153,7 @@
 					</div>
 					<div class="review-count">
 						<div class="title-review">리뷰</div>
-						<div class="review-count-num">${cafe.reviewCount}</div>
+						<div class="review-count-num">${cafe.reviewCount }</div> 
 					</div>
 					<div class="show-distance">
 						<div class="num-km-group">
@@ -666,11 +666,11 @@
 	position: absolute;
 	width: 20px;
 	height: 15px;
-	top: 0px;
+	top: 0.4px;
 	font-family: "Pretendard";
 	font-weight: 600;
 	color: #000000;
-	font-size: 10px;
+	font-size: 12px;
 	letter-spacing: 0;
 	line-height: normal;
 }
