@@ -5,10 +5,55 @@
 
 
 
+<!-- 댓글 수정 -->
+<script>
+function toggleModifybtn(cafeReviewId) {
+	
+	console.log(cafeReviewId);
+	
+	$('#modify-btn-'+cafeReviewId).hide();
+	$('#save-btn-'+cafeReviewId).show();
+	$('#cafeReview-'+cafeReviewId).hide();
+	$('#modify-form-'+cafeReviewId).show();
+}
+
+function doModifyCafeReview(cafeReviewId) {
+	 console.log(cafeReviewId); // 디버깅을 위해 replyId를 콘솔에 출력
+	    
+	    // form 요소를 정확하게 선택
+	    var form = $('#modify-form-' + cafeReviewId);
+	    console.log(form); // 디버깅을 위해 form을 콘솔에 출력
+
+	    // form 내의 input 요소의 값을 가져옵니다
+	    var text = form.find('input[name="cafeReview-text-' + cafeReviewId + '"]').val();
+	    console.log(text); // 디버깅을 위해 text를 콘솔에 출력
+
+	    // form의 action 속성 값을 가져옵니다
+	    var action = form.attr('action');
+	    console.log(action); // 디버깅을 위해 action을 콘솔에 출력
+	
+    $.post({
+    	url: '/usr/cafeReview/doModify', // 수정된 URL
+        type: 'POST', // GET에서 POST로 변경
+        data: { id: cafeReviewId, body: text }, // 서버에 전송할 데이터
+        success: function(data) {
+            $('#modify-form-'+cafeReviewId).hide();
+            $('#review-'+cafeReviewId).text(data); // 수정된 리뷰 내용으로 업데이트
+            $('#cafeReview-'+cafeReviewId).show();
+            $('#save-btn-'+cafeReviewId).hide();
+            $('#modify-btn-'+cafeReviewId).show();
+        },
+        error: function(xhr, status, error) {
+            alert('리뷰 수정에 실패했습니다: ' + error);
+        }
+	})
+}
+</script>
 
 
 
-<div class="cafe-detail-page">
+
+<section class="cafe-detail-page">
 
 	<div class="cafe-detail-page">
 		<div class="detail-imgs">
@@ -88,6 +133,10 @@
 			<div class="map-title">지도보기</div>
 		</div>
 
+
+
+
+
 		<!-- 카페정보 하단 -->
 		<div class="review-group reviewlist-and-write">
 			<!-- 리뷰 부분 -->
@@ -99,8 +148,8 @@
 
 					<c:if test="${rq.isLogined() }">
 						<div class="review-input-area">
-							<!--ReplyWrite__submit 자바스크립트필요 -->
-							<form action="../cafeReview/doWrite" method="POST">
+						
+							<form action="../cafeReview/doWrite" method="POST" >
 								<input type="hidden" name="cafeId" value="${cafe.id }" />
 								<input type="text" autocomplete="off" placeholder="리뷰를 남겨주세요" name="body"
 									class="review-input-box input input-bordered input-md w-full " />
@@ -124,12 +173,34 @@
 					<c:forEach var="cafeReview" items="${cafeReviews }">
 						<div class="show-review-box">
 							<div class="user-nickname 리뷰작성자">${cafeReview.extra__writer }
-							<div id="reviewRegDate-${cafeReview.id }" style ="font-size: 11px; font-weight: 300;color: #a9a9a9;">${cafeReview.regDate }</div>
+								<div id="reviewRegDate-${cafeReview.id }" style="font-size: 11px; font-weight: 300; color: #a9a9a9;">${cafeReview.regDate.substring(0,10) }</div>
 							</div>
-							<p class="review-body 리뷰내용">
-								<span id="review-${cafeReview.id }">${cafeReview.body }</span>
 							
-							</p>
+							
+							<div class="review-body 리뷰내용">
+								<span id="review-${cafeReview.id }">${cafeReview.body }</span>
+								<form method="POST" id="modify-form-${cafeReview.id }" style="display:none; position: absolute; top: 20px; left: 0; width:100%; z-index: 1;" action="/usr/cafeReview/doModify">
+									<input style="width: 1110px; height: 35px; margin-top:-17px; " type="text" value="${cafeReview.body }" name="cafeReview-text-${cafeReview.id }" />
+								</form>
+							</div>
+
+							<!-- 	수정 삭제 버튼		 -->
+							<div class="mod-del-btns"
+								style="font-weight: 500; color: #a9a9a9; margin-top: 89px; margin-left: 17px; font-size: 11px;">
+								<c:if test="${cafeReview.userCanModify }">
+									<button onclick="toggleModifybtn('${cafeReview.id}');" id="modify-btn-${cafeReview.id }"
+										style="white-space: nowrap;">수정</button>
+									<button onclick="doModifyCafeReview('${cafeReview.id}');" style="white-space: nowrap; display: none;"
+										id="save-btn-${cafeReview.id }">저장</button>
+
+								</c:if>
+
+								<c:if test="${cafeReview.userCanDelete }">
+									<a style="white-space: nowrap; margin-left: 10px;" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
+										href="../cafeReview/doDelete?id=${cafeReview.id }">삭제</a>
+								</c:if>
+							</div>
+
 						</div>
 					</c:forEach>
 				</div>
@@ -140,7 +211,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</section>
 
 
 
@@ -358,7 +429,6 @@
 .cafe-detail-page .review-box {
 	position: absolute;
 	width: 1155px;
-	/* 	height: 50px; */
 	top: 401px;
 	left: 0;
 	background-color: #f5f5f5;
@@ -381,7 +451,7 @@
 .cafe-detail-page .review-body {
 	position: absolute;
 	width: 1130px;
-	height: 40px;
+	height: 39px;
 	top: 47px;
 	left: 17px;
 	font-weight: 500;
@@ -389,8 +459,7 @@
 	font-size: 15px;
 	letter-spacing: 0;
 	line-height: 20px;
-	 overflow-y: auto;
-	
+	overflow-y: auto;
 }
 
 .cafe-detail-page .review-list {
@@ -433,7 +502,7 @@
 	top: 53px;
 	/* 	position: absolute; */
 	width: 1155px;
-	height: 100px;
+	height: 110px;
 	left: 0;
 	background-color: #f5f5f5;
 	border-radius: 10px;

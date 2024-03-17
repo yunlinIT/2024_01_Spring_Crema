@@ -330,10 +330,6 @@ function doModifyReply(replyId) {
 				<div class="reply-box">
 					<div class="reply-writer 댓글작성자" style="font-size: 13px;">${reply.extra__writer }</div>
 
-
-
-
-
 					<div class="reply-body 댓글내용" style="font-size: 14px; margin-top:4px;">
 						<span id="reply-${reply.id }">${reply.body }</span>
 						<form method="POST" id="modify-form-${reply.id }" style="display: none;" action="/usr/reply/doModify">
