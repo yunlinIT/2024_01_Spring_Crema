@@ -26,9 +26,9 @@ public class BeforeActionInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Object handler) throws Exception {
 
 		rq.initBeforeActionInterceptor();
-		System.err.println("000000000000000000000000000000000000000000");
+//		System.err.println("000000000000000000000000000000000000000000");
 //		crawlAndSaveData();
-		System.err.println("11111111111111111111111111111111111111");
+//		System.err.println("11111111111111111111111111111111111111");
 		return HandlerInterceptor.super.preHandle(req, resp, handler);
 	}
 	
