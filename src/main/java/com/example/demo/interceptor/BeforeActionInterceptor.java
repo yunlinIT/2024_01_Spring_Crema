@@ -30,6 +30,7 @@ public class BeforeActionInterceptor implements HandlerInterceptor {
 //		crawlAndSaveData();
 //		System.err.println("11111111111111111111111111111111111111");
 		return HandlerInterceptor.super.preHandle(req, resp, handler);
+		
 	}
 	
 	
