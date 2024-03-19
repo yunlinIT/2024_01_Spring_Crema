@@ -39,7 +39,7 @@ public class WebCrawler13 {
 
 		// 네이버 지도 검색창에 원하는 검색어 입력 후 엔터
 		WebElement inputSearch = driver.findElement(By.className("input_search"));
-		String inputKey = "대전 동구";
+		String inputKey = "대전 동구 카페";
 		inputSearch.sendKeys(inputKey);
 		inputSearch.sendKeys(Keys.ENTER);
 

@@ -125,7 +125,7 @@ function doModifyCafeReview(cafeReviewId) {
 				class="material-symbols-outlined phone" style="color: #a9a9a9"> call </span> <span
 				class="material-symbols-outlined store" style="color: #a9a9a9"> storefront </span>
 
-			<p class="hashtag">#모던 #아늑한 #디저트맛집 #데이트 #반려동물동반</p>
+			<p class="hashtag">${cafe.hashtag}</p>
 		</div>
 
 
@@ -695,7 +695,7 @@ function doModifyCafeReview(cafeReviewId) {
 }
 
 .cafe-detail-page .cafe-businessHours {
-	width: 796px;
+	width: 550px;
 	height: 17px;
 	top: 265px;
 	left: 44px;
@@ -706,6 +706,7 @@ function doModifyCafeReview(cafeReviewId) {
 	white-space: nowrap;
 	position: absolute;
 	line-height: normal;
+	word-wrap: normal;
 }
 
 .cafe-detail-page .cafe-phone {
