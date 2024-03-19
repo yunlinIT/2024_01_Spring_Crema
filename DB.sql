@@ -349,6 +349,85 @@ CREATE TABLE cafe (
     `cafeImgUrl5` TEXT COMMENT '카페 사진5'
 );
 
+
+# 카페 테스트 데이터 1 (동구)
+INSERT INTO cafe 
+SET regDate = NOW(),
+updateDate = NOW(),
+`name` = '카페사소한',
+`address` = '대전 동구 백룡로38번길 19 1층',
+`businessHours` = '월 11:30 - 21:00; 화 11:30 - 21:00; 수 11:30 - 21:00; 목 11:30 - 21:00; 금 11:30 - 21:00; 토 12:30 - 18:30; 일 12:30 - 18:30;', 
+`phoneNum` = '0507-1388-1844', 
+`facilities` = NULL, 
+`goodReactionPoint` = 1, 
+#`reviewCount` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '리뷰 수', 
+`hashtag` = '#아늑한 #대화 #데이트 #사진맛집 #클래식', 
+`cafeImgUrl1` = 'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20201117_59%2F1605607665526NPlXg_JPEG%2FG7oFmpFP-9oX4fU7fK1_kJsw.jpeg.jpg',
+`cafeImgUrl2` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20201117_115%2F1605607674000iq6jm_JPEG%2FvBatF4-javorvm0chk1s5NwF.jpeg.jpg',
+`cafeImgUrl3` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20201117_276%2F1605607680055jKj83_JPEG%2FnppOHwFGfqDLGkJ5o2LPrd3C.jpeg.jpg',
+`cafeImgUrl4` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20201117_64%2F1605607688521tn2Ua_JPEG%2F706ednnHFfhiUnlxedhhjyii.jpeg.jpg',
+`cafeImgUrl5` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20201117_125%2F1605607697204cNkYr_JPEG%2FP1ubOwNMIPh9qL8VWUqlQ9A9.jpeg.jpg';
+
+# 카페 테스트 데이터 2 (동구)
+INSERT INTO cafe 
+SET regDate = NOW(),
+updateDate = NOW(),
+`name` = '파이브퍼센트',
+`address` = '대전 동구 동대전로110번길 177',
+`businessHours` = '월 11:00 - 23:00; 화 11:00 - 23:00; 수 11:00 - 23:00; 목 11:00 - 23:00; 금 11:00 - 23:00; 토 11:00 - 23:00; 일 11:00 - 23:00; ', 
+`phoneNum` = NULL, 
+`facilities` = '무선 인터넷, 포장, 남/녀 화장실 구분', 
+#`goodReactionPoint` = 1, 
+#`reviewCount` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '리뷰 수', 
+`hashtag` = '#뷰맛집 #테라스 #데이트 #사진맛집 #모던', 
+`cafeImgUrl1` = 'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231108_51%2F1699434996882sOpky_JPEG%2Fscaled_1699434867969.jpg',
+`cafeImgUrl2` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231119_100%2F1700384237212oMyjk_JPEG%2Fscaled_20231119_170835.jpg',
+`cafeImgUrl3` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231113_262%2F1699848031088OhR5v_JPEG%2Fscaled_20231112_194927.jpg',
+`cafeImgUrl4` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231108_285%2F1699446257991ILAjN_JPEG%2Fscaled_1699445911053.jpg',
+`cafeImgUrl5` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230716_157%2F1689503122459G0rJj_JPEG%2F20230716_192218.jpg';
+
+# 카페 테스트 데이터 3 (동구)
+INSERT INTO cafe 
+SET regDate = NOW(),
+updateDate = NOW(),
+`name` = '롤라',
+`address` = '대전 동구 회남로275번길 123',
+`businessHours` = '월 ~ 금 카페&베이커리 11:00 - 20:30 (20:00 라스트오더) / 브런치 11:00 - 17:30 (17:00 라스트오더); 토 ~ 일 카페&베이커리 10:30 - 20:30 (20:00 라스트오더) / 브런치	10:30 - 18:30 (18:00 라스트오더)', 
+`phoneNum` = '0507-1380-9522', 
+`facilities` = '주차, 남/녀 화장실 구분, 반려동물 동반, 포장, 단체 이용 가능, 무선 인터넷', 
+#`goodReactionPoint` = 1, 
+#`reviewCount` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '리뷰 수', 
+`hashtag` = '#넓은 #뷰맛집 #테라스 #사진맛집 #반려동물', 
+`cafeImgUrl1` = 'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220930_130%2F1664503526528Qa7wy_JPEG%2FIMG_1145.jpeg',
+`cafeImgUrl2` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230630_64%2F1688091175554k8zWy_JPEG%2FEECD5943-29EF-4F9C-8EAE-5C26AFA1835B.jpeg',
+`cafeImgUrl3` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220930_265%2F1664503526532x9bCc_JPEG%2FIMG_1146.jpeg',
+`cafeImgUrl4` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220930_123%2F1664503526558yRVWI_JPEG%2FIMG_1151.jpeg',
+`cafeImgUrl5` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230630_279%2F1688091140016bdRc3_JPEG%2FE99A225C-7DC4-414F-9CD1-A4C93D1612F6.jpeg';
+
+# 카페 테스트 데이터 4 (동구)
+INSERT INTO cafe 
+SET regDate = NOW(),
+updateDate = NOW(),
+`name` = '풍류소제',
+`address` = '대전 동구 수향길 31',
+`businessHours` = '매일 11:00 - 21:00;', 
+`phoneNum` = '0507-1331-6717', 
+`facilities` = '포장, 무선 인터넷', 
+#`goodReactionPoint` = 1, 
+#`reviewCount` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '리뷰 수', 
+`hashtag` = '#넓은 #뷰맛집 #테라스 #사진맛집 #반려동물', 
+`cafeImgUrl1` = 'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240305_223%2F17096104557822Wi1l_JPEG%2FKakaoTalk_20240227_173726820_02.jpg',
+`cafeImgUrl2` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240305_72%2F1709610451256UwX2v_JPEG%2FKakaoTalk_20240227_173726820_01.jpg',
+`cafeImgUrl3` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240305_77%2F1709610445786E18z6_JPEG%2FKakaoTalk_20240227_173726820.jpg',
+`cafeImgUrl4` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240305_230%2F1709610440387SpbLX_JPEG%2FKakaoTalk_20240227_173726820_07.jpg',
+`cafeImgUrl5` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240305_65%2F1709610432647AYQw1_JPEG%2FKakaoTalk_20240227_173726820_06.jpg';
+
+
+
+
+
+
+
 CREATE TABLE cafeReview (
     id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     regDate DATETIME NOT NULL,
@@ -395,6 +474,10 @@ updateDate = NOW(),
 memberId = 3,
 cafeId = 10,
 `body` = '커피맛이 좋아요';
+
+
+
+
 
 ###############################################
 
