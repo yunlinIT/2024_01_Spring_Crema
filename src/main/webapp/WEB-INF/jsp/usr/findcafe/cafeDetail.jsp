@@ -170,16 +170,20 @@ function doModifyCafeReview(cafeReviewId) {
     map: map,
     position: coords,
     image: new kakao.maps.MarkerImage(
-        'https://velog.velcdn.com/images/yunlinit/post/4dc09125-1305-4779-9c88-36119e795dd0/image.png',
-        new kakao.maps.Size(34, 32),
+        'https://velog.velcdn.com/images/yunlinit/post/8c994474-03a4-481f-9294-a3a3e201cb72/image.png',
+        new kakao.maps.Size(39, 39),
         { offset: new kakao.maps.Point(16, 32) }
     )
 });
-
-
+        	// 마커이미지
+			// https://velog.velcdn.com/images/yunlinit/post/0b96d741-86d0-4770-a91d-bb5b6503d071/image.png
+			// https://velog.velcdn.com/images/yunlinit/post/b0b6c6ba-f995-494c-9b8c-9a1e5933e11a/image.png
+       		// https://velog.velcdn.com/images/yunlinit/post/da3eac14-0fa1-424b-9373-b0b668e799fd/image.png
+        	// https://velog.velcdn.com/images/yunlinit/post/4dc09125-1305-4779-9c88-36119e795dd0/image.png
+        
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">${cafe.name}</div>'
+            content: '<div style="width:150px;text-align:center;padding:6px 0; font-size: 15px; color: black;">${cafe.name}</div>'
         });
         infowindow.open(map, marker);
 
