@@ -5,6 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class UsrAPITestController {
+	
+	
+	
+	// 그냥 테스트용 컨트롤러 
 
 	@RequestMapping("/usr/home/APITest")
 	public String APITest() {

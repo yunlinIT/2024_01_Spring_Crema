@@ -3,7 +3,7 @@
 <c:set var="pageTitle" value="카페 상세보기"></c:set>
 <%@ include file="../common/head.jspf"%>
 
-
+<meta charset="utf-8">
 
 <!-- 댓글 수정 -->
 <script>
@@ -121,18 +121,75 @@ function doModifyCafeReview(cafeReviewId) {
 				<div class="review-count-num">${cafe.reviewCount}</div>
 			</div>
 
-			<span class="material-symbols-outlined clock-circle" style="color: #a9a9a9"> schedule </span>
-			<span class="material-symbols-outlined phone" style="color: #a9a9a9"> call </span>
-			<span class="material-symbols-outlined store" style="color: #a9a9a9"> storefront </span>
+			<span class="material-symbols-outlined clock-circle" style="color: #a9a9a9"> schedule </span> <span
+				class="material-symbols-outlined phone" style="color: #a9a9a9"> call </span> <span
+				class="material-symbols-outlined store" style="color: #a9a9a9"> storefront </span>
 
 			<p class="hashtag">#모던 #아늑한 #디저트맛집 #데이트 #반려동물동반</p>
 		</div>
+
+
 		<!-- 카페 지도 -->
 		<div class="cafe-map">
-			<img class="map-img" src="/" />
+			<!-- 			<img class="map-img" src="/" /> -->
 			<div class="map-title">지도보기</div>
-		</div>
 
+			</p>
+			<div id="map" style="width: 525px; height: 323px; top: 63px;"></div>
+
+			<script type="text/javascript"
+				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=06da921fb5b3ede9c345d161a3364b4e&libraries=services"></script>
+			<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    		mapOption = {
+        		center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        		level: 3 // 지도의 확대 레벨
+   		 	};  
+
+		// 지도를 생성합니다    
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+		// 주소-좌표 변환 객체를 생성합니다
+		var geocoder = new kakao.maps.services.Geocoder();
+
+		// 주소로 좌표를 검색합니다
+		geocoder.addressSearch('${cafe.address}', function(result, status) {
+
+   		// 정상적으로 검색이 완료됐으면 
+     		if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시합니다
+//         var marker = new kakao.maps.Marker({
+//             map: map,
+//             position: coords
+//         });
+        
+        var marker = new kakao.maps.Marker({
+    map: map,
+    position: coords,
+    image: new kakao.maps.MarkerImage(
+        'https://velog.velcdn.com/images/yunlinit/post/4dc09125-1305-4779-9c88-36119e795dd0/image.png',
+        new kakao.maps.Size(34, 32),
+        { offset: new kakao.maps.Point(16, 32) }
+    )
+});
+
+
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">${cafe.name}</div>'
+        });
+        infowindow.open(map, marker);
+
+        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+        map.setCenter(coords);
+    		} 
+		});    
+		</script>
+
+		</div>
 
 
 
@@ -148,11 +205,10 @@ function doModifyCafeReview(cafeReviewId) {
 
 					<c:if test="${rq.isLogined() }">
 						<div class="review-input-area">
-						
-							<form action="../cafeReview/doWrite" method="POST" >
-								<input type="hidden" name="cafeId" value="${cafe.id }" />
-								<input type="text" autocomplete="off" placeholder="리뷰를 남겨주세요" name="body"
-									class="review-input-box input input-bordered input-md w-full " />
+
+							<form action="../cafeReview/doWrite" method="POST">
+								<input type="hidden" name="cafeId" value="${cafe.id }" /> <input type="text" autocomplete="off"
+									placeholder="리뷰를 남겨주세요" name="body" class="review-input-box input input-bordered input-md w-full " />
 								<!-- 								<button class="review-write-btn btn btn-sm">등록</button> -->
 								<input class="review-write-btn btn btn-sm" type="submit" value="등록" />
 							</form>
@@ -175,12 +231,15 @@ function doModifyCafeReview(cafeReviewId) {
 							<div class="user-nickname 리뷰작성자">${cafeReview.extra__writer }
 								<div id="reviewRegDate-${cafeReview.id }" style="font-size: 11px; font-weight: 300; color: #a9a9a9;">${cafeReview.regDate.substring(0,10) }</div>
 							</div>
-							
-							
+
+
 							<div class="review-body 리뷰내용">
 								<span id="review-${cafeReview.id }">${cafeReview.body }</span>
-								<form method="POST" id="modify-form-${cafeReview.id }" style="display:none; position: absolute; top: 20px; left: 0; width:100%; z-index: 1;" action="/usr/cafeReview/doModify">
-									<input style="width: 1110px; height: 35px; margin-top:-17px; " type="text" value="${cafeReview.body }" name="cafeReview-text-${cafeReview.id }" />
+								<form method="POST" id="modify-form-${cafeReview.id }"
+									style="display: none; position: absolute; top: 20px; left: 0; width: 100%; z-index: 1;"
+									action="/usr/cafeReview/doModify">
+									<input style="width: 1110px; height: 35px; margin-top: -17px;" type="text" value="${cafeReview.body }"
+										name="cafeReview-text-${cafeReview.id }" />
 								</form>
 							</div>
 
@@ -229,21 +288,11 @@ function doModifyCafeReview(cafeReviewId) {
 	</button>
 	<div class="slide__container">
 		<ul class="slides">
-			<li>
-				<img src="" alt="이미지1">
-			</li>
-			<li>
-				<img src="" alt="이미지2">
-			</li>
-			<li>
-				<img src="" alt="이미지3">
-			</li>
-			<li>
-				<img src="" alt="이미지4">
-			</li>
-			<li>
-				<img src="" alt="이미지5">
-			</li>
+			<li><img src="" alt="이미지1"></li>
+			<li><img src="" alt="이미지2"></li>
+			<li><img src="" alt="이미지3"></li>
+			<li><img src="" alt="이미지4"></li>
+			<li><img src="" alt="이미지5"></li>
 		</ul>
 	</div>
 </div>
@@ -596,7 +645,7 @@ function doModifyCafeReview(cafeReviewId) {
 	width: 269px;
 	height: 28px;
 	top: 16px;
-	left: 50px;
+	left: 10px;
 	font-weight: 600;
 	color: #222222;
 	font-size: 20px;
