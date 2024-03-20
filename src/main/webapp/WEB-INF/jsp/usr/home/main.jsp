@@ -22,7 +22,11 @@
     
 </script>
 
-
+<script>
+    function submitSearchForm() {
+        document.getElementById("searchForm").submit();
+    }
+</script>
 
 
 
@@ -72,16 +76,13 @@
 
 .CrMa {
 	font-size: 220px;
-/* 	font-family: Bavarian; */
+	/* 	font-family: Bavarian; */
 	font-weight: 400;
 	position: absolute;
 	top: 300px;
 	left: 50%;
 	transform: translateX(-50%);
 }
-
-
-
 
 .Vector {
 	font-size: 25px;
@@ -108,8 +109,8 @@
 
 .MyCafeFinder {
 	font-size: 32px;
- font-family: "Julius Sans One", sans-serif;
-/* 	font-weight: 500; */
+	font-family: "Julius Sans One", sans-serif;
+	/* 	font-weight: 500; */
 	letter-spacing: 6.40px;
 	position: absolute;
 	top: 214px;
@@ -124,7 +125,9 @@
 	<div class="background-image">
 		<div class="Main1">
 			<div class="Vector">〉〉</div>
-			<div class="CrMa"><img src="https://velog.velcdn.com/images/yunlinit/post/29de0688-d442-4346-8d16-16101822b4b3/image.png" alt="Crèma" /></div>
+			<div class="CrMa">
+				<img src="https://velog.velcdn.com/images/yunlinit/post/29de0688-d442-4346-8d16-16101822b4b3/image.png" alt="Crèma" />
+			</div>
 			<div class="ForTheBestCoffeeMoments">FOR THE BEST COFFEE MOMENTS</div>
 			<div class="MyCafeFinder">MY CAFE FINDER</div>
 		</div>
@@ -173,19 +176,18 @@
 <!-- 이미지 아래 페이지 내용 추가 -->
 
 <!-- 날씨위젯 -->
-<div class="weather-widget" style="margin-left: 20px; margin-bottom: 50px; position: relative; ">
-    <div id="ww_dd38e1ffbef2c" v='1.3' loc='id'
-        a='{"t":"responsive","lang":"ko","sl_lpl":1,"ids":["wl2308"],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"#FFFFFF00","cl_font":"rgba(120,120,120,1)","cl_cloud":"#d4d4d4","cl_persp":"#2196F3","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","sl_tof":"3","el_wfc":3,"cl_odd":"#00000000"}'
-        style="width: 230px;">
-        More forecasts:
-        <a href="https://oneweather.org/seoul/30_days/" id="ww_dd38e1ffbef2c_u" target="_blank">Weather forecast Seoul
-            30days</a>
-    </div>
-    <script async src="https://app2.weatherwidget.org/js/?id=ww_dd38e1ffbef2c"></script>
+<div class="weather-widget" style="margin-left: 20px; margin-bottom: 50px; position: relative;">
+	<div id="ww_dd38e1ffbef2c" v='1.3' loc='id'
+		a='{"t":"responsive","lang":"ko","sl_lpl":1,"ids":["wl2308"],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"#FFFFFF00","cl_font":"rgba(120,120,120,1)","cl_cloud":"#d4d4d4","cl_persp":"#2196F3","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","sl_tof":"3","el_wfc":3,"cl_odd":"#00000000"}'
+		style="width: 230px;">
+		More forecasts:
+		<a href="https://oneweather.org/seoul/30_days/" id="ww_dd38e1ffbef2c_u" target="_blank">Weather forecast Seoul
+			30days</a>
+	</div>
+	<script async src="https://app2.weatherwidget.org/js/?id=ww_dd38e1ffbef2c"></script>
 </div>
 
 <style>
-
 </style>
 
 
@@ -204,16 +206,33 @@
 				src="https://velog.velcdn.com/images/yunlinit/post/3654e399-5a73-4acf-a263-e24167d3871d/image.jpg" />
 		</div>
 
+		<!-- 		<div class="search-box"> -->
+		<!-- 			<div class="how-about-here">오늘은 이런 카페 어떠세요?</div> -->
+
+		<!-- 			<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs max-w-xs"> <input -->
+		<!-- 				type="text" class="grow" placeholder="테라스 카페" /> <a href="/"> -->
+		<!-- 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"> -->
+		<!-- 								<path fill-rule="evenodd" -->
+		<!-- 							d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" -->
+		<!-- 							clip-rule="evenodd" /></svg> -->
+		<!-- 				</a> -->
+		<!-- 		</div> -->
+
+
 		<div class="search-box">
 			<div class="how-about-here">오늘은 이런 카페 어떠세요?</div>
-
-			<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs max-w-xs"> <input
-				type="text" class="grow" placeholder="테라스 카페" /> <a href="/">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
-								<path fill-rule="evenodd"
-							d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-							clip-rule="evenodd" /></svg>
-				</a>
+			<form action="/usr/findcafe/searchKeyword" method="get" id="searchForm">
+				<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs max-w-xs"> <input
+					type="text" class="grow" id="keyword" name="keyword" placeholder="테라스 카페" /> <a href="javascript:;"
+						onclick="submitSearchForm()">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
+                    <path fill-rule="evenodd"
+								d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+								clip-rule="evenodd" />
+                </svg>
+					</a>
+				</label>
+			</form>
 		</div>
 	</div>
 
@@ -247,13 +266,11 @@
 
 .cremaRecommends span {
 	font-size: 70px;
-  font-family: "Vidaloka", serif;
+	font-family: "Vidaloka", serif;
 	font-weight: 400;
 	letter-spacing: 1px;
 	word-wrap: break-word;
 	color: #66666;
-	
-	
 }
 
 .Recommends {
@@ -273,7 +290,8 @@
 	position: relative;
 	/* 	color: #6D6D6D; */
 	color: #755a44;
-	font-style: italic; font-size : 18px;
+	font-style: italic;
+	font-size: 18px;
 	font-family: Pretendard;
 	font-weight: 500;
 	letter-spacing: 1.5px;
