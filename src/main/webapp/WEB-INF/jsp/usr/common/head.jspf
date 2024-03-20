@@ -151,7 +151,7 @@ header {
 
 				<!-- 				</label></li> -->
 
-				<form action="/cafe/searchList" method="get" id="searchForm">
+				<form action="/usr/findcafe/searchKeyword" method="get" id="searchForm">
 					<li><label class="search-menu-item input input-bordered flex items-center gap-2 input-xs"> <input
 							type="text" class="grow" id="keyword" name="keyword" placeholder="Search" /> <a href="javascript:;"
 								onclick="submitSearchForm()">
