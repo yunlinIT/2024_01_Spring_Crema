@@ -8,31 +8,30 @@ import org.springframework.stereotype.Service;
 import com.example.demo.repository.CafeRepository;
 import com.example.demo.vo.Cafe;
 
-
 @Service
 public class CafeService {
 
-    @Autowired
-    private CafeRepository cafeRepository;
+	@Autowired
+	private CafeRepository cafeRepository;
 
-    // 웹 크롤러를 통해 카페 데이터를 가져와서 저장하는 메서드
-    public void saveCafeDataFromWebCrawler(List<Cafe> cafes) {
+	// 웹 크롤러를 통해 카페 데이터를 가져와서 저장하는 메서드
+	public void saveCafeDataFromWebCrawler(List<Cafe> cafes) {
 
-        for (Cafe cafe : cafes) {
-        	           
-            int count = cafeRepository.countDuplicateCafeName(cafe.getName());
-            
-            if (count == 0) {
-            	 cafeRepository.insertCafe(cafe); 
-            } 
-        }
-    }
+		for (Cafe cafe : cafes) {
+
+			int count = cafeRepository.countDuplicateCafeName(cafe.getName());
+
+			if (count == 0) {
+				cafeRepository.insertCafe(cafe);
+			}
+		}
+	}
 
 	public List<Cafe> getForPrintCafes(int itemsInAPage, int page) {
-		
+
 		int limitFrom = (page - 1) * itemsInAPage;
 		int limitTake = itemsInAPage;
-		
+
 		return cafeRepository.getForPrintCafes(limitFrom, limitTake);
 	}
 
@@ -45,20 +44,13 @@ public class CafeService {
 		return cafeRepository.getCafesCount();
 	}
 
-
 	public void updateReviewCount() {
 		cafeRepository.updateReviewCount();
 	}
 
 
+	public List<Cafe> searchCafes(String keyword) {
+		return cafeRepository.searchCafes(keyword);
+	}
 
-
-	
-	
-	
-	
-	
-	
 }
-
-

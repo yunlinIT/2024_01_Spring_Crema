@@ -2,6 +2,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
+
+
+<script>
+function submitSearchForm() {
+    var keyword = document.getElementById('keyword').value;
+    document.getElementById('searchForm').action = "/cafes/search?keyword=" + encodeURIComponent(keyword);
+    document.getElementById('searchForm').submit();
+}
+
+</script>
+
+
 <style>
 header {
 	position: fixed;
@@ -44,12 +56,15 @@ header {
 <!-- 구글폰트(Cantarell) 불러오기 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+	rel="stylesheet">
 
 <!-- 구글폰트(Julius Sans One) 불러오기 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&family=Julius+Sans+One&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&family=Julius+Sans+One&display=swap"
+	rel="stylesheet">
 
 <!-- 구글폰트 (Vidaloka) 불러오기 -->
 
@@ -124,21 +139,38 @@ header {
 
 			<a href=""></a>
 			<ul class="flex flex2">
-			
-				<!-- 헤더 검색창 -->
-				<li><label class="search-menu-item input input-bordered flex items-center gap-2 input-xs"> <input
-						type="text" class="grow" placeholder="Search" /> <a href="/">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
-								<path fill-rule="evenodd"
-									d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-									clip-rule="evenodd" /></svg>
-						</a>
 
-				</label></li>
-<li class=""><a class="h-full px-3 flex items-center btn-theme-toggle" href="javascript:Theme__toggle();">
-						<span>🌞</span>
-						<span>🌚</span>
-					</a></li>
+				<!-- 				헤더 검색창 -->
+				<!-- 				<li><label class="search-menu-item input input-bordered flex items-center gap-2 input-xs"> <input -->
+				<!-- 						type="text" class="grow" placeholder="Search" /> <a href="/"> -->
+				<!-- 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"> -->
+				<!-- 								<path fill-rule="evenodd" -->
+				<!-- 									d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" -->
+				<!-- 									clip-rule="evenodd" /></svg> -->
+				<!-- 						</a> -->
+
+				<!-- 				</label></li> -->
+
+				<form action="/cafe/searchList" method="get" id="searchForm">
+					<li><label class="search-menu-item input input-bordered flex items-center gap-2 input-xs"> <input
+							type="text" class="grow" id="keyword" name="keyword" placeholder="Search" /> <a href="javascript:;"
+								onclick="submitSearchForm()">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
+                    <path fill-rule="evenodd"
+										d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+										clip-rule="evenodd" />
+                </svg>
+							</a>
+					</label></li>
+				</form>
+				
+				
+
+
+				<!-- <li class=""><a class="h-full px-3 flex items-center btn-theme-toggle" href="javascript:Theme__toggle();"> -->
+				<!-- 						<span>🌞</span> -->
+				<!-- 						<span>🌚</span> -->
+				<!-- 					</a></li> -->
 				<c:if test="${!rq.isLogined() }">
 					<li><a class="hover:underline" href="${rq.loginUri }">로그인</a></li>
 					<li><a class="hover:underline" href="../member/join">회원가입</a></li>

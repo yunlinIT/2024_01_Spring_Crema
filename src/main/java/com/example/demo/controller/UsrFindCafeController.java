@@ -24,10 +24,10 @@ public class UsrFindCafeController {
 
 	@Autowired
 	private CafeService cafeService;
-	
+
 	@Autowired
 	private CafeRepository cafeRepository;
-	
+
 	@Autowired
 	private CafeReviewService cafeReviewService;
 
@@ -36,7 +36,6 @@ public class UsrFindCafeController {
 
 		return "/usr/findcafe/likeList";
 	}
-
 
 	@GetMapping("/crawl")
 	public String crawlAndSaveData() {
@@ -55,11 +54,9 @@ public class UsrFindCafeController {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		int cafesCount = cafeService.getCafesCount();
-		
-		cafeRepository.updateReviewCount();
-		
 
-	
+		cafeRepository.updateReviewCount();
+
 		// 한페이지에 글 10개씩이야
 		// 글 20개 -> 2 page
 		// 글 24개 -> 3 page
@@ -101,14 +98,18 @@ public class UsrFindCafeController {
 //		model.addAttribute("isAlreadyAddBadRp",
 //				reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "article"));
 
-
-		
-		
-		
-		
-		
-		
 		return "usr/findcafe/cafeDetail";
 
 	}
+
+	
+	@GetMapping("/cafes/searchList")
+	public String searchCafes(@RequestParam(required = false) String keyword, Model model) {
+		if (keyword != null) {
+			List<Cafe> cafes = cafeService.searchCafes(keyword);
+			model.addAttribute("cafes", cafes);
+		}
+		return "/usr/findcafe/searchList";
+	}
+
 }

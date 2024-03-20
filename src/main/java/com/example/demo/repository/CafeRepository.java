@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-import com.example.demo.vo.Article;
 import com.example.demo.vo.Cafe;
 
 @Mapper
@@ -82,5 +82,12 @@ public interface CafeRepository {
 						""")
 	public void updateReviewCount();
 
+	@Select("""
+			SELECT * FROM cafe
+			WHERE `name` LIKE CONCAT('%', #{keyword}, '%')
+			OR `address` LIKE CONCAT('%', #{keyword}, '%')
+			OR `hashtag` LIKE CONCAT('%', #{keyword}, '%')
+			""")
+	List<Cafe> searchCafes(@Param("keyword") String keyword);
 
 }
