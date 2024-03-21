@@ -4,7 +4,6 @@
 <%@ include file="../common/mainHead.jspf"%>
 
 
-
 <script>
     // 스크롤 이벤트 리스너 등록
     window.addEventListener('scroll', function() {
@@ -168,30 +167,19 @@
 </html>
 
 
-
-
 <!-- 이미지 위로 페이지 내용 추가 -->
 
 </div>
 <!-- 이미지 아래 페이지 내용 추가 -->
 
-<!-- 날씨위젯 -->
-<div class="weather-widget" style="margin-left: 20px; margin-bottom: 50px; position: relative;">
-	<div id="ww_dd38e1ffbef2c" v='1.3' loc='id'
-		a='{"t":"responsive","lang":"ko","sl_lpl":1,"ids":["wl2308"],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"#FFFFFF00","cl_font":"rgba(120,120,120,1)","cl_cloud":"#d4d4d4","cl_persp":"#2196F3","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","sl_tof":"3","el_wfc":3,"cl_odd":"#00000000"}'
-		style="width: 230px;">
-		More forecasts:
-		<a href="https://oneweather.org/seoul/30_days/" id="ww_dd38e1ffbef2c_u" target="_blank">Weather forecast Seoul
-			30days</a>
-	</div>
-	<script async src="https://app2.weatherwidget.org/js/?id=ww_dd38e1ffbef2c"></script>
-</div>
 
-<style>
-</style>
+
+
 
 
 <!-- 날씨 테마 섹션 -->
+
+
 <div class="weather-section mx-auto">
 	<div class="recommendation mx-auto">
 		<div class="indent">
@@ -205,20 +193,11 @@
 			<img class="Weather-img"
 				src="https://velog.velcdn.com/images/yunlinit/post/3654e399-5a73-4acf-a263-e24167d3871d/image.jpg" />
 		</div>
+		
 
-		<!-- 		<div class="search-box"> -->
-		<!-- 			<div class="how-about-here">오늘은 이런 카페 어떠세요?</div> -->
-
-		<!-- 			<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs max-w-xs"> <input -->
-		<!-- 				type="text" class="grow" placeholder="테라스 카페" /> <a href="/"> -->
-		<!-- 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"> -->
-		<!-- 								<path fill-rule="evenodd" -->
-		<!-- 							d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" -->
-		<!-- 							clip-rule="evenodd" /></svg> -->
-		<!-- 				</a> -->
-		<!-- 		</div> -->
-
-
+<div class="weather-widget" style="margin-left: 31%; margin-top:15%;">
+	<div id="ww_d7d9d3fee7d81" v='1.3' loc='id' a='{"t":"horizontal","lang":"ko","sl_lpl":1,"ids":["wl2308"],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"#FFFFFF00","cl_font":"#000000","cl_cloud":"#d4d4d4","cl_persp":"#2196F3","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","el_whr":3,"el_phw":3}' style="width:500px;">More forecasts: <a href="https://oneweather.org/seoul/30_days/" id="ww_d7d9d3fee7d81_u" target="_blank">30 day weather forecast Seoul</a></div><script async src="https://app2.weatherwidget.org/js/?id=ww_d7d9d3fee7d81"></script>
+</div>
 		<div class="search-box">
 			<div class="how-about-here">오늘은 이런 카페 어떠세요?</div>
 			<form action="/usr/findcafe/searchKeyword" method="get" id="searchForm">
@@ -237,6 +216,10 @@
 	</div>
 
 </div>
+
+
+
+
 
 <!-- 날씨테마 CSS -->
 
