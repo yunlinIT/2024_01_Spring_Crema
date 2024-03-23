@@ -4,14 +4,23 @@
 
 
 
-<script>
-function submitSearchForm() {
-    var keyword = document.getElementById('keyword').value;
-    document.getElementById('searchForm').action = "/cafes/search?keyword=" + encodeURIComponent(keyword);
-    document.getElementById('searchForm').submit();
-}
 
+
+<script>
+    function submitSearchForm() {
+        document.getElementById("searchForm").submit();
+    }
 </script>
+
+<!-- <script> -->
+<!-- function submitSearchForm() {
+     var keyword = document.getElementById('keyword').value;
+     document.getElementById('searchForm').action = "/cafes/search?keyword=" + encodeURIComponent(keyword);
+     document.getElementById('searchForm').submit();
+ }
+
+<!-- </script> -->
+
 
 
 <style>
@@ -137,7 +146,7 @@ header {
 					</ul></li>
 			</ul>
 
-			<a href=""></a>
+			
 			<ul class="flex flex2">
 
 				<!-- 				헤더 검색창 -->

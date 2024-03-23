@@ -101,7 +101,9 @@ header {
 
 
 			<ul class="flex flex2">
+			
 
+				
 
 				<c:if test="${!rq.isLogined() }">
 					<li><a class="hover:underline" href="../member/login"">로그인</a></li>
