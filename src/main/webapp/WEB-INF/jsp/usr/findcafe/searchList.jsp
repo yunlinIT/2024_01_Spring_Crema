@@ -5,14 +5,32 @@
 <%@ include file="../common/head.jspf"%>
 
 
+
 <!-- 페이지제목 -->
 <div class="page-title">
 	<div class="text-wrapper result">카페 찾기</div>
 </div>
 
 
+
+
 <!-- 카페 검색결과 페이지  -->
 <section class="find-cafe">
+
+	<form action="/usr/findcafe/searchCafes" method="get" id="searchForm">
+
+			<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs">
+				<input type="text" class="grow" id="keyword" name="keyword" placeholder="Search" />
+				<a href="javascript:;" onclick="submitSearchForm()">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
+                    <path fill-rule="evenodd"
+							d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+							clip-rule="evenodd" />
+                </svg>
+				</a>
+			</label>
+
+	</form>
 
 	<!-- 필터바 -->
 	<section class="filter-bar">
@@ -209,13 +227,13 @@
 				data : JSON.stringify({
 					keyword : keyword
 				}), // 키워드를 JSON 형식으로 서버로 전송
-				success : function(response) {
+				success : function(filterList) {
 					// Ajax 요청 성공 시 처리
-					console.log("Filtered cafes:", response); // 받은 응답을 콘솔에 출력
+					console.log("Filtered cafes:", filterList); // 받은 응답을 콘솔에 출력
 
 					// 받은 응답을 사용하여 카페 목록을 업데이트하거나 화면에 출력하는 등의 작업 수행
 					// 예시: 카페 목록을 갱신하는 함수 호출
-					updateCafeList(response);
+					updateCafeList(filterList);
 				},
 				error : function(xhr, status, error) {
 					// Ajax 요청 실패 시 처리
@@ -225,17 +243,45 @@
 		});
 
 		// 카페 목록을 업데이트하는 함수
-		function updateCafeList(cafes) {
-			// cafes를 사용하여 화면에 카페 목록을 업데이트하는 코드 작성
+		// 카페 목록을 업데이트하는 함수
+		function updateCafeList(filterList) {
+		    // 카페 목록을 표시할 HTML 요소를 가져옵니다. 예를 들어 <ul id="cafeList"></ul>과 같은 요소가 있다고 가정합니다.
+		    var cafeListElement = $(".linkbox１");
+
+		    // 이전에 표시된 카페 목록을 초기화합니다.
+		    cafeListElement.empty();
+
+		    // 받은 filterList를 사용하여 카페 목록을 업데이트합니다.
+		    filterList.forEach(function(cafe) {
+		        // 각 카페에 대한 HTML 요소를 생성하여 cafeListElement에 추가합니다.
+		        var cafeItem = $("<li>").text(cafe.name); // 예시로 카페 이름을 텍스트로 추가합니다.
+		        cafeListElement.append(cafeItem);
+		    });
 		}
+
 	});
+</script>
+
+<script>
+	function submitSearchForm() {
+		document.getElementById("searchForm").submit();
+	}
 </script>
 
 
 
 
-
 <!-- 페이지제목 css -->
+
+<style>
+.search-box {
+	position: absolute; /* 절대적 위치 설정 */
+	top: 200px; /* 상단에 위치 */
+	left: 390px; /* 좌측에 위치 */
+	background-color: #ffffff;
+	z-index: 1; /* 다른 요소 위에 표시 */
+}
+</style>
 
 <style>
 .page-title {
@@ -259,6 +305,7 @@
 	display: flex;
 	justify-content: center; /* 좌우 중앙 정렬 */
 	margin-top: 150px
+}
 }
 </style>
 

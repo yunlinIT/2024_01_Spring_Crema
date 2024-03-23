@@ -134,19 +134,31 @@ header {
 			<div class="menu_box_1 flex-grow"></div>
 			<ul class="flex flex1">
 
-				<li><a class="hover:underline" href="../findcafe/searchList?page=1">카페찾기</a></li>
-				<li><a class="hover:underline" href="../article/list?boardId=1&page=1">커뮤니티</a>
+				<li>
+					<a class="hover:underline" href="../findcafe/searchList?page=1">카페찾기</a>
+				</li>
+				<li>
+					<a class="hover:underline" href="../article/list?boardId=1&page=1">커뮤니티</a>
 
 					<ul>
-						<li><a class="hover:underline" href="../article/list?boardId=1&page=1">크레마소식</a></li>
-						<li><a class="hover:underline" href="../article/list?boardId=2&page=1">자유게시판</a></li>
-						<li><a class="hover:underline" href="../article/list?boardId=3&page=1">질문게시판</a></li>
-						<li><a class="hover:underline" href="../article/writeEmail">제휴문의</a></li>
+						<li>
+							<a class="hover:underline" href="../article/list?boardId=1&page=1">크레마소식</a>
+						</li>
+						<li>
+							<a class="hover:underline" href="../article/list?boardId=2&page=1">자유게시판</a>
+						</li>
+						<li>
+							<a class="hover:underline" href="../article/list?boardId=3&page=1">질문게시판</a>
+						</li>
+						<li>
+							<a class="hover:underline" href="../article/writeEmail">제휴문의</a>
+						</li>
 
-					</ul></li>
+					</ul>
+				</li>
 			</ul>
 
-			
+
 			<ul class="flex flex2">
 
 				<!-- 				헤더 검색창 -->
@@ -160,20 +172,22 @@ header {
 
 				<!-- 				</label></li> -->
 
-				<form action="/usr/findcafe/searchKeyword" method="get" id="searchForm">
-					<li><label class="search-menu-item input input-bordered flex items-center gap-2 input-xs"> <input
-							type="text" class="grow" id="keyword" name="keyword" placeholder="Search" /> <a href="javascript:;"
-								onclick="submitSearchForm()">
+				<form action="/usr/findcafe/searchCafes" method="get" id="searchForm">
+					<li>
+						<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs">
+							<input type="text" class="grow" id="keyword" name="keyword" placeholder="Search" />
+							<a href="javascript:;" onclick="submitSearchForm()">
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
                     <path fill-rule="evenodd"
 										d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
 										clip-rule="evenodd" />
                 </svg>
 							</a>
-					</label></li>
+						</label>
+					</li>
 				</form>
-				
-				
+
+
 
 
 				<!-- <li class=""><a class="h-full px-3 flex items-center btn-theme-toggle" href="javascript:Theme__toggle();"> -->
@@ -181,14 +195,23 @@ header {
 				<!-- 						<span>🌚</span> -->
 				<!-- 					</a></li> -->
 				<c:if test="${!rq.isLogined() }">
-					<li><a class="hover:underline" href="${rq.loginUri }">로그인</a></li>
-					<li><a class="hover:underline" href="../member/join">회원가입</a></li>
+					<li>
+						<a class="hover:underline" href="${rq.loginUri }">로그인</a>
+					</li>
+					<li>
+						<a class="hover:underline" href="../member/join">회원가입</a>
+					</li>
 				</c:if>
 				<c:if test="${rq.isLogined() }">
-					<li><a class="hover:underline" href="../findcafe/likeList">나의 찜</a></li>
-					<li><a class="hover:underline" href="/usr/member/myPage">마이페이지</a></li>
-					<li><a onclick="if(confirm('로그아웃하시겠습니까?') == false) return false;" class="hover:underline"
-							href="${rq.logoutUri }">로그아웃</a></li>
+					<li>
+						<a class="hover:underline" href="../findcafe/likeList">나의 찜</a>
+					</li>
+					<li>
+						<a class="hover:underline" href="/usr/member/myPage">마이페이지</a>
+					</li>
+					<li>
+						<a onclick="if(confirm('로그아웃하시겠습니까?') == false) return false;" class="hover:underline" href="${rq.logoutUri }">로그아웃</a>
+					</li>
 				</c:if>
 			</ul>
 		</div>

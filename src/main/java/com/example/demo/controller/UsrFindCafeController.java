@@ -41,7 +41,7 @@ public class UsrFindCafeController {
 		return "/usr/findcafe/likeList";
 	}
 
-	@GetMapping("/crawl")
+	@RequestMapping("/crawl")
 	public String crawlAndSaveData() {
 		List<Cafe> cafes = WebCrawler13.crawlCafes();
 
@@ -70,7 +70,7 @@ public class UsrFindCafeController {
 	}
 
 	@RequestMapping("/usr/findcafe/searchList")
-	public String showsearchList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int page) {
+	public String showSearchList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int page) {
 
 		Rq rq = (Rq) req.getAttribute("rq");
 
@@ -89,7 +89,7 @@ public class UsrFindCafeController {
 
 		model.addAttribute("page", page);
 		model.addAttribute("pagesCount", pagesCount);
-		model.addAttribute("cafes", cafesCount);
+		model.addAttribute("cafesCount", cafesCount);
 		model.addAttribute("cafes", cafes);
 
 		return "/usr/findcafe/searchList";
@@ -123,7 +123,7 @@ public class UsrFindCafeController {
 
 	}
 
-	@GetMapping("/usr/findcafe/searchKeyword")
+	@RequestMapping("/usr/findcafe/searchCafes")
 	public String searchCafes(@RequestParam(required = false) String keyword, Model model) {
 		if (keyword != null) {
 			List<Cafe> cafes = cafeService.searchCafes(keyword);
@@ -136,5 +136,7 @@ public class UsrFindCafeController {
 		}
 		return "/usr/findcafe/searchList";
 	}
+	
+	
 
 }

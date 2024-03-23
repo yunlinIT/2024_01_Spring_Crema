@@ -200,7 +200,7 @@
 </div>
 		<div class="search-box">
 			<div class="how-about-here">오늘은 이런 카페 어떠세요?</div>
-			<form action="/usr/findcafe/searchKeyword" method="get" id="searchForm">
+			<form action="/usr/findcafe/searchCafes" method="get" id="searchForm">
 				<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs max-w-xs"> <input
 					type="text" class="grow" id="keyword" name="keyword" placeholder="테라스 카페" /> <a href="javascript:;"
 						onclick="submitSearchForm()">
