@@ -19,16 +19,16 @@
 
 	<form action="/usr/findcafe/searchCafes" method="get" id="searchForm">
 
-			<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs">
-				<input type="text" class="grow" id="keyword" name="keyword" placeholder="Search" />
-				<a href="javascript:;" onclick="submitSearchForm()">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
+		<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs">
+			<input type="text" class="grow" id="keyword" name="keyword" placeholder="Search" />
+			<a href="javascript:;" onclick="submitSearchForm()">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
                     <path fill-rule="evenodd"
-							d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-							clip-rule="evenodd" />
+						d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+						clip-rule="evenodd" />
                 </svg>
-				</a>
-			</label>
+			</a>
+		</label>
 
 	</form>
 
@@ -216,51 +216,83 @@
 
 <!-- Ajax 코드 -->
 <script>
-	$(document).ready(function() {
-		// 필터 버튼 클릭 이벤트 핸들러
-		$(".filterButton").click(function() {
-			var keyword = $(this).find(".text-wrapper").text(); // 클릭한 버튼의 text-wrapper에서 키워드 추출
-			$.ajax({
-				url : "/usr/findcafe/filterCafes", // 실제 Ajax 요청을 처리할 URL
-				type : "POST", // POST 요청으로 변경
-				contentType : "application/json", // JSON 형식으로 데이터 전송
-				data : JSON.stringify({
-					keyword : keyword
-				}), // 키워드를 JSON 형식으로 서버로 전송
-				success : function(filterList) {
-					// Ajax 요청 성공 시 처리
-					console.log("Filtered cafes:", filterList); // 받은 응답을 콘솔에 출력
+$(document).ready(function() {
+    // 필터 버튼 클릭 이벤트 핸들러 등록
+    $(".filterButton").on("click", function(event) {
+        var keyword = $(this).find(".text-wrapper").text(); // 클릭한 버튼의 text-wrapper에서 키워드 추출
+        $.ajax({
+            url: "/usr/findcafe/filterCafes", // 실제 Ajax 요청을 처리할 URL
+            type: "POST", // POST 요청으로 변경
+            contentType: "application/json", // JSON 형식으로 데이터 전송
+            data: JSON.stringify({
+                keyword: keyword
+            }), // 키워드를 JSON 형식으로 서버로 전송
+            success: function(filterList) {
+                // Ajax 요청 성공 시 처리
+                console.log("Filtered cafes:", filterList); // 받은 응답을 콘솔에 출력
 
-					// 받은 응답을 사용하여 카페 목록을 업데이트하거나 화면에 출력하는 등의 작업 수행
-					// 예시: 카페 목록을 갱신하는 함수 호출
-					updateCafeList(filterList);
-				},
-				error : function(xhr, status, error) {
-					// Ajax 요청 실패 시 처리
-					console.error("Ajax request failed:", status, error);
-				}
-			});
-		});
+                // 받은 응답을 사용하여 카페 목록을 업데이트하거나 화면에 출력하는 등의 작업 수행
+                // 예시: 카페 목록을 갱신하는 함수 호출
+                updateCafeList(filterList);
+            },
+            error: function(xhr, status, error) {
+                // Ajax 요청 실패 시 처리
+                console.error("Ajax request failed:", status, error);
+            }
+        });
 
-		// 카페 목록을 업데이트하는 함수
-		// 카페 목록을 업데이트하는 함수
-		function updateCafeList(filterList) {
-		    // 카페 목록을 표시할 HTML 요소를 가져옵니다. 예를 들어 <ul id="cafeList"></ul>과 같은 요소가 있다고 가정합니다.
-		    var cafeListElement = $(".linkbox１");
+        // 클릭 이벤트 핸들러를 한 번만 실행하도록 이벤트 핸들러 제거
+        $(this).off(event);
+    });
 
-		    // 이전에 표시된 카페 목록을 초기화합니다.
-		    cafeListElement.empty();
+        // 카페 목록을 업데이트하는 함수
+        function updateCafeList(filterList) {
+            // 카페 목록을 표시할 HTML 요소를 가져옵니다. 예를 들어 <div id="cafeList"></div>과 같은 요소가 있다고 가정합니다.
+            var cafeListElement = $(".linkbox１");
 
-		    // 받은 filterList를 사용하여 카페 목록을 업데이트합니다.
-		    filterList.forEach(function(cafe) {
-		        // 각 카페에 대한 HTML 요소를 생성하여 cafeListElement에 추가합니다.
-		        var cafeItem = $("<li>").text(cafe.name); // 예시로 카페 이름을 텍스트로 추가합니다.
-		        cafeListElement.append(cafeItem);
-		    });
-		}
+            // 이전에 표시된 카페 목록을 초기화합니다.
+            cafeListElement.empty();
 
-	});
+            // 받은 filterList를 사용하여 카페 목록을 업데이트합니다.
+            filterList.forEach(function(cafe) {
+                // 각 카페에 대한 HTML 요소를 생성하여 cafeListElement에 추가합니다.
+                var cafeItem = $(`
+                    <div class="cafe-item">
+                        <a href="cafeDetail?id=`+cafe.id+` class="linkbox１">
+                            <div class="content-info-box" style="margin-bottom: 50px">
+                                <div class="cafe-img-box">
+                                    <img src="`+cafe.cafeImgUrl1+`" alt="카페 이미지" />
+                                </div>
+                                <div class="name-address">
+                                    <div class="cafe-name">`+cafe.name+`</div>
+                                    <p class="cafe-address">`+cafe.address+`</p>
+                                </div>
+                                <div class="like-count">
+                                    <span class="material-symbols-outlined"> favorite </span>
+                                    <div class="like-count-num">`+cafe.goodReactionPoint+`</div>
+                                </div>
+                                <div class="review-count">
+                                    <div class="title-review">리뷰</div>
+                                    <div class="review-count-num">`+cafe.reviewCount+`</div>
+                                </div>
+                                <div class="show-distance">
+                                    <div class="num-km-group">
+                                        <div class="km">km</div>
+                                        <div class="distance-num">1.8</div>
+                                        <!-- 카페와의 거리 추가 -->
+                                    </div>
+                                </div>
+                                <div class="hashtag">`+cafe.hashtag+`</div>
+                            </div>
+                        </a>
+                    </div>
+                `);
+                cafeListElement.append(cafeItem);
+            });
+        }
+    });
 </script>
+
 
 <script>
 	function submitSearchForm() {
