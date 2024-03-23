@@ -22,7 +22,7 @@
 			<div class="text-wrapper-3">필터</div>
 
 			<div class="filter-selectall">
-				<button class="selectall-btn badge badge-lg">
+				<button class="selectall-btn badge badge-lg filterButton">
 					<div class="text-wrapper">전체해제</div>
 				</button>
 				<div class="line"></div>
@@ -31,22 +31,22 @@
 			<div class="filter-area">
 				<div class="line"></div>
 				<div class="text-wrapper-2 filter-title">지역</div>
-				<button class="filter-btn-1 daedukgu badge badge-lg">
+				<button class="filter-btn-1 daedukgu badge badge-lg filterButton">
 					<div class="text-wrapper">대덕구</div>
 				</button>
-				<button class="filter-btn-2 yuseonggu badge badge-lg">
+				<button class="filter-btn-2 yuseonggu badge badge-lg filterButton">
 					<div class="text-wrapper">유성구</div>
 				</button>
-				<button class="filter-btn-3 donggu badge badge-l">
+				<button class="filter-btn-3 donggu badge badge-l filterButton">
 					<div class="text-wrapper">동구</div>
 				</button>
-				<button class="filter-btn-4 joongu badge badge-l">
+				<button class="filter-btn-4 joongu badge badge-l filterButton">
 					<div class="text-wrapper">중구</div>
 				</button>
-				<button class="filter-btn-5 seogu badge badge-l">
+				<button class="filter-btn-5 seogu badge badge-l filterButton">
 					<div class="text-wrapper">서구</div>
 				</button>
-				<button class="filter-btn-6 selectall badge badge-l">
+				<button class="filter-btn-6 selectall badge badge-l filterButton">
 					<div class="text-wrapper">전체</div>
 				</button>
 			</div>
@@ -54,49 +54,49 @@
 			<div class="filter-theme">
 				<div class="line"></div>
 				<div class="text-wrapper-2 filter-title">분위기</div>
-				<button class="filter-btn classic badge badge-l">
+				<button class="filter-btn classic badge badge-l filterButton">
 					<div class="text-wrapper">클래식</div>
 				</button>
-				<button class="filter-btn-1 cozy badge badge-lg">
+				<button class="filter-btn-1 cozy badge badge-lg filterButton">
 					<div class="text-wrapper">아늑한</div>
 				</button>
-				<button class="filter-btn-2 natural badge badge-lg">
+				<button class="filter-btn-2 natural badge badge-lg filterButton">
 					<div class="text-wrapper">내추럴</div>
 				</button>
-				<button class="filter-btn-3 simple badge badge-lg">
+				<button class="filter-btn-3 simple badge badge-lg filterButton">
 					<div class="text-wrapper">심플</div>
 				</button>
-				<button class="filter-btn-4 modern badge badge-lg">
+				<button class="filter-btn-4 modern badge badge-lg filterButton">
 					<div class="text-wrapper">모던</div>
 				</button>
-				<button class="filter-btn-5 wide badge badge-lg">
+				<button class="filter-btn-5 wide badge badge-lg filterButton">
 					<div class="text-wrapper">넓은</div>
 				</button>
-				<button class="filter-btn-6 selectall badge badge-lg">
+				<button class="filter-btn-6 selectall badge badge-lg filterButton">
 					<div class="text-wrapper">전체</div>
 				</button>
-				<button class="filter-btn-7 photomatzip badge badge-l">
+				<button class="filter-btn-7 photomatzip badge badge-l filterButton">
 					<div class="text-wrapper">사진맛집</div>
 				</button>
-				<button class="filter-btn-8 viewmatzip badge badge-l">
+				<button class="filter-btn-8 viewmatzip badge badge-l filterButton">
 					<div class="text-wrapper">뷰맛집</div>
 				</button>
-				<button class="filter-btn-9 study badge badge-l">
+				<button class="filter-btn-9 study badge badge-l filterButton">
 					<div class="text-wrapper">업무/공부</div>
 				</button>
-				<button class="filter-btn-10 dating badge badge-l">
+				<button class="filter-btn-10 dating badge badge-l filterButton">
 					<div class="text-wrapper">데이트</div>
 				</button>
-				<button class="filter-btn-11 group badge badge-l">
+				<button class="filter-btn-11 group badge badge-l filterButton">
 					<div class="text-wrapper">단체</div>
 				</button>
-				<button class="filter-btn-12 conversation badge badge-l">
+				<button class="filter-btn-12 conversation badge badge-l filterButton">
 					<div class="text-wrapper">대화</div>
 				</button>
-				<button class="filter-btn-13 cute badge badge-l">
+				<button class="filter-btn-13 cute badge badge-l filterButton">
 					<div class="text-wrapper">아기자기</div>
 				</button>
-				<button class="filter-btn-14 retro badge badge-l">
+				<button class="filter-btn-14 retro badge badge-l filterButton">
 					<div class="text-wrapper">레트로</div>
 				</button>
 			</div>
@@ -104,28 +104,28 @@
 			<div class="filter-facility">
 				<div class="line"></div>
 				<div class="text-wrapper-2">시설</div>
-				<button class="filter-btn comfyseat badge badge-lg">
+				<button class="filter-btn comfyseat badge badge-lg filterButton">
 					<div class="text-wrapper">편한좌석</div>
 				</button>
-				<button class="filter-btn-14 photozone badge badge-lg">
+				<button class="filter-btn-14 photozone badge badge-lg filterButton">
 					<div class="text-wrapper">포토존</div>
 				</button>
-				<button class="filter-btn-1 rent badge badge-lg">
+				<button class="filter-btn-1 rent badge badge-lg filterButton">
 					<div class="text-wrapper">대관</div>
 				</button>
-				<div class="filter-btn-2 socket badge badge-lg">
+				<div class="filter-btn-2 socket badge badge-lg filterButton">
 					<div class="text-wrapper">콘센트</div>
 				</div>
-				<button class="filter-btn-3 terrace badge badge-lg">
+				<button class="filter-btn-3 terrace badge badge-lg filterButton">
 					<div class="text-wrapper">테라스</div>
 					<button>
-						<div class="filter-btn-4 pet badge badge-lg">
+						<div class="filter-btn-4 pet badge badge-lg filterButton">
 							<div class="text-wrapper">반려동물</div>
 						</div>
-						<button class="filter-btn-5 parking badge badge-lg">
+						<button class="filter-btn-5 parking badge badge-lg filterButton">
 							<div class="text-wrapper">주차</div>
 						</button>
-						<button class="filter-btn-6 selectall badge badge-l">
+						<button class="filter-btn-6 selectall badge badge-l filterButton">
 							<div class="text-wrapper">전체</div>
 						</button>
 			</div>
@@ -153,7 +153,7 @@
 					</div>
 					<div class="review-count">
 						<div class="title-review">리뷰</div>
-						<div class="review-count-num">${cafe.reviewCount }</div> 
+						<div class="review-count-num">${cafe.reviewCount }</div>
 					</div>
 					<div class="show-distance">
 						<div class="num-km-group">
@@ -169,30 +169,69 @@
 	</section>
 
 
-
 </section>
 
-	<!-- 페이지네이션 -->
-	<div class="pagination flex justify-center mt-3" style="margin-top: 50px; margin-left: 200px;">
-		<c:set var="paginationLen" value="3" />
-		<c:set var="startPage" value="${page - paginationLen >= 1 ? page - paginationLen : 1}" />
-		<c:set var="endPage" value="${page + paginationLen <= pagesCount ? page + paginationLen : pagesCount}" />
 
-		<c:if test="${startPage > 1 }">
-			<a class="btn btn-circle btn-ghost btn-xs" style="margin-left: 5px; margin-right: 5px;" href="?page=1">1</a>
-			<button class="btn btn-xs btn-circle btn-disabled" style="margin-left: 5px; margin-right: 5px;">...</button>
-		</c:if>
+<!-- 페이지네이션 -->
+<div class="pagination flex justify-center mt-3" style="margin-top: 50px; margin-left: 200px;">
+	<c:set var="paginationLen" value="3" />
+	<c:set var="startPage" value="${page - paginationLen >= 1 ? page - paginationLen : 1}" />
+	<c:set var="endPage" value="${page + paginationLen <= pagesCount ? page + paginationLen : pagesCount}" />
 
-		<c:forEach begin="${startPage }" end="${endPage }" var="i">
-			<a class="btn btn-circle btn-ghost btn-xs ${param.page == i ? 'btn-active' : '' }"
-				style="margin-left: 5px; margin-right: 5px;" href="?page=${i }">${i }</a>
-		</c:forEach>
+	<c:if test="${startPage > 1 }">
+		<a class="btn btn-circle btn-ghost btn-xs" style="margin-left: 5px; margin-right: 5px;" href="?page=1">1</a>
+		<button class="btn btn-xs btn-circle btn-disabled" style="margin-left: 5px; margin-right: 5px;">...</button>
+	</c:if>
 
-		<c:if test="${endPage < pagesCount }">
-			<button class="btn btn-xs btn-circle btn-disabled" style="margin-left: 5px; margin-right: 5px;">...</button>
-			<a class="btn btn-circle btn-ghost btn-xs" style="margin-left: 5px; margin-right: 5px;" href="?page=${pagesCount }">${pagesCount }</a>
-		</c:if>
-	</div>
+	<c:forEach begin="${startPage }" end="${endPage }" var="i">
+		<a class="btn btn-circle btn-ghost btn-xs ${param.page == i ? 'btn-active' : '' }"
+			style="margin-left: 5px; margin-right: 5px;" href="?page=${i }">${i }</a>
+	</c:forEach>
+
+	<c:if test="${endPage < pagesCount }">
+		<button class="btn btn-xs btn-circle btn-disabled" style="margin-left: 5px; margin-right: 5px;">...</button>
+		<a class="btn btn-circle btn-ghost btn-xs" style="margin-left: 5px; margin-right: 5px;" href="?page=${pagesCount }">${pagesCount }</a>
+	</c:if>
+</div>
+
+
+
+<!-- Ajax 코드 -->
+<script>
+	$(document).ready(function() {
+		// 필터 버튼 클릭 이벤트 핸들러
+		$(".filterButton").click(function() {
+			var keyword = $(this).find(".text-wrapper").text(); // 클릭한 버튼의 text-wrapper에서 키워드 추출
+			$.ajax({
+				url : "/usr/findcafe/filterCafes", // 실제 Ajax 요청을 처리할 URL
+				type : "POST", // POST 요청으로 변경
+				contentType : "application/json", // JSON 형식으로 데이터 전송
+				data : JSON.stringify({
+					keyword : keyword
+				}), // 키워드를 JSON 형식으로 서버로 전송
+				success : function(response) {
+					// Ajax 요청 성공 시 처리
+					console.log("Filtered cafes:", response); // 받은 응답을 콘솔에 출력
+
+					// 받은 응답을 사용하여 카페 목록을 업데이트하거나 화면에 출력하는 등의 작업 수행
+					// 예시: 카페 목록을 갱신하는 함수 호출
+					updateCafeList(response);
+				},
+				error : function(xhr, status, error) {
+					// Ajax 요청 실패 시 처리
+					console.error("Ajax request failed:", status, error);
+				}
+			});
+		});
+
+		// 카페 목록을 업데이트하는 함수
+		function updateCafeList(cafes) {
+			// cafes를 사용하여 화면에 카페 목록을 업데이트하는 코드 작성
+		}
+	});
+</script>
+
+
 
 
 

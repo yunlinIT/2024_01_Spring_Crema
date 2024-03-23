@@ -1,13 +1,17 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.crawling.WebCrawler13;
 import com.example.demo.repository.CafeRepository;
@@ -46,6 +50,23 @@ public class UsrFindCafeController {
 		cafeService.saveCafeDataFromWebCrawler(cafes);
 
 		return "/usr/home/main";
+	}
+
+	@RequestMapping("/usr/findcafe/filterCafes")
+	@ResponseBody
+	public List<Cafe> filterCafes(@RequestBody Map<String, String> filterData) {
+		String keyword = filterData.get("keyword");
+		List<Cafe> filteredCafes;
+
+		// 필터링된 카페들을 가져오는 서비스 메서드 호출
+		if (keyword != null) {
+			filteredCafes = cafeService.filterCafesByKeyword(keyword);
+		} else {
+			// 키워드가 없는 경우, 모든 카페 목록 반환
+			filteredCafes = cafeService.getAllCafes();
+		}
+
+		return filteredCafes;
 	}
 
 	@RequestMapping("/usr/findcafe/searchList")
@@ -102,7 +123,6 @@ public class UsrFindCafeController {
 
 	}
 
-	
 	@GetMapping("/usr/findcafe/searchKeyword")
 	public String searchCafes(@RequestParam(required = false) String keyword, Model model) {
 		if (keyword != null) {
@@ -110,9 +130,9 @@ public class UsrFindCafeController {
 			if (cafes.isEmpty()) {
 //	            model.addAttribute("message", "검색 결과가 없습니다.");
 				return "usr/findcafe/searchList2";
-	        } else {
-	            model.addAttribute("cafes", cafes);
-	        }
+			} else {
+				model.addAttribute("cafes", cafes);
+			}
 		}
 		return "/usr/findcafe/searchList";
 	}

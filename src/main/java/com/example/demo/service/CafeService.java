@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.repository.CafeRepository;
 import com.example.demo.vo.Cafe;
@@ -52,5 +53,18 @@ public class CafeService {
 	public List<Cafe> searchCafes(String keyword) {
 		return cafeRepository.searchCafes(keyword);
 	}
+
+
+	
+    @Transactional(readOnly = true)
+    public List<Cafe> getAllCafes() {
+        return cafeRepository.getForPrintCafes(0, Integer.MAX_VALUE);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Cafe> filterCafesByKeyword(String keyword) {
+        return cafeRepository.searchCafes(keyword);
+    }
+
 
 }
