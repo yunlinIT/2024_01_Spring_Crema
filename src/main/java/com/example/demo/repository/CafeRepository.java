@@ -51,23 +51,48 @@ public interface CafeRepository {
 
 	@Select("""
 			<script>
-			SELECT id, name, address, goodReactionPoint, reviewCount, hashtag, cafeImgUrl1
-			FROM cafe
-			GROUP BY id
-			ORDER BY id DESC
-			<if test="limitFrom >= 0 ">
-				LIMIT #{limitFrom}, #{limitTake}
-			</if>
-			</script>
+			     SELECT id, name, address, goodReactionPoint, reviewCount, hashtag, cafeImgUrl1
+			     FROM cafe
+			     GROUP BY id
+			     ORDER BY id DESC
+			     <if test="limitFrom >= 0 ">
+			         LIMIT #{limitFrom}, #{limitTake}
+			     </if>
+			     </script>
 			""")
 	public List<Cafe> getForPrintCafes(int limitFrom, int limitTake);
+	
+	@Select("""
+			<script>
+			     SELECT id, name, address, goodReactionPoint, reviewCount, hashtag, cafeImgUrl1
+			     FROM cafe
+				 WHERE
+		         `name` LIKE CONCAT('%', #{keyword}, '%')
+				 OR `address` LIKE CONCAT('%', #{keyword}, '%')
+				 OR `hashtag` LIKE CONCAT('%', #{keyword}, '%')
+			     GROUP BY id
+			     ORDER BY id DESC
+			     <if test="limitFrom >= 0 ">
+			         LIMIT #{limitFrom}, #{limitTake}
+			     </if>
+			     </script>
+			""")
+	public List<Cafe> getForPrintCafesKeyword(int limitFrom, int limitTake, String keyword);
 
 	@Select("""
 			SELECT COUNT(*)
 			FROM cafe
-			ORDER BY id DESC
 			""")
 	public int getCafesCount();
+	
+	@Select("""
+			SELECT COUNT(*)
+			FROM cafe
+			WHERE `name` LIKE CONCAT('%', #{keyword}, '%')
+			OR `address` LIKE CONCAT('%', #{keyword}, '%')
+			OR `hashtag` LIKE CONCAT('%', #{keyword}, '%')
+			""")
+	public int getCafesCountKeyword(String keyword);
 
 	@Select("""
 			UPDATE cafe AS C

@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -54,19 +55,48 @@ public class UsrFindCafeController {
 
 	@RequestMapping("/usr/findcafe/filterCafes")
 	@ResponseBody
-	public List<Cafe> filterCafes(@RequestBody Map<String, String> filterData) {
+	public Map<String, Object> filterCafes(@RequestBody Map<String, String> filterData) {
+		Map<String, Object> returnMap = new HashMap<>();
+		
 		String keyword = filterData.get("keyword");
-		List<Cafe> filteredCafes;
+		int page = Integer.parseInt(filterData.get("page"));
+		List<Cafe> cafesList;
 
 		// 필터링된 카페들을 가져오는 서비스 메서드 호출
-		if (keyword != null) {
-			filteredCafes = cafeService.filterCafesByKeyword(keyword);
-		} else {
-			// 키워드가 없는 경우, 모든 카페 목록 반환
-			filteredCafes = cafeService.getAllCafes();
-		}
+//		if (keyword != null) {
+//			filteredCafes = cafeService.filterCafesByKeyword(keyword);
+//		} else {
+//			// 키워드가 없는 경우, 모든 카페 목록 반환
+//			filteredCafes = cafeService.getAllCafes();
+//		}
 
-		return filteredCafes;
+		
+		// 한페이지에 글 10개씩이야
+		// 글 20개 -> 2 page
+		// 글 24개 -> 3 page
+		
+		//int cafesCount = cafeService.getCafesCount();
+		
+		int cafesCount = 0;
+		if (keyword.isEmpty()) {
+			cafesCount = cafeService.getCafesCount();
+		}else {
+			cafesCount = cafeService.getCafesCountKeyword(keyword);
+		}
+		
+		int itemsInAPage = 5;
+		//int pagesCount = (int) Math.ceil(cafesCount / (double) itemsInAPage);
+		
+		if (keyword.isEmpty()) {
+			cafesList = cafeService.getForPrintCafes(itemsInAPage, page);
+		}else {
+			cafesList = cafeService.getForPrintCafesKeyword(itemsInAPage, page, keyword);
+		}
+		
+		returnMap.put("cafesTotalCount", cafesCount);
+		returnMap.put("cafesCurrentList", cafesList);
+		
+		return returnMap;
 	}
 
 	@RequestMapping("/usr/findcafe/searchList")

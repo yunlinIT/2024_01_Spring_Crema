@@ -35,6 +35,14 @@ public class CafeService {
 
 		return cafeRepository.getForPrintCafes(limitFrom, limitTake);
 	}
+	
+	public List<Cafe> getForPrintCafesKeyword(int itemsInAPage, int page, String keyword) {
+
+		int limitFrom = (page - 1) * itemsInAPage;
+		int limitTake = itemsInAPage;
+
+		return cafeRepository.getForPrintCafesKeyword(limitFrom, limitTake, keyword);
+	}
 
 	public Cafe getForPrintCafe(int id) {
 		Cafe cafe = cafeRepository.getForPrintCafe(id);
@@ -43,6 +51,10 @@ public class CafeService {
 
 	public int getCafesCount() {
 		return cafeRepository.getCafesCount();
+	}
+	
+	public int getCafesCountKeyword(String keyword) {
+		return cafeRepository.getCafesCountKeyword(keyword);
 	}
 
 	public void updateReviewCount() {
@@ -54,17 +66,15 @@ public class CafeService {
 		return cafeRepository.searchCafes(keyword);
 	}
 
+//    @Transactional(readOnly = true)
+//    public List<Cafe> getAllCafes() {
+//        return cafeRepository.getForPrintCafes(0, Integer.MAX_VALUE);
+//    }
 
-	
-    @Transactional(readOnly = true)
-    public List<Cafe> getAllCafes() {
-        return cafeRepository.getForPrintCafes(0, Integer.MAX_VALUE);
-    }
-
-    @Transactional(readOnly = true)
-    public List<Cafe> filterCafesByKeyword(String keyword) {
-        return cafeRepository.searchCafes(keyword);
-    }
+//    @Transactional(readOnly = true)
+//    public List<Cafe> filterCafesByKeyword(String keyword) {
+//        return cafeRepository.searchCafes(keyword);
+//    }
 
 
 }
