@@ -100,13 +100,15 @@ public class UsrFindCafeController {
 	}
 
 	@RequestMapping("/usr/findcafe/searchList")
-	public String showSearchList(HttpServletRequest req, Model model, @RequestParam(defaultValue = "1") int page) {
+	public String showSearchList(HttpServletRequest req, Model model, int page) {
 
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		int cafesCount = cafeService.getCafesCount();
 
 		cafeRepository.updateReviewCount();
+		
+		//@RequestParam(defaultValue = "1")
 
 		// 한페이지에 글 10개씩이야
 		// 글 20개 -> 2 page

@@ -6,11 +6,11 @@
 
 
 
-<script>
-    function submitSearchForm() {
-        document.getElementById("searchForm").submit();
-    }
-</script>
+<!-- <script> -->
+ <!--   function submitSearchForm() {
+         document.getElementById("searchForm").submit();
+     }
+<!-- </script> -->
 
 <!-- <script> -->
 <!-- function submitSearchForm() {
@@ -81,12 +81,6 @@ header {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Vidaloka&display=swap" rel="stylesheet">
 
-<!-- 슬릭 슬라이더 -->
-<script src="./js/jquery.js"></script>
-<script src="./slick/slick.min.js"></script>
-
-<link rel="stylesheet" href="./css/slick/slick.css" />
-<link rel="stylesheet" href="./css/slick/slick-theme.css" />
 
 
 <script>
