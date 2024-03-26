@@ -173,7 +173,10 @@
 <!-- 이미지 아래 페이지 내용 추가 -->
 
 
-
+<div class="weatherAPI" id="openweathermap-widget-23" style ="margin-top:500px;"></div>
+<script>
+window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 23,cityid: '1835235',appid: '0815402fb71fc4b23c48ae09eefa43a4',units: 'metric',containerid: 'openweathermap-widget-23',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();
+</script>
 
 
 
@@ -184,7 +187,11 @@
 	<div class="recommendation mx-auto">
 		<div class="indent">
 			<div class="cremaRecommends">
-				<span>CREMA<br /></span> <span>RECOMMENDS</span>
+				<span>
+					CREMA
+					<br />
+				</span>
+				<span>RECOMMENDS</span>
 			</div>
 			<div class="Recommends mx-auto">크레마는 오늘같은 날씨에 가기 좋은 카페를 추천해드려요.</div>
 			<div class="weather-comment">바람이 부드럽게 스치는 서늘한 날, 한 모금의 커피 향기가 나를 감싸 안아요.</div>
@@ -193,17 +200,24 @@
 			<img class="Weather-img"
 				src="https://velog.velcdn.com/images/yunlinit/post/3654e399-5a73-4acf-a263-e24167d3871d/image.jpg" />
 		</div>
-		
 
-<div class="weather-widget" style="margin-left: 31%; margin-top:15%;">
-	<div id="ww_d7d9d3fee7d81" v='1.3' loc='id' a='{"t":"horizontal","lang":"ko","sl_lpl":1,"ids":["wl2308"],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"#FFFFFF00","cl_font":"#000000","cl_cloud":"#d4d4d4","cl_persp":"#2196F3","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","el_whr":3,"el_phw":3}' style="width:500px;">More forecasts: <a href="https://oneweather.org/seoul/30_days/" id="ww_d7d9d3fee7d81_u" target="_blank">30 day weather forecast Seoul</a></div><script async src="https://app2.weatherwidget.org/js/?id=ww_d7d9d3fee7d81"></script>
-</div>
+
+		<div class="weather-widget" style="margin-left: 31%; margin-top: 15%;">
+			<div id="ww_d7d9d3fee7d81" v='1.3' loc='id'
+				a='{"t":"horizontal","lang":"ko","sl_lpl":1,"ids":["wl2308"],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"#FFFFFF00","cl_font":"#000000","cl_cloud":"#d4d4d4","cl_persp":"#2196F3","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","el_whr":3,"el_phw":3}'
+				style="width: 500px;">
+				More forecasts:
+				<a href="https://oneweather.org/seoul/30_days/" id="ww_d7d9d3fee7d81_u" target="_blank">30 day weather forecast
+					Seoul</a>
+			</div>
+			<script async src="https://app2.weatherwidget.org/js/?id=ww_d7d9d3fee7d81"></script>
+		</div>
 		<div class="search-box">
 			<div class="how-about-here">오늘은 이런 카페 어떠세요?</div>
 			<form action="/usr/findcafe/searchCafes" method="get" id="searchForm">
-				<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs max-w-xs"> <input
-					type="text" class="grow" id="keyword" name="keyword" placeholder="테라스 카페" /> <a href="javascript:;"
-						onclick="submitSearchForm()">
+				<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs max-w-xs">
+					<input type="text" class="grow" id="keyword" name="keyword" placeholder="테라스 카페" />
+					<a href="javascript:;" onclick="submitSearchForm()">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
                     <path fill-rule="evenodd"
 								d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"

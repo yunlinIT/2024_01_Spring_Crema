@@ -61,13 +61,13 @@ public interface CafeRepository {
 			     </script>
 			""")
 	public List<Cafe> getForPrintCafes(int limitFrom, int limitTake);
-	
+
 	@Select("""
 			<script>
 			     SELECT id, name, address, goodReactionPoint, reviewCount, hashtag, cafeImgUrl1
 			     FROM cafe
 				 WHERE
-		         `name` LIKE CONCAT('%', #{keyword}, '%')
+			        `name` LIKE CONCAT('%', #{keyword}, '%')
 				 OR `address` LIKE CONCAT('%', #{keyword}, '%')
 				 OR `hashtag` LIKE CONCAT('%', #{keyword}, '%')
 			     GROUP BY id
@@ -84,7 +84,7 @@ public interface CafeRepository {
 			FROM cafe
 			""")
 	public int getCafesCount();
-	
+
 	@Select("""
 			SELECT COUNT(*)
 			FROM cafe
