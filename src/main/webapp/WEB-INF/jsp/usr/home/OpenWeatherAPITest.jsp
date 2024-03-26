@@ -36,7 +36,8 @@
 </head>
 <body>
     <h1>Weather Information</h1>
-    <button onclick="fetchWeather()">Get Weather</button>
+    <button onclick="fetchWeather()" style ="margin-top: 50px; margin-left: 50px;">Get Weather</button>
+    
 </body>
 </html>
 

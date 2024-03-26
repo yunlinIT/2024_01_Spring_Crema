@@ -16,10 +16,10 @@ public class UsrAPITestController {
 		return "/usr/home/APITest";
 	}
 	
-	@RequestMapping("/usr/home/APITest2")
+	@RequestMapping("/usr/home/OpenWeatherAPITest")
 	public String APITest2() {
 
-		return "/usr/home/APITest2";
+		return "/usr/home/OpenWeatherAPITest";
 	}
 	
 	@RequestMapping("/usr/home/APITest3")
