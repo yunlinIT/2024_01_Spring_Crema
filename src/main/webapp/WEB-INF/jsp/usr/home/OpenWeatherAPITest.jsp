@@ -32,13 +32,16 @@
                     console.error('Error:', error);
                 });
         }
+        
+        fetchWeather();
+        
     </script>
 </head>
-<body>
-    <h1>Weather Information</h1>
-    <button onclick="fetchWeather()" style ="margin-top: 50px; margin-left: 50px;">Get Weather</button>
+<!-- <body> -->
+<!--     <h1>Weather Information</h1> -->
+<!--     <button onclick="fetchWeather()" style ="margin-top: 50px; margin-left: 50px;">Get Weather</button> -->
     
-</body>
+<!-- </body> -->
 </html>
 
 

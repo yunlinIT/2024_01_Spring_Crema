@@ -173,9 +173,79 @@
 <!-- 이미지 아래 페이지 내용 추가 -->
 
 
+<!-- OpenWeather 위젯 -->
 <div class="weatherAPI" id="openweathermap-widget-23" style ="margin-top:500px;"></div>
 <script>
 window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 23,cityid: '1835235',appid: '0815402fb71fc4b23c48ae09eefa43a4',units: 'metric',containerid: 'openweathermap-widget-23',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();
+</script>
+
+
+<!-- <!-- OpenWeatherAPI -->
+
+<!-- <script> -->
+<!--          function fetchWeather() {
+//             var city = "Daejeon";
+//             var apiKey = "4aeb4c84293bc9b4109638849c3b309c";
+//             var lang = "kr";
+
+//             var apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&lang=" + lang + "&units=metric";
+
+//             fetch(apiUrl)
+//                 .then(function(response) {
+//                     return response.json();
+//                 })
+//                 .then(function(data) {
+//                     console.log(data); // 여기서는 데이터를 콘솔에 출력할 것입니다. 필요에 따라 원하는 방식으로 데이터를 처리할 수 있습니다.
+//                 })
+//                 .catch(function(error) {
+//                     console.error('Error:', error);
+//                 });
+//         }
+        
+//         fetchWeather();
+        
+<!--     </script> -->
+
+
+
+
+<!-- OpenWeatherAPI -->
+
+<script>
+    function fetchWeather() {
+        var city = "Daejeon";
+        var apiKey = "4aeb4c84293bc9b4109638849c3b309c";
+        var lang = "kr";
+
+        var apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&lang=" + lang + "&units=metric";
+
+        fetch(apiUrl)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                console.log(data); // 여기서는 데이터를 콘솔에 출력할 것입니다. 필요에 따라 원하는 방식으로 데이터를 처리할 수 있습니다.
+                
+                // 날씨 조건 추출
+                var temperature = data.main.temp;
+                var humidity = data.main.humidity;
+                var weatherId = data.weather[0].id;
+
+                // 날씨에 따라 날씨 코멘트 업데이트
+                var weatherCommentElement = document.querySelector('.weather-section .weather-comment'); // 변경된 부분
+                if (temperature <= 4 && humidity <= 20 && (weatherId < 200 || weatherId > 699)) {
+                    weatherCommentElement.textContent = "한기가 서릿발을 타고 들어와 어느새 마음도 서늘해지는 추운 날 따뜻한 커피 한잔의 온기로 녹아든 순간이 행복할 것 같아요";
+                } else {
+                    weatherCommentElement.textContent = "바람이 부드럽게 스치는 서늘한 날, 한 모금의 커피 향기가 나를 감싸 안아요.";
+                }
+            })
+            .catch(function(error) {
+                console.error('Error:', error);
+            });
+    }
+    
+    fetchWeather();
+    
 </script>
 
 
@@ -230,6 +300,8 @@ window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window
 	</div>
 
 </div>
+
+
 
 
 
