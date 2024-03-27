@@ -232,7 +232,7 @@ function fetchWeather() {
             var weatherCommentElement = document.querySelector('.weather-section .weather-comment');
             var weatherImageElement = document.querySelector('.weather-section .Weather-img');
 
-            if (temperature <= 4 && (weatherId < 200 && weatherId > 699)) {
+            if (temperature <= 4 && (weatherId < 200 || weatherId > 699)) {
                 weatherCommentElement.textContent = "한기가 서릿발을 타고 들어와 어느새 마음도 서늘해지는 추운 날 따뜻한 커피 한잔의 온기로 녹아든 순간이 행복할 것 같아요";
                 weatherImageElement.src = "https://velog.velcdn.com/images/yunlinit/post/35f11685-7a4a-44a7-a854-6512fc43ec83/image.png";
             } else if (temperature >= 5 && temperature <= 11 && (weatherId < 200 || weatherId > 699)) {
