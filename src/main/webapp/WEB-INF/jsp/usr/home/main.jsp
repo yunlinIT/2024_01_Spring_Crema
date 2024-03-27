@@ -212,41 +212,58 @@ window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window
 <!-- OpenWeatherAPI -->
 
 <script>
-    function fetchWeather() {
-        var city = "Daejeon";
-        var apiKey = "4aeb4c84293bc9b4109638849c3b309c";
-        var lang = "kr";
 
-        var apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&lang=" + lang + "&units=metric";
+function fetchWeather() {
+    var city = "Daejeon";
+    var apiKey = "4aeb4c84293bc9b4109638849c3b309c";
+    var lang = "kr";
 
-        fetch(apiUrl)
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function(data) {
-                console.log(data); // 여기서는 데이터를 콘솔에 출력할 것입니다. 필요에 따라 원하는 방식으로 데이터를 처리할 수 있습니다.
-                
-                // 날씨 조건 추출
-                var temperature = data.main.temp;
-                var humidity = data.main.humidity;
-                var weatherId = data.weather[0].id;
+    var apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&lang=" + lang + "&units=metric";
 
-                // 날씨에 따라 날씨 코멘트 업데이트
-                var weatherCommentElement = document.querySelector('.weather-section .weather-comment'); // 변경된 부분
-                if (temperature <= 4 && humidity <= 20 && (weatherId < 200 || weatherId > 699)) {
-                    weatherCommentElement.textContent = "한기가 서릿발을 타고 들어와 어느새 마음도 서늘해지는 추운 날 따뜻한 커피 한잔의 온기로 녹아든 순간이 행복할 것 같아요";
-                } else {
-                    weatherCommentElement.textContent = "바람이 부드럽게 스치는 서늘한 날, 한 모금의 커피 향기가 나를 감싸 안아요.";
-                }
-            })
-            .catch(function(error) {
-                console.error('Error:', error);
-            });
-    }
-    
-    fetchWeather();
+    fetch(apiUrl)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            console.log(data);
+
+            var temperature = data.main.temp;
+            var humidity = data.main.humidity;
+            var weatherId = data.weather[0].id;
+
+            var weatherCommentElement = document.querySelector('.weather-section .weather-comment');
+            var weatherImageElement = document.querySelector('.weather-section .Weather-img');
+
+            if (temperature <= 4 && (weatherId < 200 || weatherId > 699)) {
+                weatherCommentElement.textContent = "한기가 서릿발을 타고 들어와 어느새 마음도 서늘해지는 추운 날 따뜻한 커피 한잔의 온기로 녹아든 순간이 행복할 것 같아요";
+                weatherImageElement.src = "https://velog.velcdn.com/images/yunlinit/post/35f11685-7a4a-44a7-a854-6512fc43ec83/image.png";
+            } else if (temperature >= 5 && temperature <= 11 && (weatherId < 200 || weatherId > 699)) {
+                weatherCommentElement.textContent = "찬바람이 불어오는 날 코 끝에 쌀쌀한 공기가 느껴질때면 항상 따뜻한 커피 한잔이 생각나요";
+                weatherImageElement.src = "https://velog.velcdn.com/images/yunlinit/post/8e174410-44d9-4d24-b972-c303f6b197bf/image.png";
+            } else if (temperature >= 12 && temperature <= 19 && (weatherId < 200 || weatherId > 699)) {
+                weatherCommentElement.textContent = "바람이 부드럽게 스치는 서늘한 날, 한 모금의 커피 향기가 나를 감싸 안아요";
+                weatherImageElement.src = "https://velog.velcdn.com/images/yunlinit/post/51c47653-7837-4f70-bdcb-203ec2cf32a5/image.png";
+            } else if (temperature >= 20 && temperature <= 27 && (weatherId < 200 || weatherId > 699)) {
+                weatherCommentElement.textContent = "바스락거리는 셔츠 한장만 걸쳐도 햇살의 온기와 시원한 바람이 어우러지는 날 달콤 쌉싸름한 커피 한잔이 생각나요";
+                weatherImageElement.src = "https://velog.velcdn.com/images/yunlinit/post/0bed2c81-5d07-4dcf-a928-25c987ace1f9/image.png";
+            } else if (temperature >= 28 && (weatherId < 200 || weatherId > 699)) {
+                weatherCommentElement.textContent = "한낮의 뜨거운 뙤약볕 아래 얼음이 스르륵 녹는 시원한 아이스 커피 한 잔으로 산뜻함을 느리고 싶은 날이에요";
+                weatherImageElement.src = "https://velog.velcdn.com/images/yunlinit/post/0cf48676-5563-424b-b823-06f6a5c86efb/image.png";
+            } else {
+                weatherCommentElement.textContent = "커피 한잔 어떠신가요?";
+                weatherImageElement.src = "https://velog.velcdn.com/images/yunlinit/post/51c47653-7837-4f70-bdcb-203ec2cf32a5/image.png";
+            }
+        })
+        .catch(function(error) {
+            console.error('Error:', error);
+        });
+}
+
+fetchWeather();
+
     
 </script>
+
 
 
 
