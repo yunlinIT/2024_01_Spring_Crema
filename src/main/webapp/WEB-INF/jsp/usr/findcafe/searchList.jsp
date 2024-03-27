@@ -8,64 +8,66 @@
 <script>
 
     <!-- Ajax 코드 -->
-
     $(document).ready(function() {
-        var currentPage = 1; // 초기 페이지 번호
-        var totalPages = 1; // 전체 페이지 수
-        var keyword = "";
+        var currentPage = 1; // 현재 페이지 초기화
+        var totalPages = 1; // 전체 페이지 수 초기화
+        var keyword = ""; // 검색 키워드 초기화
 
         // 필터 버튼 클릭 이벤트 핸들러 등록
         $(".filterButton").on("click", function(event) {
-            keyword = $(this).find(".text-wrapper").text(); // 클릭한 버튼의 text-wrapper에서 키워드 추출
-            currentPage = 1; // 필터가 변경되었으므로 현재 페이지를 다시 1로 설정
-            loadFilteredCafes(keyword, currentPage);
+            keyword = $(this).find(".text-wrapper").text(); // 클릭한 버튼의 텍스트에서 키워드 추출
+            currentPage = 1; // 페이지를 1로 설정하여 필터가 변경되었음을 나타냄
+            loadFilteredCafes(keyword, currentPage); // 필터된 카페들을 불러오는 함수 호출
         });
 
         // View More 버튼 클릭 이벤트 핸들러 등록
         $('.pagination').on('click', '.view-more-btn', function(event) {
             event.preventDefault(); // 기본 동작 방지 (페이지 이동 막기)
             currentPage++; // 다음 페이지로 이동
-            loadFilteredCafes(keyword, currentPage);
+            loadFilteredCafes(keyword, currentPage); // 필터된 카페들을 불러오는 함수 호출
         });
 
+        // 필터된 카페들을 불러오는 함수
         function loadFilteredCafes(keyword, page){
             $.ajax({
-                url: "/usr/findcafe/filterCafes",
-                type: "POST",
-                contentType: "application/json",
-                data: JSON.stringify({
-                    keyword: keyword,
-                    page: page
+                url: "/usr/findcafe/filterCafes", // 요청할 URL
+                type: "POST", // POST 방식으로 요청
+                contentType: "application/json", // 요청 데이터의 타입
+                data: JSON.stringify({ // JSON 형태로 데이터 전송
+                    keyword: keyword, // 키워드 전송
+                    page: page // 페이지 번호 전송
                 }),
-                success: function(dataMap) {
-                    totalPages = Math.ceil(dataMap.cafesTotalCount / 5);
-                    updatePagination(currentPage, totalPages);
-                    updateCafeList(dataMap.cafesCurrentList);
+                success: function(dataMap) { // 요청이 성공했을 때의 콜백 함수
+                    totalPages = Math.ceil(dataMap.cafesTotalCount / 5); // 전체 페이지 수 계산
+                    updatePagination(currentPage, totalPages); // 페이지네이션 업데이트
+                    updateCafeList(dataMap.cafesCurrentList); // 카페 리스트 업데이트
                 },
-                error: function(xhr, status, error) {
-                    console.error("Ajax request failed:", status, error);
+                error: function(xhr, status, error) { // 요청이 실패했을 때의 콜백 함수
+                    console.error("Ajax request failed:", status, error); // 에러 로그 출력
                 }
             });
         }
 
+        // 페이지네이션 업데이트 함수
         function updatePagination(currentPage, totalPages) {
-            var paginationElement = $(".pagination");
-            paginationElement.empty();
+            var paginationElement = $(".pagination"); // 페이지네이션 요소 선택
+            paginationElement.empty(); // 요소 비우기
 
             var viewMoreButton = '';
-            if (currentPage < totalPages) {
-                viewMoreButton = '<a class="btn btn-ghost btn-xs view-more-btn" href="#">View More</a>'; 
+            if (currentPage < totalPages) { // 현재 페이지가 전체 페이지 수보다 작으면
+                viewMoreButton = '<a class="btn btn-ghost btn-xs view-more-btn" href="#">View More</a>'; // View More 버튼 생성
             }
-            paginationElement.html(viewMoreButton);
+            paginationElement.html(viewMoreButton); // 페이지네이션 업데이트
         }
 
+        // 카페 리스트 업데이트 함수
         function updateCafeList(cafeList) {
-            var cafeListElement = $(".linkbox１");
-            var searchResult = $("#search-result");
+            var cafeListElement = $(".linkbox１"); // 카페 리스트 요소 선택
+            var searchResult = $("#search-result"); // 검색 결과 요소 선택
 
-            cafeListElement.empty();
+            cafeListElement.empty(); // 카페 리스트 요소 비우기
 
-            cafeList.forEach(function(cafe) {
+            cafeList.forEach(function(cafe) { // 각 카페에 대해 반복
                 var cafeItem = $(`
                     <div class="cafe-item">
                         <a href="cafeDetail?id=`+cafe.id+` class="linkbox１">
@@ -96,11 +98,11 @@
                         </a>
                     </div>
                 `);
-                searchResult.append(cafeItem);
+                searchResult.append(cafeItem); // 카페 리스트에 카페 아이템 추가
             });
         }
     });
-    
+
     
 // 	검색창 submit 함수
 //     function submitSearchForm() {

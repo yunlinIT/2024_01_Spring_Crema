@@ -18,7 +18,6 @@
     });
     
 
-    
 </script>
 
 <script>
@@ -26,7 +25,6 @@
         document.getElementById("searchForm").submit();
     }
 </script>
-
 
 
 
@@ -174,7 +172,7 @@
 
 
 <!-- OpenWeather 위젯 -->
-<div class="weatherAPI" id="openweathermap-widget-23" style ="margin-top:500px;"></div>
+<div class="weatherAPI" id="openweathermap-widget-23" style="margin-top: 500px; margin-left: 30px; margin-bottom: 20px;"></div>
 <script>
 window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 23,cityid: '1835235',appid: '0815402fb71fc4b23c48ae09eefa43a4',units: 'metric',containerid: 'openweathermap-widget-23',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();
 </script>
@@ -208,8 +206,8 @@ window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window
 
 
 
-
 <!-- OpenWeatherAPI -->
+<!-- 조건에 따라 온도와 날씨 ID를 기반으로 날씨 코멘트와 이미지를 업데이트 -->
 
 <script>
 
@@ -274,11 +272,8 @@ fetchWeather();
 	<div class="recommendation mx-auto">
 		<div class="indent">
 			<div class="cremaRecommends">
-				<span>
-					CREMA
-					<br />
-				</span>
-				<span>RECOMMENDS</span>
+				<span> CREMA <br />
+				</span> <span>RECOMMENDS</span>
 			</div>
 			<div class="Recommends mx-auto">크레마는 오늘같은 날씨에 가기 좋은 카페를 추천해드려요.</div>
 			<div class="weather-comment">바람이 부드럽게 스치는 서늘한 날, 한 모금의 커피 향기가 나를 감싸 안아요.</div>
@@ -302,9 +297,9 @@ fetchWeather();
 		<div class="search-box">
 			<div class="how-about-here">오늘은 이런 카페 어떠세요?</div>
 			<form action="/usr/findcafe/searchCafes" method="get" id="searchForm">
-				<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs max-w-xs">
-					<input type="text" class="grow" id="keyword" name="keyword" placeholder="테라스 카페" />
-					<a href="javascript:;" onclick="submitSearchForm()">
+				<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs max-w-xs"> <input
+					type="text" class="grow" id="keyword" name="keyword" placeholder="테라스 카페" /> <a href="javascript:;"
+						onclick="submitSearchForm()">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
                     <path fill-rule="evenodd"
 								d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
@@ -482,9 +477,6 @@ fetchWeather();
 	top: 30;
 }
 </style>
-
-
-
 
 
 
