@@ -320,7 +320,8 @@
                     weatherImageElement.src = "https://velog.velcdn.com/images/yunlinit/post/203c7e7f-df3f-40d3-8eec-e02996d22372/image.png";
                 }
 
-<!-- 날씨 조건에 따라 검색창의 value를 업데이트하여 추천검색어를 보여줌 -->
+                
+				//날씨 조건에 따라 검색창의 value를 업데이트하여 추천검색어를 보여줌
                 var keywordInput = document.getElementById('keyword');
                 var newValue = "";
 
