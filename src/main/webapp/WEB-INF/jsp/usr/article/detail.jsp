@@ -269,9 +269,9 @@ function doModifyReply(replyId) {
 		<div class="title">${article.title }</div>
 		<div class="writer">${article.extra__writer }</div>
 		<div class="regDate">${article.regDate }</div>
-		<div class="view-count">
-			<div class="viewcount-name article-detail__hit-count">조회수</div>
-			<div class="viewcount-num">${article.hitCount }</div>
+		<div class="view-count"> 조회수
+			<div class="viewcount-name article-detail__hit-count">${article.hitCount }</div>
+<%-- 			<div class="viewcount-num">${article.hitCount }</div> --%>
 		</div>
 		<div class="top-line"></div>
 		<div class="body"><div class="toast-ui-viewer">
@@ -592,8 +592,7 @@ function doModifyReply(replyId) {
 .like-dislike-btns {
 	align-self: start;
 	display: flex;
-	justify-content: space-between;
-	gap: 4px;
+	gap: 10px;
 	margin: 294px 0 -2px;
 }
 

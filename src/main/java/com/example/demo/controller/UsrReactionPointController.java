@@ -54,6 +54,8 @@ public class UsrReactionPointController {
 		int badRP = articleService.getBadRP(relId);
 
 		return ResultData.from(reactionRd.getResultCode(), reactionRd.getMsg(), "goodRP", goodRP, "badRP", badRP);
+		
+		
 	}
 
 	@RequestMapping("/usr/reactionPoint/doBadReaction")
@@ -90,5 +92,16 @@ public class UsrReactionPointController {
 
 		return ResultData.from(reactionRd.getResultCode(), reactionRd.getMsg(), "goodRP", goodRP, "badRP", badRP);
 	}
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
 
 }
