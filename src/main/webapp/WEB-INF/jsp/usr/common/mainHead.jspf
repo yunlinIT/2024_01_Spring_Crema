@@ -87,7 +87,7 @@ header {
 			<div class="menu_box_1 flex-grow"></div>
 			<ul class="flex flex1">
 
-				<li><a class="hover:underline" href="../findcafe/searchList?page=1">카페찾기</a></li>
+				<li><a class="hover:underline" href="../findcafe/searchList">카페찾기</a></li>
 				<li><a class="hover:underline" href="../article/list?boardId=1&page=1">커뮤니티</a>
 
 					<ul>

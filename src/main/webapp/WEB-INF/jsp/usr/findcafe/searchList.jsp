@@ -7,103 +7,144 @@
 <!-- Start | java script -->
 <script>
 
-    <!-- Ajax 코드 -->
-    $(document).ready(function() {
-        var currentPage = 1; // 현재 페이지 초기화
-        var totalPages = 1; // 전체 페이지 수 초기화
-        var keyword = ""; // 검색 키워드 초기화
+<!-- 전역변수 -->
+var currentPage = 1; // 현재 페이지 초기화
+var totalPages = 1; // 전체 페이지 수 초기화
+var keyword = ""; // 검색 키워드 초기화
 
-        // 필터 버튼 클릭 이벤트 핸들러 등록
-        $(".filterButton").on("click", function(event) {
-            keyword = $(this).find(".text-wrapper").text(); // 클릭한 버튼의 텍스트에서 키워드 추출
-            currentPage = 1; // 페이지를 1로 설정하여 필터가 변경되었음을 나타냄
-            loadFilteredCafes(keyword, currentPage); // 필터된 카페들을 불러오는 함수 호출
-        });
 
-        // View More 버튼 클릭 이벤트 핸들러 등록
-        $('.pagination').on('click', '.view-more-btn', function(event) {
-            event.preventDefault(); // 기본 동작 방지 (페이지 이동 막기)
-            currentPage++; // 다음 페이지로 이동
-            loadFilteredCafes(keyword, currentPage); // 필터된 카페들을 불러오는 함수 호출
-        });
+<!-- 페이지 접속 시 최초 실행(onload) 함수 -->
+window.onload = function() {
+    // 페이지가 완전히 로드되면 이 함수가 실행됩니다.
+    // 여기에 실행하고자 하는 코드를 작성합니다.
+    alert('페이지가 로드되었습니다!');
+    
+    loadFilteredCafes('', currentPage);	// 카페검색 최초 리스팅
+};
 
-        // 필터된 카페들을 불러오는 함수
-        function loadFilteredCafes(keyword, page){
-            $.ajax({
-                url: "/usr/findcafe/filterCafes", // 요청할 URL
-                type: "POST", // POST 방식으로 요청
-                contentType: "application/json", // 요청 데이터의 타입
-                data: JSON.stringify({ // JSON 형태로 데이터 전송
-                    keyword: keyword, // 키워드 전송
-                    page: page // 페이지 번호 전송
-                }),
-                success: function(dataMap) { // 요청이 성공했을 때의 콜백 함수
-                    totalPages = Math.ceil(dataMap.cafesTotalCount / 5); // 전체 페이지 수 계산
-                    updatePagination(currentPage, totalPages); // 페이지네이션 업데이트
-                    updateCafeList(dataMap.cafesCurrentList); // 카페 리스트 업데이트
-                },
-                error: function(xhr, status, error) { // 요청이 실패했을 때의 콜백 함수
-                    console.error("Ajax request failed:", status, error); // 에러 로그 출력
-                }
-            });
-        }
 
-        // 페이지네이션 업데이트 함수
-        function updatePagination(currentPage, totalPages) {
-            var paginationElement = $(".pagination"); // 페이지네이션 요소 선택
-            paginationElement.empty(); // 요소 비우기
-
-            var viewMoreButton = '';
-            if (currentPage < totalPages) { // 현재 페이지가 전체 페이지 수보다 작으면
-                viewMoreButton = '<a class="btn btn-ghost btn-xs view-more-btn" href="#">View More</a>'; // View More 버튼 생성
-            }
-            paginationElement.html(viewMoreButton); // 페이지네이션 업데이트
-        }
-
-        // 카페 리스트 업데이트 함수
-        function updateCafeList(cafeList) {
-            var cafeListElement = $(".linkbox１"); // 카페 리스트 요소 선택
-            var searchResult = $("#search-result"); // 검색 결과 요소 선택
-
-            cafeListElement.empty(); // 카페 리스트 요소 비우기
-
-            cafeList.forEach(function(cafe) { // 각 카페에 대해 반복
-                var cafeItem = $(`
-                    <div class="cafe-item">
-                        <a href="cafeDetail?id=`+cafe.id+` class="linkbox１">
-                            <div class="content-info-box" style="margin-bottom: 50px">
-                                <div class="cafe-img-box">
-                                    <img src="`+cafe.cafeImgUrl1+`" alt="카페 이미지" />
-                                </div>
-                                <div class="name-address">
-                                    <div class="cafe-name">`+cafe.name+`</div>
-                                    <p class="cafe-address">`+cafe.address+`</p>
-                                </div>
-                                <div class="like-count">
-                                    <span class="material-symbols-outlined"> favorite </span>
-                                    <div class="like-count-num">`+cafe.goodReactionPoint+`</div>
-                                </div>
-                                <div class="review-count">
-                                    <div class="title-review">리뷰</div>
-                                    <div class="review-count-num">`+cafe.reviewCount+`</div>
-                                </div>
-                                <div class="show-distance">
-                                    <div class="num-km-group">
-                                        <div class="km">km</div>
-                                        <div class="distance-num">1.8</div>
-                                    </div>
-                                </div>
-                                <div class="hashtag">`+cafe.hashtag+`</div>
-                            </div>
-                        </a>
-                    </div>
-                `);
-                searchResult.append(cafeItem); // 카페 리스트에 카페 아이템 추가
-            });
-        }
+<!-- Ajax 코드 -->
+$(document).ready(function() {
+    // 필터 버튼 클릭 이벤트 핸들러 등록
+    $(".filterButton").on("click", function(event) {
+        keyword = $(this).find(".text-wrapper").text(); // 클릭한 버튼의 텍스트에서 키워드 추출
+        currentPage = 1; // 페이지를 1로 설정하여 필터가 변경되었음을 나타냄
+        loadFilteredCafes(keyword, currentPage); // 필터된 카페들을 불러오는 함수 호출
     });
 
+     // View More 버튼 클릭 이벤트 핸들러 등록
+//     $('.pagination').on('click', '.view-more-btn', function(event) {
+//         event.preventDefault(); // 기본 동작 방지 (페이지 이동 막기)
+//         currentPage++; // 다음 페이지로 이동
+//         loadFilteredCafes(keyword, currentPage); // 필터된 카페들을 불러오는 함수 호출
+//     });
     
+	$('.pagination').on('click', 'a', function(event) {
+    	event.preventDefault(); // 기본 동작 방지 (페이지 이동 막기)
+        currentPage = parseInt($(this).attr('href').split('=')[1]); // 클릭한 페이지 번호 추출
+        
+     	// 필터링된 카페 목록을 요청하는 함수 호출
+        loadFilteredCafes(keyword, currentPage);
+    });
+});
+
+<!-- function Area -->
+// 필터된 카페들을 불러오는 함수
+function loadFilteredCafes(keyword, currentPage){
+    $.ajax({
+        url: "/usr/findcafe/filterCafes", // 요청할 URL
+        type: "POST", // POST 방식으로 요청
+        contentType: "application/json", // 요청 데이터의 타입
+        data: JSON.stringify({ 	// JSON 형태로 데이터 전송
+            keyword: keyword, 	// 키워드 전송
+            page: currentPage 	// 페이지 번호 전송
+        }),
+        success: function(dataMap) { // 요청이 성공했을 때의 콜백 함수
+            totalPages = Math.ceil(dataMap.cafesTotalCount / 5); // 전체 페이지 수 계산
+            updatePagination(currentPage, totalPages); // 페이지네이션 업데이트
+            updateCafeList(dataMap.cafesCurrentList); // 카페 리스트 업데이트
+        },
+        error: function(xhr, status, error) { // 요청이 실패했을 때의 콜백 함수
+            console.error("Ajax request failed:", status, error); // 에러 로그 출력
+        }
+    });
+}
+
+/* view more pagination
+// 페이지네이션 업데이트 함수
+function updatePagination(currentPage, totalPages) {
+    var paginationElement = $(".pagination"); // 페이지네이션 요소 선택
+    paginationElement.empty(); // 요소 비우기
+
+    var viewMoreButton = '';
+    if (currentPage < totalPages) { // 현재 페이지가 전체 페이지 수보다 작으면
+        viewMoreButton = '<a class="btn btn-ghost btn-xs view-more-btn" href="#">View More</a>'; // View More 버튼 생성
+    }
+    paginationElement.html(viewMoreButton); // 페이지네이션 업데이트
+} 
+*/
+
+function updatePagination(currentPage, totalPages) {
+	
+	///// 페이지네이션을 표시할 HTML 요소를 가져온다
+    var paginationElement = $(".pagination");
+
+	///// 이전에 표시된 페이지네이션을 초기화
+    paginationElement.empty();
+	
+    var paginationHTML = '';
+    // 페이지 번호 생성
+    for (var i = 1; i <= totalPages; i++) {
+        var activeClass = (i === currentPage) ? 'btn-active' : '';
+        paginationHTML += '<a class="btn btn-circle btn-ghost btn-xs ' + activeClass + '" href="?page=' + i + '">' + i + '</a>';
+    }
+    $('.pagination').html(paginationHTML); // 페이지네이션 업데이트
+}
+
+// 카페 리스트 업데이트 함수
+function updateCafeList(cafeList) {
+    var cafeListElement = $(".linkbox１"); // 카페 리스트 요소 선택
+    var searchResult = $("#search-result"); // 검색 결과 요소 선택
+
+    cafeListElement.empty(); // 카페 리스트 요소 비우기
+
+    cafeList.forEach(function(cafe) { // 각 카페에 대해 반복
+        var cafeItem = $(`
+        		
+            <div class="cafe-item">
+                <a href="cafeDetail?id=`+cafe.id+`'" class="linkbox１">
+                    <div class="content-info-box" style="margin-bottom: 50px">
+                        <div class="cafe-img-box">
+                            <img src="`+cafe.cafeImgUrl1+`" alt="카페 이미지" />
+                        </div>
+                        <div class="name-address">
+                            <div class="cafe-name">`+cafe.name+`</div>
+                            <p class="cafe-address">`+cafe.address+`</p>
+                        </div>
+                        <div class="like-count">
+                            <span class="material-symbols-outlined"> favorite </span>
+                            <div class="like-count-num">`+cafe.goodReactionPoint+`</div>
+                        </div>
+                        <div class="review-count">
+                            <div class="title-review">리뷰</div>
+                            <div class="review-count-num">`+cafe.reviewCount+`</div>
+                        </div>
+                        <div class="show-distance">
+                            <div class="num-km-group">
+                                <div class="km">km</div>
+                                <div class="distance-num">1.8</div>
+                            </div>
+                        </div>
+                        <div class="hashtag">`+cafe.hashtag+`</div>
+                    </div>
+                </a>
+            </div>
+        `);	// end var cafeItem
+        searchResult.append(cafeItem); // 카페 리스트에 카페 아이템 추가
+    });	// end cafeList.forEach
+}	// end function updateCafeList
+<!-- end function Area -->
+
 // 	검색창 submit 함수
 //     function submitSearchForm() {
 //     	document.getElementById("searchForm").submit();
@@ -241,21 +282,21 @@
 				<button class="filter-btn-1 rent badge badge-lg filterButton">
 					<div class="text-wrapper">대관</div>
 				</button>
-				<div class="filter-btn-2 socket badge badge-lg filterButton">
+				<button class="filter-btn-2 socket badge badge-lg filterButton">
 					<div class="text-wrapper">콘센트</div>
-				</div>
+				</button>
 				<button class="filter-btn-3 terrace badge badge-lg filterButton">
 					<div class="text-wrapper">테라스</div>
-					<button>
-						<div class="filter-btn-4 pet badge badge-lg filterButton">
-							<div class="text-wrapper">반려동물</div>
-						</div>
-						<button class="filter-btn-5 parking badge badge-lg filterButton">
-							<div class="text-wrapper">주차</div>
-						</button>
-						<button class="filter-btn-6 selectall badge badge-l filterButton">
-							<div class="text-wrapper">전체</div>
-						</button>
+				</button>
+				<button class="filter-btn-4 pet badge badge-lg filterButton">
+					<div class="text-wrapper">반려동물</div>
+				</button>
+				<button class="filter-btn-5 parking badge badge-lg filterButton">
+					<div class="text-wrapper">주차</div>
+				</button>
+				<button class="filter-btn-6 selectall badge badge-l filterButton">
+					<div class="text-wrapper">전체</div>
+				</button>
 			</div>
 
 		</div>
@@ -264,7 +305,7 @@
 
 	<!-- 검색결과 -->
 	<section class="search-result" id="search-result">
-		<c:forEach var="cafe" items="${cafes}">
+		<%-- <c:forEach var="cafe" items="${cafes}">
 
 			<a href="cafeDetail?id=${cafe.id}" class="linkbox１">
 				<div class="content-info-box" style="margin-bottom: 50px">
@@ -293,23 +334,20 @@
 					<div class="hashtag">${cafe.hashtag}</div>
 				</div>
 			</a>
-		</c:forEach>
+		</c:forEach> --%>
 	</section>
-
 
 </section>
 
 
-
-
 <!-- 리스트 더보기 -->
 <div class="pagination flex justify-center mt-3" style="margin-top: 50px; margin-left: 200px;">
-	<c:set var="nextPage" value="${page + 1}" />
+	<%-- <c:set var="nextPage" value="${page + 1}" />
 
 	<c:if test="${nextPage <= pagesCount}">
 		<a class="btn btn-ghost btn-xs view-more-btn" style="margin-left: 5px; margin-right: 5px;" href="?page=${nextPage}">View
 			More</a>
-	</c:if>
+	</c:if> --%>
 </div>
 
 

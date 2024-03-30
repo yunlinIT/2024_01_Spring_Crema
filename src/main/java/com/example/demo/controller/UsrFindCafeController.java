@@ -100,29 +100,29 @@ public class UsrFindCafeController {
 	}
 
 	@RequestMapping("/usr/findcafe/searchList")
-	public String showSearchList(HttpServletRequest req, Model model, int page) {
+	public String showSearchList(HttpServletRequest req) {
 
-		Rq rq = (Rq) req.getAttribute("rq");
-
-		int cafesCount = cafeService.getCafesCount();
-
-		cafeRepository.updateReviewCount();
-		
-		//@RequestParam(defaultValue = "1")
-
-		// 한페이지에 글 10개씩이야
-		// 글 20개 -> 2 page
-		// 글 24개 -> 3 page
-		int itemsInAPage = 5;
-
-		int pagesCount = (int) Math.ceil(cafesCount / (double) itemsInAPage);
-
-		List<Cafe> cafes = cafeService.getForPrintCafes(itemsInAPage, page);
-
-		model.addAttribute("page", page);
-		model.addAttribute("pagesCount", pagesCount);
-		model.addAttribute("cafesCount", cafesCount);
-		model.addAttribute("cafes", cafes);
+//		Rq rq = (Rq) req.getAttribute("rq");
+//
+//		int cafesCount = cafeService.getCafesCount();
+//
+//		cafeRepository.updateReviewCount();
+//		
+//		//@RequestParam(defaultValue = "1")
+//
+//		// 한페이지에 글 10개씩이야
+//		// 글 20개 -> 2 page
+//		// 글 24개 -> 3 page
+//		int itemsInAPage = 5;
+//
+//		int pagesCount = (int) Math.ceil(cafesCount / (double) itemsInAPage);
+//
+//		List<Cafe> cafes = cafeService.getForPrintCafes(itemsInAPage, page);
+//
+//		model.addAttribute("page", page);
+//		model.addAttribute("pagesCount", pagesCount);
+//		model.addAttribute("cafesCount", cafesCount);
+//		model.addAttribute("cafes", cafes);
 
 		return "/usr/findcafe/searchList";
 	}

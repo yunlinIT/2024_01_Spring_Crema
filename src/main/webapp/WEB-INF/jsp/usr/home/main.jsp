@@ -472,7 +472,7 @@
 }
 
 .weather-comment {
-	width: 590px;
+	width: 490px;
 	height: 53px;
 	position: relative;
 	/* 	color: #6D6D6D; */
