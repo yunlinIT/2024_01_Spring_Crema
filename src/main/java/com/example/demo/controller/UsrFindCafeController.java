@@ -157,15 +157,18 @@ public class UsrFindCafeController {
 
 	@RequestMapping("/usr/findcafe/searchCafes")
 	public String searchCafes(@RequestParam(required = false) String keyword, Model model) {
-		if (keyword != null) {
-			List<Cafe> cafes = cafeService.searchCafes(keyword);
-			if (cafes.isEmpty()) {
-//	            model.addAttribute("message", "검색 결과가 없습니다.");
-				return "usr/findcafe/searchList2";
-			} else {
-				model.addAttribute("cafes", cafes);
-			}
-		}
+//		if (keyword != null) {
+//			List<Cafe> cafes = cafeService.searchCafes(keyword);
+//			if (cafes.isEmpty()) {
+//	            //model.addAttribute("message", "검색 결과가 없습니다.");
+//				//return "usr/findcafe/searchList2";
+//			} else {
+//				model.addAttribute("cafes", cafes);
+//			}
+//		}
+		
+		model.addAttribute("keyword", keyword);
+		
 		return "/usr/findcafe/searchList";
 	}
 	

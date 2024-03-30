@@ -17,13 +17,15 @@ var keyword = ""; // 검색 키워드 초기화
 window.onload = function() {
     // 페이지가 완전히 로드되면 이 함수가 실행됩니다.
     // 여기에 실행하고자 하는 코드를 작성합니다.
-    alert('페이지가 로드되었습니다!');
+    // alert('페이지가 로드되었습니다!');
     
-    loadFilteredCafes('', currentPage);	// 카페검색 최초 리스팅
+    keyword = '${keyword}';
+    
+    loadFilteredCafes(keyword, currentPage);	// 카페검색 최초 리스팅
 };
 
 
-<!-- Ajax 코드 -->
+<!-- document ready Area -->
 $(document).ready(function() {
     // 필터 버튼 클릭 이벤트 핸들러 등록
     $(".filterButton").on("click", function(event) {
@@ -46,6 +48,14 @@ $(document).ready(function() {
      	// 필터링된 카페 목록을 요청하는 함수 호출
         loadFilteredCafes(keyword, currentPage);
     });
+	
+	$('.filterButton').on('click', function(event) {
+		// 모든 필터 버튼의 클래스를 초기화합니다.
+	    $('.filterButton').removeClass('active');
+	    // 클릭한 버튼에만 활성화 클래스를 추가합니다.
+	    $(this).addClass('active');
+	});
+	
 });
 
 <!-- function Area -->
@@ -112,7 +122,7 @@ function updateCafeList(cafeList) {
         var cafeItem = $(`
         		
             <div class="cafe-item">
-                <a href="cafeDetail?id=`+cafe.id+`'" class="linkbox１">
+                <a href="cafeDetail?id=`+cafe.id+`" class="linkbox１">
                     <div class="content-info-box" style="margin-bottom: 50px">
                         <div class="cafe-img-box">
                             <img src="`+cafe.cafeImgUrl1+`" alt="카페 이미지" />
@@ -142,16 +152,19 @@ function updateCafeList(cafeList) {
         `);	// end var cafeItem
         searchResult.append(cafeItem); // 카페 리스트에 카페 아이템 추가
     });	// end cafeList.forEach
+    
+    
+    // 페이지 맨 위로 스크롤
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+    
+    
 }	// end function updateCafeList
 <!-- end function Area -->
 
-// 	검색창 submit 함수
-//     function submitSearchForm() {
-//     	document.getElementById("searchForm").submit();
-//     }
-
 </script>
-
 <!-- End | java script -->
 
 
@@ -166,25 +179,24 @@ function updateCafeList(cafeList) {
 <section class="find-cafe">
 
 
-	<!-- 검색창 -->
-
-	<!-- 	<form action="/usr/findcafe/searchCafes" method="get" id="searchForm"> -->
-
-	<!-- 		<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs"> -->
-	<!-- 			<input type="text" class="grow" id="keyword" name="keyword" placeholder="Search" /> -->
-	<!-- 			<a href="javascript:;" onclick="submitSearchForm()"> -->
-	<!-- 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"> -->
-	<!--                     <path fill-rule="evenodd" -->
-	<!-- 						d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" -->
-	<!-- 						clip-rule="evenodd" /> -->
-	<!--                 </svg> -->
-	<!-- 			</a> -->
-	<!-- 		</label> -->
-
-	<!-- 	</form> -->
-
-	<!-- 필터바 -->
+	<!-- 사이드바 - 필터 -->
 	<section class="filter-bar">
+	
+		<!-- 검색창 -->
+		<form action="/usr/findcafe/searchCafes" method="get" id="searchForm">
+
+			<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs" style ="width: 65%; margin-left: 10px">
+				<input type="text" class="searchInput" id="keyword" name="keyword" placeholder="Search" value="${keyword }" />
+				<a href='javascript:loadFilteredCafes( $("#keyword").val() , 1 );'>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
+	                    <path fill-rule="evenodd"
+							d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+							clip-rule="evenodd" />
+	                </svg>
+				</a>
+			</label>
+
+		</form>
 
 		<div class="search-filter">
 
@@ -301,6 +313,7 @@ function updateCafeList(cafeList) {
 
 		</div>
 	</section>
+	
 
 
 	<!-- 검색결과 -->
@@ -396,6 +409,15 @@ function updateCafeList(cafeList) {
 
 <!-- 필터 css -->
 <style>
+
+
+
+.active {
+    background-color: rgba(0, 0, 0, 0.06) !important; /* 클릭된 버튼의 배경색을 변경합니다. */
+}
+
+
+
 .search-filter {
 	Position: sticky;
 	top: -10px;
