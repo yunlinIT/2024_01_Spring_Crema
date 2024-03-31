@@ -102,7 +102,7 @@ $(document).ready(function() {
                                 </div>
                                 <div class="like-count">
                                     <span class="material-symbols-outlined"> favorite </span>
-                                    <div class="like-count-num">`+cafe.goodReactionPoint+`</div>
+                                    <div class="like-count-num">`+cafe.cafeScrapCount+`</div>
                                 </div>
                                 <div class="review-count">
                                     <div class="title-review">리뷰</div>
@@ -317,7 +317,7 @@ $(document).ready(function() {
 					</div>
 					<div class="like-count">
 						<span class="material-symbols-outlined"> favorite </span>
-						<div class="like-count-num">${cafe.goodReactionPoint}</div>
+						<div class="like-count-num">${cafe.cafeScrapCount}</div>
 					</div>
 					<div class="review-count">
 						<div class="title-review">리뷰</div>

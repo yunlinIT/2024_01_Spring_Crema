@@ -339,7 +339,7 @@ CREATE TABLE cafe (
     `businessHours` TEXT COMMENT '영업시간', 
     `phoneNum` CHAR(20) COMMENT '전화번호', 
     `facilities` TEXT COMMENT '시설', 
-    `goodReactionPoint` INT(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '찜수', 
+    `cafeScrapCount` INT(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '찜수', 
     `reviewCount` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '리뷰 수', 
     `hashtag` CHAR(200) COMMENT '해쉬태그', 
     `cafeImgUrl1` TEXT COMMENT '카페 사진1',
@@ -359,7 +359,7 @@ updateDate = NOW(),
 `businessHours` = '월 11:30 - 21:00; 화 11:30 - 21:00; 수 11:30 - 21:00; 목 11:30 - 21:00; 금 11:30 - 21:00; 토 12:30 - 18:30; 일 12:30 - 18:30;', 
 `phoneNum` = '0507-1388-1844', 
 `facilities` = NULL, 
-`goodReactionPoint` = 1, 
+`cafeScrapCount` = 1, 
 #`reviewCount` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '리뷰 수', 
 `hashtag` = '#아늑한 #대화 #데이트 #사진맛집 #클래식', 
 `cafeImgUrl1` = 'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20201117_59%2F1605607665526NPlXg_JPEG%2FG7oFmpFP-9oX4fU7fK1_kJsw.jpeg.jpg',
@@ -837,8 +837,6 @@ SELECT * FROM cafe;
 DESC cafe;
 
 SELECT * FROM cafeReview;
-
-DELETE * FROM cafeReview;
 
 
 

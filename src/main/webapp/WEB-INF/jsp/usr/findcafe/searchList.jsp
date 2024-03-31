@@ -15,8 +15,8 @@ var keyword = ""; // 검색 키워드 초기화
 
 <!-- 페이지 접속 시 최초 실행(onload) 함수 -->
 window.onload = function() {
-    // 페이지가 완전히 로드되면 이 함수가 실행됩니다.
-    // 여기에 실행하고자 하는 코드를 작성합니다.
+    // 페이지가 완전히 로드되면 이 함수가 실행
+    // 여기에 실행하고자 하는 코드를 작성
     // alert('페이지가 로드되었습니다!');
     
     keyword = '${keyword}';
@@ -50,9 +50,9 @@ $(document).ready(function() {
     });
 	
 	$('.filterButton').on('click', function(event) {
-		// 모든 필터 버튼의 클래스를 초기화합니다.
+		// 모든 필터 버튼의 클래스를 초기화
 	    $('.filterButton').removeClass('active');
-	    // 클릭한 버튼에만 활성화 클래스를 추가합니다.
+	    // 클릭한 버튼에만 활성화 클래스를 추가
 	    $(this).addClass('active');
 	});
 	
@@ -133,7 +133,7 @@ function updateCafeList(cafeList) {
                         </div>
                         <div class="like-count">
                             <span class="material-symbols-outlined"> favorite </span>
-                            <div class="like-count-num">`+cafe.goodReactionPoint+`</div>
+                            <div class="like-count-num">`+cafe.cafeScrapCount+`</div>
                         </div>
                         <div class="review-count">
                             <div class="title-review">리뷰</div>
@@ -331,7 +331,7 @@ function updateCafeList(cafeList) {
 					</div>
 					<div class="like-count">
 						<span class="material-symbols-outlined"> favorite </span>
-						<div class="like-count-num">${cafe.goodReactionPoint}</div>
+						<div class="like-count-num">${cafe.cafeScrapCount}</div>
 					</div>
 					<div class="review-count">
 						<div class="title-review">리뷰</div>
@@ -413,9 +413,8 @@ function updateCafeList(cafeList) {
 
 
 .active {
-    background-color: rgba(0, 0, 0, 0.06) !important; /* 클릭된 버튼의 배경색을 변경합니다. */
+    background-color: #dfdfdf !important; /* 클릭된 버튼의 배경색을 변경. */
 }
-
 
 
 .search-filter {

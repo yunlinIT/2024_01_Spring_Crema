@@ -22,7 +22,7 @@ public class Cafe {
 	private String cafeImgUrl4;
 	private String cafeImgUrl5;
 	
-	private int goodReactionPoint;
+	private int cafeScrapCount;
 	private int reviewCount;
 	private String hashtag;
 

@@ -34,7 +34,7 @@ public interface CafeRepository {
 			cafeImgUrl3 = #{cafeImgUrl3},
 			cafeImgUrl4 = #{cafeImgUrl4},
 			cafeImgUrl5 = #{cafeImgUrl5},
-			goodReactionPoint = #{goodReactionPoint},
+			cafeScrapCount = #{cafeScrapCount},
 			reviewCount = #{reviewCount},
 			hashtag = #{hashtag}
 			""")
@@ -51,7 +51,7 @@ public interface CafeRepository {
 
 	@Select("""
 			<script>
-			     SELECT id, name, address, goodReactionPoint, reviewCount, hashtag, cafeImgUrl1
+			     SELECT id, name, address, cafeScrapCount, reviewCount, hashtag, cafeImgUrl1
 			     FROM cafe
 			     GROUP BY id
 			     ORDER BY id DESC
@@ -64,7 +64,7 @@ public interface CafeRepository {
 
 	@Select("""
 			<script>
-			     SELECT id, name, address, goodReactionPoint, reviewCount, hashtag, cafeImgUrl1
+			     SELECT id, name, address, cafeScrapCount, reviewCount, hashtag, cafeImgUrl1
 			     FROM cafe
 				 WHERE
 			        `name` LIKE CONCAT('%', #{keyword}, '%')
