@@ -765,8 +765,9 @@ SET
     `hashtag` = '#아늑함 #내추럴 #클래식 #대화 #데이트',
     `cafeImgUrl1` = 'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231114_26%2F16999166507384AfL5_JPEG%2FA952455B-BAC9-41F9-9AB7-7BA65AC82402.jpeg',
     `cafeImgUrl2` = 'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231114_152%2F1699916651070gTFLW_JPEG%2F5278BB16-5719-45BE-A7DF-07F714861E2E.jpeg',
-    `cafeImgUrl3` = 'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231114_264%2F1699916651214qWWK2_JPEG%2FD11FFE13-2114-4863-9EC1-43CCAD8D0D97.jpeg';
-
+    `cafeImgUrl3` = 'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231114_264%2F1699916651214qWWK2_JPEG%2FD11FFE13-2114-4863-9EC1-43CCAD8D0D97.jpeg',
+    `cafeImgUrl4` = 'https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDAzMDVfMjI4%2FMDAxNzA5NjEzMTU4NzY5.EcYMnWs4ozzfgkuO-HkNcBgr-XDhN4iZfrT5Ex99tekg.JlQSRZvWNjVR3_AIsIhKDLqazQjzKA5knYm2k1fjsF8g.JPEG%2F20240304_114532.jpg.jpg',
+    `cafeImgUrl5` = 'https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDAzMTBfMjk4%2FMDAxNzEwMDUyODQ4MDE3.Pbw5oth-2208ZOsXex3N88luShsdRLvfs--L-YkUqXwg._RN9PbL_IA4Sv-kFPfDP8yA1eofqxQ8j8W1-aOaY1mIg.JPEG%2F8B6CFFF3-FF13-47AD-B547-3D00B830E8A6.jpeg';
 
 
 CREATE TABLE cafeReview (
@@ -818,7 +819,14 @@ cafeId = 1,
 
 
 
-
+CREATE TABLE cafeScrap
+(   id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `regDate` DATETIME NOT NULL COMMENT '찜 날짜', 
+    `deleteDate` DATETIME NULL COMMENT '찜 취소 날짜', 
+    `memeberId` INT(10) UNSIGNED NOT NULL COMMENT '회원 번호', 
+    `cafeId` INT(10) UNSIGNED NOT NULL  COMMENT '카페 번호', 
+    `scrap` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '찜 상태 찜 여부 (0=찜 취소, 1= 찜)'
+);
 
 ###############################################
 
@@ -837,6 +845,8 @@ SELECT * FROM cafe;
 DESC cafe;
 
 SELECT * FROM cafeReview;
+
+SELECT * FROM cafeScrap;
 
 
 
