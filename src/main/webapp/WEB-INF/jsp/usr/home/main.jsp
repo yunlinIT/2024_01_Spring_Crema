@@ -360,11 +360,6 @@
 
 
 
-    
-</script>
-
-
-
 <!-- 날씨위젯 -->
 <a class="weatherwidget-io" href="https://forecast7.com/en/36d35127d38/daejeon/" data-icons="Climacons Animated" data-mode="Current" data-days="3" data-theme="pure" >Daejeon, South Korea</a>
 <script>
@@ -392,11 +387,11 @@
 				</span> <span>RECOMMENDS</span>
 			</div>
 			<div class="Recommends mx-auto">크레마는 오늘같은 날씨에 가기 좋은 카페를 추천해드려요.</div>
-			<div class="weather-comment">바람이 부드럽게 스치는 서늘한 날, 한 모금의 커피 향기가 나를 감싸 안아요.</div>
+			<div class="weather-comment">-</div>
 		</div>
 		<div class="weather-img-box">
 			<img class="Weather-img"
-				src="https://velog.velcdn.com/images/yunlinit/post/3654e399-5a73-4acf-a263-e24167d3871d/image.jpg" />
+				src="-" />
 		</div>
 
 <!-- 		날씨조건에 따라 추천검색어를 보여주는 검색창 -->
@@ -404,7 +399,7 @@
 			<div class="how-about-here">오늘은 이런 카페 어떠세요?</div>
 			<form action="/usr/findcafe/searchCafes" method="get" id="searchForm">
 				<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs max-w-xs"> <input
-					type="text" class="grow" id="keyword" name="keyword" placeholder="검색어를 입력해주세요" value="" style="color:black;";/> <a href="javascript:;"
+					type="text" class="grow" id="keyword" name="keyword" autocomplete="off" placeholder="검색어를 입력해주세요" value="" style="color:black;";/> <a href="javascript:;"
 						onclick="submitSearchForm()">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
                     <path fill-rule="evenodd"

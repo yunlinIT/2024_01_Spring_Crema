@@ -186,7 +186,7 @@ function updateCafeList(cafeList) {
 		<form action="/usr/findcafe/searchCafes" method="get" id="searchForm">
 
 			<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs" style ="width: 65%; margin-left: 10px">
-				<input type="text" class="searchInput" id="keyword" name="keyword" placeholder="Search" value="${keyword }" />
+				<input type="text" class="searchInput" id="keyword" name="keyword" autocomplete="off" placeholder="Search" value="${keyword }" />
 				<a href='javascript:loadFilteredCafes( $("#keyword").val() , 1 );'>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
 	                    <path fill-rule="evenodd"
