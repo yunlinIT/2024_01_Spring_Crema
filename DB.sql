@@ -28,6 +28,7 @@ CREATE TABLE `member`(
 );
 
 
+
 # article TD 생성
 INSERT INTO article
 SET regDate = NOW(),
