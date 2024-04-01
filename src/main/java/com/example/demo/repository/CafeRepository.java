@@ -78,6 +78,26 @@ public interface CafeRepository {
 			     </script>
 			""")
 	public List<Cafe> getForPrintCafesKeyword(int limitFrom, int limitTake, String keyword);
+	
+	
+	
+//	@Select("""
+//		    <script>
+//		        SELECT id, name, address, cafeScrapCount, reviewCount, hashtag, cafeImgUrl1
+//		        FROM cafe
+//		        WHERE
+//		        <foreach item="item" index="index" collection="keywords" open="(" separator=" OR " close=")">
+//		            `name` LIKE CONCAT('%', #{item}, '%') OR `address` LIKE CONCAT('%', #{item}, '%') OR `hashtag` LIKE CONCAT('%', #{item}, '%')
+//		        </foreach>
+//		        GROUP BY id
+//		        ORDER BY id DESC
+//		        <if test="limitFrom >= 0 ">
+//		            LIMIT #{limitFrom}, #{limitTake}
+//		        </if>
+//		    </script>
+//		""")
+//		public List<Cafe> getForPrintCafesKeyword(@Param("limitTake") int limitTake, @Param("limitFrom") int limitFrom, @Param("keywords") List<String> keywords);
+
 
 	@Select("""
 			SELECT COUNT(*)
