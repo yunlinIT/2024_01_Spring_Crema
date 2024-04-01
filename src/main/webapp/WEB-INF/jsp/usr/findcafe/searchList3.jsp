@@ -12,6 +12,7 @@ var currentPage = 1; // 현재 페이지 초기화
 var totalPages = 1; // 전체 페이지 수 초기화
 var keyword = ""; // 검색 키워드 초기화
 var selectedFilters = [];
+var filtersArray = selectedFilters;
 
 <!-- 페이지 접속 시 최초 실행(onload) 함수 -->
 window.onload = function() {
@@ -19,45 +20,10 @@ window.onload = function() {
     
    // alert('페이지가 로드되었습니다!'); 
     
-    keyword = '${keyword}';
+     keyword = '${keyword}';
     
     loadFilteredCafes(keyword, currentPage);	// 카페검색 최초 리스팅
 };
-
-
-
-// 기존 버튼 한개씩만 선택 되던 코드
-<!-- document ready Area -->
-// $(document).ready(function() {
-//     // 필터 버튼 클릭 이벤트 핸들러 등록
-//     $(".filterButton").on("click", function(event) {
-//         keyword = $(this).find(".text-wrapper").text(); // 클릭한 버튼의 텍스트에서 키워드 추출
-        
-                
-        
-//         currentPage = 1; // 페이지를 1로 설정하여 필터가 변경되었음을 나타냄
-//         loadFilteredCafes(keyword, currentPage); // 필터된 카페들을 불러오는 함수 호출
-//     });
-
-    
-// 	$('.pagination').on('click', 'a', function(event) {
-//     	event.preventDefault(); // 기본 동작 방지 (페이지 이동 막기)
-//         currentPage = parseInt($(this).attr('href').split('=')[1]); // 클릭한 페이지 번호 추출
-        
-//      	// 필터링된 카페 목록을 요청하는 함수 호출
-//         loadFilteredCafes(keyword, currentPage);
-//     });
-	
-// 	$('.filterButton').on('click', function(event) {
-// 		// 모든 필터 버튼의 클래스를 초기화
-// 	    $('.filterButton').removeClass('active');
-// 	    // 클릭한 버튼에만 활성화 클래스를 추가
-// 	    $(this).addClass('active');
-// 	});
-	
-// });
-
-
 
 
 
@@ -65,39 +31,34 @@ window.onload = function() {
 <!-- document ready Area -->
 $(document).ready(function() {
 
-    // 필터 버튼 클릭 이벤트 핸들러 등록
-    $(".filterButton").on("click", function(event) {
-        var filter = $(this).find(".text-wrapper").text(); // 클릭한 버튼의 텍스트에서 필터 추출
-        
-        // 선택된 필터 배열에 추가 또는 제거
-        if (selectedFilters.includes(filter)) {
-            selectedFilters = selectedFilters.filter(item => item !== filter); // 필터가 이미 선택되어 있으면 제거
-            $(this).removeClass('active'); // 선택 해제된 필터 버튼에 대한 활성화 클래스 제거
-        } else {
-            selectedFilters.push(filter); // 필터가 선택되어 있지 않으면 추가
-            $(this).addClass('active'); // 선택된 필터 버튼에 대한 활성화 클래스 추가
-        }
-        
-        // 페이지를 1로 설정하여 필터가 변경되었음을 나타냄
-        currentPage = 1;
-        // 필터된 카페들을 불러오는 함수 호출
-        loadFilteredCafes(selectedFilters, currentPage);
-    });
+	// 필터 버튼 클릭 이벤트 핸들러 등록
+	$(".filterButton").on("click", function(event) {
+	    var filter = $(this).find(".text-wrapper").text(); // 클릭한 버튼의 텍스트에서 필터 추출
+	    
+	    // 선택된 필터 배열에 추가 또는 제거
+	    if (selectedFilters.includes(filter)) {
+	        selectedFilters = selectedFilters.filter(item => item !== filter); // 필터가 이미 선택되어 있으면 제거
+	        $(this).removeClass('active'); // 선택 해제된 필터 버튼에 대한 활성화 클래스 제거
+	    } else {
+	        selectedFilters.push(filter); // 필터가 선택되어 있지 않으면 추가
+	        $(this).addClass('active'); // 선택된 필터 버튼에 대한 활성화 클래스 추가
+	    }
+	    
+	    // 페이지를 1로 설정하여 필터가 변경되었음을 나타냄
+	    currentPage = 1;
+	    
+	    // 선택된 모든 필터들의 조합을 하나의 keyword로 만듦
+	    //keyword = selectedFilters.join('&&');
+	    
+	 
+	    
+	    // 필터된 카페들을 불러오는 함수 호출
+	   // loadFilteredCafes(keyword, currentPage);
+	    loadFilteredCafes(filtersArray, currentPage);
+	});
 
-    // 페이지네이션 클릭 이벤트 핸들러 등록
-    $('.pagination').on('click', 'a', function(event) {
-        event.preventDefault(); // 기본 동작 방지 (페이지 이동 막기)
-        currentPage = parseInt($(this).attr('href').split('=')[1]); // 클릭한 페이지 번호 추출
 
-        // 필터링된 카페 목록을 요청하는 함수 호출
-        loadFilteredCafes(selectedFilters, currentPage);
-    });
 });
-
-
-
-
-
 
 
 
@@ -360,7 +321,7 @@ function updateCafeList(cafeList) {
 </section>
 
 
-<!-- 리스트 더보기 -->
+<!-- 리스트 페이지네이션 -->
 <div class="pagination flex justify-center mt-3" style="margin-top: 50px; margin-left: 200px;">
 
 </div>
