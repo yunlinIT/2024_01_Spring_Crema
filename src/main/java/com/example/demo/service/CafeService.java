@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.repository.CafeRepository;
+import com.example.demo.repository.CafeScrapRepository;
 import com.example.demo.vo.Cafe;
 import com.example.demo.vo.ResultData;
 
@@ -15,6 +15,7 @@ public class CafeService {
 
 	@Autowired
 	private CafeRepository cafeRepository;
+	private CafeScrapRepository cafeScrapRepository;
 
 	// 웹 크롤러를 통해 카페 데이터를 가져와서 저장하는 메서드
 	public void saveCafeDataFromWebCrawler(List<Cafe> cafes) {
@@ -77,25 +78,30 @@ public class CafeService {
 //        return cafeRepository.searchCafes(keyword);
 //    }
 	
-	public ResultData decreaseGoodReactionPoint(int relId) { //TODO
-		int affectedRow = cafeRepository.decreaseGoodReactionPoint(relId);
+	public ResultData decreaseCafeScrapCount(int cafeId) { //TODO
+		int affectedRow = cafeRepository.decreaseGoodReactionPoint(cafeId);
 
 		if (affectedRow == 0) {
-			return ResultData.from("F-1", "없는 게시물");
+			return ResultData.from("F-1", "없는 카페");
 		}
 
-		return ResultData.from("S-1", "좋아요 감소", "affectedRow", affectedRow);
+		return ResultData.from("S-1", "찜 감소", "affectedRow", affectedRow);
 	}
 	
-	public ResultData increaseGoodReactionPoint(int relId) { //TODO
-		int affectedRow = cafeRepository.increaseGoodReactionPoint(relId);
+	public ResultData increaseCafeScrapCount(int cafeId) { //TODO
+		int affectedRow = cafeRepository.increaseCafeScrapCount(cafeId);
 
 		if (affectedRow == 0) {
-			return ResultData.from("F-1", "없는 게시물");
+			return ResultData.from("F-1", "없는 카페");
 		}
 
-		return ResultData.from("S-1", "좋아요 증가", "affectedRow", affectedRow);
+		return ResultData.from("S-1", "찜 증가", "affectedRow", affectedRow);
 	}
+	
+	public int getDoScrap(int relId) {
+		return cafeRepository.getDoScrap(relId);
+	}
+
 
 
 

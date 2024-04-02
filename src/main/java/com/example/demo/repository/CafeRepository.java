@@ -137,18 +137,27 @@ public interface CafeRepository {
 	List<Cafe> searchCafes(@Param("keyword") String keyword);
 	
 	@Update("""
-			UPDATE article
-			SET goodReactionPoint = goodReactionPoint - 1
-			WHERE id = #{relId}
+			UPDATE cafe
+			SET cafeScrapCount = cafeScrapCount - 1
+			WHERE id = #{cafeId}
 			""")
-	public int decreaseGoodReactionPoint(int relId); //TODO
+	public int decreaseGoodReactionPoint(int cafeId); //TODO
 	
 	
 	@Update("""
-			UPDATE article
-			SET goodReactionPoint = goodReactionPoint + 1
-			WHERE id = #{relId}
+			UPDATE cafe
+			SET cafeScrapCount = cafeScrapCount + 1
+			WHERE id = #{cafeId}
 			""")
-	public int increaseGoodReactionPoint(int relId); //TODO
+	public int increaseCafeScrapCount(int cafeId); //TODO
+	
+	@Select("""
+			SELECT cafeScrapCount
+			FROM cafe
+			WHERE id = #{cafeId}
+			""")
+	public int getDoScrap(int relId);
+
+
 
 }

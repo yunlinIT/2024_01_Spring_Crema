@@ -26,42 +26,39 @@ public interface CafeScrapRepository {
 	
 	@Select("""
 			SELECT IFNULL(SUM(RP.point),0)
-			FROM reactionPoint AS RP
-			WHERE RP.relTypeCode = #{relTypeCode}
-			AND RP.relId = #{relId}
-			AND RP.memberId = #{memberId}
+			FROM cafeScrap AS CS
+			WHERE CS.cafeId = #{cafeId}
+			AND CS.memberId =#{memberId}
 			""")
-	public int getSumReactionPoint(int memberId, String relTypeCode, int relId);
+	public int getSumCafeScrapCount(int memberId, int relId); //getSumReactionPoint
 
 	@Insert("""
-			INSERT INTO reactionPoint
+			INSERT INTO cafeScrap
 			SET regDate = NOW(),
 			updateDate = NOW(),
-			relTypeCode = #{relTypeCode},
-			relId = #{relId},
+			cafeId = #{cafeId},
 			memberId = #{memberId},
-			`point` = 1
+			scrap = 1
 			""")
-	public int addGoodReactionPoint(int memberId, String relTypeCode, int relId);
+	public int addCafeScrapCount(int memberId, int cafeId); //addGoodReactionPoint
 
-	@Insert("""
-			INSERT INTO reactionPoint
-			SET regDate = NOW(),
-			updateDate = NOW(),
-			relTypeCode = #{relTypeCode},
-			relId = #{relId},
-			memberId = #{memberId},
-			`point` = -1
-			""")
-	public int addBadReactionPoint(int memberId, String relTypeCode, int relId);
+//	@Insert("""
+//			INSERT INTO reactionPoint
+//			SET regDate = NOW(),
+//			updateDate = NOW(),
+//			relTypeCode = #{relTypeCode},
+//			relId = #{relId},
+//			memberId = #{memberId},
+//			`point` = -1
+//			""")
+//	public int addBadReactionPoint(int memberId, String relTypeCode, int relId);
 
 	@Delete("""
-			DELETE FROM reactionPoint
+			DELETE FROM cafeScrap
 			WHERE memberId = #{memberId}
-			AND relTypeCode = #{relTypeCode}
-			AND relId = #{relId}
+			AND cafeId = #{cafeId}
 			""")
-	public void deleteReactionPoint(int memberId, String relTypeCode, int relId);
+	public void deleteCafeScrapCount(int memberId, int cafeId); //deleteReactionPoint
 	
 	
 	

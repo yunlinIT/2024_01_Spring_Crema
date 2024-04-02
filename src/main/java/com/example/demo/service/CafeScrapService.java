@@ -30,39 +30,33 @@ public class CafeScrapService {
 	
 	
 	
-	public ResultData usersReaction(int loginedMemberId, String relTypeCode, int relId) {
+	public ResultData usersCafeScrap(int loginedMemberId, int cafeId) {
 
 		if (loginedMemberId == 0) {
 			return ResultData.from("F-L", "로그인 하고 써야해");
 		}
 
-		int sumReactionPointByMemberId = cafeScrapRepository.getSumReactionPoint(loginedMemberId, relTypeCode,
-				relId);
+		int sumCafeScrapByMemberId = cafeScrapRepository.getSumCafeScrapCount(loginedMemberId, cafeId);
 
-		if (sumReactionPointByMemberId != 0) {
-			return ResultData.from("F-1", "추천 불가능", "sumReactionPointByMemberId", sumReactionPointByMemberId);
+		if (sumCafeScrapByMemberId != 0) {
+			return ResultData.from("F-1", "찜 불가능", "sumCafeScrapByMemberId", sumCafeScrapByMemberId);
 		}
 
-		return ResultData.from("S-1", "추천 가능", "sumReactionPointByMemberId", sumReactionPointByMemberId);
+		return ResultData.from("S-1", "찜 가능", "sumCafeScrapByMemberId", sumCafeScrapByMemberId);
 	}
 
-	public ResultData addGoodReactionPoint(int loginedMemberId, String relTypeCode, int relId) {
+	public ResultData addCafeScrapCount(int loginedMemberId, int cafeId) {
 
-		int affectedRow = cafeScrapRepository.addGoodReactionPoint(loginedMemberId, relTypeCode, relId);
+		int affectedRow = cafeScrapRepository.addCafeScrapCount(loginedMemberId, cafeId);
 		
 		System.err.println(affectedRow);
 		
 		if (affectedRow != 1) {
-			return ResultData.from("F-1", "좋아요 실패");
+			return ResultData.from("F-1", "찜 실패ㅠㅠ");
 		}
 
-		switch (relTypeCode) {
-		case "cafe":
-			cafeService.increaseGoodReactionPoint(relId);
-			break;
-		}
 
-		return ResultData.from("S-1", "좋아요!");
+		return ResultData.from("S-1", "찜!");
 	}
 
 //	public ResultData addBadReactionPoint(int loginedMemberId, String relTypeCode, int relId) {
@@ -81,15 +75,11 @@ public class CafeScrapService {
 //		return ResultData.from("S-1", "싫어요!");
 //	}
 
-	public ResultData deleteGoodReactionPoint(int loginedMemberId, String relTypeCode, int relId) {
-		cafeScrapRepository.deleteReactionPoint(loginedMemberId, relTypeCode, relId);
+	public ResultData deleteCafeScrapCount(int loginedMemberId, int cafeId) {
+		cafeScrapRepository.deleteCafeScrapCount(loginedMemberId, cafeId);
 
-		switch (relTypeCode) {
-		case "cafe":
-			cafeService.decreaseGoodReactionPoint(relId);
-			break;
-		}
-		return ResultData.from("S-1", "좋아요 취소 됨");
+
+		return ResultData.from("S-1", "찜 취소!");
 
 	}
 
@@ -104,25 +94,25 @@ public class CafeScrapService {
 //		return ResultData.from("S-1", "싫어요 취소 됨");
 //	}
 
-	public boolean isAlreadyAddGoodRp(int memberId, int relId, String relTypeCode) {
-		int getPointTypeCodeByMemberId = cafeScrapRepository.getSumReactionPoint(memberId, relTypeCode, relId);
+	public boolean isAlreadyAddCafeScrap(int memberId, int cafeId) { //isAlreadyAddGoodRp
+		int getScrapStatusByMemberId = cafeScrapRepository.getSumCafeScrapCount(memberId, cafeId);
 
-		if (getPointTypeCodeByMemberId > 0) {
+		if (getScrapStatusByMemberId > 0) {
 			return true;
 		}
 
 		return false;
 	}
 
-	public boolean isAlreadyAddBadRp(int memberId, int relId, String relTypeCode) {
-		int getPointTypeCodeByMemberId = cafeScrapRepository.getSumReactionPoint(memberId, relTypeCode, relId);
-
-		if (getPointTypeCodeByMemberId < 0) {
-			return true;
-		}
-
-		return false;
-	}
+//	public boolean isAlreadyAddBadRp(int memberId, int relId, String relTypeCode) {
+//		int getPointTypeCodeByMemberId = cafeScrapRepository.getSumReactionPoint(memberId, relTypeCode, relId);
+//
+//		if (getPointTypeCodeByMemberId < 0) {
+//			return true;
+//		}
+//
+//		return false;
+//	}
 
 	
 	

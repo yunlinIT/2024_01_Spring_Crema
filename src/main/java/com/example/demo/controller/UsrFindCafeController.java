@@ -169,7 +169,7 @@ public class UsrFindCafeController {
 
 		Cafe cafe = cafeService.getForPrintCafe(id);
 
-		ResultData usersReactionRd = cafeScrapService.usersReaction(rq.getLoginedMemberId(), "article", id);
+		ResultData usersReactionRd = cafeScrapService.usersCafeScrap(rq.getLoginedMemberId(), id);
 
 		if (usersReactionRd.isSuccess()) {
 			model.addAttribute("userCanMakeReaction", usersReactionRd.isSuccess());
@@ -186,10 +186,13 @@ public class UsrFindCafeController {
 		model.addAttribute("cafeReviewsCount", cafeReviewsCount);
 		
 		//model.addAttribute("cafeScrapCount", cafeScrapCount); //내꺼
-		model.addAttribute("isAlreadyAddGoodRp",
-				cafeScrapService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id, "article"));
-		model.addAttribute("isAlreadyAddBadRp",
-				cafeScrapService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "article"));
+//		model.addAttribute("isAlreadyAddCafeScrap",
+//				cafeScrapService.isAlreadyAddCafeScrap(rq.getLoginedMemberId(), id));
+		// 이놈이 문제야!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+		
+		
+//		model.addAttribute("isAlreadyAddBadRp",
+//				cafeScrapService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "article"));
 
 		return "usr/findcafe/cafeDetail";
 
