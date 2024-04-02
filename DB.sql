@@ -839,6 +839,18 @@ cafeId = 24,
 `scrap` = 1;
 
 
+# update join -> 기존 카페의 scrapCount 값을 cafeScrap 테이블에서 가져온 데이터로 채운다
+UPDATE cafe AS C
+INNER JOIN (
+    SELECT CS.cafeId,
+    SUM(IF(CS.scrap > 0, CS.scrap, 0)) AS scrapCount
+    FROM cafeScrap AS CS
+    GROUP BY CS.cafeId
+) AS CS_SUM
+ON C.id = CS_SUM.cafeId
+SET C.cafeScrapCount = CS_SUM.scrapCount;
+
+
 
 ###############################################
 
@@ -859,6 +871,14 @@ DESC cafe;
 SELECT * FROM cafeReview;
 
 SELECT * FROM cafeScrap;
+
+DELETE FROM cafeScrap
+
+
+SELECT IFNULL(SUM(CS.scrap),0)
+	FROM cafeScrap AS CS
+	WHERE CS.cafeId = 24
+	AND CS.memberId = 2;
 
 
 
