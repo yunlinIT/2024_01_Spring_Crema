@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.example.demo.vo.Cafe;
 
@@ -134,5 +135,20 @@ public interface CafeRepository {
 			OR `hashtag` LIKE CONCAT('%', #{keyword}, '%')
 			""")
 	List<Cafe> searchCafes(@Param("keyword") String keyword);
+	
+	@Update("""
+			UPDATE article
+			SET goodReactionPoint = goodReactionPoint - 1
+			WHERE id = #{relId}
+			""")
+	public int decreaseGoodReactionPoint(int relId); //TODO
+	
+	
+	@Update("""
+			UPDATE article
+			SET goodReactionPoint = goodReactionPoint + 1
+			WHERE id = #{relId}
+			""")
+	public int increaseGoodReactionPoint(int relId); //TODO
 
 }

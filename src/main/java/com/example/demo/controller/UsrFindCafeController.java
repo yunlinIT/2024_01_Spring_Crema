@@ -15,10 +15,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.crawling.WebCrawler13;
 import com.example.demo.repository.CafeRepository;
 import com.example.demo.service.CafeReviewService;
-import com.example.demo.service.CafeService;
 import com.example.demo.service.CafeScrapService;
+import com.example.demo.service.CafeService;
 import com.example.demo.vo.Cafe;
 import com.example.demo.vo.CafeReview;
+import com.example.demo.vo.ResultData;
 import com.example.demo.vo.Rq;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -168,27 +169,27 @@ public class UsrFindCafeController {
 
 		Cafe cafe = cafeService.getForPrintCafe(id);
 
-//		ResultData usersReactionRd = reactionPointService.usersReaction(rq.getLoginedMemberId(), "article", id);
-//
-//		if (usersReactionRd.isSuccess()) {
-//			model.addAttribute("userCanMakeReaction", usersReactionRd.isSuccess());
-//		}
+		ResultData usersReactionRd = cafeScrapService.usersReaction(rq.getLoginedMemberId(), "article", id);
+
+		if (usersReactionRd.isSuccess()) {
+			model.addAttribute("userCanMakeReaction", usersReactionRd.isSuccess());
+		}
 
 		List<CafeReview> cafeReviews = cafeReviewService.getForPrintCafeReviews(rq.getLoginedMemberId(), id);
 
 		int cafeReviewsCount = cafeReviews.size();
 		
-		int cafeScrapCount = cafeScrapService.getSumScrapCount(id);
+		//int cafeScrapCount = cafeScrapService.getSumScrapCount(id); //내꺼
 
 		model.addAttribute("cafe", cafe);
 		model.addAttribute("cafeReviews", cafeReviews);
 		model.addAttribute("cafeReviewsCount", cafeReviewsCount);
 		
-		model.addAttribute("cafeScrapCount", cafeScrapCount);
-//		model.addAttribute("isAlreadyAddGoodRp",
-//				reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id, "article"));
-//		model.addAttribute("isAlreadyAddBadRp",
-//				reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "article"));
+		//model.addAttribute("cafeScrapCount", cafeScrapCount); //내꺼
+		model.addAttribute("isAlreadyAddGoodRp",
+				cafeScrapService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id, "article"));
+		model.addAttribute("isAlreadyAddBadRp",
+				cafeScrapService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "article"));
 
 		return "usr/findcafe/cafeDetail";
 

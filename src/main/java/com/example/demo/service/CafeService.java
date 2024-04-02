@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.repository.CafeRepository;
 import com.example.demo.vo.Cafe;
+import com.example.demo.vo.ResultData;
 
 @Service
 public class CafeService {
@@ -75,6 +76,27 @@ public class CafeService {
 //    public List<Cafe> filterCafesByKeyword(String keyword) {
 //        return cafeRepository.searchCafes(keyword);
 //    }
+	
+	public ResultData decreaseGoodReactionPoint(int relId) { //TODO
+		int affectedRow = cafeRepository.decreaseGoodReactionPoint(relId);
+
+		if (affectedRow == 0) {
+			return ResultData.from("F-1", "없는 게시물");
+		}
+
+		return ResultData.from("S-1", "좋아요 감소", "affectedRow", affectedRow);
+	}
+	
+	public ResultData increaseGoodReactionPoint(int relId) { //TODO
+		int affectedRow = cafeRepository.increaseGoodReactionPoint(relId);
+
+		if (affectedRow == 0) {
+			return ResultData.from("F-1", "없는 게시물");
+		}
+
+		return ResultData.from("S-1", "좋아요 증가", "affectedRow", affectedRow);
+	}
+
 
 
 }

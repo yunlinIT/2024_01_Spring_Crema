@@ -118,7 +118,7 @@ cafeScrapCount
 			</div>
 			<div class="review-count">
 				<div class="review-badge">리뷰</div>
-				<div class="review-count-num">${cafe.reviewCount}</div>
+				<div class="review-count-num">${cafeReviewsCount}</div>
 			</div>
 
 			<span class="material-symbols-outlined clock-circle" style="color: #a9a9a9"> schedule </span> <span
