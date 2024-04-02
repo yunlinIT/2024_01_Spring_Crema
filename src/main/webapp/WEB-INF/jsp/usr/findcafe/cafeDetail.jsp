@@ -87,7 +87,7 @@ function doModifyCafeReview(cafeReviewId) {
 
 
 	</div>
-
+cafeScrapCount
 
 
 	<!-- 사진 아래 부분 -->
@@ -114,7 +114,7 @@ function doModifyCafeReview(cafeReviewId) {
 			</div>
 			<div class="like-count">
 				<span class="material-symbols-outlined heart"> favorite </span>
-				<div class="like-count-num">2</div>
+				<div class="cafeScrapCount">${cafe.cafeScrapCount}</div>
 			</div>
 			<div class="review-count">
 				<div class="review-badge">리뷰</div>
@@ -752,7 +752,7 @@ function doModifyCafeReview(cafeReviewId) {
 	top: 1px;
 }
 
-.cafe-detail-page .like-count-num {
+.cafe-detail-page .cafeScrapCount {
 	left: 23px;
 	position: absolute;
 	width: 20px;

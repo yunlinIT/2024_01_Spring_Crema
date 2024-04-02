@@ -11,7 +11,7 @@
 var currentPage = 1; // 현재 페이지 초기화
 var totalPages = 1; // 전체 페이지 수 초기화
 var keyword = ""; // 검색 키워드 초기화
-var selectedFilters = [];
+
 
 <!-- 페이지 접속 시 최초 실행(onload) 함수 -->
 window.onload = function() {
@@ -32,14 +32,11 @@ $(document).ready(function() {
     // 필터 버튼 클릭 이벤트 핸들러 등록
     $(".filterButton").on("click", function(event) {
         keyword = $(this).find(".text-wrapper").text(); // 클릭한 버튼의 텍스트에서 키워드 추출
-        
-                
-        
+                      
         currentPage = 1; // 페이지를 1로 설정하여 필터가 변경되었음을 나타냄
         loadFilteredCafes(keyword, currentPage); // 필터된 카페들을 불러오는 함수 호출
     });
 
-    
 	$('.pagination').on('click', 'a', function(event) {
     	event.preventDefault(); // 기본 동작 방지 (페이지 이동 막기)
         currentPage = parseInt($(this).attr('href').split('=')[1]); // 클릭한 페이지 번호 추출
@@ -59,10 +56,10 @@ $(document).ready(function() {
 
 
 
-
+var selectedFilters = [];
 
 // 아래 코드는 필터 버튼은 다중으로 클릭되지만 keyword가 제대로 전달되지 않는 것 같음
-// <!-- document ready Area -->
+<!-- document ready Area -->
 // $(document).ready(function() {
 
 //     // 필터 버튼 클릭 이벤트 핸들러 등록
@@ -93,11 +90,6 @@ $(document).ready(function() {
 //         loadFilteredCafes(selectedFilters, currentPage);
 //     });
 // });
-
-
-
-
-
 
 
 
@@ -217,13 +209,14 @@ function updateCafeList(cafeList) {
 
 	<!-- 사이드바 - 필터 -->
 	<section class="filter-bar">
-	
+
 		<!-- 검색창 -->
 		<form action="/usr/findcafe/searchCafes" method="get" id="searchForm">
 
-			<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs" style ="width: 65%; margin-left: 10px">
-				<input type="text" class="searchInput" id="keyword" name="keyword" autocomplete="off" placeholder="Search" value="${keyword }" />
-				<a href='javascript:loadFilteredCafes( $("#keyword").val() , 1 );'>
+			<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs"
+				style="width: 65%; margin-left: 10px"> <input type="text" class="searchInput" id="keyword" name="keyword"
+				autocomplete="off" placeholder="Search" value="${keyword }" /> <a
+					href='javascript:loadFilteredCafes( $("#keyword").val() , 1 );'>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
 	                    <path fill-rule="evenodd"
 							d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
@@ -349,21 +342,17 @@ function updateCafeList(cafeList) {
 
 		</div>
 	</section>
-	
+
 
 
 	<!-- 검색결과 -->
-	<section class="search-result" id="search-result">
-
-	</section>
+	<section class="search-result" id="search-result"></section>
 
 </section>
 
 
 <!-- 리스트 더보기 -->
-<div class="pagination flex justify-center mt-3" style="margin-top: 50px; margin-left: 200px;">
-
-</div>
+<div class="pagination flex justify-center mt-3" style="margin-top: 50px; margin-left: 200px;"></div>
 
 
 
@@ -411,13 +400,9 @@ function updateCafeList(cafeList) {
 
 <!-- 필터 css -->
 <style>
-
-
-
 .active {
-    background-color: #dfdfdf !important; /* 클릭된 버튼의 배경색을 변경. */
+	background-color: #dfdfdf !important; /* 클릭된 버튼의 배경색을 변경. */
 }
-
 
 .search-filter {
 	Position: sticky;

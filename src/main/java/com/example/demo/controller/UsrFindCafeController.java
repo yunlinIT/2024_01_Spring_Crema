@@ -7,8 +7,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +16,7 @@ import com.example.demo.crawling.WebCrawler13;
 import com.example.demo.repository.CafeRepository;
 import com.example.demo.service.CafeReviewService;
 import com.example.demo.service.CafeService;
+import com.example.demo.service.CafeScrapService;
 import com.example.demo.vo.Cafe;
 import com.example.demo.vo.CafeReview;
 import com.example.demo.vo.Rq;
@@ -35,6 +34,10 @@ public class UsrFindCafeController {
 
 	@Autowired
 	private CafeReviewService cafeReviewService;
+	
+	@Autowired
+	private CafeScrapService cafeScrapService;
+	
 
 	@RequestMapping("/usr/findcafe/likeList")
 	public String likeList() {
@@ -56,6 +59,7 @@ public class UsrFindCafeController {
 	@RequestMapping("/usr/findcafe/filterCafes")
 	@ResponseBody
 	public Map<String, Object> filterCafes(@RequestBody Map<String, String> filterData) {
+
 		Map<String, Object> returnMap = new HashMap<>();
 		
 		String keyword = filterData.get("keyword");
@@ -72,7 +76,7 @@ public class UsrFindCafeController {
 		}
 		
 		int itemsInAPage = 5;
-		//int pagesCount = (int) Math.ceil(cafesCount / (double) itemsInAPage);
+		
 		
 		if (keyword.isEmpty()) {
 			cafesList = cafeService.getForPrintCafes(itemsInAPage, page);
@@ -80,11 +84,16 @@ public class UsrFindCafeController {
 			cafesList = cafeService.getForPrintCafesKeyword(itemsInAPage, page, keyword);
 		}
 		
+
+		
 		returnMap.put("cafesTotalCount", cafesCount);
 		returnMap.put("cafesCurrentList", cafesList);
+
 		
 		return returnMap;
 	}
+	
+	
 	
 	
 //	@RequestMapping("/usr/findcafe/filterCafes")
@@ -168,10 +177,14 @@ public class UsrFindCafeController {
 		List<CafeReview> cafeReviews = cafeReviewService.getForPrintCafeReviews(rq.getLoginedMemberId(), id);
 
 		int cafeReviewsCount = cafeReviews.size();
+		
+		int cafeScrapCount = cafeScrapService.getSumScrapCount(id);
 
 		model.addAttribute("cafe", cafe);
 		model.addAttribute("cafeReviews", cafeReviews);
 		model.addAttribute("cafeReviewsCount", cafeReviewsCount);
+		
+		model.addAttribute("cafeScrapCount", cafeScrapCount);
 //		model.addAttribute("isAlreadyAddGoodRp",
 //				reactionPointService.isAlreadyAddGoodRp(rq.getLoginedMemberId(), id, "article"));
 //		model.addAttribute("isAlreadyAddBadRp",

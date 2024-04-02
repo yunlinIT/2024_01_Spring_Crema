@@ -659,7 +659,7 @@ SET
     `address` = '대전 중구 목척2길 8 1층',
     `businessHours` = '화 13:00 - 23:00; 수 13:00 - 23:00; 목 13:00 - 23:00; 금 13:00 - 23:00; 토 13:00 - 23:00; 일 12:00 - 22:00; 월 12:00 - 22:00;',
     `phoneNum` = '070-4680-6644',
-    `hashtag` = '#아늑함 #디저트맛집 #내추럴 #데이트 #아기자기',
+    `hashtag` = '#아늑한 #디저트맛집 #내추럴 #데이트 #아기자기',
     `cafeImgUrl1` = 'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231013_233%2F1697171087637UHwBy_JPEG%2F1111111111.jpg',
     `cafeImgUrl2` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240221_294%2F1708495985396CB9qA_JPEG%2FKakaoTalk_Photo_2024-02-21-14-59-51.jpg',
     `cafeImgUrl3` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231128_67%2F1701101107215M2x9r_JPEG%2FIMG_1623.jpeg',
@@ -676,7 +676,7 @@ SET
     `businessHours` = '수 11:00 - 20:00; 목 11:00 - 20:00; 금 11:00 - 20:00; 토 11:00 - 20:00; 일 11:00 - 20:00; 월 11:00 - 20:00; 화 11:00 - 20:00;',
     `phoneNum` = '042-385-3456',
     `facilities` = '포장, 배달, 단체 이용 가능, 무선 인터넷, 예약, 간편결제, 주차',
-    `hashtag` = '#아늑함 #주차 #심플 #대화 #데이트',
+    `hashtag` = '#아늑한 #주차 #심플 #대화 #데이트',
     `cafeImgUrl1` = 'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231227_69%2F1703650684913Ia7Fw_JPEG%2F1.jpg',
     `cafeImgUrl2` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231228_190%2F1703742949337RFuQL_JPEG%2FIMG_8674.jpeg',
     `cafeImgUrl3` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20231224_256%2F17033833921212J4Of_JPEG%2Fimage.jpg',
@@ -693,7 +693,7 @@ SET
     `businessHours` = '수 11:00 - 22:00; 목 11:00 - 22:00; 금 정기휴무 (매주 금요일); 토 12:00 - 21:00; 일 12:00 - 21:00; 월 11:00 - 22:00; 화 11:00 - 22:00;',
     `phoneNum` = '0507-1372-5800',
     `facilities` = '포장',
-    `hashtag` = '#사진맛집 #아늑함 #넓은 #디저트맛집 #데이트',  
+    `hashtag` = '#사진맛집 #아늑한 #넓은 #디저트맛집 #데이트',  
     `cafeImgUrl1` = 'https://search.pstatic.net/common/?autoRotate=TRUE&TYPE=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230228_166%2F1677561254431XarPX_JPEG%2FKakaoTalk_20230227_210412022_04.jpg',
     `cafeImgUrl2` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20221112_66%2F1668180171767cLLAu_JPEG%2FKakaoTalk_Photo_2022-11-12-00-22-39_002.jpeg',
     `cafeImgUrl3` = 'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230228_62%2F1677562628085WBhk5_PNG%2F003.png',
@@ -763,7 +763,7 @@ SET
     `address` = '대전 유성구 죽동로279번길 40 1층',
     `businessHours` = '수 11:00 - 21:00; 목 11:00 - 21:00; 금 11:00 - 21:00; 토 11:00 - 21:00; 일 11:00 - 21:00; 월 11:00 - 21:00; 화 정기휴무 (매주 화요일);',
     `phoneNum` = '0507-1444-0411',
-    `hashtag` = '#아늑함 #내추럴 #클래식 #대화 #데이트',
+    `hashtag` = '#아늑한 #내추럴 #클래식 #대화 #데이트',
     `cafeImgUrl1` = 'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231114_26%2F16999166507384AfL5_JPEG%2FA952455B-BAC9-41F9-9AB7-7BA65AC82402.jpeg',
     `cafeImgUrl2` = 'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231114_152%2F1699916651070gTFLW_JPEG%2F5278BB16-5719-45BE-A7DF-07F714861E2E.jpeg',
     `cafeImgUrl3` = 'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231114_264%2F1699916651214qWWK2_JPEG%2FD11FFE13-2114-4863-9EC1-43CCAD8D0D97.jpeg',
@@ -794,28 +794,28 @@ SET C.reviewCount = CR_COUNT.cafeReviewCount;
 
 
 
-# 2번 회원이 10번 카페에 리뷰 작성
+# 2번 회원이 24번 카페에 리뷰 작성
 INSERT INTO cafeReview
 SET regDate = NOW(),
 updateDate = NOW(),
 memberId = 2,
-cafeId = 1,
+cafeId = 24,
 `body` = '분위기가 너무 좋아요';
 
-# 2번 회원이 10번 카페에 리뷰 작성
+# 2번 회원이 24번 카페에 리뷰 작성
 INSERT INTO cafeReview
 SET regDate = NOW(),
 updateDate = NOW(),
 memberId = 2,
-cafeId = 1,
+cafeId = 24,
 `body` = '단골이에요';
 
-# 3번 회원이 10번 카페에 리뷰 작성
+# 3번 회원이 24번 카페에 리뷰 작성
 INSERT INTO cafeReview
 SET regDate = NOW(),
 updateDate = NOW(),
 memberId = 3,
-cafeId = 1,
+cafeId = 24,
 `body` = '커피맛이 좋아요';
 
 
@@ -823,11 +823,22 @@ cafeId = 1,
 CREATE TABLE cafeScrap
 (   id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `regDate` DATETIME NOT NULL COMMENT '찜 날짜', 
+    `updateDate` DATETIME NOT NULL,
     `deleteDate` DATETIME NULL COMMENT '찜 취소 날짜', 
-    `memeberId` INT(10) UNSIGNED NOT NULL COMMENT '회원 번호', 
+    `memberId` INT(10) UNSIGNED NOT NULL COMMENT '회원 번호', 
     `cafeId` INT(10) UNSIGNED NOT NULL  COMMENT '카페 번호', 
     `scrap` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '찜 상태 찜 여부 (0=찜 취소, 1= 찜)'
 );
+
+# 2번 회원이 24번 카페에 찜(스크랩)
+INSERT INTO cafeScrap
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+cafeId = 24,
+`scrap` = 1;
+
+
 
 ###############################################
 
@@ -848,7 +859,6 @@ DESC cafe;
 SELECT * FROM cafeReview;
 
 SELECT * FROM cafeScrap;
-
 
 
 
