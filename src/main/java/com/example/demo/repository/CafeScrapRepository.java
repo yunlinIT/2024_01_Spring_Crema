@@ -25,12 +25,12 @@ public interface CafeScrapRepository {
 	
 	
 	@Select("""
-			SELECT IFNULL(SUM(RP.point),0)
+			SELECT IFNULL(SUM(CS.scrap),0)
 			FROM cafeScrap AS CS
 			WHERE CS.cafeId = #{cafeId}
 			AND CS.memberId =#{memberId}
 			""")
-	public int getSumCafeScrapCount(int memberId, int relId); //getSumReactionPoint
+	public int getSumCafeScrapCount(int memberId, int cafeId); //getSumReactionPoint
 
 	@Insert("""
 			INSERT INTO cafeScrap

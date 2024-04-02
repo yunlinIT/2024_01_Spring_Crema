@@ -67,7 +67,7 @@ public class UsrFindCafeController {
 		int page = Integer.parseInt(filterData.get("page"));
 		List<Cafe> cafesList;
 
-
+		cafeRepository.updateReviewCount();
 		
 		int cafesCount = 0;
 		if (keyword.isEmpty()) {
@@ -169,10 +169,10 @@ public class UsrFindCafeController {
 
 		Cafe cafe = cafeService.getForPrintCafe(id);
 
-		ResultData usersReactionRd = cafeScrapService.usersCafeScrap(rq.getLoginedMemberId(), id);
+		ResultData usersScrapRd = cafeScrapService.usersCafeScrap(rq.getLoginedMemberId(), id);
 
-		if (usersReactionRd.isSuccess()) {
-			model.addAttribute("userCanMakeReaction", usersReactionRd.isSuccess());
+		if (usersScrapRd.isSuccess()) {
+			model.addAttribute("userCanScrap", usersScrapRd.isSuccess());
 		}
 
 		List<CafeReview> cafeReviews = cafeReviewService.getForPrintCafeReviews(rq.getLoginedMemberId(), id);
