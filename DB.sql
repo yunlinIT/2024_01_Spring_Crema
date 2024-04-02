@@ -838,6 +838,14 @@ memberId = 2,
 cafeId = 24,
 `scrap` = 1;
 
+# 2번 회원이 23번 카페에 찜(스크랩)
+INSERT INTO cafeScrap
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+cafeId = 23,
+`scrap` = 1;
+
 
 # update join -> 기존 카페의 scrapCount 값을 cafeScrap 테이블에서 가져온 데이터로 채운다
 UPDATE cafe AS C
@@ -872,7 +880,7 @@ SELECT * FROM cafeReview;
 
 SELECT * FROM cafeScrap;
 
-DELETE FROM cafeScrap
+
 
 
 SELECT IFNULL(SUM(CS.scrap),0)
