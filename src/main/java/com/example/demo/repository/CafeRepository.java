@@ -79,9 +79,7 @@ public interface CafeRepository {
 			     </script>
 			""")
 	public List<Cafe> getForPrintCafesKeyword(int limitFrom, int limitTake, String keyword);
-	
-	
-	
+
 //	@Select("""
 //		    <script>
 //		        SELECT id, name, address, cafeScrapCount, reviewCount, hashtag, cafeImgUrl1
@@ -98,7 +96,6 @@ public interface CafeRepository {
 //		    </script>
 //		""")
 //		public List<Cafe> getForPrintCafesKeyword(@Param("limitTake") int limitTake, @Param("limitFrom") int limitFrom, @Param("keywords") List<String> keywords);
-
 
 	@Select("""
 			SELECT COUNT(*)
@@ -135,22 +132,21 @@ public interface CafeRepository {
 			OR `hashtag` LIKE CONCAT('%', #{keyword}, '%')
 			""")
 	List<Cafe> searchCafes(@Param("keyword") String keyword);
-	
+
 	@Update("""
 			UPDATE cafe
 			SET cafeScrapCount = cafeScrapCount - 1
 			WHERE id = #{cafeId}
 			""")
-	public int decreaseGoodReactionPoint(int cafeId); //TODO
-	
-	
+	public int decreaseGoodReactionPoint(int cafeId); // TODO
+
 	@Update("""
 			UPDATE cafe
 			SET cafeScrapCount = cafeScrapCount + 1
 			WHERE id = #{cafeId}
 			""")
-	public int increaseCafeScrapCount(int cafeId); //TODO
-	
+	public int increaseCafeScrapCount(int cafeId); // TODO
+
 	@Select("""
 			SELECT cafeScrapCount
 			FROM cafe
@@ -158,6 +154,18 @@ public interface CafeRepository {
 			""")
 	public int getDoScrap(int relId);
 
+	@Select("""
+			UPDATE cafe AS C
+			INNER JOIN (
+			    SELECT CS.cafeId,
+			    SUM(IF(CS.scrap > 0, CS.scrap, 0)) AS scrapCount
+			    FROM cafeScrap AS CS
+			    GROUP BY CS.cafeId
+			) AS CS_SUM
+			ON C.id = CS_SUM.cafeId
+			SET C.cafeScrapCount = CS_SUM.scrapCount;
 
+									""")
+	public void updateCafeScrapCount();
 
 }

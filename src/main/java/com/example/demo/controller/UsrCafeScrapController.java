@@ -26,27 +26,27 @@ public class UsrCafeScrapController {
 	@ResponseBody
 	public ResultData doCafeScrap(int cafeId, String replaceUri) {
 
-		ResultData usersReactionRd = cafeScrapService.usersCafeScrap(rq.getLoginedMemberId(), cafeId);
+		ResultData usersScrapRd = cafeScrapService.usersCafeScrap(rq.getLoginedMemberId(), cafeId);
 
-		int usersReaction = (int) usersReactionRd.getData1();
+		int usersScrap = (int) usersScrapRd.getData1();
 
-		if (usersReaction == 1) {
+		if (usersScrap == 1) {
 			ResultData rd = cafeScrapService.deleteCafeScrapCount(rq.getLoginedMemberId(), cafeId);
 			int doScrap = cafeService.getDoScrap(cafeId);
 			
 			return ResultData.from("S-1", "찜 취소", "doScrap", doScrap);
 		} 
 
-		ResultData reactionRd = cafeScrapService.addCafeScrapCount(rq.getLoginedMemberId(), cafeId);
+		ResultData scrapRd = cafeScrapService.addCafeScrapCount(rq.getLoginedMemberId(), cafeId);
 
-		if (reactionRd.isFail()) {
-			return ResultData.from(reactionRd.getResultCode(), reactionRd.getMsg());
+		if (scrapRd.isFail()) {
+			return ResultData.from(scrapRd.getResultCode(), scrapRd.getMsg());
 		}
 
 		int doScrap = cafeService.getDoScrap(cafeId);
 		
 
-		return ResultData.from(reactionRd.getResultCode(), reactionRd.getMsg(), "doScrap", doScrap);
+		return ResultData.from(scrapRd.getResultCode(), scrapRd.getMsg(), "doScrap", doScrap);
 		
 		
 	}

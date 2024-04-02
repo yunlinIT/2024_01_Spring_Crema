@@ -5,6 +5,162 @@
 
 <meta charset="utf-8">
 
+<!-- 변수 -->
+<script>
+	const params = {};
+	params.id = parseInt('${param.id}');
+	params.memberId = parseInt('${loginedMemberId}');
+	
+	console.log(params);
+	console.log(params.memberId);
+	
+	var isAlreadyAddCafeScrap = ${isAlreadyAddCafeScrap};
+	
+	//var isAlreadyAddBadRp = ${isAlreadyAddBadRp};
+	
+	
+</script>
+
+
+<!-- 좋아요 싫어요  -->
+<script>
+
+
+
+
+
+
+	<!-- 좋아요 싫어요 버튼	-->
+	function checkCafeScrap() {
+		if(isAlreadyAddCafeScrap == true){
+			$('#likeButton').toggleClass('btn-outline');
+		}
+// 		else if(isAlreadyAddBadRp == true){
+// 			$('#DislikeButton').toggleClass('btn-outline');
+// 		}
+		
+		else {
+			return;
+		}
+	}
+	
+	
+	function doCafeScrap(cafeId) {
+		
+		//alert('ajax 실행됨');
+		
+		if(isNaN(params.memberId) == true){
+			if(confirm('로그인 해야해. 로그인 페이지로 가실???')){
+				var currentUri = encodeURIComponent(window.location.href);
+				window.location.href = '../member/login?afterLoginUri=' + currentUri; // 로그인 페이지에 원래 페이지의 uri를 같이 보냄
+			}
+			return;
+		}
+		
+		$.ajax({
+			url: '/usr/cafeScrap/doCafeScrap', 
+			type: 'POST',
+			data: {cafeId: cafeId},
+			dataType: 'json',
+			success: function(data){
+				console.log(data);
+				console.log('data.data1Name : ' + data.data1Name);
+				console.log('data.data1 : ' + data.data1);
+				//console.log('data.data2Name : ' + data.data2Name);
+				//console.log('data.data2 : ' + data.data2);
+				if(data.resultCode.startsWith('S-')){
+					var likeButton = $('#likeButton');
+					var scrapCount = $('#scrapCount');
+					//var DislikeButton = $('#DislikeButton');
+					//var DislikeCount = $('#DislikeCount');
+					
+					if(data.resultCode == 'S-1'){
+						likeButton.toggleClass('btn-outline');
+						scrapCount.text(data.data1);
+					}
+					else if(data.resultCode == 'S-2'){
+						//DislikeButton.toggleClass('btn-outline');
+						//DislikeCount.text(data.data2);
+						likeButton.toggleClass('btn-outline');
+						scrapCount.text(data.data1);
+					}else {
+						likeButton.toggleClass('btn-outline');
+						scrapCount.text(data.data1);
+					}
+					
+				}else {
+					alert(data.msg);
+				}
+		
+			},
+			error: function(jqXHR,textStatus,errorThrown) {
+				alert('찜 오류 발생 : ' + textStatus);
+
+			}
+			
+		});
+	}
+	
+	
+	
+// 	function doBadReaction(articleId) {
+		
+// 		if(isNaN(params.memberId) == true){
+// 			if(confirm('로그인 해야해. 로그인 페이지로 가실???')){
+// 				var currentUri = encodeURIComponent(window.location.href);
+// 				window.location.href = '../member/login?afterLoginUri=' + currentUri; // 로그인 페이지에 원래 페이지의 uri를 같이 보냄
+// 			}
+// 			return;
+// 		}
+		
+// 	 $.ajax({
+// 			url: '/usr/reactionPoint/doBadReaction',
+// 			type: 'POST',
+// 			data: {relTypeCode: 'article', relId: articleId},
+// 			dataType: 'json',
+// 			success: function(data){
+// 				console.log(data);
+// 				console.log('data.data1Name : ' + data.data1Name);
+// 				console.log('data.data1 : ' + data.data1);
+// 				console.log('data.data2Name : ' + data.data2Name);
+// 				console.log('data.data2 : ' + data.data2);
+// 				if(data.resultCode.startsWith('S-')){
+// 					var likeButton = $('#likeButton');
+// 					var likeCount = $('#likeCount');
+// 					var DislikeButton = $('#DislikeButton');
+// 					var DislikeCount = $('#DislikeCount');
+					
+// 					if(data.resultCode == 'S-1'){
+// 						DislikeButton.toggleClass('btn-outline');
+// 						DislikeCount.text(data.data2);
+// 					}else if(data.resultCode == 'S-2'){
+// 						likeButton.toggleClass('btn-outline');
+// 						likeCount.text(data.data1);
+// 						DislikeButton.toggleClass('btn-outline');
+// 						DislikeCount.text(data.data2);
+		
+// 					}else {
+// 						DislikeButton.toggleClass('btn-outline');
+// 						DislikeCount.text(data.data2);
+// 					}
+			
+// 				}else {
+// 					alert(data.msg);
+// 				}
+// 			},
+// 			error: function(jqXHR,textStatus,errorThrown) {
+// 				alert('싫어요 오류 발생 : ' + textStatus);
+// 			}
+			
+// 		});
+// 	}
+	
+	$(function() {
+		checkCafeScrap();
+	});
+</script>
+
+
 <!-- 댓글 수정 -->
 <script>
 function toggleModifybtn(cafeReviewId) {
@@ -87,7 +243,6 @@ function doModifyCafeReview(cafeReviewId) {
 
 
 	</div>
-cafeScrapCount
 
 
 	<!-- 사진 아래 부분 -->
@@ -113,12 +268,12 @@ cafeScrapCount
        			</script>
 			</div>
 			<div class="like-count">
-				<span class="material-symbols-outlined heart"> favorite </span>
-				<div class="cafeScrapCount">${cafe.cafeScrapCount}</div>
+				<button class="material-symbols-outlined heart" id="likeButton" onclick="doCafeScrap(${param.id})"> favorite </button>
+				<div class="cafeScrapCount" id="scrapCount">${cafe.cafeScrapCount}</div>
 			</div>
 			<div class="review-count">
 				<div class="review-badge">리뷰</div>
-				<div class="review-count-num">${cafeReviewsCount}</div>
+				<div class="review-count-num" >${cafeReviewsCount}</div>
 			</div>
 
 			<span class="material-symbols-outlined clock-circle" style="color: #a9a9a9"> schedule </span> <span
@@ -127,6 +282,8 @@ cafeScrapCount
 
 			<p class="hashtag">${cafe.hashtag}</p>
 		</div>
+
+
 
 
 		<!-- 카페 지도 -->
@@ -175,11 +332,7 @@ cafeScrapCount
         { offset: new kakao.maps.Point(16, 32) }
     )
 });
-        	// 마커이미지
-			// https://velog.velcdn.com/images/yunlinit/post/0b96d741-86d0-4770-a91d-bb5b6503d071/image.png
-			// https://velog.velcdn.com/images/yunlinit/post/b0b6c6ba-f995-494c-9b8c-9a1e5933e11a/image.png
-       		// https://velog.velcdn.com/images/yunlinit/post/da3eac14-0fa1-424b-9373-b0b668e799fd/image.png
-        	// https://velog.velcdn.com/images/yunlinit/post/4dc09125-1305-4779-9c88-36119e795dd0/image.png
+        	
         
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new kakao.maps.InfoWindow({

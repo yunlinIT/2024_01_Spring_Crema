@@ -174,6 +174,8 @@ public class UsrFindCafeController {
 		if (usersScrapRd.isSuccess()) {
 			model.addAttribute("userCanScrap", usersScrapRd.isSuccess());
 		}
+		
+		cafeRepository.updateCafeScrapCount();
 
 		List<CafeReview> cafeReviews = cafeReviewService.getForPrintCafeReviews(rq.getLoginedMemberId(), id);
 
@@ -186,8 +188,8 @@ public class UsrFindCafeController {
 		model.addAttribute("cafeReviewsCount", cafeReviewsCount);
 		
 		//model.addAttribute("cafeScrapCount", cafeScrapCount); //내꺼
-//		model.addAttribute("isAlreadyAddCafeScrap",
-//				cafeScrapService.isAlreadyAddCafeScrap(rq.getLoginedMemberId(), id));
+		model.addAttribute("isAlreadyAddCafeScrap",
+				cafeScrapService.isAlreadyAddCafeScrap(rq.getLoginedMemberId(), id));
 		// 이놈이 문제야!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 		
 		
