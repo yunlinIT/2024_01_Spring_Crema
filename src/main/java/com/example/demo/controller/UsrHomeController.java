@@ -1,34 +1,55 @@
 package com.example.demo.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-//import com.example.demo.crawling.WebCrawler2_melonTop100;
+import com.example.demo.service.CafeService;
+import com.example.demo.vo.Cafe;
+
+
+
+
 
 @Controller
 public class UsrHomeController {
+	
+	
+	@Autowired
+	private CafeService cafeService;
+
 
 	@RequestMapping("/usr/home/main")
-	public String showMain() {
+	public String showMain(Model model, String keyword) {
+		
+		Cafe getNewestCafe = cafeService.getNewestCafe();
+		Cafe getPopularCafe = cafeService.getPopularCafe();
+		Cafe getRecommendedCafe = cafeService.getRecommendedCafe(keyword);
+
+		model.addAttribute("getNewestCafe", getNewestCafe);
+		model.addAttribute("getPopularCafe", getPopularCafe);
+		model.addAttribute("getRecommendedCafe", getRecommendedCafe);
+		
+		
+		
 
 		return "/usr/home/main";
 	}
 
 	@RequestMapping("/")
-	public String showRoot() {
+	public String showRoot(Model model,  String keyword) {
+		
+		Cafe getNewestCafe = cafeService.getNewestCafe();
+		Cafe getPopularCafe = cafeService.getPopularCafe();
+		Cafe getRecommendedCafe = cafeService.getRecommendedCafe(keyword);
+
+		model.addAttribute("getNewestCafe", getNewestCafe);
+		model.addAttribute("getPopularCafe", getPopularCafe);
+		model.addAttribute("getRecommendedCafe", getRecommendedCafe);
+		
 
 		return "redirect:/usr/home/main";
 	}
 
-//	@RequestMapping("/usr/home/main/crawl")
-//	public String crawl() {
-//		WebCrawler2_melonTop100.crawl();
-//		return "/usr/home/main";
-//	}
-//	
-//	@RequestMapping("/usr/home/main/crawlcafe")
-//	public String crawlcafe() {
-//		WebCrawler13.crawlMap();
-//		return "/usr/home/main";
-//	}
 }

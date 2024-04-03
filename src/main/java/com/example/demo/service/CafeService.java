@@ -101,6 +101,23 @@ public class CafeService {
 	public int getDoScrap(int relId) {
 		return cafeRepository.getDoScrap(relId);
 	}
+	
+	
+
+	public Cafe getNewestCafe() {
+		
+		return cafeRepository.getNewestCafe();
+	}
+
+	public Cafe getPopularCafe() {
+		
+		return cafeRepository.getPopularCafe();
+	}
+
+	public Cafe getRecommendedCafe(String keyword) {
+		
+		return cafeRepository.getRecommendedCafe();
+	}
 
 
 

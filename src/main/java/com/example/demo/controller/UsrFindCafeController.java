@@ -26,6 +26,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class UsrFindCafeController {
+	
 
 	@Autowired
 	private CafeService cafeService;
@@ -35,10 +36,9 @@ public class UsrFindCafeController {
 
 	@Autowired
 	private CafeReviewService cafeReviewService;
-	
+
 	@Autowired
 	private CafeScrapService cafeScrapService;
-	
 
 	@RequestMapping("/usr/findcafe/likeList")
 	public String likeList() {
@@ -62,41 +62,34 @@ public class UsrFindCafeController {
 	public Map<String, Object> filterCafes(@RequestBody Map<String, String> filterData) {
 
 		Map<String, Object> returnMap = new HashMap<>();
-		
+
 		String keyword = filterData.get("keyword");
 		int page = Integer.parseInt(filterData.get("page"));
 		List<Cafe> cafesList;
 
 		cafeRepository.updateReviewCount();
-		
+
 		int cafesCount = 0;
 		if (keyword.isEmpty()) {
 			cafesCount = cafeService.getCafesCount();
-		}else {
+		} else {
 			cafesCount = cafeService.getCafesCountKeyword(keyword);
 		}
-		
+
 		int itemsInAPage = 5;
-		
-		
+
 		if (keyword.isEmpty()) {
 			cafesList = cafeService.getForPrintCafes(itemsInAPage, page);
-		}else {
+		} else {
 			cafesList = cafeService.getForPrintCafesKeyword(itemsInAPage, page, keyword);
 		}
-		
 
-		
 		returnMap.put("cafesTotalCount", cafesCount);
 		returnMap.put("cafesCurrentList", cafesList);
 
-		
 		return returnMap;
 	}
-	
-	
-	
-	
+
 //	@RequestMapping("/usr/findcafe/filterCafes")
 //	@ResponseBody
 //	public Map<String, Object> filterCafes(@RequestBody Map<String, Object> filterData) {
@@ -132,8 +125,6 @@ public class UsrFindCafeController {
 //	    
 //	    return returnMap;
 //	}
-
-
 
 	@RequestMapping("/usr/findcafe/searchList")
 	public String showSearchList(HttpServletRequest req) {
@@ -174,25 +165,24 @@ public class UsrFindCafeController {
 		if (usersScrapRd.isSuccess()) {
 			model.addAttribute("userCanScrap", usersScrapRd.isSuccess());
 		}
-		
+
 		cafeRepository.updateCafeScrapCount();
 
 		List<CafeReview> cafeReviews = cafeReviewService.getForPrintCafeReviews(rq.getLoginedMemberId(), id);
 
 		int cafeReviewsCount = cafeReviews.size();
-		
-		//int cafeScrapCount = cafeScrapService.getSumScrapCount(id); //내꺼
+
+		// int cafeScrapCount = cafeScrapService.getSumScrapCount(id); //내꺼
 
 		model.addAttribute("cafe", cafe);
 		model.addAttribute("cafeReviews", cafeReviews);
 		model.addAttribute("cafeReviewsCount", cafeReviewsCount);
-		
-		//model.addAttribute("cafeScrapCount", cafeScrapCount); //내꺼
+
+		// model.addAttribute("cafeScrapCount", cafeScrapCount); //내꺼
 		model.addAttribute("isAlreadyAddCafeScrap",
 				cafeScrapService.isAlreadyAddCafeScrap(rq.getLoginedMemberId(), id));
-		// 이놈이 문제야!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
-		
-		
+		// 이놈이 문제야!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 //		model.addAttribute("isAlreadyAddBadRp",
 //				cafeScrapService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "article"));
 
@@ -211,12 +201,76 @@ public class UsrFindCafeController {
 //				model.addAttribute("cafes", cafes);
 //			}
 //		}
-		
+
 		model.addAttribute("keyword", keyword);
-		
+
 		return "/usr/findcafe/searchList";
 	}
+
+//	@RequestMapping("/usr/home/main")
+//    public String getNewestCafe(Model model) {
+//       cafeService.getCafes();
+//       
+//       model.addAttribute("cafe", cafe);
+//        
+//        return "/usr/home/main";
+//    }
+//
+//	@RequestMapping("/usr/home/main")
+//    public CaStringfe getPopularCafe(Model model) {
+//        cafeService.getPopularCafe();
+//        
+//        model.addAttribute("cafe", cafe);
+//        
+//        return "/usr/home/main";
+//    }
+
+
+//	public String getCafesForMain(Model model, @RequestParam String keyword) {
+//		
+//		Cafe getNewestCafe = cafeService.getNewestCafe();
+//		Cafe getPopularCafe = cafeService.getPopularCafe();
+//		Cafe getRecommendedCafe = cafeService.getRecommendedCafe(keyword);
+//
+//		model.addAttribute("getNewestCafe", getNewestCafe);
+//		model.addAttribute("getPopularCafe", getPopularCafe);
+//		model.addAttribute("getRecommendedCafe", getRecommendedCafe);
+//		
+//
+//		return "/usr/home/main";
+//	}
+	
+	
+	
 	
 	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
