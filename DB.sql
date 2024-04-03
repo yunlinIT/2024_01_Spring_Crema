@@ -905,6 +905,12 @@ SELECT * FROM cafeReview;
 SELECT * FROM cafeScrap;
 
 
+			SELECT * 
+			FROM cafe 
+			ORDER BY RAND() 
+			LIMIT 1;
+
+
 SELECT * 
 FROM cafe 
 WHERE cafeScrapCount = (SELECT MAX(cafeScrapCount) FROM cafe);
