@@ -114,7 +114,7 @@ public class CafeService {
 		return cafeRepository.getPopularCafe();
 	}
 
-	public Cafe getRecommendedCafe(String keyword) {
+	public Cafe getRecommendedCafe() {
 		
 		return cafeRepository.getRecommendedCafe();
 	}

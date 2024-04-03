@@ -181,7 +181,6 @@ public class UsrFindCafeController {
 		// model.addAttribute("cafeScrapCount", cafeScrapCount); //내꺼
 		model.addAttribute("isAlreadyAddCafeScrap",
 				cafeScrapService.isAlreadyAddCafeScrap(rq.getLoginedMemberId(), id));
-		// 이놈이 문제야!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 //		model.addAttribute("isAlreadyAddBadRp",
 //				cafeScrapService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "article"));

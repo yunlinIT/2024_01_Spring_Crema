@@ -262,17 +262,18 @@
 
 
 <!-- 날씨위젯 -->
-<a class="weatherwidget-io" href="https://forecast7.com/en/36d35127d38/daejeon/" data-icons="Climacons Animated" data-mode="Current" data-days="3" data-theme="pure" >Daejeon, South Korea</a>
+<a class="weatherwidget-io" href="https://forecast7.com/en/36d35127d38/daejeon/" data-icons="Climacons Animated"
+	data-mode="Current" data-days="3" data-theme="pure">Daejeon, South Korea</a>
 <script>
 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
 </script>
 
 <style>
 .weatherwidget-io {
-    max-width: 225px !important;
-    background-color: transparent !important;
-    margin-left: 30px !important;
-    margin-bottom: 30px !important;
+	max-width: 225px !important;
+	background-color: transparent !important;
+	margin-left: 30px !important;
+	margin-bottom: 30px !important;
 }
 </style>
 
@@ -291,17 +292,16 @@
 			<div class="weather-comment">-</div>
 		</div>
 		<div class="weather-img-box">
-			<img class="Weather-img"
-				src="-" />
+			<img class="Weather-img" src="-" />
 		</div>
 
-<!-- 		날씨조건에 따라 추천검색어를 보여주는 검색창 -->
+		<!-- 		날씨조건에 따라 추천검색어를 보여주는 검색창 -->
 		<div class="search-box">
 			<div class="how-about-here">오늘은 이런 카페 어떠세요?</div>
 			<form action="/usr/findcafe/searchCafes" method="get" id="searchForm">
 				<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs max-w-xs"> <input
-					type="text" class="grow" id="keyword" name="keyword" autocomplete="off" placeholder="검색어를 입력해주세요" value="" style="color:black;";/> <a href="javascript:;"
-						onclick="submitSearchForm()">
+					type="text" class="grow" id="keyword" name="keyword" autocomplete="off" placeholder="검색어를 입력해주세요" value=""
+					style="color: black;" ;/> <a href="javascript:;" onclick="submitSearchForm()">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
                     <path fill-rule="evenodd"
 								d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
@@ -314,6 +314,7 @@
 	</div>
 
 </div>
+
 
 
 
@@ -482,15 +483,13 @@
 
 
 
-
 <!-- 카페추천 박스 -->
 
 <div class="CafeRecom mx-auto">
 	<div class="NewCafe">
 		<div>크레마 신규 카페</div>
 		<div class="hover-img-zoom-in">
-			<img class="NewCafeImg"
-				src="${getNewestCafe.cafeImgUrl2}" />
+			<img class="NewCafeImg" src="${getNewestCafe.cafeImgUrl1}" />
 			<div class="InfoBox">
 				<div class="name">${getNewestCafe.name}</div>
 				<div class="address">${getNewestCafe.address}</div>
@@ -501,8 +500,7 @@
 	<div class="PopularCafe">
 		<div>크레마 인기 카페</div>
 		<div class="hover-img-zoom-in">
-			<img class="PopularCafeImg"
-				src="${getPopularCafe.cafeImgUrl1}" />
+			<img class="PopularCafeImg" src="${getPopularCafe.cafeImgUrl1}" />
 			<div class="InfoBox">
 				<div class="name">${getPopularCafe.name}</div>
 				<div class="address">${getPopularCafe.address}</div>
@@ -512,8 +510,7 @@
 	<div class="RecomCafe">
 		<div>크레마 추천 카페</div>
 		<div class="hover-img-zoom-in">
-			<img class="RecomCafeImg"
-				src="${getRecommendedCafe.cafeImgUrl1}" />
+			<img class="RecomCafeImg" src="${getRecommendedCafe.cafeImgUrl1}" />
 			<div class="InfoBox">
 				<div class="name">${getRecommendedCafe.name}</div>
 				<div class="address">${getRecommendedCafe.address}</div>
@@ -609,6 +606,14 @@
 	width: 400px;
 	margin: 0px auto;
 	overflow: hidden;
+}
+
+.hover-img-zoom-in img {
+	width: 400px;
+	height: 500px;
+	margin: 0px auto;
+	overflow: hidden;
+	object-fit: cover;
 }
 </style>
 

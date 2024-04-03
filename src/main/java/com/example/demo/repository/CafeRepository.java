@@ -184,13 +184,22 @@ public interface CafeRepository {
 	public Cafe getPopularCafe();
 
 	
+//	@Select("""
+//			SELECT * 
+//			FROM cafe 
+//			WHERE hashtag LIKE CONCAT('%', #{keyword}, '%')
+//			ORDER BY RAND() 
+//			LIMIT 1;
+//					""")
+//	public Cafe getRecommendedCafe();
+	
 	@Select("""
 			SELECT * 
 			FROM cafe 
-			WHERE hashtag LIKE CONCAT('%', #{keyword}, '%')
 			ORDER BY RAND() 
 			LIMIT 1;
 					""")
 	public Cafe getRecommendedCafe();
+	
 	
 }
