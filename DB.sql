@@ -843,7 +843,31 @@ INSERT INTO cafeScrap
 SET regDate = NOW(),
 updateDate = NOW(),
 memberId = 2,
-cafeId = 23,
+cafeId = 19,
+`scrap` = 1;
+
+# 1번 회원이 19번 카페에 찜(스크랩)
+INSERT INTO cafeScrap
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 1,
+cafeId = 19,
+`scrap` = 1;
+
+# 2번 회원이 19번 카페에 찜(스크랩)
+INSERT INTO cafeScrap
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+cafeId = 19,
+`scrap` = 1;
+
+# 1번 회원이 19번 카페에 찜(스크랩)
+INSERT INTO cafeScrap
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 3,
+cafeId = 19,
 `scrap` = 1;
 
 
@@ -879,6 +903,18 @@ DESC cafe;
 SELECT * FROM cafeReview;
 
 SELECT * FROM cafeScrap;
+
+
+SELECT * 
+FROM cafe 
+WHERE cafeScrapCount = (SELECT MAX(cafeScrapCount) FROM cafe);
+
+
+SELECT * 
+FROM cafe 
+WHERE hashtag LIKE CONCAT('%', '아늑한', '%')
+ORDER BY RAND() 
+LIMIT 1;
 
 
 
