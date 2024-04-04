@@ -70,4 +70,8 @@ public class MemberService {
 
 	}
 
+	public int getMyWriteCount(int memberId) {
+		return memberRepository.getMyWriteCount(memberId);
+	}
+
 }

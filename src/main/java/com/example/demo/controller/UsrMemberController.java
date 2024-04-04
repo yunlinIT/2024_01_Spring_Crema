@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,8 +23,7 @@ public class UsrMemberController {
 
 	@Autowired
 	private MemberService memberService;
-	
-	
+
 	@RequestMapping("/usr/member/doDeleteId")
 	@ResponseBody
 	public String doDeleteId(HttpServletRequest req, @RequestParam(defaultValue = "/") String afterLogoutUri) {
@@ -38,8 +38,7 @@ public class UsrMemberController {
 
 		return Ut.jsReplace("S-1", "탈퇴가 완료되었습니다", afterLogoutUri);
 	}
-	
-	
+
 	@RequestMapping("/usr/member/getLoginIdDup")
 	@ResponseBody
 	public ResultData getLoginIdDup(String loginId) {
@@ -56,7 +55,6 @@ public class UsrMemberController {
 
 		return ResultData.from("S-1", "사용 가능!", "loginId", loginId);
 	}
-
 
 	@RequestMapping("/usr/member/doLogout")
 	@ResponseBody
@@ -172,18 +170,40 @@ public class UsrMemberController {
 	}
 
 	@RequestMapping("/usr/member/myPage")
-	public String showMyPage() {
+	public String showMyPage(HttpServletRequest req, int memberId, Model model) {
+		
+		Rq rq = (Rq) req.getAttribute("rq");
+		
+		memberId = rq.getLoginedMemberId();
+		
+		System.err.println(memberId);
+
+//		int myWriteCount = memberService.getMyWriteCount(memberId);
+		
+//		model.addAttribute("myWriteCount", myWriteCount);
+		
+		
+		
+		
+		
+//		int myReplyCount = memberService.getMyReplyCount();
+//		int myQuestionCount = memberService.getMyQuestionCount();
+//		int myScrapCount = memberService.getMyScrapCount();
+
+
+//		model.addAttribute("myReplyCount", myReplyCount);
+//		model.addAttribute("myQuestionCount", myQuestionCount);
+//		model.addAttribute("myScrapCount", myScrapCount);
+		
 
 		return "usr/member/myPage";
 	}
-	
+
 	@RequestMapping("/usr/member/myInfo")
 	public String showMyInfo() {
 
 		return "usr/member/myInfo";
 	}
-	
-	
 
 	@RequestMapping("/usr/member/checkPw")
 	public String showCheckPw() {
