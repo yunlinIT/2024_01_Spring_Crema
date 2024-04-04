@@ -905,10 +905,27 @@ SELECT * FROM cafeReview;
 SELECT * FROM cafeScrap;
 
 
-			SELECT * 
-			FROM cafe 
-			ORDER BY RAND() 
-			LIMIT 1;
+SELECT * 
+FROM cafe 
+ORDER BY RAND() 
+LIMIT 1;
+
+
+SELECT COUNT(*)
+FROM `article` AS A
+INNER JOIN `member` AS M
+ON A.memberId = M.id
+WHERE (A.boardId = 1 OR A.boardId = 2)
+AND M.loginId = 'test1';
+
+
+
+
+
+INNER JOIN `member` AS M
+    ON CR.memberId = M.id
+    WHERE cafeId = 10
+
 
 
 SELECT * 
