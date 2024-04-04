@@ -70,8 +70,20 @@ public class MemberService {
 
 	}
 
-	public int getMyWriteCount(int memberId) {
+	public int getMyWriteCount(Integer memberId) {
 		return memberRepository.getMyWriteCount(memberId);
+	}
+
+	public int getMyReplyCount(Integer memberId) {
+		return memberRepository.getMyReplyCount(memberId);
+	}
+
+	public int getMyQuestionCount(Integer memberId) {
+		return memberRepository.getMyQuestionCount(memberId);
+	}
+
+	public int getMyScrapCount(Integer memberId) {
+		return memberRepository.getMyScrapCount(memberId);
 	}
 
 }

@@ -122,11 +122,38 @@ public interface MemberRepository {
 	@Select("""
 			SELECT COUNT(*)
 			FROM `article` 
-			WHERE (A.boardId = 1 OR A.boardId = 2)
+			WHERE (boardId = 1 OR boardId = 2)
+			AND memberId = #{memberId};
+			""")
+	public int getMyWriteCount(Integer memberId);
+
+	
+	
+	@Select("""
+			SELECT COUNT(*)
+			FROM `reply` 
+			WHERE relTypeCode = 'article'
 			AND memberId = #{memberId};
 
 			""")
-	public int getMyWriteCount(int memberId);
+	public int getMyReplyCount(Integer memberId);
+
+	
+	@Select("""
+			SELECT COUNT(*)
+			FROM `article` 
+			WHERE boardId = 3 
+			AND memberId = #{memberId};
+			""")
+	public int getMyQuestionCount(Integer memberId);
+
+	
+	@Select("""
+			SELECT COUNT(*)
+			FROM cafeScrap 
+			WHERE memberId = #{memberId};
+			""")
+	public int getMyScrapCount(Integer memberId);
 
 }
 

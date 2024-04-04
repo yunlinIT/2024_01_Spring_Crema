@@ -170,30 +170,21 @@ public class UsrMemberController {
 	}
 
 	@RequestMapping("/usr/member/myPage")
-	public String showMyPage(HttpServletRequest req, int memberId, Model model) {
+	public String showMyPage(HttpServletRequest req, Model model) {
 		
 		Rq rq = (Rq) req.getAttribute("rq");
 		
-		memberId = rq.getLoginedMemberId();
+		Integer memberId = rq.getLoginedMemberId();
 		
-		System.err.println(memberId);
-
-//		int myWriteCount = memberService.getMyWriteCount(memberId);
+		int myWriteCount = memberService.getMyWriteCount(memberId);
+		int myReplyCount = memberService.getMyReplyCount(memberId);
+		int myQuestionCount = memberService.getMyQuestionCount(memberId);
+		int myScrapCount = memberService.getMyScrapCount(memberId);
 		
-//		model.addAttribute("myWriteCount", myWriteCount);
-		
-		
-		
-		
-		
-//		int myReplyCount = memberService.getMyReplyCount();
-//		int myQuestionCount = memberService.getMyQuestionCount();
-//		int myScrapCount = memberService.getMyScrapCount();
-
-
-//		model.addAttribute("myReplyCount", myReplyCount);
-//		model.addAttribute("myQuestionCount", myQuestionCount);
-//		model.addAttribute("myScrapCount", myScrapCount);
+		model.addAttribute("myWriteCount", myWriteCount);
+		model.addAttribute("myReplyCount", myReplyCount);
+		model.addAttribute("myQuestionCount", myQuestionCount);
+		model.addAttribute("myScrapCount", myScrapCount);
 		
 
 		return "usr/member/myPage";
