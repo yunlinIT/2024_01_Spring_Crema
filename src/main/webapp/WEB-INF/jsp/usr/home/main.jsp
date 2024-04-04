@@ -156,19 +156,14 @@
     // 초기에 한 번 호출하여 초기 화면에서도 적용되게 함
     appearOnScroll();
 
-
-    
   </script>
-
+  
 </body>
-
 </html>
 
 
 
-
 <!-- 이미지 아래 페이지 내용 추가 -->
-
 
 
 <script>
@@ -257,7 +252,72 @@
 
 
     fetchWeather(); // Call the function to fetch weather on page load
+    
+    
+    
+    
+    
+    
+    
+    function submitSearchForm() {
+        var keyword = document.getElementById("keyword").value.trim(); // 검색어를 가져옴
+        var keywords = keyword.split(" "); // 공백을 기준으로 검색어를 나눔
+        var matchedKeywords = [];
+
+        // 검색어에서 "아늑한"과 "카페"와 같은 일치하는 키워드를 추출
+        keywords.forEach(function(keyword) {
+            if (keyword === "아늑한" || keyword === "카페") {
+            	matchedKeywords.push(keywords);
+            }
+        });
+
+        // 일치하는 키워드가 하나 이상 있으면 검색을 실행
+        if (keywords.length > 0) {
+            // 추출된 일치하는 키워드들을 합쳐서 새로운 검색어로 만듦
+            var newKeyword = matchedKeywords[0];
+            
+//             var newKeyword = matchedKeywords.join(" ");
+//             // 검색어를 파라미터로 설정
+            document.getElementById("keyword").value = newKeyword;
+            // 검색 양식 제출
+            document.getElementById("searchForm").submit();
+        } 
+        
+        alert(newKeyword);
+    }
+    
+//     function submitSearchForm() {
+//         var keyword = document.getElementById("keyword").value.trim(); // 검색어를 가져옴
+//         var keywords = keyword.split(" "); // 공백을 기준으로 검색어를 나눔
+
+//         // 검색어에서 "아늑한"과 "카페"와 같은 일치하는 키워드를 추출하여 각각 검색 양식에 추가
+//         keywords.forEach(function(word) {
+//             if (word === "아늑한" || word === "카페") {
+//                 addKeywordToForm(word);
+//             }
+//         });
+
+//         // 검색 양식 제출
+//         document.getElementById("searchForm").submit();
+//     }
+
+//     function addKeywordToForm(keyword) {
+//         var inputElement = document.createElement("input");
+//         inputElement.type = "hidden"; // 숨겨진 입력 필드 생성
+//         inputElement.name = "keyword"; // 이름 설정
+//         inputElement.value = keyword; // 값 설정
+//         document.getElementById("searchForm").appendChild(inputElement); // 검색 양식에 추가
+//     }
+
+
+    
+    
+    
+    
+    
 </script>
+
+
 
 
 
@@ -482,11 +542,42 @@
 
 
 
+<!--   <div class="cafe-item"> -->
+<!--                 <a href="cafeDetail?id=`+cafe.id+`" class="linkbox１"> -->
+<!--                     <div class="content-info-box" style="margin-bottom: 50px"> -->
+<!--                         <div class="cafe-img-box"> -->
+<!--                             <img src="`+cafe.cafeImgUrl1+`" alt="카페 이미지" /> -->
+<!--                         </div> -->
+<!--                         <div class="name-address"> -->
+<!--                             <div class="cafe-name">`+cafe.name+`</div> -->
+<!--                             <p class="cafe-address">`+cafe.address+`</p> -->
+<!--                         </div> -->
+<!--                         <div class="like-count"> -->
+<!--                             <span class="material-symbols-outlined"> favorite </span> -->
+<!--                             <div class="like-count-num">`+cafe.cafeScrapCount+`</div> -->
+<!--                         </div> -->
+<!--                         <div class="review-count"> -->
+<!--                             <div class="title-review">리뷰</div> -->
+<!--                             <div class="review-count-num">`+cafe.reviewCount+`</div> -->
+<!--                         </div> -->
+<!--                         <div class="show-distance"> -->
+<!--                             <div class="num-km-group"> -->
+<!--                                 <div class="km">km</div> -->
+<!--                                 <div class="distance-num">1.8</div> -->
+<!--                             </div> -->
+<!--                         </div> -->
+<!--                         <div class="hashtag">`+cafe.hashtag+`</div> -->
+<!--                     </div> -->
+<!--                 </a> -->
+<!--             </div> -->
+
+
+
 
 <!-- 카페추천 박스 -->
 
 <div class="CafeRecom mx-auto">
-	<div class="NewCafe">
+	<a href="../findcafe/cafeDetail?id=${getNewestCafe.id}" class="NewCafe">
 		<div>크레마 신규 카페</div>
 		<div class="hover-img-zoom-in">
 			<img class="NewCafeImg" src="${getNewestCafe.cafeImgUrl1}" />
@@ -495,9 +586,9 @@
 				<div class="address">${getNewestCafe.address}</div>
 			</div>
 		</div>
-	</div>
+	</a>
 
-	<div class="PopularCafe">
+	<a href="../findcafe/cafeDetail?id=${getPopularCafe.id}" class="PopularCafe">
 		<div>크레마 인기 카페</div>
 		<div class="hover-img-zoom-in">
 			<img class="PopularCafeImg" src="${getPopularCafe.cafeImgUrl1}" />
@@ -506,8 +597,8 @@
 				<div class="address">${getPopularCafe.address}</div>
 			</div>
 		</div>
-	</div>
-	<div class="RecomCafe">
+	</a>
+	<a href="../findcafe/cafeDetail?id=${getRecommendedCafe.id}" class="RecomCafe">
 		<div>크레마 추천 카페</div>
 		<div class="hover-img-zoom-in">
 			<img class="RecomCafeImg" src="${getRecommendedCafe.cafeImgUrl1}" />
@@ -516,7 +607,7 @@
 				<div class="address">${getRecommendedCafe.address}</div>
 			</div>
 		</div>
-	</div>
+	</a>
 </div>
 
 <style>
@@ -560,6 +651,7 @@
 	font-size: 16px;
 	font-family: Pretendard;
 	word-wrap: break-word;
+	font-weight: 600;
 }
 
 .InfoBox {
