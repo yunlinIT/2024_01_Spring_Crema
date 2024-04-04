@@ -843,7 +843,7 @@ INSERT INTO cafeScrap
 SET regDate = NOW(),
 updateDate = NOW(),
 memberId = 2,
-cafeId = 19,
+cafeId = 23,
 `scrap` = 1;
 
 # 1번 회원이 19번 카페에 찜(스크랩)
@@ -859,7 +859,7 @@ INSERT INTO cafeScrap
 SET regDate = NOW(),
 updateDate = NOW(),
 memberId = 2,
-cafeId = 19,
+cafeId = 22,
 `scrap` = 1;
 
 # 1번 회원이 19번 카페에 찜(스크랩)
@@ -888,6 +888,8 @@ SET C.cafeScrapCount = CS_SUM.scrapCount;
 
 SELECT * FROM article;
 
+DESC article;
+
 SELECT * FROM `member`;
 
 SELECT * FROM `board`;
@@ -912,19 +914,29 @@ LIMIT 1;
 
 
 SELECT COUNT(*)
-FROM `article` AS A
+FROM cafeScrap 
+WHERE memberId = 2;
+
+SELECT COUNT(*)
+FROM `article` 
+WHERE (boardId = 1 OR boardId = 2)
+AND memberId = 2;
+
+SELECT COUNT(*)
+FROM `reply` 
+WHERE relTypeCode = 'article'
+AND memberId = 2;
+
+SELECT COUNT(*)
+FROM `article` 
+WHERE boardId = 3
+AND memberId = 2;
+
+
+
 INNER JOIN `member` AS M
-ON A.memberId = M.id
-WHERE (A.boardId = 1 OR A.boardId = 2)
-AND M.loginId = 'test1';
-
-
-
-
-
-INNER JOIN `member` AS M
-    ON CR.memberId = M.id
-    WHERE cafeId = 10
+ON CR.memberId = M.id
+WHERE cafeId = 10
 
 
 
