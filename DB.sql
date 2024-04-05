@@ -888,8 +888,6 @@ SET C.cafeScrapCount = CS_SUM.scrapCount;
 
 SELECT * FROM article;
 
-DESC article;
-
 SELECT * FROM `member`;
 
 SELECT * FROM `board`;
@@ -899,8 +897,6 @@ SELECT * FROM reactionPoint;
 SELECT * FROM `reply`;
 
 SELECT * FROM cafe;
-
-DESC cafe;
 
 SELECT * FROM cafeReview;
 
@@ -959,6 +955,16 @@ SELECT *
 FROM cafeScrap 
 WHERE memberId = 2;
 
+
+SELECT C.id, C.`name`, C.address, C.cafeScrapCount, C.reviewCount, C.hashtag, C.cafeImgUrl1
+FROM cafe AS C
+INNER JOIN cafeScrap CS
+ON CS.cafeId = C.id
+WHERE memberId = 2
+GROUP BY C.id
+ORDER BY CS.updateDate DESC
+
+ORDER BY C.id DESC
 
 
 
