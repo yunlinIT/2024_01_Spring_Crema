@@ -913,24 +913,53 @@ ORDER BY RAND()
 LIMIT 1;
 
 
+# 나의 찜 목록 갯수
 SELECT COUNT(*)
 FROM cafeScrap 
 WHERE memberId = 2;
 
+# 나의 게시글 갯수
 SELECT COUNT(*)
 FROM `article` 
 WHERE (boardId = 1 OR boardId = 2)
 AND memberId = 2;
 
+# 나의 댓글 갯수
 SELECT COUNT(*)
 FROM `reply` 
 WHERE relTypeCode = 'article'
 AND memberId = 2;
 
+# 나의 질문 갯수
 SELECT COUNT(*)
 FROM `article` 
 WHERE boardId = 3
 AND memberId = 2;
+
+# 나의 게시글 모아보기
+SELECT *
+FROM `article` 
+WHERE (boardId = 1 OR boardId = 2)
+AND memberId = 2;
+
+# 나의 댓글 모아보기
+SELECT *
+FROM `reply` 
+WHERE relTypeCode = 'article'
+AND memberId = 2;
+
+# 나의 질문 모아보기
+SELECT *
+FROM `article` 
+WHERE boardId = 3
+AND memberId = 2;
+
+# 나의 찜 목록 보기
+SELECT *
+FROM cafeScrap 
+WHERE memberId = 2;
+
+
 
 
 
