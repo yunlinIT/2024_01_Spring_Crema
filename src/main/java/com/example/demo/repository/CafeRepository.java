@@ -152,7 +152,7 @@ public interface CafeRepository {
 			FROM cafe
 			WHERE id = #{cafeId}
 			""")
-	public int getDoScrap(int relId);
+	public int getDoScrap(int relId);  // 회원에 따라서 구별을 해야함. //TODO
 
 	@Select("""
 			UPDATE cafe AS C
