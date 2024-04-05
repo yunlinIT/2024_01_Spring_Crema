@@ -1,14 +1,20 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.service.CafeScrapService;
 import com.example.demo.service.CafeService;
+import com.example.demo.vo.Cafe;
 import com.example.demo.vo.ResultData;
 import com.example.demo.vo.Rq;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class UsrCafeScrapController {
@@ -21,6 +27,56 @@ public class UsrCafeScrapController {
 
 	@Autowired
 	private CafeScrapService cafeScrapService;
+	
+	
+	
+	
+//	
+//	@RequestMapping("/usr/member/myPage")
+//	public String showMyPage(HttpServletRequest req, Model model) {
+//		
+//		Rq rq = (Rq) req.getAttribute("rq");
+//		
+//		Integer memberId = rq.getLoginedMemberId();
+//		
+//		int myWriteCount = memberService.getMyWriteCount(memberId);
+//		int myReplyCount = memberService.getMyReplyCount(memberId);
+//		int myQuestionCount = memberService.getMyQuestionCount(memberId);
+//		int myScrapCount = memberService.getMyScrapCount(memberId);
+//		
+//		model.addAttribute("myWriteCount", myWriteCount);
+//		model.addAttribute("myReplyCount", myReplyCount);
+//		model.addAttribute("myQuestionCount", myQuestionCount);
+//		model.addAttribute("myScrapCount", myScrapCount);
+//		
+//
+//		return "usr/member/myPage";
+//	}
+	
+	@RequestMapping("/usr/findcafe/scrapList")
+	public String cafeScrapList(HttpServletRequest req, Model model) {
+		
+		Rq rq = (Rq) req.getAttribute("rq");
+		
+		Integer memberId = rq.getLoginedMemberId();
+		
+//		int myWriteCount = memberService.getMyWriteCount(memberId);
+//		int myReplyCount = memberService.getMyReplyCount(memberId);
+//		int myQuestionCount = memberService.getMyQuestionCount(memberId);
+//		int myScrapCount = memberService.getMyScrapCount(memberId);
+//		
+//		model.addAttribute("myWriteCount", myWriteCount);
+//		model.addAttribute("myReplyCount", myReplyCount);
+//		model.addAttribute("myQuestionCount", myQuestionCount);
+//		model.addAttribute("myScrapCount", myScrapCount);
+		
+		List<Cafe> cafes = cafeScrapService.getForPrintScrapCafes(memberId);
+		
+		model.addAttribute("cafes", cafes);
+
+		return "/usr/findcafe/scrapList";
+	}
+	
 
 	@RequestMapping("/usr/cafeScrap/doCafeScrap")
 	@ResponseBody

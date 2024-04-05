@@ -40,11 +40,11 @@ public class UsrFindCafeController {
 	@Autowired
 	private CafeScrapService cafeScrapService;
 
-	@RequestMapping("/usr/findcafe/likeList")
-	public String likeList() {
-
-		return "/usr/findcafe/likeList";
-	}
+//	@RequestMapping("/usr/findcafe/likeList")
+//	public String likeList() {
+//
+//		return "/usr/findcafe/likeList";
+//	}
 
 	@RequestMapping("/crawl")
 	public String crawlAndSaveData() {

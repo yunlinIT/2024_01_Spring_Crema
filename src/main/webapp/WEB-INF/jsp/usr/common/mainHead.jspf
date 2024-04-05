@@ -110,7 +110,7 @@ header {
 					<li><a class="hover:underline" href="../member/join">회원가입</a></li>
 				</c:if>
 				<c:if test="${rq.isLogined() }">
-					<li><a class="hover:underline" href="../findcafe/likeList">나의 찜</a></li>
+					<li><a class="hover:underline" href="../findcafe/scrapList">나의 찜</a></li>
 					<li><a class="hover:underline" href="/usr/member/myPage">마이페이지</a></li>
 					<li><a onclick="if(confirm('로그아웃 할래?') == false) return false;" class="hover:underline"
 							href="../member/doLogout">로그아웃</a></li>

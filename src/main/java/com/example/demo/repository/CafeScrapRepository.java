@@ -1,9 +1,13 @@
 package com.example.demo.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+
+import com.example.demo.vo.Cafe;
 
 @Mapper
 public interface CafeScrapRepository {
@@ -59,7 +63,25 @@ public interface CafeScrapRepository {
 			AND cafeId = #{cafeId}
 			""")
 	public void deleteCafeScrapCount(int memberId, int cafeId); //deleteReactionPoint
+
 	
+	
+	@Select("""
+			SELECT C.id, C.`name`, C.address, C.cafeScrapCount, C.reviewCount, C.hashtag, C.cafeImgUrl1
+			FROM cafe AS C
+			INNER JOIN cafeScrap CS
+			ON CS.cafeId = C.id
+			WHERE memberId = #{memberId}
+			GROUP BY C.id
+			ORDER BY CS.updateDate DESC
+			""")
+
+	public List<Cafe> getForPrintScrapCafes(Integer memberId);
+	
+	
+	
+	
+
 	
 	
 	

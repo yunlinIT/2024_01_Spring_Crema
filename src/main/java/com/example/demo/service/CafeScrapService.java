@@ -1,10 +1,13 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.repository.CafeScrapRepository;
 import com.example.demo.repository.ReactionPointRepository;
+import com.example.demo.vo.Cafe;
 import com.example.demo.vo.ResultData;
 
 @Service
@@ -103,6 +106,14 @@ public class CafeScrapService {
 
 		return false;
 	}
+
+	public List<Cafe> getForPrintScrapCafes(Integer memberId) {
+		
+		return cafeScrapRepository.getForPrintScrapCafes(memberId);
+	}
+	
+	
+	
 
 //	public boolean isAlreadyAddBadRp(int memberId, int relId, String relTypeCode) {
 //		int getPointTypeCodeByMemberId = cafeScrapRepository.getSumReactionPoint(memberId, relTypeCode, relId);
