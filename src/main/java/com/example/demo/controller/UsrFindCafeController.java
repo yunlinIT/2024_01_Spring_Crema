@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,29 +61,37 @@ public class UsrFindCafeController {
 
 	@RequestMapping("/usr/findcafe/filterCafes")
 	@ResponseBody
-	public Map<String, Object> filterCafes(@RequestBody Map<String, String> filterData) {
+	public Map<String, Object> filterCafes(@RequestBody Map<String, Object> filterData) {
 
 		Map<String, Object> returnMap = new HashMap<>();
 
-		String keyword = filterData.get("keyword");
-		int page = Integer.parseInt(filterData.get("page"));
+		//String keyword = filterData.get("keyword");
+		List<String> selectedKeywords = new ArrayList<String>();
+		Object selectedKeywordsObject = filterData.get("selectedKeywords");
+
+		if (selectedKeywordsObject instanceof String == false) {
+		    selectedKeywords = (List<String>) selectedKeywordsObject;
+		}
+		//List<String> selectedKeywords = (List<String>) filterData.get("selectedKeywords");
+		
+		int page = Integer.parseInt(filterData.get("page").toString());
 		List<Cafe> cafesList;
 
 		cafeRepository.updateReviewCount();
 
 		int cafesCount = 0;
-		if (keyword.isEmpty()) {
+		if (selectedKeywords.isEmpty()) {
 			cafesCount = cafeService.getCafesCount();
 		} else {
-			cafesCount = cafeService.getCafesCountKeyword(keyword);
+			cafesCount = cafeService.getCafesCountKeyword(selectedKeywords);
 		}
 
 		int itemsInAPage = 5;
 
-		if (keyword.isEmpty()) {
+		if (selectedKeywords.isEmpty()) {
 			cafesList = cafeService.getForPrintCafes(itemsInAPage, page);
 		} else {
-			cafesList = cafeService.getForPrintCafesKeyword(itemsInAPage, page, keyword);
+			cafesList = cafeService.getForPrintCafesKeyword(itemsInAPage, page, selectedKeywords);
 		}
 
 		returnMap.put("cafesTotalCount", cafesCount);

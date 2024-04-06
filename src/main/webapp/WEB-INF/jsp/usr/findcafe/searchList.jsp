@@ -29,12 +29,26 @@ window.onload = function() {
 // 기존 버튼 한개씩만 선택 됨...
 <!-- document ready Area -->
 $(document).ready(function() {
+	var selectedKeywords = []; // 선택된 키워드를 저장할 배열
+	
     // 필터 버튼 클릭 이벤트 핸들러 등록
     $(".filterButton").on("click", function(event) {
-        keyword = $(this).find(".text-wrapper").text(); // 클릭한 버튼의 텍스트에서 키워드 추출
-                      
+    	var keyword = $(this).find(".text-wrapper").text(); // 클릭한 버튼의 텍스트에서 키워드 추출
+        var index = selectedKeywords.indexOf(keyword); // 선택된 키워드 배열에서 해당 키워드의 인덱스 확인
+
+        // 해당 키워드가 이미 선택되어 있는지 확인
+        if (index !== -1) {
+            // 이미 선택되어 있다면 해당 키워드를 제거
+            selectedKeywords.splice(index, 1);
+            $(this).removeClass('active');
+        } else {
+            // 선택되어 있지 않다면 해당 키워드를 배열에 추가
+            selectedKeywords.push(keyword);
+            $(this).addClass('active');
+        }
+        
         currentPage = 1; // 페이지를 1로 설정하여 필터가 변경되었음을 나타냄
-        loadFilteredCafes(keyword, currentPage); // 필터된 카페들을 불러오는 함수 호출
+        loadFilteredCafes(selectedKeywords, currentPage); // 필터된 카페들을 불러오는 함수 호출
     });
 
 	$('.pagination').on('click', 'a', function(event) {
@@ -42,15 +56,21 @@ $(document).ready(function() {
         currentPage = parseInt($(this).attr('href').split('=')[1]); // 클릭한 페이지 번호 추출
         
      	// 필터링된 카페 목록을 요청하는 함수 호출
-        loadFilteredCafes(keyword, currentPage);
+        loadFilteredCafes(selectedKeywords, currentPage);
+        
+     	// 페이지 맨 위로 스크롤
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
     });
 	
-	$('.filterButton').on('click', function(event) {
+	/* $('.filterButton').on('click', function(event) {
 		// 모든 필터 버튼의 클래스를 초기화
 	    $('.filterButton').removeClass('active');
 	    // 클릭한 버튼에만 활성화 클래스를 추가
 	    $(this).addClass('active');
-	});
+	}); */
 	
 });
 
@@ -95,19 +115,19 @@ var selectedFilters = [];
 
 <!-- function Area -->
 // 필터된 카페들을 불러오는 함수
-function loadFilteredCafes(keyword, currentPage){
+function loadFilteredCafes(selectedKeywords, currentPage){
     $.ajax({
         url: "/usr/findcafe/filterCafes", // 요청할 URL
         type: "POST", // POST 방식으로 요청
         contentType: "application/json", // 요청 데이터의 타입
         data: JSON.stringify({ 	// JSON 형태로 데이터 전송
-            keyword: keyword, 	// 키워드 전송
-            page: currentPage 	// 페이지 번호 전송
+        	selectedKeywords: selectedKeywords, 	// 키워드 전송
+            page: currentPage 						// 페이지 번호 전송
         }),
         success: function(dataMap) { // 요청이 성공했을 때의 콜백 함수
             totalPages = Math.ceil(dataMap.cafesTotalCount / 5); // 전체 페이지 수 계산
             updatePagination(currentPage, totalPages); // 페이지네이션 업데이트
-            updateCafeList(dataMap.cafesCurrentList); // 카페 리스트 업데이트
+            updateCafeList(dataMap.cafesCurrentList, selectedKeywords); // 카페 리스트 업데이트
         },
         error: function(xhr, status, error) { // 요청이 실패했을 때의 콜백 함수
             console.error("Ajax request failed:", status, error); // 에러 로그 출력
@@ -137,7 +157,7 @@ function updatePagination(currentPage, totalPages) {
 
 
 // 카페 리스트 업데이트 함수
-function updateCafeList(cafeList) {
+function updateCafeList(cafeList, selectedKeywords) {
     var cafeListElement = $(".linkbox１"); // 카페 리스트 요소 선택
     var searchResult = $("#search-result"); // 검색 결과 요소 선택
 
@@ -152,7 +172,7 @@ function updateCafeList(cafeList) {
                         <div class="cafe-img-box">
                             <img src="`+cafe.cafeImgUrl1+`" alt="카페 이미지" />
                         </div>
-                        <div class="name-address">
+                        <div class="name-address equal-filter">
                             <div class="cafe-name">`+cafe.name+`</div>
                             <p class="cafe-address">`+cafe.address+`</p>
                         </div>
@@ -170,7 +190,7 @@ function updateCafeList(cafeList) {
                                 <div class="distance-num">1.8</div>
                             </div>
                         </div>
-                        <div class="hashtag">`+cafe.hashtag+`</div>
+                        <div class="hashtag equal-filter">`+cafe.hashtag+`</div>
                     </div>
                 </a>
             </div>
@@ -178,15 +198,27 @@ function updateCafeList(cafeList) {
         searchResult.append(cafeItem); // 카페 리스트에 카페 아이템 추가
     });	// end cafeList.forEach
     
-    
-    // 페이지 맨 위로 스크롤
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-    
+    applyStyleToMatchingText(selectedKeywords); // 선택된 키워드와 일치하는 텍스트에 스타일 적용
     
 }	// end function updateCafeList
+
+
+//선택된 키워드와 일치하는 텍스트에 스타일 적용하는 함수
+function applyStyleToMatchingText(selectedKeywords) {
+    // 각 카페 아이템에 대해 반복
+    $(".equal-filter").each(function() {
+        var cafeItem = $(this);
+        var text = cafeItem.text(); // 카페 아이템의 텍스트 가져오기
+
+        // 선택된 키워드와 일치하는 부분에 스타일 적용
+        selectedKeywords.forEach(function(keyword) {
+            var regex = new RegExp(keyword, "gi"); // 대소문자 구분 없이 일치하는 모든 부분 찾기 위한 정규표현식(Regular Expression) 생성 ********* 벨로그
+            text = text.replace(regex, '<span style="color: red;">$&</span>'); // 일치하는 부분에 스타일 적용
+        });
+
+        cafeItem.html(text); // 스타일이 적용된 텍스트로 카페 아이템 업데이트
+    });
+}
 <!-- end function Area -->
 
 

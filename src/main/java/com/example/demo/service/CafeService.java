@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,12 +39,12 @@ public class CafeService {
 		return cafeRepository.getForPrintCafes(limitFrom, limitTake);
 	}
 	
-	public List<Cafe> getForPrintCafesKeyword(int itemsInAPage, int page, String keyword) {
+	public List<Cafe> getForPrintCafesKeyword(int itemsInAPage, int page, List<String> selectedKeywords) {
 
 		int limitFrom = (page - 1) * itemsInAPage;
 		int limitTake = itemsInAPage;
 
-		return cafeRepository.getForPrintCafesKeyword(limitFrom, limitTake, keyword);
+		return cafeRepository.getForPrintCafesKeyword(limitFrom, limitTake, selectedKeywords);
 	}
 
 	public Cafe getForPrintCafe(int id) {
@@ -55,8 +56,8 @@ public class CafeService {
 		return cafeRepository.getCafesCount();
 	}
 	
-	public int getCafesCountKeyword(String keyword) {
-		return cafeRepository.getCafesCountKeyword(keyword);
+	public int getCafesCountKeyword(List<String> selectedKeywords) {
+		return cafeRepository.getCafesCountKeyword(selectedKeywords);
 	}
 
 	public void updateReviewCount() {

@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
@@ -62,24 +63,43 @@ public interface CafeRepository {
 			     </script>
 			""")
 	public List<Cafe> getForPrintCafes(int limitFrom, int limitTake);
-
-	@Select("""
+	
+    @Select("""
 			<script>
 			     SELECT id, name, address, cafeScrapCount, reviewCount, hashtag, cafeImgUrl1
 			     FROM cafe
 				 WHERE
-			        `name` LIKE CONCAT('%', #{keyword}, '%')
-				 OR `address` LIKE CONCAT('%', #{keyword}, '%')
-				 OR `hashtag` LIKE CONCAT('%', #{keyword}, '%')
+			     <foreach collection="selectedKeywords" item="keyword" separator="OR" open="(" close=")">
+				    `name` LIKE CONCAT('%', #{keyword}, '%')
+				    OR `address` LIKE CONCAT('%', #{keyword}, '%')
+				    OR `hashtag` LIKE CONCAT('%', #{keyword}, '%')
+				</foreach>
 			     GROUP BY id
 			     ORDER BY id DESC
 			     <if test="limitFrom >= 0 ">
 			         LIMIT #{limitFrom}, #{limitTake}
 			     </if>
-			     </script>
+			</script>
 			""")
-	public List<Cafe> getForPrintCafesKeyword(int limitFrom, int limitTake, String keyword);
-
+	public List<Cafe> getForPrintCafesKeyword(int limitFrom, int limitTake, List<String> selectedKeywords);
+	
+	
+//	@Select("""
+//			<script>
+//			     SELECT id, name, address, cafeScrapCount, reviewCount, hashtag, cafeImgUrl1
+//			     FROM cafe
+//				 WHERE
+//			        `name` LIKE CONCAT('%', #{keyword}, '%')
+//				 OR `address` LIKE CONCAT('%', #{keyword}, '%')
+//				 OR `hashtag` LIKE CONCAT('%', #{keyword}, '%')
+//			     GROUP BY id
+//			     ORDER BY id DESC
+//			     <if test="limitFrom >= 0 ">
+//			         LIMIT #{limitFrom}, #{limitTake}
+//			     </if>
+//			     </script>
+//			""")
+//	public List<Cafe> getForPrintCafesKeyword(int limitFrom, int limitTake, String keyword);
 //	@Select("""
 //		    <script>
 //		        SELECT id, name, address, cafeScrapCount, reviewCount, hashtag, cafeImgUrl1
@@ -104,13 +124,47 @@ public interface CafeRepository {
 	public int getCafesCount();
 
 	@Select("""
+			<script>
 			SELECT COUNT(*)
 			FROM cafe
-			WHERE `name` LIKE CONCAT('%', #{keyword}, '%')
-			OR `address` LIKE CONCAT('%', #{keyword}, '%')
-			OR `hashtag` LIKE CONCAT('%', #{keyword}, '%')
+			WHERE
+			<foreach collection="selectedKeywords" item="keyword" separator="OR" open="(" close=")">
+		        `name` LIKE CONCAT('%', #{keyword}, '%')
+		        OR `address` LIKE CONCAT('%', #{keyword}, '%')
+		        OR `hashtag` LIKE CONCAT('%', #{keyword}, '%')
+		    </foreach>
+			</script>
 			""")
-	public int getCafesCountKeyword(String keyword);
+	public int getCafesCountKeyword(List<String> selectedKeywords);
+	
+	
+//	 selectedKeywords = {'유성구', '모던', '단체'}
+//	 1번째 유성구 = item인 keyword 세팅
+//	 (`name` LIKE CONCAT('%', '유성구', '%')
+//        OR `address` LIKE CONCAT('%', '유성구', '%')
+//        OR `hashtag` LIKE CONCAT('%', '유성구', '%')
+//    ) 
+//    OR
+//    (`name` LIKE CONCAT('%', '모던', '%')
+//        OR `address` LIKE CONCAT('%', '모던', '%')
+//        OR `hashtag` LIKE CONCAT('%', '모던', '%')
+//        ) 
+//  	OR
+//    (`name` LIKE CONCAT('%', '단체', '%')
+//		OR `address` LIKE CONCAT('%', '단체', '%')
+//		OR `hashtag` LIKE CONCAT('%', '단체', '%')
+//    ) 
+	
+	
+	
+//	@Select("""
+//			SELECT COUNT(*)
+//			FROM cafe
+//			WHERE `name` LIKE CONCAT('%', #{keyword}, '%')
+//			OR `address` LIKE CONCAT('%', #{keyword}, '%')
+//			OR `hashtag` LIKE CONCAT('%', #{keyword}, '%')
+//			""")
+//	public int getCafesCountKeyword(String keyword);
 
 	@Select("""
 			UPDATE cafe AS C
