@@ -64,15 +64,17 @@ public class UsrFindCafeController {
 	public Map<String, Object> filterCafes(@RequestBody Map<String, Object> filterData) {
 
 		Map<String, Object> returnMap = new HashMap<>();
-
-		//String keyword = filterData.get("keyword");
 		List<String> selectedKeywords = new ArrayList<String>();
-		Object selectedKeywordsObject = filterData.get("selectedKeywords");
+		
+		//String keyword = filterData.get("keyword"); // 키워드 다중선택 아닌 단일선택 시 
+		//List<String> selectedKeywords = (List<String>) filterData.get("selectedKeywords"); // 키워드 선택하지 않았을 경우 리스트 보이지 않음 (키워드가 빈값 일 때 String) 
+		Object selectedKeywordsObject = filterData.get("selectedKeywords"); // 키워드 선택 안했을 때 String으로 넘어오고, 키워드 선택 했을 땐 List로 넘어와서 변수타입을 Object로 선언.
 
-		if (selectedKeywordsObject instanceof String == false) {
+		if (selectedKeywordsObject instanceof String == false) { // 키워드 선택 안했을 시 빈값이 String으로 들어와서 String(빈값) 여부 판단 후 빈값인 경우 전체카페 리스트 보여줌
 		    selectedKeywords = (List<String>) selectedKeywordsObject;
 		}
-		//List<String> selectedKeywords = (List<String>) filterData.get("selectedKeywords");
+		
+		
 		
 		int page = Integer.parseInt(filterData.get("page").toString());
 		List<Cafe> cafesList;
@@ -88,9 +90,9 @@ public class UsrFindCafeController {
 
 		int itemsInAPage = 5;
 
-		if (selectedKeywords.isEmpty()) {
+		if (selectedKeywords.isEmpty()) { //키워드가 선택 되지 않았을 경우에 대한 전체카페 리스팅
 			cafesList = cafeService.getForPrintCafes(itemsInAPage, page);
-		} else {
+		} else { //키워드가 선택 되었을 경우에 대한 키워드별 카페 리스팅
 			cafesList = cafeService.getForPrintCafesKeyword(itemsInAPage, page, selectedKeywords);
 		}
 

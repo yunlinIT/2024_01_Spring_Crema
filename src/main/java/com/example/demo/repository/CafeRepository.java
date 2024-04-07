@@ -63,8 +63,8 @@ public interface CafeRepository {
 			     </script>
 			""")
 	public List<Cafe> getForPrintCafes(int limitFrom, int limitTake);
-	
-    @Select("""
+
+	@Select("""
 			<script>
 			     SELECT id, name, address, cafeScrapCount, reviewCount, hashtag, cafeImgUrl1
 			     FROM cafe
@@ -82,8 +82,7 @@ public interface CafeRepository {
 			</script>
 			""")
 	public List<Cafe> getForPrintCafesKeyword(int limitFrom, int limitTake, List<String> selectedKeywords);
-	
-	
+
 //	@Select("""
 //			<script>
 //			     SELECT id, name, address, cafeScrapCount, reviewCount, hashtag, cafeImgUrl1
@@ -129,17 +128,16 @@ public interface CafeRepository {
 			FROM cafe
 			WHERE
 			<foreach collection="selectedKeywords" item="keyword" separator="OR" open="(" close=")">
-		        `name` LIKE CONCAT('%', #{keyword}, '%')
-		        OR `address` LIKE CONCAT('%', #{keyword}, '%')
-		        OR `hashtag` LIKE CONCAT('%', #{keyword}, '%')
-		    </foreach>
+			       `name` LIKE CONCAT('%', #{keyword}, '%')
+			       OR `address` LIKE CONCAT('%', #{keyword}, '%')
+			       OR `hashtag` LIKE CONCAT('%', #{keyword}, '%')
+			   </foreach>
 			</script>
 			""")
 	public int getCafesCountKeyword(List<String> selectedKeywords);
-	
-	
+
 //	 selectedKeywords = {'유성구', '모던', '단체'}
-//	 1번째 유성구 = item인 keyword 세팅
+//	 1번째 item인 keyword에 유성구 세팅
 //	 (`name` LIKE CONCAT('%', '유성구', '%')
 //        OR `address` LIKE CONCAT('%', '유성구', '%')
 //        OR `hashtag` LIKE CONCAT('%', '유성구', '%')
@@ -154,9 +152,7 @@ public interface CafeRepository {
 //		OR `address` LIKE CONCAT('%', '단체', '%')
 //		OR `hashtag` LIKE CONCAT('%', '단체', '%')
 //    ) 
-	
-	
-	
+
 //	@Select("""
 //			SELECT COUNT(*)
 //			FROM cafe
@@ -206,7 +202,7 @@ public interface CafeRepository {
 			FROM cafe
 			WHERE id = #{cafeId}
 			""")
-	public int getDoScrap(int relId);  // 회원에 따라서 구별을 해야함. //TODO
+	public int getDoScrap(int relId); // 회원에 따라서 구별을 해야함. //TODO
 
 	@Select("""
 			UPDATE cafe AS C
@@ -237,7 +233,6 @@ public interface CafeRepository {
 			""")
 	public Cafe getPopularCafe();
 
-	
 //	@Select("""
 //			SELECT * 
 //			FROM cafe 
@@ -246,14 +241,13 @@ public interface CafeRepository {
 //			LIMIT 1;
 //					""")
 //	public Cafe getRecommendedCafe();
-	
+
 	@Select("""
-			SELECT * 
-			FROM cafe 
-			ORDER BY RAND() 
+			SELECT *
+			FROM cafe
+			ORDER BY RAND()
 			LIMIT 1;
 					""")
 	public Cafe getRecommendedCafe();
-	
-	
+
 }

@@ -25,8 +25,6 @@ window.onload = function() {
 };
 
 
-
-// 기존 버튼 한개씩만 선택 됨...
 <!-- document ready Area -->
 $(document).ready(function() {
 	var selectedKeywords = []; // 선택된 키워드를 저장할 배열
@@ -76,7 +74,7 @@ $(document).ready(function() {
 
 
 
-var selectedFilters = [];
+//var selectedFilters = [];
 
 // 아래 코드는 필터 버튼은 다중으로 클릭되지만 keyword가 제대로 전달되지 않는 것 같음
 <!-- document ready Area -->
@@ -213,7 +211,7 @@ function applyStyleToMatchingText(selectedKeywords) {
         // 선택된 키워드와 일치하는 부분에 스타일 적용
         selectedKeywords.forEach(function(keyword) {
             var regex = new RegExp(keyword, "gi"); // 대소문자 구분 없이 일치하는 모든 부분 찾기 위한 정규표현식(Regular Expression) 생성 ********* 벨로그
-            text = text.replace(regex, '<span style="color: red;">$&</span>'); // 일치하는 부분에 스타일 적용
+            text = text.replace(regex, '<span style="color: #b02717; font-weight: 700;">$&</span>'); // 일치하는 부분에 스타일 적용
         });
 
         cafeItem.html(text); // 스타일이 적용된 텍스트로 카페 아이템 업데이트

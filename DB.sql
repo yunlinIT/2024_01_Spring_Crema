@@ -903,6 +903,13 @@ SELECT * FROM cafeReview;
 SELECT * FROM cafeScrap;
 
 
+select count(*) from cafe where hashtag like '%대관%';    -- 1
+
+SELECT COUNT(*) FROM cafe WHERE hashtag LIKE '%주차%';    -- 6
+
+SELECT COUNT(*) FROM cafe WHERE hashtag LIKE '%콘센트%';   -- 1
+
+
 SELECT * 
 FROM cafe 
 ORDER BY RAND() 
