@@ -256,63 +256,7 @@
     
     
     
-    
-    
-    
-//     function submitSearchForm() {
-//         var keyword = document.getElementById("keyword").value.trim(); // 검색어를 가져옴
-//         var keywords = keyword.split(" "); // 공백을 기준으로 검색어를 나눔
-//         var matchedKeywords = [];
 
-//         // 검색어에서 "아늑한"과 "카페"와 같은 일치하는 키워드를 추출
-//         keywords.forEach(function(keyword) {
-//             if (keyword === "아늑한" || keyword === "카페") {
-//             	matchedKeywords.push(keywords);
-//             }
-//         });
-
-//         // 일치하는 키워드가 하나 이상 있으면 검색을 실행
-//         if (keywords.length > 0) {
-//             // 추출된 일치하는 키워드들을 합쳐서 새로운 검색어로 만듦
-//             var newKeyword = matchedKeywords[0];
-            
-// //             var newKeyword = matchedKeywords.join(" ");
-// //             // 검색어를 파라미터로 설정
-//             document.getElementById("keyword").value = newKeyword;
-//             // 검색 양식 제출
-//             document.getElementById("searchForm").submit();
-//         } 
-        
-//         alert(newKeyword);
-//     }
-    
-//     function submitSearchForm() {
-//         var keyword = document.getElementById("keyword").value.trim(); // 검색어를 가져옴
-//         var keywords = keyword.split(" "); // 공백을 기준으로 검색어를 나눔
-
-//         // 검색어에서 "아늑한"과 "카페"와 같은 일치하는 키워드를 추출하여 각각 검색 양식에 추가
-//         keywords.forEach(function(word) {
-//             if (word === "아늑한" || word === "카페") {
-//                 addKeywordToForm(word);
-//             }
-//         });
-
-//         // 검색 양식 제출
-//         document.getElementById("searchForm").submit();
-//     }
-
-//     function addKeywordToForm(keyword) {
-//         var inputElement = document.createElement("input");
-//         inputElement.type = "hidden"; // 숨겨진 입력 필드 생성
-//         inputElement.name = "keyword"; // 이름 설정
-//         inputElement.value = keyword; // 값 설정
-//         document.getElementById("searchForm").appendChild(inputElement); // 검색 양식에 추가
-//     }
-
-
-    
-    
-    
     
     
 </script>
@@ -717,11 +661,3 @@
 
 
 <%@ include file="../common/foot.jspf"%>
-
-
-
-
-
-
-
-

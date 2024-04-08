@@ -26,63 +26,14 @@ window.onload = function() {
 
 
 <!-- document ready Area -->
-// $(document).ready(function() {
-// 	var selectedKeywords = []; // 선택된 키워드를 저장할 배열
-	
-//     // 필터 버튼 클릭 이벤트 핸들러 등록
-//     $(".filterButton").on("click", function(event) {
-//     	var keyword = $(this).find(".text-wrapper").text(); // 클릭한 버튼의 텍스트에서 키워드 추출
-//         var index = selectedKeywords.indexOf(keyword); // 선택된 키워드 배열에서 해당 키워드의 인덱스 확인
-
-//         // 해당 키워드가 이미 선택되어 있는지 확인
-//         if (index !== -1) {
-//             // 이미 선택되어 있다면 해당 키워드를 제거
-//             selectedKeywords.splice(index, 1);
-//             $(this).removeClass('active');
-//         } else {
-//             // 선택되어 있지 않다면 해당 키워드를 배열에 추가
-//             selectedKeywords.push(keyword);
-//             $(this).addClass('active');
-//         }
-        
-//         currentPage = 1; // 페이지를 1로 설정하여 필터가 변경되었음을 나타냄
-//         loadFilteredCafes(selectedKeywords, currentPage); // 필터된 카페들을 불러오는 함수 호출
-//     });
-
-// 	$('.pagination').on('click', 'a', function(event) {
-//     	event.preventDefault(); // 기본 동작 방지 (페이지 이동 막기)
-//         currentPage = parseInt($(this).attr('href').split('=')[1]); // 클릭한 페이지 번호 추출
-        
-//      	// 필터링된 카페 목록을 요청하는 함수 호출
-//         loadFilteredCafes(selectedKeywords, currentPage);
-        
-//      	// 페이지 맨 위로 스크롤
-//         window.scrollTo({
-//             top: 0,
-//             behavior: "smooth"
-//         });
-//     });
-	
-// 	/* $('.filterButton').on('click', function(event) {
-// 		// 모든 필터 버튼의 클래스를 초기화
-// 	    $('.filterButton').removeClass('active');
-// 	    // 클릭한 버튼에만 활성화 클래스를 추가
-// 	    $(this).addClass('active');
-// 	}); */
-	
-// });
-
-
-
-
 
 $(document).ready(function() {
-	var selectedKeywords = []; // 선택된 키워드를 저장할 배열
-	
+    var selectedKeywords = []; // 선택된 키워드를 저장할 배열
+
     // 필터 버튼 클릭 이벤트 핸들러 등록
     $(".filterButton").on("click", function(event) {
-    	var keyword = $(this).find(".text-wrapper").text(); // 클릭한 버튼의 텍스트에서 키워드 추출
-        
+        var keyword = $(this).find(".text-wrapper").text(); // 클릭한 버튼의 텍스트에서 키워드 추출
+
         // '전체선택' 또는 '전체해제'인 경우
         if (keyword === '전체' || keyword === '전체해제') {
             // 키워드를 빈 문자열로 설정
@@ -103,25 +54,34 @@ $(document).ready(function() {
                 $(this).addClass('active');
             }
         }
-        
+
         currentPage = 1; // 페이지를 1로 설정하여 필터가 변경되었음을 나타냄
         loadFilteredCafes(selectedKeywords, currentPage); // 필터된 카페들을 불러오는 함수 호출
     });
 
-	$('.pagination').on('click', 'a', function(event) {
-    	event.preventDefault(); // 기본 동작 방지 (페이지 이동 막기)
+    // 검색 버튼 클릭 이벤트 핸들러 등록
+    $("#searchForm").submit(function(event) {
+        event.preventDefault(); // 기본 동작 방지 (페이지 이동 막기)
+        var keyword = $("#keyword").val(); // 검색어 입력값 가져오기
+        currentPage = 1; // 페이지를 1로 설정하여 검색이 변경되었음을 나타냄
+        loadFilteredCafes([keyword], currentPage); // 검색어로 필터된 카페들을 불러오는 함수 호출
+    });
+
+    $('.pagination').on('click', 'a', function(event) {
+        event.preventDefault(); // 기본 동작 방지 (페이지 이동 막기)
         currentPage = parseInt($(this).attr('href').split('=')[1]); // 클릭한 페이지 번호 추출
-        
-     	// 필터링된 카페 목록을 요청하는 함수 호출
+
+        // 필터링된 카페 목록을 요청하는 함수 호출
         loadFilteredCafes(selectedKeywords, currentPage);
-        
-     	// 페이지 맨 위로 스크롤
+
+        // 페이지 맨 위로 스크롤
         window.scrollTo({
             top: 0,
             behavior: "smooth"
         });
     });
-}); 
+});
+
 
 
 
@@ -225,22 +185,6 @@ function updateCafeList(cafeList, selectedKeywords) {
 
 
 
-// //선택된 키워드와 일치하는 텍스트에 스타일 적용하는 함수
-// function applyStyleToMatchingText(selectedKeywords) {
-//     // 각 카페 아이템에 대해 반복
-//     $(".equal-filter").each(function() {
-//         var cafeItem = $(this);
-//         var text = cafeItem.text(); // 카페 아이템의 텍스트 가져오기
-
-//         // 선택된 키워드와 일치하는 부분에 스타일 적용
-//         selectedKeywords.forEach(function(keyword) {
-//             var regex = new RegExp(keyword, "gi"); // 대소문자 구분 없이 일치하는 모든 부분 찾기 위한 정규표현식(Regular Expression) 생성
-//             text = text.replace(regex, '<span style="color: red;">$&</span>'); // 일치하는 부분에 스타일 적용
-//         });
-
-//         cafeItem.html(text); // 스타일이 적용된 텍스트로 카페 아이템 업데이트
-//     });
-// }
 
 
 //선택된 키워드와 일치하는 텍스트에 스타일 적용하는 함수
