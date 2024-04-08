@@ -26,23 +26,82 @@ window.onload = function() {
 
 
 <!-- document ready Area -->
+// $(document).ready(function() {
+// 	var selectedKeywords = []; // 선택된 키워드를 저장할 배열
+	
+//     // 필터 버튼 클릭 이벤트 핸들러 등록
+//     $(".filterButton").on("click", function(event) {
+//     	var keyword = $(this).find(".text-wrapper").text(); // 클릭한 버튼의 텍스트에서 키워드 추출
+//         var index = selectedKeywords.indexOf(keyword); // 선택된 키워드 배열에서 해당 키워드의 인덱스 확인
+
+//         // 해당 키워드가 이미 선택되어 있는지 확인
+//         if (index !== -1) {
+//             // 이미 선택되어 있다면 해당 키워드를 제거
+//             selectedKeywords.splice(index, 1);
+//             $(this).removeClass('active');
+//         } else {
+//             // 선택되어 있지 않다면 해당 키워드를 배열에 추가
+//             selectedKeywords.push(keyword);
+//             $(this).addClass('active');
+//         }
+        
+//         currentPage = 1; // 페이지를 1로 설정하여 필터가 변경되었음을 나타냄
+//         loadFilteredCafes(selectedKeywords, currentPage); // 필터된 카페들을 불러오는 함수 호출
+//     });
+
+// 	$('.pagination').on('click', 'a', function(event) {
+//     	event.preventDefault(); // 기본 동작 방지 (페이지 이동 막기)
+//         currentPage = parseInt($(this).attr('href').split('=')[1]); // 클릭한 페이지 번호 추출
+        
+//      	// 필터링된 카페 목록을 요청하는 함수 호출
+//         loadFilteredCafes(selectedKeywords, currentPage);
+        
+//      	// 페이지 맨 위로 스크롤
+//         window.scrollTo({
+//             top: 0,
+//             behavior: "smooth"
+//         });
+//     });
+	
+// 	/* $('.filterButton').on('click', function(event) {
+// 		// 모든 필터 버튼의 클래스를 초기화
+// 	    $('.filterButton').removeClass('active');
+// 	    // 클릭한 버튼에만 활성화 클래스를 추가
+// 	    $(this).addClass('active');
+// 	}); */
+	
+// });
+
+
+
+
+
 $(document).ready(function() {
 	var selectedKeywords = []; // 선택된 키워드를 저장할 배열
 	
     // 필터 버튼 클릭 이벤트 핸들러 등록
     $(".filterButton").on("click", function(event) {
     	var keyword = $(this).find(".text-wrapper").text(); // 클릭한 버튼의 텍스트에서 키워드 추출
-        var index = selectedKeywords.indexOf(keyword); // 선택된 키워드 배열에서 해당 키워드의 인덱스 확인
-
-        // 해당 키워드가 이미 선택되어 있는지 확인
-        if (index !== -1) {
-            // 이미 선택되어 있다면 해당 키워드를 제거
-            selectedKeywords.splice(index, 1);
-            $(this).removeClass('active');
+        
+        // '전체선택' 또는 '전체해제'인 경우
+        if (keyword === '전체' || keyword === '전체해제') {
+            // 키워드를 빈 문자열로 설정
+            keyword = "";
+            // 기존에 선택되었던 다른 키워드들 제거
+            selectedKeywords = [];
+            $(".filterButton").removeClass('active');
         } else {
-            // 선택되어 있지 않다면 해당 키워드를 배열에 추가
-            selectedKeywords.push(keyword);
-            $(this).addClass('active');
+            // 해당 키워드가 이미 선택되어 있는지 확인
+            var index = selectedKeywords.indexOf(keyword); // 선택된 키워드 배열에서 해당 키워드의 인덱스 확인
+            if (index !== -1) {
+                // 이미 선택되어 있다면 해당 키워드를 제거
+                selectedKeywords.splice(index, 1);
+                $(this).removeClass('active');
+            } else {
+                // 선택되어 있지 않다면 해당 키워드를 배열에 추가
+                selectedKeywords.push(keyword);
+                $(this).addClass('active');
+            }
         }
         
         currentPage = 1; // 페이지를 1로 설정하여 필터가 변경되었음을 나타냄
@@ -62,52 +121,13 @@ $(document).ready(function() {
             behavior: "smooth"
         });
     });
-	
-	/* $('.filterButton').on('click', function(event) {
-		// 모든 필터 버튼의 클래스를 초기화
-	    $('.filterButton').removeClass('active');
-	    // 클릭한 버튼에만 활성화 클래스를 추가
-	    $(this).addClass('active');
-	}); */
-	
-});
+}); 
 
 
 
-//var selectedFilters = [];
 
-// 아래 코드는 필터 버튼은 다중으로 클릭되지만 keyword가 제대로 전달되지 않는 것 같음
-<!-- document ready Area -->
-// $(document).ready(function() {
 
-//     // 필터 버튼 클릭 이벤트 핸들러 등록
-//     $(".filterButton").on("click", function(event) {
-//         var filter = $(this).find(".text-wrapper").text(); // 클릭한 버튼의 텍스트에서 필터 추출
-        
-//         // 선택된 필터 배열에 추가 또는 제거
-//         if (selectedFilters.includes(filter)) {
-//             selectedFilters = selectedFilters.filter(item => item !== filter); // 필터가 이미 선택되어 있으면 제거
-//             $(this).removeClass('active'); // 선택 해제된 필터 버튼에 대한 활성화 클래스 제거
-//         } else {
-//             selectedFilters.push(filter); // 필터가 선택되어 있지 않으면 추가
-//             $(this).addClass('active'); // 선택된 필터 버튼에 대한 활성화 클래스 추가
-//         }
-        
-//         // 페이지를 1로 설정하여 필터가 변경되었음을 나타냄
-//         currentPage = 1;
-//         // 필터된 카페들을 불러오는 함수 호출
-//         loadFilteredCafes(selectedFilters, currentPage);
-//     });
 
-//     // 페이지네이션 클릭 이벤트 핸들러 등록
-//     $('.pagination').on('click', 'a', function(event) {
-//         event.preventDefault(); // 기본 동작 방지 (페이지 이동 막기)
-//         currentPage = parseInt($(this).attr('href').split('=')[1]); // 클릭한 페이지 번호 추출
-
-//         // 필터링된 카페 목록을 요청하는 함수 호출
-//         loadFilteredCafes(selectedFilters, currentPage);
-//     });
-// });
 
 
 
