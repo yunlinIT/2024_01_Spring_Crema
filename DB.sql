@@ -130,6 +130,14 @@ updateDate = NOW(),
 `code` = 'QnA',
 `name` = '질문게시판';
 
+INSERT INTO board
+SET regDate = NOW(),
+updateDate = NOW(),
+`code` = 'MY ARTICLE',
+`name` = '나의게시글';
+
+SELECT * FROM board;
+
 ALTER TABLE article ADD COLUMN boardId INT(10) UNSIGNED NOT NULL AFTER `memberId`;
 
 UPDATE article
@@ -903,7 +911,7 @@ SELECT * FROM cafeReview;
 SELECT * FROM cafeScrap;
 
 
-select count(*) from cafe where hashtag like '%대관%';    -- 1
+SELECT COUNT(*) FROM cafe WHERE hashtag LIKE '%대관%';    -- 1
 
 SELECT COUNT(*) FROM cafe WHERE hashtag LIKE '%주차%';    -- 6
 
