@@ -22,7 +22,7 @@
 					<div class="MyWrite">
 						<span class="material-symbols-outlined"> edit_note </span>
 						<div class="ContentName">나의 게시글</div>
-						<a class="MyWriteBtn" href="">${myWriteCount} 개</a>
+						<a class="MyWriteBtn" href="../article/list?boardId=4&page=1">${myWriteCount} 개</a>
 					</div>
 					<div class="MyReply">
 						<span class="material-symbols-outlined"> mode_comment </span>
