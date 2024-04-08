@@ -154,22 +154,6 @@ function loadFilteredCafes(selectedKeywords, currentPage){
 }
 
 
-//선택된 키워드와 일치하는 텍스트에 스타일 적용하는 함수
-function applyStyleToMatchingText(selectedKeywords) {
-    // 각 카페 아이템에 대해 반복
-    $(".equal-filter").each(function() {
-        var cafeItem = $(this);
-        var text = cafeItem.text(); // 카페 아이템의 텍스트 가져오기
-
-        // 선택된 키워드와 일치하는 부분에 스타일 적용
-        selectedKeywords.forEach(function(keyword) {
-            var regex = new RegExp(keyword, "gi"); // 대소문자 구분 없이 일치하는 모든 부분 찾기 위한 정규표현식(Regular Expression) 생성 ********* 벨로그
-            text = text.replace(regex, '<span style="color: #b02717; font-weight: 700;">$&</span>'); // 일치하는 부분에 스타일 적용
-        });
-
-        cafeItem.html(text); // 스타일이 적용된 텍스트로 카페 아이템 업데이트
-    });
-}
 
 
 function updatePagination(currentPage, totalPages) {
@@ -207,9 +191,9 @@ function updateCafeList(cafeList, selectedKeywords) {
                         <div class="cafe-img-box">
                             <img src="`+cafe.cafeImgUrl1+`" alt="카페 이미지" />
                         </div>
-                        <div class="name-address equal-filter">
-                            <div class="cafe-name">`+cafe.name+`</div>
-                            <p class="cafe-address">`+cafe.address+`</p>
+                        <div class="name-address">
+                            <div class="cafe-name equal-filter">`+cafe.name+`</div>
+                            <p class="cafe-address equal-filter">`+cafe.address+`</p>
                         </div>
                         <div class="like-count">
                             <span class="material-symbols-outlined"> favorite </span>
@@ -237,6 +221,50 @@ function updateCafeList(cafeList, selectedKeywords) {
     
 }	// end function updateCafeList
 
+
+
+
+
+// //선택된 키워드와 일치하는 텍스트에 스타일 적용하는 함수
+// function applyStyleToMatchingText(selectedKeywords) {
+//     // 각 카페 아이템에 대해 반복
+//     $(".equal-filter").each(function() {
+//         var cafeItem = $(this);
+//         var text = cafeItem.text(); // 카페 아이템의 텍스트 가져오기
+
+//         // 선택된 키워드와 일치하는 부분에 스타일 적용
+//         selectedKeywords.forEach(function(keyword) {
+//             var regex = new RegExp(keyword, "gi"); // 대소문자 구분 없이 일치하는 모든 부분 찾기 위한 정규표현식(Regular Expression) 생성
+//             text = text.replace(regex, '<span style="color: red;">$&</span>'); // 일치하는 부분에 스타일 적용
+//         });
+
+//         cafeItem.html(text); // 스타일이 적용된 텍스트로 카페 아이템 업데이트
+//     });
+// }
+
+
+//선택된 키워드와 일치하는 텍스트에 스타일 적용하는 함수
+function applyStyleToMatchingText(selectedKeywords) {
+    // 선택된 키워드가 배열인지 확인
+    if (!Array.isArray(selectedKeywords)) {
+       // console.error("selectedKeywords must be an array");
+        return;
+    }
+
+    // 각 카페 아이템에 대해 반복
+    $(".equal-filter").each(function() {
+        var cafeItem = $(this);
+        var text = cafeItem.text(); // 카페 아이템의 텍스트 가져오기
+
+        // 선택된 키워드와 일치하는 부분에 스타일 적용
+        selectedKeywords.forEach(function(keyword) {
+            var regex = new RegExp(keyword, "gi"); // 대소문자 구분 없이 일치하는 모든 부분 찾기 위한 정규표현식(Regular Expression) 생성
+            text = text.replace(regex, '<span style="color: #b02717; font-weight: 700;">$&</span>'); // 일치하는 부분에 스타일 적용
+        });
+
+        cafeItem.html(text); // 스타일이 적용된 텍스트로 카페 아이템 업데이트
+    });
+}
 
 
 <!-- end function Area -->
