@@ -164,6 +164,33 @@ public interface ArticleRepository {
 			</script>
 			""")
 	public int getMyQnACount(Integer memberId, String searchKeywordTypeCode, String searchKeyword);
+	
+	@Select("""
+			<script>
+			SELECT COUNT(*) AS cnt
+			FROM `reply` AS R
+			WHERE memberId = #{memberId} 
+			AND 1
+			<if test="searchKeyword != ''">
+				<choose>
+					<when test="searchKeywordTypeCode == 'title'">
+						AND A.title LIKE CONCAT('%',#{searchKeyword},'%')
+					</when>
+					<when test="searchKeywordTypeCode == 'body'">
+						AND A.body LIKE CONCAT('%',#{searchKeyword},'%')
+					</when>
+					<otherwise>
+						AND A.title LIKE CONCAT('%',#{searchKeyword},'%')
+						OR A.body LIKE CONCAT('%',#{searchKeyword},'%')
+					</otherwise>
+				</choose>
+			</if>
+			ORDER BY R.id
+			</script>
+			""")
+	public int getMyRepliesCount(Integer memberId, String searchKeywordTypeCode, String searchKeyword);
+	
+	
 
 	@Update("""
 			UPDATE article
@@ -290,6 +317,44 @@ public interface ArticleRepository {
 	
 	
 
+	@Select("""
+			<script>
+			SELECT DISTINCT A.*, M.nickname AS extra__writer, IFNULL(COUNT(R.id),0) AS extra__repliesCnt
+			FROM `reply` AS R
+			INNER JOIN `member` AS M
+			ON R.memberId = M.id
+			LEFT JOIN article AS A
+			ON A.id = R.relId
+			WHERE R.memberId = 2
+			AND 1
+			<if test="searchKeyword != ''">
+				<choose>
+					<when test="searchKeywordTypeCode == 'title'">
+						AND A.title LIKE CONCAT('%',#{searchKeyword},'%')
+					</when>
+					<when test="searchKeywordTypeCode == 'body'">
+						AND A.body LIKE CONCAT('%',#{searchKeyword},'%')
+					</when>
+					<otherwise>
+						AND A.title LIKE CONCAT('%',#{searchKeyword},'%')
+						OR A.body LIKE CONCAT('%',#{searchKeyword},'%')
+					</otherwise>
+				</choose>
+			</if>
+			GROUP BY R.id
+			ORDER BY R.id DESC
+			<if test="limitFrom >= 0 ">
+				LIMIT #{limitFrom}, #{limitTake}
+			</if>
+			</script>
+			""")	
+	public List<Article> getForPrintMyReplies(Integer memberId, int limitFrom, int limitTake,
+			String searchKeywordTypeCode, String searchKeyword);
+
+	
+
+	
+
 	@Update("""
 			UPDATE article
 			SET goodReactionPoint = goodReactionPoint + 1
@@ -332,6 +397,9 @@ public interface ArticleRepository {
 			""")
 	public int getBadRP(int relId);
 
+	
+
+	
 
 
 

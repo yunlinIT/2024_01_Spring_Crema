@@ -98,6 +98,10 @@ public class ArticleService {
 	public int getMyQnACount(Integer memberId, String searchKeywordTypeCode, String searchKeyword) {
 		return articleRepository.getMyQnACount(memberId,searchKeywordTypeCode, searchKeyword);
 	}
+	
+	public int getMyRepliesCount(Integer memberId, String searchKeywordTypeCode, String searchKeyword) {
+		return articleRepository.getMyRepliesCount(memberId,searchKeywordTypeCode, searchKeyword);
+	}
 
 	public ResultData increaseHitCount(int id) {
 		int affectedRow = articleRepository.increaseHitCount(id);
@@ -127,7 +131,7 @@ public class ArticleService {
 				searchKeyword);
 	}
 	
-	
+
 	
 	public List<Article> getForPrintMyList(Integer memberId, int itemsInAPage, int page, String searchKeywordTypeCode,
 			String searchKeyword) {
@@ -146,6 +150,17 @@ public class ArticleService {
 		return articleRepository.getForPrintMyQnA(memberId, limitFrom, limitTake, searchKeywordTypeCode,
 				searchKeyword);
 	}
+	
+	public List<Article> getForPrintMyReplies(Integer memberId, int itemsInAPage, int page,
+			String searchKeywordTypeCode, String searchKeyword) {
+		int limitFrom = (page - 1) * itemsInAPage;
+		int limitTake = itemsInAPage;
+
+		return articleRepository.getForPrintMyReplies(memberId, limitFrom, limitTake, searchKeywordTypeCode,
+				searchKeyword);
+	}
+	
+
 
 	public ResultData increaseGoodReactionPoint(int relId) {
 		int affectedRow = articleRepository.increaseGoodReactionPoint(relId);
@@ -194,6 +209,12 @@ public class ArticleService {
 	public int getBadRP(int relId) {
 		return articleRepository.getBadRP(relId);
 	}
+
+	
+
+
+
+
 
 
 

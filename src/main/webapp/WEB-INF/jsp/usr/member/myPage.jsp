@@ -21,22 +21,22 @@
 					</div>
 					<div class="MyWrite">
 						<span class="material-symbols-outlined"> edit_note </span>
-						<div class="ContentName">나의 게시글</div>
+						<a class="ContentName" href="../article/myList?page=1">나의 게시글</a>
 						<a class="MyWriteBtn" href="../article/myList?page=1">${myWriteCount} 개</a>
 					</div>
 					<div class="MyReply">
 						<span class="material-symbols-outlined"> mode_comment </span>
-						<div class="ContentName">나의 댓글</div>
-						<a class="MyReplyBtn" href="">${myReplyCount} 개</a>
+						<a class="ContentName" href="../article/myReply?page=1">나의 댓글</a>
+						<a class="MyReplyBtn" href="../article/myReply?page=1">${myReplyCount} 개</a>
 					</div>
 					<div class="MyQna">
 						<span class="material-symbols-outlined"> live_help </span>
-						<div class="ContentName">나의 질문</div>
+						<a class="ContentName" href="../article/myQnA?page=1">나의 질문</a>
 						<a class="MyQnaBtn" href="../article/myQnA?page=1">${myQuestionCount} 개</a>
 					</div>
 					<div class="MyLike">
 						<span class="material-symbols-outlined"> favorite </span>
-						<div class="ContentName">나의 찜 목록</div>
+						<a class="ContentName" href="../findcafe/scrapList">나의 찜 목록</a>
 						<a class="MyLikeBtn" href="../findcafe/scrapList">${myScrapCount} 개</a>
 					</div>
 
