@@ -918,6 +918,44 @@ SELECT COUNT(*) FROM cafe WHERE hashtag LIKE '%주차%';    -- 6
 SELECT COUNT(*) FROM cafe WHERE hashtag LIKE '%콘센트%';   -- 1
 
 
+
+SELECT A.*, M.nickname AS extra__writer, IFNULL(COUNT(R.id),0) AS extra__repliesCnt
+FROM article AS A
+INNER JOIN `member` AS M
+ON A.memberId = M.id
+LEFT JOIN `reply` AS R
+ON A.id = R.relId
+WHERE A.memberId = 2
+AND (A.boardId = 1 OR A.boardId = 2)
+AND 1
+GROUP BY A.id
+ORDER BY A.id DESC
+
+SELECT A.*, M.nickname AS extra__writer, IFNULL(COUNT(R.id),0) AS extra__repliesCnt
+FROM article AS A
+INNER JOIN `member` AS M
+ON A.memberId = M.id
+LEFT JOIN `reply` AS R
+ON A.id = R.relId
+WHERE A.memberId = 2
+AND A.boardId = 3
+AND 1
+GROUP BY A.id
+ORDER BY A.id DESC
+
+SELECT A.*, M.nickname AS extra__writer, IFNULL(COUNT(R.id),0) AS extra__repliesCnt
+FROM `reply` AS R
+INNER JOIN `member` AS M
+ON R.memberId = M.id
+LEFT JOIN article AS A
+ON A.id = R.relId
+WHERE R.memberId = 2
+AND 1
+GROUP BY R.id
+ORDER BY R.id DESC
+
+
+
 SELECT * 
 FROM cafe 
 ORDER BY RAND() 
