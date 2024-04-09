@@ -32,12 +32,12 @@
 					<div class="MyQna">
 						<span class="material-symbols-outlined"> live_help </span>
 						<div class="ContentName">나의 질문</div>
-						<a class="MyQnaBtn" href="">${myQuestionCount} 개</a>
+						<a class="MyQnaBtn" href="../article/myQnA?page=1">${myQuestionCount} 개</a>
 					</div>
 					<div class="MyLike">
 						<span class="material-symbols-outlined"> favorite </span>
 						<div class="ContentName">나의 찜 목록</div>
-						<a class="MyLikeBtn" href="">${myScrapCount} 개</a>
+						<a class="MyLikeBtn" href="../findcafe/scrapList">${myScrapCount} 개</a>
 					</div>
 
 

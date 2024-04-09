@@ -8,7 +8,7 @@
 	<div class="mx-auto overflow-x-auto">
 
 
-		<h1 style="text-align: center; font-size: 25; margin-top: 100px;">나의 게시글</h1>
+		<h1 style="text-align: center; font-size: 25; margin-top: 100px;">나의 질문</h1>
 		<div class="area-for-badge mx-auto" style="width: 50%; position: relative;">
 			<div class="badge badge-outline" style="margin-bottom: 10px;">${articlesCount }개</div>
 		</div>

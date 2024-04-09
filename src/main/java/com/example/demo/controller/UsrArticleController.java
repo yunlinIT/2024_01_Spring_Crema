@@ -102,13 +102,8 @@ public class UsrArticleController {
 		
 		Integer memberId = rq.getLoginedMemberId();
 
-		//Board board = boardService.getBoardById(boardId);
-
 		int articlesCount = articleService.getMyListCount(memberId, searchKeywordTypeCode, searchKeyword); //TODO (memberId 추가 및 getMyListCount로 변경)
 
-//		if (board == null) {
-//			return rq.historyBackOnView("없는 게시판이야");
-//		}
 
 		// 한페이지에 글 10개씩이야
 		// 글 20개 -> 2 page
@@ -120,8 +115,7 @@ public class UsrArticleController {
 		List<Article> articles = articleService.getForPrintMyList(memberId, itemsInAPage, page, searchKeywordTypeCode,
 				searchKeyword);
 
-		//model.addAttribute("board", board);
-		//model.addAttribute("boardId", boardId);
+
 		model.addAttribute("page", page);
 		model.addAttribute("pagesCount", pagesCount);
 		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
@@ -135,6 +129,47 @@ public class UsrArticleController {
 
 		return "usr/article/myList";
 	}
+	
+	
+	
+	@RequestMapping("/usr/article/myQnA")
+	public String showMyQnA(HttpServletRequest req, Model model,
+			@RequestParam(defaultValue = "1") int page,
+			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
+			@RequestParam(defaultValue = "") String searchKeyword) {
+
+		Rq rq = (Rq) req.getAttribute("rq");
+		
+		Integer memberId = rq.getLoginedMemberId();
+
+		int articlesCount = articleService.getMyQnACount(memberId, searchKeywordTypeCode, searchKeyword); //TODO (memberId 추가 및 getMyListCount로 변경)
+
+
+		// 한페이지에 글 10개씩이야
+		// 글 20개 -> 2 page
+		// 글 24개 -> 3 page
+		int itemsInAPage = 10;
+
+		int pagesCount = (int) Math.ceil(articlesCount / (double) itemsInAPage);
+
+		List<Article> articles = articleService.getForPrintMyQnA(memberId, itemsInAPage, page, searchKeywordTypeCode,
+				searchKeyword);
+
+
+		model.addAttribute("page", page);
+		model.addAttribute("pagesCount", pagesCount);
+		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
+		model.addAttribute("searchKeyword", searchKeyword);
+		model.addAttribute("articlesCount", articlesCount);
+		model.addAttribute("articles", articles);
+		
+		
+		System.err.println(memberId);
+		
+
+		return "usr/article/myQnA";
+	}
+	
 
 	@RequestMapping("/usr/article/detail")
 	public String showDetail(HttpServletRequest req, Model model, int id) {
