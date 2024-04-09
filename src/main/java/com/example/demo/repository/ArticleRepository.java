@@ -112,6 +112,31 @@ public interface ArticleRepository {
 			</script>
 			""")
 	public int getArticlesCount(int boardId, String searchKeywordTypeCode, String searchKeyword);
+	
+	@Select("""
+			<script>
+			SELECT COUNT(*) AS cnt
+			FROM article AS A
+			WHERE memberId = #{memberId} 
+			AND 1
+			<if test="searchKeyword != ''">
+				<choose>
+					<when test="searchKeywordTypeCode == 'title'">
+						AND A.title LIKE CONCAT('%',#{searchKeyword},'%')
+					</when>
+					<when test="searchKeywordTypeCode == 'body'">
+						AND A.body LIKE CONCAT('%',#{searchKeyword},'%')
+					</when>
+					<otherwise>
+						AND A.title LIKE CONCAT('%',#{searchKeyword},'%')
+						OR A.body LIKE CONCAT('%',#{searchKeyword},'%')
+					</otherwise>
+				</choose>
+			</if>
+			ORDER BY id DESC
+			</script>
+			""")
+	public int getMyListCount(Integer memberId, String searchKeywordTypeCode, String searchKeyword);
 
 	@Update("""
 			UPDATE article
@@ -136,9 +161,6 @@ public interface ArticleRepository {
 			LEFT JOIN `reply` AS R
 			ON A.id = R.relId
 			WHERE 1
-			<if test="boardId != 0">
-				AND A.boardId = #{boardId}
-			</if>
 			<if test="searchKeyword != ''">
 				<choose>
 					<when test="searchKeywordTypeCode == 'title'">
@@ -162,6 +184,44 @@ public interface ArticleRepository {
 			""")
 	public List<Article> getForPrintArticles(int boardId, int limitFrom, int limitTake, String searchKeywordTypeCode,
 			String searchKeyword);
+	
+	
+	@Select("""
+			<script>
+			SELECT A.*, M.nickname AS extra__writer, IFNULL(COUNT(R.id),0) AS extra__repliesCnt
+			FROM article AS A
+			INNER JOIN `member` AS M
+			ON A.memberId = M.id
+			LEFT JOIN `reply` AS R
+			ON A.id = R.relId
+			WHERE A.memberId = #{memberId} 
+			AND 1
+			<if test="searchKeyword != ''">
+				<choose>
+					<when test="searchKeywordTypeCode == 'title'">
+						AND A.title LIKE CONCAT('%',#{searchKeyword},'%')
+					</when>
+					<when test="searchKeywordTypeCode == 'body'">
+						AND A.body LIKE CONCAT('%',#{searchKeyword},'%')
+					</when>
+					<otherwise>
+						AND A.title LIKE CONCAT('%',#{searchKeyword},'%')
+						OR A.body LIKE CONCAT('%',#{searchKeyword},'%')
+					</otherwise>
+				</choose>
+			</if>
+			GROUP BY A.id
+			ORDER BY A.id DESC
+			<if test="limitFrom >= 0 ">
+				LIMIT #{limitFrom}, #{limitTake}
+			</if>
+			</script>
+			""")	
+	public List<Article> getForPrintMyList(int memberId, int limitFrom, int limitTake, String searchKeywordTypeCode,
+			String searchKeyword);
+
+
+	
 
 	@Update("""
 			UPDATE article
@@ -205,4 +265,7 @@ public interface ArticleRepository {
 			""")
 	public int getBadRP(int relId);
 
+
+	
 }
+	

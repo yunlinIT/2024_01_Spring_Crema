@@ -89,6 +89,11 @@ public class ArticleService {
 //	public List<Article> getForPrintArticles(int boardId) {
 //		return articleRepository.getForPrintArticles(boardId);
 //	}
+	
+	
+	public int getMyListCount(Integer memberId, String searchKeywordTypeCode, String searchKeyword) {
+		return articleRepository.getMyListCount(memberId,searchKeywordTypeCode, searchKeyword);
+	}
 
 	public ResultData increaseHitCount(int id) {
 		int affectedRow = articleRepository.increaseHitCount(id);
@@ -115,6 +120,17 @@ public class ArticleService {
 		int limitTake = itemsInAPage;
 
 		return articleRepository.getForPrintArticles(boardId, limitFrom, limitTake, searchKeywordTypeCode,
+				searchKeyword);
+	}
+	
+	
+	
+	public List<Article> getForPrintMyList(Integer memberId, int itemsInAPage, int page, String searchKeywordTypeCode,
+			String searchKeyword) {
+		int limitFrom = (page - 1) * itemsInAPage;
+		int limitTake = itemsInAPage;
+
+		return articleRepository.getForPrintMyList(memberId, limitFrom, limitTake, searchKeywordTypeCode,
 				searchKeyword);
 	}
 
@@ -165,5 +181,9 @@ public class ArticleService {
 	public int getBadRP(int relId) {
 		return articleRepository.getBadRP(relId);
 	}
+
+
+
+
 
 }
