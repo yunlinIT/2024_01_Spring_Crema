@@ -104,10 +104,6 @@ public class UsrArticleController {
 
 		int articlesCount = articleService.getMyListCount(memberId, searchKeywordTypeCode, searchKeyword); 
 
-
-		// 한페이지에 글 10개씩이야
-		// 글 20개 -> 2 page
-		// 글 24개 -> 3 page
 		int itemsInAPage = 10;
 
 		int pagesCount = (int) Math.ceil(articlesCount / (double) itemsInAPage);

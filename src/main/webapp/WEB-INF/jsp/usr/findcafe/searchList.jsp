@@ -163,12 +163,6 @@ function updateCafeList(cafeList, selectedKeywords) {
                             <div class="title-review">리뷰</div>
                             <div class="review-count-num">`+cafe.reviewCount+`</div>
                         </div>
-                        <div class="show-distance">
-                            <div class="num-km-group">
-                                <div class="km">km</div>
-                                <div class="distance-num">1.8</div>
-                            </div>
-                        </div>
                         <div class="hashtag equal-filter">`+cafe.hashtag+`</div>
                     </div>
                 </a>
@@ -182,7 +176,12 @@ function updateCafeList(cafeList, selectedKeywords) {
 }	// end function updateCafeList
 
 
-
+// <div class="show-distance">
+// <div class="num-km-group">
+//     <div class="km">km</div>
+//     <div class="distance-num">1.8</div>
+// </div>
+// </div>
 
 
 

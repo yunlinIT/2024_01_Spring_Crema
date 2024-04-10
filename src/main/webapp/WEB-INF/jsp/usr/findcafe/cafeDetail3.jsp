@@ -7,33 +7,9 @@
 
 
 
-<!-- <!-- Null값이 넘어감 | TODO -->
-<!-- 페이지 접속 시 최초 실행(onload) 함수 -->
-<script>
 
-window.onload = function() {
-	$.ajax({
-	    type: "POST",
-	    url: "/usr/findcafe/cafeDetail", // 요청을 처리할 컨트롤러의 URL
-	    data: {
-	        lat2: result[0].y, // 위도
-	        lon2: result[0].x  // 경도
-	    },
-	    success: function(response) {
-	        alert("위도와 경도를 서버로 전송했습니다.");
-	        // 성공적으로 처리되었을 때 실행할 코드
-	    },
-	    error: function(xhr, status, error) {
-	        alert("전송 중 오류가 발생했습니다.");
-	        // 오류 발생 시 실행할 코드
-	    }
-	});
 
-	// console.err(result[0].y, result[0].x);
 
-};
-
-</script>
 
 
 
@@ -56,6 +32,11 @@ window.onload = function() {
 
 <!-- 좋아요 싫어요  -->
 <script>
+
+
+
+
+
 
 	<!-- 좋아요 싫어요 버튼	-->
 	function checkCafeScrap() {
@@ -185,9 +166,6 @@ window.onload = function() {
 	$(function() {
 		checkCafeScrap();
 	});
-	
-	
-	
 </script>
 
 
@@ -281,17 +259,9 @@ function doModifyCafeReview(cafeReviewId) {
 		<!-- 카페 정보 -->
 		<div class="cafe-info">
 			<div class="cafe-name">${cafe.name}</div>
-			<div class="cafe-address">${cafe.address}</div>
-			<div class="cafe-distance">
-				<div class="num-km-group">
-					<div class="km">km</div>
-					<div class="distance-num">${cafeDistance}</div>
-				</div>
-			</div>
-
-
+			<p class="cafe-address">${cafe.address}</p>
 			<div class="cafe-phone">${cafe.phoneNum}</div>
-			<div class="cafe-facility">${cafe.facilities}</div>
+			<p class="cafe-facility">${cafe.facilities}</p>
 			<div class="cafe-businessHours">
 				<script>
             		// ${cafe.businessHours}를 세미콜론으로 분할하여 배열로 만듭니다.
@@ -306,13 +276,12 @@ function doModifyCafeReview(cafeReviewId) {
        			</script>
 			</div>
 			<div class="like-count">
-				<button class="material-symbols-outlined heart" id="likeButton" onclick="doCafeScrap(${param.id})">
-					favorite</button>
+				<button class="material-symbols-outlined heart" id="likeButton" onclick="doCafeScrap(${param.id})"> favorite </button>
 				<div class="cafeScrapCount" id="scrapCount">${cafe.cafeScrapCount}</div>
 			</div>
 			<div class="review-count">
 				<div class="review-badge">리뷰</div>
-				<div class="review-count-num">${cafeReviewsCount}</div>
+				<div class="review-count-num" >${cafeReviewsCount}</div>
 			</div>
 
 			<span class="material-symbols-outlined clock-circle" style="color: #a9a9a9"> schedule </span> <span
@@ -321,6 +290,8 @@ function doModifyCafeReview(cafeReviewId) {
 
 			<p class="hashtag">${cafe.hashtag}</p>
 		</div>
+
+
 
 
 		<!-- 카페 지도 -->
@@ -354,12 +325,13 @@ function doModifyCafeReview(cafeReviewId) {
 
         var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
         
-        //카페의 위도(lat|y) 경도(long|x)를 콘솔에 출력
+      //카페의 위도(lat|y) 경도(long|x)를 콘솔에 출력
        	console.log("위도(lat|y) : " + result[0].y);
        	console.log("경도(long|x) : " + result[0].x);
 
         // 결과값으로 받은 위치를 마커로 표시합니다
 
+        
         var marker = new kakao.maps.Marker({
     map: map,
     position: coords,
@@ -384,8 +356,6 @@ function doModifyCafeReview(cafeReviewId) {
 		</script>
 
 		</div>
-
-
 
 
 
@@ -859,52 +829,6 @@ function doModifyCafeReview(cafeReviewId) {
 	top: 0;
 }
 
-.cafe-detail-page .cafe-distance {
-	position: absolute;
-	width: 60px;
-	height: 20px;
-	top: 85px;
-	left: 6px;
-	background-color: #e3e3e3;
-	border-radius: 5px;
-}
-
-.cafe-detail-page .num-km-group {
-	width: 35px;
-	height: 15px;
-	left: 6px;
-	position: relative;
-	top: -1px;
-}
-
-.cafe-detail-page .km {
-	position: absolute;
-	width: 20px;
-	height: 15px;
-	top: 3px;
-	left: 30px;
-	font-family: "Pretendard";
-	font-weight: 600;
-	color: #000000;
-	font-size: 13px;
-	letter-spacing: 0;
-	line-height: normal;
-}
-
-.cafe-detail-page .distance-num {
-	position: absolute;
-	width: 20px;
-	height: 15px;
-	top: 3px;
-	left: 0;
-	font-family: "Pretendard";
-	font-weight: 600;
-	color: #000000;
-	font-size: 13px;
-	letter-spacing: 0;
-	line-height: normal;
-}
-
 .cafe-detail-page .cafe-name {
 	width: 814px;
 	height: 39px;
@@ -979,7 +903,7 @@ function doModifyCafeReview(cafeReviewId) {
 	position: absolute;
 	width: 63px;
 	height: 21px;
-	top: 110px;
+	top: 100px;
 	left: 7px;
 }
 
@@ -1008,7 +932,7 @@ function doModifyCafeReview(cafeReviewId) {
 	position: absolute;
 	width: 63px;
 	height: 21px;
-	top: 110px;
+	top: 100px;
 	left: 78px;
 }
 
@@ -1067,7 +991,7 @@ function doModifyCafeReview(cafeReviewId) {
 .cafe-detail-page .hashtag {
 	width: 500x;
 	height: 15px;
-	top: 143px;
+	top: 136px;
 	left: 7px;
 	font-weight: 500;
 	color: #333333;

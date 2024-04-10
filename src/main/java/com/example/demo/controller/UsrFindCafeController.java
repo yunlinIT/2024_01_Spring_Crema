@@ -42,11 +42,7 @@ public class UsrFindCafeController {
 	@Autowired
 	private CafeScrapService cafeScrapService;
 
-//	@RequestMapping("/usr/findcafe/likeList")
-//	public String likeList() {
-//
-//		return "/usr/findcafe/likeList";
-//	}
+
 
 	@RequestMapping("/crawl")
 	public String crawlAndSaveData() {
@@ -62,7 +58,7 @@ public class UsrFindCafeController {
 	@RequestMapping("/usr/findcafe/filterCafes")
 	@ResponseBody
 	public Map<String, Object> filterCafes(@RequestBody Map<String, Object> filterData) {
-
+		
 		Map<String, Object> returnMap = new HashMap<>();
 		List<String> selectedKeywords = new ArrayList<String>();
 		
@@ -73,7 +69,6 @@ public class UsrFindCafeController {
 		if (selectedKeywordsObject instanceof String == false) { // 키워드 선택 안했을 시 빈값이 String으로 들어와서 String(빈값) 여부 판단 후 빈값인 경우 전체카페 리스트 보여줌
 		    selectedKeywords = (List<String>) selectedKeywordsObject;
 		}
-		
 		
 		
 		int page = Integer.parseInt(filterData.get("page").toString());
@@ -166,9 +161,29 @@ public class UsrFindCafeController {
 		return "/usr/findcafe/searchList";
 	}
 
+	
+	
+	
+	
+
+
 	@RequestMapping("/usr/findcafe/cafeDetail")
 	public String showcafeDetail(HttpServletRequest req, Model model, int id) {
+		
+		
 		Rq rq = (Rq) req.getAttribute("rq");
+			
+//		// 학원 위도경도
+//		double lat1 = 36.351071;
+//		double lon1 = 127.379754;
+//    	
+//    	//테스트카페(Leafful) 위도경도
+//    	double lat2 = 36.3706177442735;
+//    	double lon2 = 127.33985482939;
+//    	
+//		String cafeDistance = distance(lat1, lon1, lat2, lon2);
+//		System.err.println(cafeDistance);
+		
 
 		Cafe cafe = cafeService.getForPrintCafe(id);
 
@@ -189,6 +204,7 @@ public class UsrFindCafeController {
 		model.addAttribute("cafe", cafe);
 		model.addAttribute("cafeReviews", cafeReviews);
 		model.addAttribute("cafeReviewsCount", cafeReviewsCount);
+		//model.addAttribute("cafeDistance", cafeDistance);
 
 		// model.addAttribute("cafeScrapCount", cafeScrapCount); //내꺼
 		model.addAttribute("isAlreadyAddCafeScrap",
@@ -218,42 +234,36 @@ public class UsrFindCafeController {
 		return "/usr/findcafe/searchList";
 	}
 
-//	@RequestMapping("/usr/home/main")
-//    public String getNewestCafe(Model model) {
-//       cafeService.getCafes();
-//       
-//       model.addAttribute("cafe", cafe);
-//        
-//        return "/usr/home/main";
-//    }
-//
-//	@RequestMapping("/usr/home/main")
-//    public CaStringfe getPopularCafe(Model model) {
-//        cafeService.getPopularCafe();
-//        
-//        model.addAttribute("cafe", cafe);
-//        
-//        return "/usr/home/main";
-//    }
 
+	
+	// 두 좌표 사이의 거리를 구하는 함수
+    // distance(첫번쨰 좌표의 위도, 첫번째 좌표의 경도, 두번째 좌표의 위도, 두번째 좌표의 경도)
+	 private static String distance(double lat1, double lon1, double lat2, double lon2){
+    	
+	    	
+        double theta = lon1 - lon2;
+        double dist = Math.sin(deg2rad(lat1))* Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1))*Math.cos(deg2rad(lat2))*Math.cos(deg2rad(theta));
+        dist = Math.acos(dist);
+        dist = rad2deg(dist);
+        dist = dist * 60*1.1515*1609.344;
 
-//	public String getCafesForMain(Model model, @RequestParam String keyword) {
-//		
-//		Cafe getNewestCafe = cafeService.getNewestCafe();
-//		Cafe getPopularCafe = cafeService.getPopularCafe();
-//		Cafe getRecommendedCafe = cafeService.getRecommendedCafe(keyword);
-//
-//		model.addAttribute("getNewestCafe", getNewestCafe);
-//		model.addAttribute("getPopularCafe", getPopularCafe);
-//		model.addAttribute("getRecommendedCafe", getRecommendedCafe);
-//		
-//
-//		return "/usr/home/main";
-//	}
-	
-	
-	
-	
+        String distanceInKm = String.format("%.1f", dist / 1000);
+        
+		System.out.println(distanceInKm + "km");
+        
+       return distanceInKm; //단위 kilometer
+    }
+    
+    //10진수를 radian(라디안)으로 변환
+    private static double deg2rad(double deg){
+        return (deg * Math.PI/180.0);
+    }
+    //radian(라디안)을 10진수로 변환
+    private static double rad2deg(double rad){
+    	
+        return (rad * 180 / Math.PI);
+    }  
+
 	
 
 }
