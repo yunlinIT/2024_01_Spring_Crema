@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -168,21 +168,26 @@ public class UsrFindCafeController {
 
 
 	@RequestMapping("/usr/findcafe/cafeDetail")
+	//@RequestMapping(value = "/usr/findcafe/cafeDetail", method = {RequestMethod.GET, RequestMethod.POST})
 	public String showcafeDetail(HttpServletRequest req, Model model, int id) {
 		
+		//@RequestParam Map<String, Object> MapForLocation //매개변수안에 작성
+		
+//		double lat2 = (double) MapForLocation.get("lat2");
+//		double lon2 = (double) MapForLocation.get("lon2");
 		
 		Rq rq = (Rq) req.getAttribute("rq");
 			
-//		// 학원 위도경도
-//		double lat1 = 36.351071;
-//		double lon1 = 127.379754;
+		// 학원 위도경도
+		double lat1 = 36.351071;
+		double lon1 = 127.379754;
 //    	
 //    	//테스트카페(Leafful) 위도경도
-//    	double lat2 = 36.3706177442735;
-//    	double lon2 = 127.33985482939;
-//    	
-//		String cafeDistance = distance(lat1, lon1, lat2, lon2);
-//		System.err.println(cafeDistance);
+    	double lat2 = 36.3706177442735;
+    	double lon2 = 127.33985482939;
+    	
+		String cafeDistance = distance(lat1, lon1, lat2, lon2);
+		System.err.println(cafeDistance);
 		
 
 		Cafe cafe = cafeService.getForPrintCafe(id);
@@ -204,7 +209,7 @@ public class UsrFindCafeController {
 		model.addAttribute("cafe", cafe);
 		model.addAttribute("cafeReviews", cafeReviews);
 		model.addAttribute("cafeReviewsCount", cafeReviewsCount);
-		//model.addAttribute("cafeDistance", cafeDistance);
+		model.addAttribute("cafeDistance", cafeDistance);
 
 		// model.addAttribute("cafeScrapCount", cafeScrapCount); //내꺼
 		model.addAttribute("isAlreadyAddCafeScrap",

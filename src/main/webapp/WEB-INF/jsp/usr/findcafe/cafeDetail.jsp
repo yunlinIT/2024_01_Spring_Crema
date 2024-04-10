@@ -11,13 +11,21 @@
 <!-- 페이지 접속 시 최초 실행(onload) 함수 -->
 <script>
 
+var lat2 = 0; 
+var lon2 = 0;
+
 window.onload = function() {
 	$.ajax({
 	    type: "POST",
 	    url: "/usr/findcafe/cafeDetail", // 요청을 처리할 컨트롤러의 URL
+	   // contentType: "application/json",
 	    data: {
-	        lat2: result[0].y, // 위도
-	        lon2: result[0].x  // 경도
+	    	lat2: lat2, // 위도
+		    lon2: lon2  // 경도
+// 	        lat2: result[0].y, // 위도
+// 	        lon2: result[0].x  // 경도
+	      //lat2: "36.3706177442735",
+	      //lon2: "127.33985482939"
 	    },
 	    success: function(response) {
 	        alert("위도와 경도를 서버로 전송했습니다.");
@@ -29,6 +37,8 @@ window.onload = function() {
 	    }
 	});
 
+	
+	
 	// console.err(result[0].y, result[0].x);
 
 };
@@ -315,9 +325,9 @@ function doModifyCafeReview(cafeReviewId) {
 				<div class="review-count-num">${cafeReviewsCount}</div>
 			</div>
 
-			<span class="material-symbols-outlined clock-circle" style="color: #a9a9a9"> schedule </span> <span
-				class="material-symbols-outlined phone" style="color: #a9a9a9"> call </span> <span
-				class="material-symbols-outlined store" style="color: #a9a9a9"> storefront </span>
+			<span class="material-symbols-outlined clock-circle" style="color: #a9a9a9"> schedule </span>
+			<span class="material-symbols-outlined phone" style="color: #a9a9a9"> call </span>
+			<span class="material-symbols-outlined store" style="color: #a9a9a9"> storefront </span>
 
 			<p class="hashtag">${cafe.hashtag}</p>
 		</div>
@@ -357,6 +367,9 @@ function doModifyCafeReview(cafeReviewId) {
         //카페의 위도(lat|y) 경도(long|x)를 콘솔에 출력
        	console.log("위도(lat|y) : " + result[0].y);
        	console.log("경도(long|x) : " + result[0].x);
+       	
+       	lat2 = result[0].y;
+       	lon2 = result[0].x;
 
         // 결과값으로 받은 위치를 마커로 표시합니다
 
@@ -403,8 +416,9 @@ function doModifyCafeReview(cafeReviewId) {
 						<div class="review-input-area">
 
 							<form action="../cafeReview/doWrite" method="POST">
-								<input type="hidden" name="cafeId" value="${cafe.id }" /> <input type="text" autocomplete="off"
-									placeholder="리뷰를 남겨주세요" name="body" class="review-input-box input input-bordered input-md w-full " />
+								<input type="hidden" name="cafeId" value="${cafe.id }" />
+								<input type="text" autocomplete="off" placeholder="리뷰를 남겨주세요" name="body"
+									class="review-input-box input input-bordered input-md w-full " />
 								<!-- 								<button class="review-write-btn btn btn-sm">등록</button> -->
 								<input class="review-write-btn btn btn-sm" type="submit" value="등록" />
 							</form>
@@ -484,11 +498,21 @@ function doModifyCafeReview(cafeReviewId) {
 	</button>
 	<div class="slide__container">
 		<ul class="slides">
-			<li><img src="" alt="이미지1"></li>
-			<li><img src="" alt="이미지2"></li>
-			<li><img src="" alt="이미지3"></li>
-			<li><img src="" alt="이미지4"></li>
-			<li><img src="" alt="이미지5"></li>
+			<li>
+				<img src="" alt="이미지1">
+			</li>
+			<li>
+				<img src="" alt="이미지2">
+			</li>
+			<li>
+				<img src="" alt="이미지3">
+			</li>
+			<li>
+				<img src="" alt="이미지4">
+			</li>
+			<li>
+				<img src="" alt="이미지5">
+			</li>
 		</ul>
 	</div>
 </div>
