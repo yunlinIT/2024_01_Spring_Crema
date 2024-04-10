@@ -319,7 +319,7 @@ public interface ArticleRepository {
 
 	@Select("""
 			<script>
-			SELECT DISTINCT A.*, M.nickname AS extra__writer, IFNULL(COUNT(R.id),0) AS extra__repliesCnt
+			SELECT A.*, M.nickname AS extra__writer, IFNULL(COUNT(R.id),0) AS extra__repliesCnt
 			FROM `reply` AS R
 			INNER JOIN `member` AS M
 			ON R.memberId = M.id
@@ -341,7 +341,7 @@ public interface ArticleRepository {
 					</otherwise>
 				</choose>
 			</if>
-			GROUP BY R.id
+			GROUP BY A.id
 			ORDER BY R.id DESC
 			<if test="limitFrom >= 0 ">
 				LIMIT #{limitFrom}, #{limitTake}
@@ -350,7 +350,21 @@ public interface ArticleRepository {
 			""")	
 	public List<Article> getForPrintMyReplies(Integer memberId, int limitFrom, int limitTake,
 			String searchKeywordTypeCode, String searchKeyword);
-
+//	@Select("""
+//	SELECT A.*, M.nickname AS extra__writer, IFNULL(COUNT(R.id),0) AS extra__repliesCnt
+//	FROM `reply` AS R
+//	INNER JOIN `member` AS M 
+//	ON R.memberId = M.id
+//	LEFT JOIN article AS A 
+//	ON A.id = R.relId
+//	WHERE R.memberId = 2
+//	AND (
+//	    A.title LIKE CONCAT('%',#{searchKeyword},'%')
+//	    OR A.body LIKE CONCAT('%',#{searchKeyword},'%')
+//	)
+//	GROUP BY A.id
+//	ORDER BY R.id DESC
+//""")
 	
 
 	

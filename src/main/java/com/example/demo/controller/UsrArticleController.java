@@ -102,7 +102,7 @@ public class UsrArticleController {
 		
 		Integer memberId = rq.getLoginedMemberId();
 
-		int articlesCount = articleService.getMyListCount(memberId, searchKeywordTypeCode, searchKeyword); //TODO (memberId 추가 및 getMyListCount로 변경)
+		int articlesCount = articleService.getMyListCount(memberId, searchKeywordTypeCode, searchKeyword); 
 
 
 		// 한페이지에 글 10개씩이야
@@ -142,7 +142,7 @@ public class UsrArticleController {
 		
 		Integer memberId = rq.getLoginedMemberId();
 
-		int articlesCount = articleService.getMyQnACount(memberId, searchKeywordTypeCode, searchKeyword); //TODO (memberId 추가 및 getMyListCount로 변경)
+		int articlesCount = articleService.getMyQnACount(memberId, searchKeywordTypeCode, searchKeyword); 
 
 
 		// 한페이지에 글 10개씩이야
@@ -180,7 +180,7 @@ public class UsrArticleController {
 		
 		Integer memberId = rq.getLoginedMemberId();
 
-		int articlesCount = articleService.getMyRepliesCount(memberId, searchKeywordTypeCode, searchKeyword); //TODO (memberId 추가 및 getMyListCount로 변경)
+		int articlesCount = articleService.getMyRepliesCount(memberId, searchKeywordTypeCode, searchKeyword); 
 
 
 		// 한페이지에 글 10개씩이야
