@@ -7,43 +7,7 @@
 
 
 
-<!-- <!-- Null값이 넘어감 | TODO -->
-<!-- 페이지 접속 시 최초 실행(onload) 함수 -->
-<script>
 
-var lat2 = 0; 
-var lon2 = 0;
-
-window.onload = function() {
-	$.ajax({
-	    type: "POST",
-	    url: "/usr/findcafe/cafeDetail", // 요청을 처리할 컨트롤러의 URL
-	   // contentType: "application/json",
-	    data: {
-	    	lat2: lat2, // 위도
-		    lon2: lon2  // 경도
-// 	        lat2: result[0].y, // 위도
-// 	        lon2: result[0].x  // 경도
-	      //lat2: "36.3706177442735",
-	      //lon2: "127.33985482939"
-	    },
-	    success: function(response) {
-	        alert("위도와 경도를 서버로 전송했습니다.");
-	        // 성공적으로 처리되었을 때 실행할 코드
-	    },
-	    error: function(xhr, status, error) {
-	        alert("전송 중 오류가 발생했습니다.");
-	        // 오류 발생 시 실행할 코드
-	    }
-	});
-
-	
-	
-	// console.err(result[0].y, result[0].x);
-
-};
-
-</script>
 
 
 
@@ -248,6 +212,44 @@ function doModifyCafeReview(cafeReviewId) {
 
 
 
+<!-- <!-- Null값이 넘어감 | TODO -->
+<!-- 페이지 접속 시 최초 실행(onload) 함수 -->
+<script>
+
+var lat2 = 0.0; 
+var lon2 = 0.0;
+
+window.onload = function() {
+	$.ajax({
+	    type: "POST",
+	    url: "/usr/findcafe/cafeDetail", // 요청을 처리할 컨트롤러의 URL
+	   // contentType: "application/json",
+	    data: JSON.stringify({
+	    	"lat": lat2, // 위도
+		    "lon": lon2  // 경도
+// 	        lat2: result[0].y, // 위도
+// 	        lon2: result[0].x  // 경도
+	      //lat2: "36.3706177442735",
+	      //lon2: "127.33985482939"
+	    }),
+	    dataType: 'json',
+	    success: function(response) {
+	        alert("위도와 경도를 서버로 전송했습니다.");
+	        // 성공적으로 처리되었을 때 실행할 코드
+	    },
+	    error: function(xhr, status, error) {
+	        alert("전송 중 오류가 발생했습니다.");
+	        // 오류 발생 시 실행할 코드
+	    }
+	});
+
+	
+
+};
+
+</script>
+
+
 
 <section class="cafe-detail-page">
 
@@ -294,8 +296,8 @@ function doModifyCafeReview(cafeReviewId) {
 			<div class="cafe-address">${cafe.address}</div>
 			<div class="cafe-distance">
 				<div class="num-km-group">
-					<div class="km">km</div>
-					<div class="distance-num">${cafeDistance}</div>
+					<div class="km"></div>
+					<div class="distance-num">${cafeDistance} km</div>
 				</div>
 			</div>
 
@@ -370,6 +372,9 @@ function doModifyCafeReview(cafeReviewId) {
        	
        	lat2 = result[0].y;
        	lon2 = result[0].x;
+       	
+       	console.log("new위도(lat|y) : " + lat2)
+        console.log("new경도(long|x) : " + lon2);
 
         // 결과값으로 받은 위치를 마커로 표시합니다
 
