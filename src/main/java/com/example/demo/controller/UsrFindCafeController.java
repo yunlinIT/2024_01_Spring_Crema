@@ -173,41 +173,35 @@ public class UsrFindCafeController {
 		
 		//@RequestParam Map<String, Object> MapForLocation //매개변수안에 작성
 		
-//		double lat2 = (double) MapForLocation.get("lat2");
-//		double lon2 = (double) MapForLocation.get("lon2");
-		
-//		double lat2 = Double.parseDouble(lat);
-//		double lon2 = Double.parseDouble(lon);
-		
-		
-//	    // id가 null인 경우에 대한 처리
-//	    if (id == null) {
-//	        // id가 null인 경우에 대한 예외 처리 또는 오류 메시지 반환
-//	        throw new IllegalArgumentException("Cafe ID cannot be null");
-//	    } else {
-//	        // id가 null이 아닌 경우, intValue() 메서드를 호출하여 원시 타입(int)으로 변환
-//	        int idValue = id.intValue();
-//
-//	        // 나머지 코드
-//	    }
-		
+		Rq rq = (Rq) req.getAttribute("rq");
 	    double lat2 = 0.0;
 	    double lon2 = 0.0;
+	    
+
+//        try {
+//            // 문자열을 숫자로 변환하여 lat2와 lon2에 할당
+//            lat2 = Double.parseDouble(lat);
+//            lon2 = Double.parseDouble(lon);
+//        } catch (NumberFormatException e) {
+//            // 숫자로 변환할 수 없는 경우, 기본값인 0.0을 사용
+//            // 필요에 따라 예외 처리를 추가할 수 있음
+//        }
+	    
+
 
 	    if (lat != null && lon != null && !lat.trim().isEmpty() && !lon.trim().isEmpty()) {
 	        lat2 = Double.parseDouble(lat);
 	        lon2 = Double.parseDouble(lon);
 	    }
 		
-		Rq rq = (Rq) req.getAttribute("rq");
-			
+	
 		// 학원 위도경도
 		double lat1 = 36.351071;
 		double lon1 = 127.379754;
-//    	
-//    	//테스트카페(Leafful) 위도경도
+//    	//    	//테스트카페(Leafful) 위도경도
 //    	double lat2 = 36.3706177442735;
 //    	double lon2 = 127.33985482939;
+
     	
 		String cafeDistance = distance(lat1, lon1, lat2, lon2);
 		System.err.println(cafeDistance);
@@ -227,24 +221,19 @@ public class UsrFindCafeController {
 
 		int cafeReviewsCount = cafeReviews.size();
 
-		// int cafeScrapCount = cafeScrapService.getSumScrapCount(id); //내꺼
 
 		model.addAttribute("cafe", cafe);
 		model.addAttribute("cafeReviews", cafeReviews);
 		model.addAttribute("cafeReviewsCount", cafeReviewsCount);
 		model.addAttribute("cafeDistance", cafeDistance);
 
-		// model.addAttribute("cafeScrapCount", cafeScrapCount); //내꺼
+
 		model.addAttribute("isAlreadyAddCafeScrap",
 				cafeScrapService.isAlreadyAddCafeScrap(rq.getLoginedMemberId(), id));
 
-//		model.addAttribute("isAlreadyAddBadRp",
-//				cafeScrapService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "article"));
 
 		return "usr/findcafe/cafeDetail";
 		
-		
-
 	}
 
 	@RequestMapping("/usr/findcafe/searchCafes")

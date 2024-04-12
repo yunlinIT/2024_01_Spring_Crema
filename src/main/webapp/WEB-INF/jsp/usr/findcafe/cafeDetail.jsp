@@ -12,6 +12,13 @@
 
 
 <!-- 변수 -->
+
+
+<script>
+
+var lat2 = 0.0; 
+var lon2 = 0.0;
+</script>
 <script>
 	const params = {};
 	params.id = parseInt('${param.id}');
@@ -219,33 +226,33 @@ function doModifyCafeReview(cafeReviewId) {
 var lat2 = 0.0; 
 var lon2 = 0.0;
 
-window.onload = function() {
-	$.ajax({
-	    type: "POST",
-	    url: "/usr/findcafe/cafeDetail", // 요청을 처리할 컨트롤러의 URL
-	   // contentType: "application/json",
-	    data: JSON.stringify({
-	    	"lat": lat2, // 위도
-		    "lon": lon2  // 경도
-// 	        lat2: result[0].y, // 위도
-// 	        lon2: result[0].x  // 경도
-	      //lat2: "36.3706177442735",
-	      //lon2: "127.33985482939"
-	    }),
-	    dataType: 'json',
-	    success: function(response) {
-	        alert("위도와 경도를 서버로 전송했습니다.");
-	        // 성공적으로 처리되었을 때 실행할 코드
-	    },
-	    error: function(xhr, status, error) {
-	        alert("전송 중 오류가 발생했습니다.");
-	        // 오류 발생 시 실행할 코드
-	    }
-	});
-
+// window.onload = function() {
+// 	$.ajax({
+// 	    type: "POST",
+// 	    url: "/usr/findcafe/cafeDetail", // 요청을 처리할 컨트롤러의 URL
+// 	   // contentType: "application/json",
+// 	    data: JSON.stringify({
+// 	    	lat: lat2, // 위도
+// 		    lon: lon2  // 경도
+// // 	        lat2: result[0].y, // 위도
+// // 	        lon2: result[0].x  // 경도
+// 	      //lat2: "36.3706177442735",
+// 	      //lon2: "127.33985482939"
+// 	    }),
+// 	    dataType: 'json',
+// 	    success: function(response) {
+// 	        alert("위도와 경도를 서버로 전송했습니다.");
+// 	        // 성공적으로 처리되었을 때 실행할 코드
+// 	    },
+// 	    error: function(xhr, status, error) {
+// 	        alert(JSON.stringify(lat2 )); 
+// 	        // 오류 발생 시 실행할 코드
+// 	    }
+// 	});
 	
+// 	console.log(JSON.stringify(lat2 ))
 
-};
+// };
 
 </script>
 
@@ -297,7 +304,7 @@ window.onload = function() {
 			<div class="cafe-distance">
 				<div class="num-km-group">
 					<div class="km"></div>
-					<div class="distance-num">${cafeDistance} km</div>
+					<div class="distance-num">${cafeDistance}km</div>
 				</div>
 			</div>
 
@@ -327,9 +334,9 @@ window.onload = function() {
 				<div class="review-count-num">${cafeReviewsCount}</div>
 			</div>
 
-			<span class="material-symbols-outlined clock-circle" style="color: #a9a9a9"> schedule </span>
-			<span class="material-symbols-outlined phone" style="color: #a9a9a9"> call </span>
-			<span class="material-symbols-outlined store" style="color: #a9a9a9"> storefront </span>
+			<span class="material-symbols-outlined clock-circle" style="color: #a9a9a9"> schedule </span> <span
+				class="material-symbols-outlined phone" style="color: #a9a9a9"> call </span> <span
+				class="material-symbols-outlined store" style="color: #a9a9a9"> storefront </span>
 
 			<p class="hashtag">${cafe.hashtag}</p>
 		</div>
@@ -375,6 +382,8 @@ window.onload = function() {
        	
        	console.log("new위도(lat|y) : " + lat2)
         console.log("new경도(long|x) : " + lon2);
+       	
+       	showLatLon(lat2,lon2);
 
         // 결과값으로 받은 위치를 마커로 표시합니다
 
@@ -388,7 +397,6 @@ window.onload = function() {
     )
 });
         	
-        
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new kakao.maps.InfoWindow({
             content: '<div style="width:150px;text-align:center;padding:6px 0; font-size: 15px; color: black;">${cafe.name}</div>'
@@ -399,8 +407,29 @@ window.onload = function() {
         map.setCenter(coords);
     		} 
 		});    
+		
+		function showLatLon(lat2, lon2) {
+		    $.ajax({
+		        type: "POST",
+		        url: "/usr/findcafe/cafeDetail", // 요청을 처리할 컨트롤러의 URL
+		        contentType: "application/json",
+		        data: JSON.stringify({
+			      'lat2': lat2,
+			      'lon2': lon2
+		        }),
+		        dataType: 'json',
+		        success: function(response) {
+		            alert("위도와 경도를 서버로 전송했습니다.");
+		            // 성공적으로 처리되었을 때 실행할 코드
+		        },
+		        error: function(xhr, status, error) {
+		            alert("에러면 표시 :" + JSON.stringify(lat2));
+		            // 오류 발생 시 실행할 코드
+		        }
+		    });
+		};
+		
 		</script>
-
 		</div>
 
 
@@ -421,9 +450,8 @@ window.onload = function() {
 						<div class="review-input-area">
 
 							<form action="../cafeReview/doWrite" method="POST">
-								<input type="hidden" name="cafeId" value="${cafe.id }" />
-								<input type="text" autocomplete="off" placeholder="리뷰를 남겨주세요" name="body"
-									class="review-input-box input input-bordered input-md w-full " />
+								<input type="hidden" name="cafeId" value="${cafe.id }" /> <input type="text" autocomplete="off"
+									placeholder="리뷰를 남겨주세요" name="body" class="review-input-box input input-bordered input-md w-full " />
 								<!-- 								<button class="review-write-btn btn btn-sm">등록</button> -->
 								<input class="review-write-btn btn btn-sm" type="submit" value="등록" />
 							</form>
@@ -503,21 +531,11 @@ window.onload = function() {
 	</button>
 	<div class="slide__container">
 		<ul class="slides">
-			<li>
-				<img src="" alt="이미지1">
-			</li>
-			<li>
-				<img src="" alt="이미지2">
-			</li>
-			<li>
-				<img src="" alt="이미지3">
-			</li>
-			<li>
-				<img src="" alt="이미지4">
-			</li>
-			<li>
-				<img src="" alt="이미지5">
-			</li>
+			<li><img src="" alt="이미지1"></li>
+			<li><img src="" alt="이미지2"></li>
+			<li><img src="" alt="이미지3"></li>
+			<li><img src="" alt="이미지4"></li>
+			<li><img src="" alt="이미지5"></li>
 		</ul>
 	</div>
 </div>
