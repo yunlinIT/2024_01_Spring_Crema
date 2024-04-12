@@ -377,8 +377,13 @@ var lon2 = 0.0;
        	console.log("위도(lat|y) : " + result[0].y);
        	console.log("경도(long|x) : " + result[0].x);
        	
-       	lat2 = result[0].y;
-       	lon2 = result[0].x;
+       	lat2 = String(result[0].y);
+       	lon2 = String(result[0].x);
+       	
+       	JSON.stringify({
+		      'lat2': lat2,
+		      'lon2': lon2
+	        })
        	
        	console.log("new위도(lat|y) : " + lat2)
         console.log("new경도(long|x) : " + lon2);
@@ -388,10 +393,10 @@ var lon2 = 0.0;
         // 결과값으로 받은 위치를 마커로 표시합니다
 
         var marker = new kakao.maps.Marker({
-    map: map,
-    position: coords,
-    image: new kakao.maps.MarkerImage(
-        'https://velog.velcdn.com/images/yunlinit/post/8c994474-03a4-481f-9294-a3a3e201cb72/image.png',
+    		map: map,
+    		position: coords,
+    		image: new kakao.maps.MarkerImage(
+        	'https://velog.velcdn.com/images/yunlinit/post/8c994474-03a4-481f-9294-a3a3e201cb72/image.png',
         new kakao.maps.Size(39, 39),
         { offset: new kakao.maps.Point(16, 32) }
     )
@@ -412,19 +417,21 @@ var lon2 = 0.0;
 		    $.ajax({
 		        type: "POST",
 		        url: "/usr/findcafe/cafeDetail", // 요청을 처리할 컨트롤러의 URL
-		        contentType: "application/json",
-		        data: JSON.stringify({
-			      'lat2': lat2,
-			      'lon2': lon2
-		        }),
+		       // contentType: "application/json", // id도 넘겨줘........ 
+		        data: {
+		        	'id' : 24,
+			      'lat': lat2,
+			      'lon': lon2
+		        },
 		        dataType: 'json',
 		        success: function(response) {
 		            alert("위도와 경도를 서버로 전송했습니다.");
 		            // 성공적으로 처리되었을 때 실행할 코드
 		        },
 		        error: function(xhr, status, error) {
-		            alert("에러면 표시 :" + JSON.stringify(lat2));
+		            alert("에러면 표시 " + JSON.stringify(lat2));
 		            // 오류 발생 시 실행할 코드
+		            //JSON.stringify(lat2)
 		        }
 		    });
 		};

@@ -28,7 +28,6 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class UsrFindCafeController {
-	
 
 	@Autowired
 	private CafeService cafeService;
@@ -41,8 +40,6 @@ public class UsrFindCafeController {
 
 	@Autowired
 	private CafeScrapService cafeScrapService;
-
-
 
 	@RequestMapping("/crawl")
 	public String crawlAndSaveData() {
@@ -58,19 +55,22 @@ public class UsrFindCafeController {
 	@RequestMapping("/usr/findcafe/filterCafes")
 	@ResponseBody
 	public Map<String, Object> filterCafes(@RequestBody Map<String, Object> filterData) {
-		
+
 		Map<String, Object> returnMap = new HashMap<>();
 		List<String> selectedKeywords = new ArrayList<String>();
-		
-		//String keyword = filterData.get("keyword"); // 키워드 다중선택 아닌 단일선택 시 
-		//List<String> selectedKeywords = (List<String>) filterData.get("selectedKeywords"); // 키워드 선택하지 않았을 경우 리스트 보이지 않음 (키워드가 빈값 일 때 String) 
-		Object selectedKeywordsObject = filterData.get("selectedKeywords"); // 키워드 선택 안했을 때 String으로 넘어오고, 키워드 선택 했을 땐 List로 넘어와서 변수타입을 Object로 선언.
 
-		if (selectedKeywordsObject instanceof String == false) { // 키워드 선택 안했을 시 빈값이 String으로 들어와서 String(빈값) 여부 판단 후 빈값인 경우 전체카페 리스트 보여줌
-		    selectedKeywords = (List<String>) selectedKeywordsObject;
+		// String keyword = filterData.get("keyword"); // 키워드 다중선택 아닌 단일선택 시
+		// List<String> selectedKeywords = (List<String>)
+		// filterData.get("selectedKeywords"); // 키워드 선택하지 않았을 경우 리스트 보이지 않음 (키워드가 빈값 일
+		// 때 String)
+		Object selectedKeywordsObject = filterData.get("selectedKeywords"); // 키워드 선택 안했을 때 String으로 넘어오고, 키워드 선택 했을 땐
+																			// List로 넘어와서 변수타입을 Object로 선언.
+
+		if (selectedKeywordsObject instanceof String == false) { // 키워드 선택 안했을 시 빈값이 String으로 들어와서 String(빈값) 여부 판단 후
+																	// 빈값인 경우 전체카페 리스트 보여줌
+			selectedKeywords = (List<String>) selectedKeywordsObject;
 		}
-		
-		
+
 		int page = Integer.parseInt(filterData.get("page").toString());
 		List<Cafe> cafesList;
 
@@ -85,9 +85,9 @@ public class UsrFindCafeController {
 
 		int itemsInAPage = 5;
 
-		if (selectedKeywords.isEmpty()) { //키워드가 선택 되지 않았을 경우에 대한 전체카페 리스팅
+		if (selectedKeywords.isEmpty()) { // 키워드가 선택 되지 않았을 경우에 대한 전체카페 리스팅
 			cafesList = cafeService.getForPrintCafes(itemsInAPage, page);
-		} else { //키워드가 선택 되었을 경우에 대한 키워드별 카페 리스팅
+		} else { // 키워드가 선택 되었을 경우에 대한 키워드별 카페 리스팅
 			cafesList = cafeService.getForPrintCafesKeyword(itemsInAPage, page, selectedKeywords);
 		}
 
@@ -161,22 +161,16 @@ public class UsrFindCafeController {
 		return "/usr/findcafe/searchList";
 	}
 
-	
-	
-	
-	
-
-
 	@RequestMapping("/usr/findcafe/cafeDetail")
-	//@RequestMapping(value = "/usr/findcafe/cafeDetail", method = {RequestMethod.GET, RequestMethod.POST})
+	// @RequestMapping(value = "/usr/findcafe/cafeDetail", method =
+	// {RequestMethod.GET, RequestMethod.POST})
 	public String showcafeDetail(HttpServletRequest req, Model model, Integer id, String lat, String lon) {
-		
-		//@RequestParam Map<String, Object> MapForLocation //매개변수안에 작성
-		
+
+		// @RequestParam Map<String, Object> MapForLocation //매개변수안에 작성
+
 		Rq rq = (Rq) req.getAttribute("rq");
-	    double lat2 = 0.0;
-	    double lon2 = 0.0;
-	    
+		double lat2 = 0.0;
+		double lon2 = 0.0;
 
 //        try {
 //            // 문자열을 숫자로 변환하여 lat2와 lon2에 할당
@@ -186,15 +180,12 @@ public class UsrFindCafeController {
 //            // 숫자로 변환할 수 없는 경우, 기본값인 0.0을 사용
 //            // 필요에 따라 예외 처리를 추가할 수 있음
 //        }
-	    
 
+//		if (lat != null && lon != null && !lat.trim().isEmpty() && !lon.trim().isEmpty()) {
+//			lat2 = Double.parseDouble(lat);
+//			lon2 = Double.parseDouble(lon);
+//		}
 
-	    if (lat != null && lon != null && !lat.trim().isEmpty() && !lon.trim().isEmpty()) {
-	        lat2 = Double.parseDouble(lat);
-	        lon2 = Double.parseDouble(lon);
-	    }
-		
-	
 		// 학원 위도경도
 		double lat1 = 36.351071;
 		double lon1 = 127.379754;
@@ -202,10 +193,8 @@ public class UsrFindCafeController {
 //    	double lat2 = 36.3706177442735;
 //    	double lon2 = 127.33985482939;
 
-    	
 		String cafeDistance = distance(lat1, lon1, lat2, lon2);
-		System.err.println(cafeDistance);
-		
+		System.err.println("거리" + cafeDistance);
 
 		Cafe cafe = cafeService.getForPrintCafe(id);
 
@@ -221,19 +210,16 @@ public class UsrFindCafeController {
 
 		int cafeReviewsCount = cafeReviews.size();
 
-
 		model.addAttribute("cafe", cafe);
 		model.addAttribute("cafeReviews", cafeReviews);
 		model.addAttribute("cafeReviewsCount", cafeReviewsCount);
 		model.addAttribute("cafeDistance", cafeDistance);
 
-
 		model.addAttribute("isAlreadyAddCafeScrap",
 				cafeScrapService.isAlreadyAddCafeScrap(rq.getLoginedMemberId(), id));
 
-
 		return "usr/findcafe/cafeDetail";
-		
+
 	}
 
 	@RequestMapping("/usr/findcafe/searchCafes")
@@ -253,64 +239,33 @@ public class UsrFindCafeController {
 		return "/usr/findcafe/searchList";
 	}
 
-
-	
 	// 두 좌표 사이의 거리를 구하는 함수
-    // distance(첫번쨰 좌표의 위도, 첫번째 좌표의 경도, 두번째 좌표의 위도, 두번째 좌표의 경도)
-	 private static String distance(double lat1, double lon1, double lat2, double lon2){
-    	
-	    	
-        double theta = lon1 - lon2;
-        double dist = Math.sin(deg2rad(lat1))* Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1))*Math.cos(deg2rad(lat2))*Math.cos(deg2rad(theta));
-        dist = Math.acos(dist);
-        dist = rad2deg(dist);
-        dist = dist * 60*1.1515*1609.344;
+	// distance(첫번쨰 좌표의 위도, 첫번째 좌표의 경도, 두번째 좌표의 위도, 두번째 좌표의 경도)
+	private static String distance(double lat1, double lon1, double lat2, double lon2) {
 
-        String distanceInKm = String.format("%.1f", dist / 1000);
-        
+		double theta = lon1 - lon2;
+		double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2))
+				+ Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
+		dist = Math.acos(dist);
+		dist = rad2deg(dist);
+		dist = dist * 60 * 1.1515 * 1609.344;
+
+		String distanceInKm = String.format("%.1f", dist / 1000);
+
 		System.out.println(distanceInKm + "km");
-        
-       return distanceInKm; //단위 kilometer
-    }
-    
-    //10진수를 radian(라디안)으로 변환
-    private static double deg2rad(double deg){
-        return (deg * Math.PI/180.0);
-    }
-    //radian(라디안)을 10진수로 변환
-    private static double rad2deg(double rad){
-    	
-        return (rad * 180 / Math.PI);
-    }  
 
-	
+		return distanceInKm; // 단위 kilometer
+	}
+
+	// 10진수를 radian(라디안)으로 변환
+	private static double deg2rad(double deg) {
+		return (deg * Math.PI / 180.0);
+	}
+
+	// radian(라디안)을 10진수로 변환
+	private static double rad2deg(double rad) {
+
+		return (rad * 180 / Math.PI);
+	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
