@@ -6,9 +6,8 @@
 <meta charset="utf-8">
 
 
-
-
-
+<script type="text/javascript"
+				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=06da921fb5b3ede9c345d161a3364b4e&libraries=services"></script>
 
 
 <!-- 변수 -->
@@ -16,16 +15,15 @@
 
 <script>
 
-var lat2 = 0.0; 
-var lon2 = 0.0;
-</script>
-<script>
+	var lat2 = 0.0; 
+	var lon2 = 0.0;
+
 	const params = {};
 	params.id = parseInt('${param.id}');
 	params.memberId = parseInt('${loginedMemberId}');
 	
-	console.log(params);
-	console.log(params.memberId);
+	console.log("params.id : "+params.id);
+	console.log("params.memberId : "+params.memberId);
 	
 	var isAlreadyAddCafeScrap = ${isAlreadyAddCafeScrap};
 	
@@ -223,9 +221,6 @@ function doModifyCafeReview(cafeReviewId) {
 <!-- 페이지 접속 시 최초 실행(onload) 함수 -->
 <script>
 
-var lat2 = 0.0; 
-var lon2 = 0.0;
-
 // window.onload = function() {
 // 	$.ajax({
 // 	    type: "POST",
@@ -304,7 +299,7 @@ var lon2 = 0.0;
 			<div class="cafe-distance">
 				<div class="num-km-group">
 					<div class="km"></div>
-					<div class="distance-num">${cafeDistance}km</div>
+					<div class="distance-num">0 km</div>
 				</div>
 			</div>
 
@@ -347,11 +342,9 @@ var lon2 = 0.0;
 			<!-- 			<img class="map-img" src="/" /> -->
 			<div class="map-title">지도보기</div>
 
-			</p>
 			<div id="map" style="width: 525px; height: 323px; top: 63px;"></div>
 
-			<script type="text/javascript"
-				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=06da921fb5b3ede9c345d161a3364b4e&libraries=services"></script>
+			
 			<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     		mapOption = {
@@ -367,74 +360,77 @@ var lon2 = 0.0;
 
 		// 주소로 좌표를 검색합니다
 		geocoder.addressSearch('${cafe.address}', function(result, status) {
-
-   		// 정상적으로 검색이 완료됐으면 
+   			// 정상적으로 검색이 완료됐으면 
      		if (status === kakao.maps.services.Status.OK) {
-
-        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-        
-        //카페의 위도(lat|y) 경도(long|x)를 콘솔에 출력
-       	console.log("위도(lat|y) : " + result[0].y);
-       	console.log("경도(long|x) : " + result[0].x);
-       	
-       	lat2 = String(result[0].y);
-       	lon2 = String(result[0].x);
-       	
-       	JSON.stringify({
-		      'lat2': lat2,
-		      'lon2': lon2
-	        })
-       	
-       	console.log("new위도(lat|y) : " + lat2)
-        console.log("new경도(long|x) : " + lon2);
-       	
-       	showLatLon(lat2,lon2);
-
-        // 결과값으로 받은 위치를 마커로 표시합니다
-
-        var marker = new kakao.maps.Marker({
-    		map: map,
-    		position: coords,
-    		image: new kakao.maps.MarkerImage(
-        	'https://velog.velcdn.com/images/yunlinit/post/8c994474-03a4-481f-9294-a3a3e201cb72/image.png',
-        new kakao.maps.Size(39, 39),
-        { offset: new kakao.maps.Point(16, 32) }
-    )
-});
-        	
-        // 인포윈도우로 장소에 대한 설명을 표시합니다
-        var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0; font-size: 15px; color: black;">${cafe.name}</div>'
-        });
-        infowindow.open(map, marker);
-
-        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-        map.setCenter(coords);
+		        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+		        
+		        //카페의 위도(lat|y) 경도(long|x)를 콘솔에 출력
+		       	console.log("위도(lat|y) : " + result[0].y);
+		       	console.log("경도(long|x) : " + result[0].x);
+		       	
+		       	lat2 = String(result[0].y);
+		       	lon2 = String(result[0].x);
+		       	
+		       	console.log("new위도(lat|y) : " + lat2)
+		        console.log("new경도(long|x) : " + lon2);
+		       	
+		       	showLatLon(lat2,lon2);
+		
+		        // 결과값으로 받은 위치를 마커로 표시합니다
+		
+		        var marker = new kakao.maps.Marker({
+		    		map: map,
+		    		position: coords,
+		    		image: new kakao.maps.MarkerImage(
+		        	'https://velog.velcdn.com/images/yunlinit/post/8c994474-03a4-481f-9294-a3a3e201cb72/image.png',
+		        new kakao.maps.Size(39, 39),
+		        { offset: new kakao.maps.Point(16, 32) }
+				    )
+				});
+		        	
+		        // 인포윈도우로 장소에 대한 설명을 표시합니다
+		        var infowindow = new kakao.maps.InfoWindow({
+		            content: '<div style="width:150px;text-align:center;padding:6px 0; font-size: 15px; color: black;">${cafe.name}</div>'
+		        });
+		        infowindow.open(map, marker);
+		
+		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+		        map.setCenter(coords);
     		} 
 		});    
 		
 		function showLatLon(lat2, lon2) {
-		    $.ajax({
-		        type: "POST",
-		        url: "/usr/findcafe/cafeDetail", // 요청을 처리할 컨트롤러의 URL
-		       // contentType: "application/json", // id도 넘겨줘........ 
-		        data: {
-		        	'id' : 24,
-			      'lat': lat2,
-			      'lon': lon2
-		        },
-		        dataType: 'json',
-		        success: function(response) {
-		            alert("위도와 경도를 서버로 전송했습니다.");
-		            // 성공적으로 처리되었을 때 실행할 코드
-		        },
-		        error: function(xhr, status, error) {
-		            alert("에러면 표시 " + JSON.stringify(lat2));
-		            // 오류 발생 시 실행할 코드
-		            //JSON.stringify(lat2)
-		        }
-		    });
-		};
+			var myLat, myLon;
+			
+			// 크롬브라우저 전용 사용자의 위도와 경도를 불러오는 함수
+			navigator.geolocation.getCurrentPosition(function(position) {
+	            myLat = position.coords.latitude;
+	            myLon = position.coords.longitude;
+	            
+	            $.ajax({
+			        type: "POST",
+			        url: "/usr/findcafe/distance", // 요청을 처리할 컨트롤러의 URL
+			        contentType: "application/json", // id도 넘겨줘........ 
+			        data: JSON.stringify({
+			        	'myLat': myLat,
+			        	'myLon': myLon,
+			        	'cafeLat': lat2,
+			        	'cafeLon': lon2
+			        }),
+			        //dataType: 'json',
+			        success: function(distanceInKm) {
+			            //alert("위도와 경도를 서버로 전송했습니다.\n * distanceInKm_Response : " + distanceInKm);
+			            // 성공적으로 처리되었을 때 실행할 코드
+			            $('.distance-num').text(distanceInKm+"km");
+			        },
+			        error: function(xhr, status, error) {
+			            alert("에러면 표시 " + JSON.stringify(lat2));
+			            // 오류 발생 시 실행할 코드
+			            //JSON.stringify(lat2)
+			        }
+			    });
+			});
+		}
 		
 		</script>
 		</div>
@@ -468,9 +464,6 @@ var lon2 = 0.0;
 						<a href="${rq.loginUri }" style="text-decoration: underline; font-weight: 600;">로그인</a> 후 이용해주세요.
 				</c:if>
 				</div>
-
-
-
 
 				<!-- 리뷰 목록 -->
 				<div class="review-list">
@@ -513,10 +506,6 @@ var lon2 = 0.0;
 						</div>
 					</c:forEach>
 				</div>
-
-
-
-
 			</div>
 		</div>
 	</div>
@@ -947,7 +936,7 @@ var lon2 = 0.0;
 
 .cafe-detail-page .distance-num {
 	position: absolute;
-	width: 20px;
+	width: 25px;
 	height: 15px;
 	top: 3px;
 	left: 0;

@@ -164,37 +164,11 @@ public class UsrFindCafeController {
 	@RequestMapping("/usr/findcafe/cafeDetail")
 	// @RequestMapping(value = "/usr/findcafe/cafeDetail", method =
 	// {RequestMethod.GET, RequestMethod.POST})
-	public String showcafeDetail(HttpServletRequest req, Model model, Integer id, String lat, String lon) {
+	public String showcafeDetail(HttpServletRequest req, Model model, int id) {
 
 		// @RequestParam Map<String, Object> MapForLocation //매개변수안에 작성
 
 		Rq rq = (Rq) req.getAttribute("rq");
-		double lat2 = 0.0;
-		double lon2 = 0.0;
-
-//        try {
-//            // 문자열을 숫자로 변환하여 lat2와 lon2에 할당
-//            lat2 = Double.parseDouble(lat);
-//            lon2 = Double.parseDouble(lon);
-//        } catch (NumberFormatException e) {
-//            // 숫자로 변환할 수 없는 경우, 기본값인 0.0을 사용
-//            // 필요에 따라 예외 처리를 추가할 수 있음
-//        }
-
-//		if (lat != null && lon != null && !lat.trim().isEmpty() && !lon.trim().isEmpty()) {
-//			lat2 = Double.parseDouble(lat);
-//			lon2 = Double.parseDouble(lon);
-//		}
-
-		// 학원 위도경도
-		double lat1 = 36.351071;
-		double lon1 = 127.379754;
-//    	//    	//테스트카페(Leafful) 위도경도
-//    	double lat2 = 36.3706177442735;
-//    	double lon2 = 127.33985482939;
-
-		String cafeDistance = distance(lat1, lon1, lat2, lon2);
-		System.err.println("거리" + cafeDistance);
 
 		Cafe cafe = cafeService.getForPrintCafe(id);
 
@@ -213,7 +187,6 @@ public class UsrFindCafeController {
 		model.addAttribute("cafe", cafe);
 		model.addAttribute("cafeReviews", cafeReviews);
 		model.addAttribute("cafeReviewsCount", cafeReviewsCount);
-		model.addAttribute("cafeDistance", cafeDistance);
 
 		model.addAttribute("isAlreadyAddCafeScrap",
 				cafeScrapService.isAlreadyAddCafeScrap(rq.getLoginedMemberId(), id));
@@ -241,11 +214,19 @@ public class UsrFindCafeController {
 
 	// 두 좌표 사이의 거리를 구하는 함수
 	// distance(첫번쨰 좌표의 위도, 첫번째 좌표의 경도, 두번째 좌표의 위도, 두번째 좌표의 경도)
-	private static String distance(double lat1, double lon1, double lat2, double lon2) {
+	@ResponseBody
+	@RequestMapping("/usr/findcafe/distance")
+	public String distance(@RequestBody Map<String, Double> requestMap) {
 
-		double theta = lon1 - lon2;
-		double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2))
-				+ Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
+		// 학원 위도경도
+		Double myLat = requestMap.get("myLat");
+		Double myLon = requestMap.get("myLon");
+		Double cafeLat = requestMap.get("cafeLat");
+		Double cafeLon = requestMap.get("cafeLon");
+		
+		double theta = myLon - cafeLon;
+		double dist = Math.sin(deg2rad(myLat)) * Math.sin(deg2rad(cafeLat))
+				+ Math.cos(deg2rad(myLat)) * Math.cos(deg2rad(cafeLat)) * Math.cos(deg2rad(theta));
 		dist = Math.acos(dist);
 		dist = rad2deg(dist);
 		dist = dist * 60 * 1.1515 * 1609.344;
