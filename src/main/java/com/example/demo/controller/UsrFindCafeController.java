@@ -65,9 +65,19 @@ public class UsrFindCafeController {
 		// 때 String)
 		Object selectedKeywordsObject = filterData.get("selectedKeywords"); // 키워드 선택 안했을 때 String으로 넘어오고, 키워드 선택 했을 땐
 																			// List로 넘어와서 변수타입을 Object로 선언.
-
-		if (selectedKeywordsObject instanceof String == false) { // 키워드 선택 안했을 시 빈값이 String으로 들어와서 String(빈값) 여부 판단 후
-																	// 빈값인 경우 전체카페 리스트 보여줌
+		
+		// 키워드 선택 안했을 시 빈값이 String으로 들어와서 String(빈값) 여부 판단 후
+		if (selectedKeywordsObject instanceof String == true) { 	
+			// 검색창을 통한 키워드 검색 또는 빈값(카페찾기 page 바로 접근 시) 용도
+			// 빈값인 경우 전체카페 리스트 보여줌
+			String keyword = selectedKeywordsObject.toString();
+			
+			if(!"".equals(keyword)) {
+				selectedKeywords.add(keyword);
+			}
+			
+		} else {
+			// 필터 전용
 			selectedKeywords = (List<String>) selectedKeywordsObject;
 		}
 

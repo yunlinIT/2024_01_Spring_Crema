@@ -84,16 +84,11 @@ $(document).ready(function() {
 
 
 
-
-
-
-
-
-
-
 <!-- function Area -->
 // 필터된 카페들을 불러오는 함수
 function loadFilteredCafes(selectedKeywords, currentPage){
+ 
+	
     $.ajax({
         url: "/usr/findcafe/filterCafes", // 요청할 URL
         type: "POST", // POST 방식으로 요청
@@ -114,8 +109,6 @@ function loadFilteredCafes(selectedKeywords, currentPage){
 }
 
 
-
-
 function updatePagination(currentPage, totalPages) {
 	
 	///// 페이지네이션을 표시할 HTML 요소를 가져온다
@@ -132,7 +125,6 @@ function updatePagination(currentPage, totalPages) {
     }
     $('.pagination').html(paginationHTML); // 페이지네이션 업데이트
 }
-
 
 
 // 카페 리스트 업데이트 함수
@@ -189,24 +181,35 @@ function updateCafeList(cafeList, selectedKeywords) {
 //선택된 키워드와 일치하는 텍스트에 스타일 적용하는 함수
 function applyStyleToMatchingText(selectedKeywords) {
     // 선택된 키워드가 배열인지 확인
-    if (!Array.isArray(selectedKeywords)) {
-       // console.error("selectedKeywords must be an array");
-        return;
+    if (Array.isArray(selectedKeywords)) {
+       	// console.error("selectedKeywords must be an array");
+	    // 각 카페 아이템에 대해 반복
+	    $(".equal-filter").each(function() {
+	        var cafeItem = $(this);		// cafe Name, address, hashTag
+	        var text = cafeItem.text(); // 카페 아이템의 텍스트 가져오기
+	
+	        // 선택된 키워드와 일치하는 부분에 스타일 적용
+	        selectedKeywords.forEach(function(keyword) {
+	            var regex = new RegExp(keyword, "gi"); // 대소문자 구분 없이 일치하는 모든 부분 찾기 위한 정규표현식(Regular Expression) 생성
+	            text = text.replace(regex, '<span style="color: #b02717; font-weight: 700;">$&</span>'); // 일치하는 부분에 스타일 적용
+	        });
+	
+	        cafeItem.html(text); // 스타일이 적용된 텍스트로 카페 아이템 업데이트
+	    });
+	    
+    } else { // String 일 때
+    	$(".equal-filter").each(function() {
+	        var cafeItem = $(this); 	// cafe Name, address, hashTag
+	        var text = cafeItem.text(); // 카페 아이템의 텍스트 가져오기
+	
+	        // 선택된 키워드와 일치하는 부분에 스타일 적용
+	        var regex = new RegExp(selectedKeywords, "gi"); // 대소문자 구분 없이 일치하는 모든 부분 찾기 위한 정규표현식(Regular Expression) 생성
+	        text = text.replace(regex, '<span style="color: #b02717; font-weight: 700;">$&</span>'); // 일치하는 부분에 스타일 적용
+	
+	        cafeItem.html(text); // 스타일이 적용된 텍스트로 카페 아이템 업데이트
+	    });
     }
 
-    // 각 카페 아이템에 대해 반복
-    $(".equal-filter").each(function() {
-        var cafeItem = $(this);
-        var text = cafeItem.text(); // 카페 아이템의 텍스트 가져오기
-
-        // 선택된 키워드와 일치하는 부분에 스타일 적용
-        selectedKeywords.forEach(function(keyword) {
-            var regex = new RegExp(keyword, "gi"); // 대소문자 구분 없이 일치하는 모든 부분 찾기 위한 정규표현식(Regular Expression) 생성
-            text = text.replace(regex, '<span style="color: #b02717; font-weight: 700;">$&</span>'); // 일치하는 부분에 스타일 적용
-        });
-
-        cafeItem.html(text); // 스타일이 적용된 텍스트로 카페 아이템 업데이트
-    });
 }
 
 
@@ -236,10 +239,9 @@ function applyStyleToMatchingText(selectedKeywords) {
 		<!-- 검색창 -->
 		<form action="/usr/findcafe/searchCafes" method="get" id="searchForm">
 
-			<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs"
-				style="width: 65%; margin-left: 10px"> <input type="text" class="searchInput" id="keyword" name="keyword"
-				autocomplete="off" placeholder="Search" value="${keyword }" /> <a
-					href='javascript:loadFilteredCafes( $("#keyword").val() , 1 );'>
+			<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs" style="width: 65%; margin-left: 10px"> 
+				<input type="text" class="searchInput" id="keyword" name="keyword" autocomplete="off" placeholder="Search" value="${keyword }" /> 
+				<a href='javascript:loadFilteredCafes( $("#keyword").val() , 1 );'>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
 	                    <path fill-rule="evenodd"
 							d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
