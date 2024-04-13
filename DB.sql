@@ -525,7 +525,7 @@ SET
     `businessHours` = '매일 12:00 - 22:00;',
     `phoneNum` = '0507-1335-1396',
     `facilities` = '무선 인터넷, 포장, 반려동물 동반, 배달',
-    `hashtag` = '#빈이어 #반려동물 #디저트맛집 #데이트 #대화 #심플',
+    `hashtag` = '#반려동물 #디저트맛집 #데이트 #대화 #심플',
     `cafeImgUrl1` = 'https://search.pstatic.net/common/?autoRotate=true&type=w560_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_195%2F1704272884978ICiRw_JPEG%2FIMG_5251.jpeg',
     `cafeImgUrl2` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20231116_2%2F1700064596615RjksM_JPEG%2FIMG_3764.jpeg',
     `cafeImgUrl3` = 'https://search.pstatic.net/common/?autoRotate=true&type=w278_sharpen&src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240103_66%2F1704272883187HJDAU_JPEG%2FBC0E4B08-703E-4710-9AED-BA4F5F00F777.jpeg',
