@@ -7,7 +7,7 @@
 
 
 <script type="text/javascript"
-				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=06da921fb5b3ede9c345d161a3364b4e&libraries=services"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=06da921fb5b3ede9c345d161a3364b4e&libraries=services"></script>
 
 
 <!-- 변수 -->
@@ -217,42 +217,6 @@ function doModifyCafeReview(cafeReviewId) {
 
 
 
-<!-- <!-- Null값이 넘어감 | TODO -->
-<!-- 페이지 접속 시 최초 실행(onload) 함수 -->
-<script>
-
-// window.onload = function() {
-// 	$.ajax({
-// 	    type: "POST",
-// 	    url: "/usr/findcafe/cafeDetail", // 요청을 처리할 컨트롤러의 URL
-// 	   // contentType: "application/json",
-// 	    data: JSON.stringify({
-// 	    	lat: lat2, // 위도
-// 		    lon: lon2  // 경도
-// // 	        lat2: result[0].y, // 위도
-// // 	        lon2: result[0].x  // 경도
-// 	      //lat2: "36.3706177442735",
-// 	      //lon2: "127.33985482939"
-// 	    }),
-// 	    dataType: 'json',
-// 	    success: function(response) {
-// 	        alert("위도와 경도를 서버로 전송했습니다.");
-// 	        // 성공적으로 처리되었을 때 실행할 코드
-// 	    },
-// 	    error: function(xhr, status, error) {
-// 	        alert(JSON.stringify(lat2 )); 
-// 	        // 오류 발생 시 실행할 코드
-// 	    }
-// 	});
-	
-// 	console.log(JSON.stringify(lat2 ))
-
-// };
-
-</script>
-
-
-
 <section class="cafe-detail-page">
 
 	<div class="cafe-detail-page">
@@ -329,9 +293,9 @@ function doModifyCafeReview(cafeReviewId) {
 				<div class="review-count-num">${cafeReviewsCount}</div>
 			</div>
 
-			<span class="material-symbols-outlined clock-circle" style="color: #a9a9a9"> schedule </span> <span
-				class="material-symbols-outlined phone" style="color: #a9a9a9"> call </span> <span
-				class="material-symbols-outlined store" style="color: #a9a9a9"> storefront </span>
+			<span class="material-symbols-outlined clock-circle" style="color: #a9a9a9"> schedule </span>
+			<span class="material-symbols-outlined phone" style="color: #a9a9a9"> call </span>
+			<span class="material-symbols-outlined store" style="color: #a9a9a9"> storefront </span>
 
 			<p class="hashtag">${cafe.hashtag}</p>
 		</div>
@@ -343,9 +307,15 @@ function doModifyCafeReview(cafeReviewId) {
 			<div class="map-title">지도보기</div>
 
 			<div id="map" style="width: 525px; height: 323px; top: 63px;"></div>
+		</div>
 
-			
-			<script>
+		<!-- JavaScript 코드가 HTML 문서의 DOM 구조에 의존.
+		 HTML 코드와 자바스크립트 코드가 상호 작용하기 때문에 자바스크립트 코드가 HTML 문서가 완전히 로드된 후 실행.
+		 따라서 자바스크립트 코드를 HTML 문서의 아래에 배치. 
+		 페이지의 모든 요소가 로드되고 DOM이 완전히 준비된 후에 자바스크립트 코드가 실행됨. -->
+
+		<!-- 카페 지도API Javascript -->
+		<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     		mapOption = {
         		center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -433,10 +403,6 @@ function doModifyCafeReview(cafeReviewId) {
 		}
 		
 		</script>
-		</div>
-
-
-
 
 
 
@@ -453,8 +419,9 @@ function doModifyCafeReview(cafeReviewId) {
 						<div class="review-input-area">
 
 							<form action="../cafeReview/doWrite" method="POST">
-								<input type="hidden" name="cafeId" value="${cafe.id }" /> <input type="text" autocomplete="off"
-									placeholder="리뷰를 남겨주세요" name="body" class="review-input-box input input-bordered input-md w-full " />
+								<input type="hidden" name="cafeId" value="${cafe.id }" />
+								<input type="text" autocomplete="off" placeholder="리뷰를 남겨주세요" name="body"
+									class="review-input-box input input-bordered input-md w-full " />
 								<!-- 								<button class="review-write-btn btn btn-sm">등록</button> -->
 								<input class="review-write-btn btn btn-sm" type="submit" value="등록" />
 							</form>
@@ -527,11 +494,21 @@ function doModifyCafeReview(cafeReviewId) {
 	</button>
 	<div class="slide__container">
 		<ul class="slides">
-			<li><img src="" alt="이미지1"></li>
-			<li><img src="" alt="이미지2"></li>
-			<li><img src="" alt="이미지3"></li>
-			<li><img src="" alt="이미지4"></li>
-			<li><img src="" alt="이미지5"></li>
+			<li>
+				<img src="" alt="이미지1">
+			</li>
+			<li>
+				<img src="" alt="이미지2">
+			</li>
+			<li>
+				<img src="" alt="이미지3">
+			</li>
+			<li>
+				<img src="" alt="이미지4">
+			</li>
+			<li>
+				<img src="" alt="이미지5">
+			</li>
 		</ul>
 	</div>
 </div>
