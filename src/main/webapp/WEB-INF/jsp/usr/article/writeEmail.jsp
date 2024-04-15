@@ -5,34 +5,36 @@
 <%@ include file="../common/toastUiEditorLib.jspf"%>
 <!-- Article write 관련 -->
 <script type="text/javascript">
-	let ArticleWrite__submitFormDone = false;
-	function ArticleWrite__submit(form) {
-		if (ArticleWrite__submitFormDone) {
-			return;
-		}
-		form.title.value = form.title.value.trim();
-		if (form.title.value == 0) {
-			alert('제목을 입력해주세요');
-			return;
-		}
-		const editor = $(form).find('.toast-ui-editor').data(
-				'data-toast-editor');
-		const markdown = editor.getMarkdown().trim();
-		if (markdown.length == 0) {
-			alert('내용을 입력해주세요');
-			editor.focus();
-			return;
-		}
-		form.body.value = markdown;
-		ArticleWrite__submitFormDone = true;
-		form.submit();
-	}
+// 	let ArticleWrite__submitFormDone = false;
+// 	function ArticleWrite__submit(form) {
+// 		if (ArticleWrite__submitFormDone) {
+// 			return;
+// 		}
+// 		form.title.value = form.title.value.trim();
+// 		if (form.title.value == 0) {
+// 			alert('제목을 입력해주세요');
+// 			return;
+// 		}
+// 		const editor = $(form).find('.toast-ui-editor').data(
+// 				'data-toast-editor');
+// 		const markdown = editor.getMarkdown().trim();
+// 		if (markdown.length == 0) {
+// 			alert('내용을 입력해주세요');
+// 			editor.focus();
+// 			return;
+// 		}
+// 		form.body.value = markdown;
+// 		ArticleWrite__submitFormDone = true;
+// 		form.submit();
+// 	}
 </script>
 
 <section class="mt-8 text-xl px-4">
 	<h1 style="text-align: center; font-size: 25; margin-top: 100px; font-weight: 600;">제휴 문의하기</h1>
 	<div class="mx-auto">
-		<form action="../article/doWrite" method="POST" onsubmit="ArticleWrite__submit(this); return false;"> <!-- 이메일 전송 기능 구현 시 여기 수정해야함 -->
+		<form class ="gform" method="POST" data-email= "yunlinit@gmail.com"
+		action="https://script.google.com/macros/s/AKfycbxkZTwkACh8C2St2dGm8mxtr3Yuj91yE1f92s-gEhghKd0kle5RHSEXSTuwGjPdZwlmxA/exec" 
+		onsubmit="ArticleWrite__submit(this); return false;"> <!-- 이메일 전송 기능 구현 시 여기 수정해야함 -->
 			<input type="hidden" name="body">
 			<table class="write-box table-box-1 mx-auto mt-10" border="1">
 				<tbody>
