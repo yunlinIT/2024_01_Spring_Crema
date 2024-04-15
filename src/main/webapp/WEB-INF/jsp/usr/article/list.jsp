@@ -62,7 +62,8 @@
 	<!-- 	글쓰기버튼 -->
 	<div class="area-for-writeBtn mx-auto" style="width: 50%; position: relative;">
 		
-		<a class="writeBtn btn btn-sm" href="../article/write" style="position: absolute; right: 15px; top: 15px;">글쓰기</a>
+		<a class="writeBtn btn btn-sm
+		" href="../article/write" style="position: absolute; right: 15px; top: 15px;">글쓰기</a>
 	</div>
 	
 	
