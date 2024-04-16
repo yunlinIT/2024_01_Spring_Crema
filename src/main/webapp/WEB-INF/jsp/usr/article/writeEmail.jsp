@@ -87,23 +87,23 @@
                                 style="width: 780px; height: 300px;"></textarea> </script>
                             </div></td>
                     </tr>
-                    <tr>
-                        <th style="font-weight: 600"></th>
-                        <td><p style="font-weight: 700;">개인정보 수집 및 이용안내</p> <br /> 1. 목적: 제휴 문의에 따른 연락처 정보 확인 <br /> 2. 항목: 이름,
-                            연락처, 이메일 <br /> 3. 보유기간: 제휴 가능성 판단을 위해 검토 완료 후 3개월 간 보관하며, 이후 해당 정보를 지체없이 파기합니다. <br /></td>
-                    </tr>
-                    <tr>
-                        <th style="font-weight: 600"></th>
-                        <td><input type="checkbox" id="checkbox" checked="checked" class="checkbox checkbox-xs" style="margin-right: 10px;" /> 개인정보
-                            수집 및 이용에 동의합니다.</td>
-                    </tr>
+<!--                     <tr> -->
+<!--                         <th style="font-weight: 600"></th> -->
+<!--                         <td><p style="font-weight: 700;">개인정보 수집 및 이용안내</p> <br /> 1. 목적: 제휴 문의에 따른 연락처 정보 확인 <br /> 2. 항목: 이름, -->
+<!--                             연락처, 이메일 <br /> 3. 보유기간: 제휴 가능성 판단을 위해 검토 완료 후 3개월 간 보관하며, 이후 해당 정보를 지체없이 파기합니다. <br /></td> -->
+<!--                     </tr> -->
+<!--                     <tr> -->
+<!--                         <th style="font-weight: 600"></th> -->
+<!--                         <td><input type="checkbox" id="checkbox" checked="checked" class="checkbox checkbox-xs" style="margin-right: 10px;" /> 개인정보 -->
+<!--                             수집 및 이용에 동의합니다.</td> -->
+<!--                     </tr> -->
 
 
                     <tr>
                         <th></th>
                         </br>
                         <td style="text-align: left;">
-                            <button class="writeBtn btn btn-sm" id="submitBtn" type="submit" value="등록" style="margin-left: 320px;">문의하기</button> <span
+                            <button class="writeBtn btn btn-sm" id="submitBtn" type="submit" value="등록" style="margin-left: 320px; margin-top: 10px;">문의하기</button> <span
                             style="float: right;">
                                 <button class="backBtn btn btn-sm btn-ghost" id ="backBtn" class="" type="button" onclick="history.back();">뒤로가기</button>
                         </span>
@@ -124,23 +124,35 @@
 
 <script>
 
+// document.querySelector(".gform").addEventListener("submit", function(event) {
+//     var checkbox = document.getElementById("checkbox");
+//     if (!checkbox.checked) {
+//         //event.preventDefault(); // 양식 제출 방지
+//         event.stopPropagation();
+//         alert("개인정보 수집 및 이용에 동의해야 합니다.");
+//         document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
+//         document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
+//         return;
+//     } else {
+//         // 이메일 전송 알림
+//         setTimeout(function() {
+//             alert("이메일이 성공적으로 전송되었습니다!");
+//             document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
+//             document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
+//         }, 100); // 1초 후에 알림을 표시합니다.
+//     }
+// });
+
+
 document.querySelector(".gform").addEventListener("submit", function(event) {
     var checkbox = document.getElementById("checkbox");
-    if (!checkbox.checked) {
-        //event.preventDefault(); // 양식 제출 방지
-        event.stopPropagation();
-        alert("개인정보 수집 및 이용에 동의해야 합니다.");
-        document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
-        document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
-        return;
-    } else {
         // 이메일 전송 알림
         setTimeout(function() {
             alert("이메일이 성공적으로 전송되었습니다!");
             document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
             document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
         }, 100); // 1초 후에 알림을 표시합니다.
-    }
+  
 });
 
 // function showSuccessMessage() {
