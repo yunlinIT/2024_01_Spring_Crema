@@ -28,57 +28,6 @@
 
 
 
-<script>
-
-document.querySelector(".gform").addEventListener("submit", function(event) {
-    var checkbox = document.getElementById("checkbox");
-    if (!checkbox.checked) {
-        //event.preventDefault(); // 양식 제출 방지
-        event.stopPropagation();
-        alert("개인정보 수집 및 이용에 동의해야 합니다.");
-        document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
-        document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
-        return;
-    } else {
-        // 이메일 전송 알림
-        setTimeout(function() {
-            alert("이메일이 성공적으로 전송되었습니다!");
-            document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
-            document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
-        }, 1000); // 1초 후에 알림을 표시합니다.
-    }
-});
-
-// function showSuccessMessage() {
-//     alert("이메일이 성공적으로 전송되었습니다!");
-//     document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
-//     document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
-// }
-
-// document.querySelector(".gform").addEventListener("submit", function() {
-//     setTimeout(showSuccessMessage, 1000); // 1초 후에 알림을 표시합니다.
-// });
-
-
-// document.querySelector(".gform").addEventListener("submit", function(event) {
-//     var checkbox = document.getElementById("checkbox");
-//     if (!checkbox.checked) {
-//         event.preventDefault(); // 양식 제출 방지
-//         alert("개인정보 수집 및 이용에 동의해야 합니다.");
-//     } else {
-//         // 이메일 전송 알림
-//         setTimeout(function() {
-//             alert("이메일이 성공적으로 전송되었습니다!");
-//             document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
-//             document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
-//         }, 1000); // 1초 후에 알림을 표시합니다.
-//     }
-// });
-
-
-
-</script> 
-
 
 <!-- Article write 관련 -->
 <script type="text/javascript">
@@ -172,6 +121,57 @@ document.querySelector(".gform").addEventListener("submit", function(event) {
 
 </section>
 
+
+<script>
+
+document.querySelector(".gform").addEventListener("submit", function(event) {
+    var checkbox = document.getElementById("checkbox");
+    if (!checkbox.checked) {
+        //event.preventDefault(); // 양식 제출 방지
+        event.stopPropagation();
+        alert("개인정보 수집 및 이용에 동의해야 합니다.");
+        document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
+        document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
+        return;
+    } else {
+        // 이메일 전송 알림
+        setTimeout(function() {
+            alert("이메일이 성공적으로 전송되었습니다!");
+            document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
+            document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
+        }, 1000); // 1초 후에 알림을 표시합니다.
+    }
+});
+
+// function showSuccessMessage() {
+//     alert("이메일이 성공적으로 전송되었습니다!");
+//     document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
+//     document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
+// }
+
+// document.querySelector(".gform").addEventListener("submit", function() {
+//     setTimeout(showSuccessMessage, 1000); // 1초 후에 알림을 표시합니다.
+// });
+
+
+// document.querySelector(".gform").addEventListener("submit", function(event) {
+//     var checkbox = document.getElementById("checkbox");
+//     if (!checkbox.checked) {
+//         event.preventDefault(); // 양식 제출 방지
+//         alert("개인정보 수집 및 이용에 동의해야 합니다.");
+//     } else {
+//         // 이메일 전송 알림
+//         setTimeout(function() {
+//             alert("이메일이 성공적으로 전송되었습니다!");
+//             document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
+//             document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
+//         }, 1000); // 1초 후에 알림을 표시합니다.
+//     }
+// });
+
+
+
+</script> 
 
 
 
