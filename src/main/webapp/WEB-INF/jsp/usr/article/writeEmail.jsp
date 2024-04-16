@@ -9,6 +9,77 @@
 
 
 
+<!-- 시도해봤는데 안됨 ㅠ_ㅠ -->
+<script>
+// let submitWriteEmailFormDone = false;
+// let validAgree = "";
+
+// function submitWriteEmailForm(form) {
+	
+// 	if (!checkbox.checked) {
+// 		alert('개인정보 수집 및 이용에 동의해야 합니다.');
+// 		return;
+// 	}
+// 	submitWriteEmailFormDone = true;
+// 	form.submit();
+// }
+
+</script>
+
+
+
+<script>
+
+document.querySelector(".gform").addEventListener("submit", function(event) {
+    var checkbox = document.getElementById("checkbox");
+    if (!checkbox.checked) {
+        //event.preventDefault(); // 양식 제출 방지
+        event.stopPropagation();
+        alert("개인정보 수집 및 이용에 동의해야 합니다.");
+        document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
+        document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
+        return;
+    } else {
+        // 이메일 전송 알림
+        setTimeout(function() {
+            alert("이메일이 성공적으로 전송되었습니다!");
+            document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
+            document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
+        }, 1000); // 1초 후에 알림을 표시합니다.
+    }
+});
+
+// function showSuccessMessage() {
+//     alert("이메일이 성공적으로 전송되었습니다!");
+//     document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
+//     document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
+// }
+
+// document.querySelector(".gform").addEventListener("submit", function() {
+//     setTimeout(showSuccessMessage, 1000); // 1초 후에 알림을 표시합니다.
+// });
+
+
+// document.querySelector(".gform").addEventListener("submit", function(event) {
+//     var checkbox = document.getElementById("checkbox");
+//     if (!checkbox.checked) {
+//         event.preventDefault(); // 양식 제출 방지
+//         alert("개인정보 수집 및 이용에 동의해야 합니다.");
+//     } else {
+//         // 이메일 전송 알림
+//         setTimeout(function() {
+//             alert("이메일이 성공적으로 전송되었습니다!");
+//             document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
+//             document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
+//         }, 1000); // 1초 후에 알림을 표시합니다.
+//     }
+// });
+
+
+
+</script> 
+
+
 <!-- Article write 관련 -->
 <script type="text/javascript">
 	// 	let ArticleWrite__submitFormDone = false;
@@ -40,6 +111,8 @@
     <div class="mx-auto">
         <form class="gform" method="POST" data-email="yunlinit@gmail.com"
             action="https://script.google.com/macros/s/AKfycbxkZTwkACh8C2St2dGm8mxtr3Yuj91yE1f92s-gEhghKd0kle5RHSEXSTuwGjPdZwlmxA/exec">
+            
+<!--             <form class="gform" method="POST" data-email="yunlinit@gmail.com" action="https://script.google.com/macros/s/AKfycbxkZTwkACh8C2St2dGm8mxtr3Yuj91yE1f92s-gEhghKd0kle5RHSEXSTuwGjPdZwlmxA/exec" onsubmit="submitWriteEmailFormDone(this); return false;"> -->
             <!-- 이메일 전송 기능 구현 시 여기 수정해야함 -->
 
             <table class="write-box table-box-1 mx-auto mt-10" border="1">
@@ -96,57 +169,6 @@
 
 
     </div>
-
-    
-<script>
-// function showSuccessMessage() {
-//     alert("이메일이 성공적으로 전송되었습니다!");
-//     document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
-//     document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
-// }
-
-// document.querySelector(".gform").addEventListener("submit", function() {
-//     setTimeout(showSuccessMessage, 1000); // 1초 후에 알림을 표시합니다.
-// });
-
-
-// document.querySelector(".gform").addEventListener("submit", function(event) {
-//     var checkbox = document.getElementById("checkbox");
-//     if (!checkbox.checked) {
-//         event.preventDefault(); // 양식 제출 방지
-//         alert("개인정보 수집 및 이용에 동의해야 합니다.");
-//     } else {
-//         // 이메일 전송 알림
-//         setTimeout(function() {
-//             alert("이메일이 성공적으로 전송되었습니다!");
-//             document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
-//             document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
-//         }, 1000); // 1초 후에 알림을 표시합니다.
-//     }
-// });
-
-
-document.querySelector(".gform").addEventListener("submit", function(event) {
-    var checkbox = document.getElementById("checkbox");
-    if (!checkbox.checked) {
-        //event.preventDefault(); // 양식 제출 방지
-        event.stopPropagation();
-        alert("개인정보 수집 및 이용에 동의해야 합니다.");
-        document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
-        document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
-    } else {
-        // 이메일 전송 알림
-        setTimeout(function() {
-            alert("이메일이 성공적으로 전송되었습니다!");
-            document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
-            document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
-        }, 1000); // 1초 후에 알림을 표시합니다.
-    }
-});
-
-
-
-</script>
 
 </section>
 
