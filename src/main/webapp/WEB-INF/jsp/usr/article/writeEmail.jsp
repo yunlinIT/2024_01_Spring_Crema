@@ -139,7 +139,7 @@ document.querySelector(".gform").addEventListener("submit", function(event) {
             alert("이메일이 성공적으로 전송되었습니다!");
             document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
             document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
-        }, 1000); // 1초 후에 알림을 표시합니다.
+        }, 100); // 1초 후에 알림을 표시합니다.
     }
 });
 
