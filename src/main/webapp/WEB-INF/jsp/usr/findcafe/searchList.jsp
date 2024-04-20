@@ -89,6 +89,8 @@ $(document).ready(function() {
 function loadFilteredCafes(selectedKeywords, currentPage){
  
 	
+	
+	
     $.ajax({
         url: "/usr/findcafe/filterCafes", // 요청할 URL
         type: "POST", // POST 방식으로 요청
@@ -134,6 +136,46 @@ function updateCafeList(cafeList, selectedKeywords) {
 
     cafeListElement.empty(); // 카페 리스트 요소 비우기
 
+    var cafeItem;
+    if( cafeList.length == 0 ) {
+//     	alert("카페 검색 결과가 없습니다.");
+    	cafeItem = $(`
+	            <div class="content-info-box">
+    			<p>"`+selectedKeywords+`"에 대한 검색 결과가 없습니다.</p>
+    			</div>
+        		`);	// end var cafeItem
+    } else {
+	    cafeList.forEach(function(cafe) { // 각 카페에 대해 반복
+	        cafeItem = $(`
+	        		
+	            <div class="cafe-item">
+	                <a href="cafeDetail?id=`+cafe.id+`" class="linkbox１">
+	                    <div class="content-info-box" style="margin-bottom: 50px">
+	                        <div class="cafe-img-box">
+	                            <img src="`+cafe.cafeImgUrl1+`" alt="카페 이미지" />
+	                        </div>
+	                        <div class="name-address">
+	                            <div class="cafe-name equal-filter">`+cafe.name+`</div>
+	                            <p class="cafe-address equal-filter">`+cafe.address+`</p>
+	                        </div>
+	                        <div class="like-count">
+	                            <span class="material-symbols-outlined"> favorite </span>
+	                            <div class="like-count-num">`+cafe.cafeScrapCount+`</div>
+	                        </div>
+	                        <div class="review-count">
+	                            <div class="title-review">리뷰</div>
+	                            <div class="review-count-num">`+cafe.reviewCount+`</div>
+	                        </div>
+	                        <div class="hashtag equal-filter">`+cafe.hashtag+`</div>
+	                    </div>
+	                </a>
+	            </div>
+	        `);	// end var cafeItem
+	    });	// end cafeList.forEach    	
+    }
+    
+	searchResult.append(cafeItem); // 카페 리스트에 카페 아이템 추가
+    
     cafeList.forEach(function(cafe) { // 각 카페에 대해 반복
         var cafeItem = $(`
         		
