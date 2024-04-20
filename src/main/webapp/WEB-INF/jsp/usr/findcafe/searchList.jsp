@@ -43,10 +43,10 @@ $(document).ready(function() {
             $(".filterButton").removeClass('active');
         } else {
             // 해당 키워드가 이미 선택되어 있는지 확인
-            var index = selectedKeywords.indexOf(keyword); // 선택된 키워드 배열에서 해당 키워드의 인덱스 확인
+            var index = selectedKeywords.indexOf(keyword); // 선택된 키워드 배열에서 해당 키워드의 인덱스 확인(indexOf)
             if (index !== -1) {
                 // 이미 선택되어 있다면 해당 키워드를 제거
-                selectedKeywords.splice(index, 1);
+                selectedKeywords.splice(index, 1); //splice(index, 1)
                 $(this).removeClass('active');
             } else {
                 // 선택되어 있지 않다면 해당 키워드를 배열에 추가
@@ -64,7 +64,7 @@ $(document).ready(function() {
         event.preventDefault(); // 기본 동작 방지 (페이지 이동 막기)
         var keyword = $("#keyword").val(); // 검색어 입력값 가져오기
         currentPage = 1; // 페이지를 1로 설정하여 검색이 변경되었음을 나타냄
-        loadFilteredCafes([keyword], currentPage); // 검색어로 필터된 카페들을 불러오는 함수 호출
+        loadFilteredCafes(keyword, currentPage); // 검색어로 필터된 카페들을 불러오는 함수 호출
     });
 
     $('.pagination').on('click', 'a', function(event) {
@@ -86,11 +86,10 @@ $(document).ready(function() {
 
 <!-- function Area -->
 // 필터된 카페들을 불러오는 함수
-function loadFilteredCafes(selectedKeywords, currentPage){
- 
-	
-	
-	
+function loadFilteredCafes(selectedKeywords, currentPage){	
+	// FILTER {아늑한, 대관, 중구}
+ 	// 검색창 
+ 	
     $.ajax({
         url: "/usr/findcafe/filterCafes", // 요청할 URL
         type: "POST", // POST 방식으로 요청
@@ -132,18 +131,23 @@ function updatePagination(currentPage, totalPages) {
 // 카페 리스트 업데이트 함수
 function updateCafeList(cafeList, selectedKeywords) {
     var cafeListElement = $(".linkbox１"); // 카페 리스트 요소 선택
-    var searchResult = $("#search-result"); // 검색 결과 요소 선택
+    var searchResult = $("#search-result"); // 검색 결과 영역 요소 선택
 
-    cafeListElement.empty(); // 카페 리스트 요소 비우기
+    cafeListElement.empty(); // 카페 리스트 요소 일단 무조건 비우기 -> 왜? -> 필터 및 검색결과 다시 보여줄꺼니까
 
     var cafeItem;
     if( cafeList.length == 0 ) {
 //     	alert("카페 검색 결과가 없습니다.");
     	cafeItem = $(`
-	            <div class="content-info-box">
-    			<p>"`+selectedKeywords+`"에 대한 검색 결과가 없습니다.</p>
-    			</div>
+    			<div class="cafe-item">
+	                <div class="linkbox１">
+	                    <div class="content-info-box" style="margin-bottom: 50px">
+	                    	<p>"`+selectedKeywords+`"에 대한 검색 결과가 없습니다.</p>
+	                    </div>
+	                </div>
+                </div>
         		`);	// end var cafeItem
+        searchResult.append(cafeItem); // 카페 리스트에 카페 아이템 추가
     } else {
 	    cafeList.forEach(function(cafe) { // 각 카페에 대해 반복
 	        cafeItem = $(`
@@ -171,39 +175,9 @@ function updateCafeList(cafeList, selectedKeywords) {
 	                </a>
 	            </div>
 	        `);	// end var cafeItem
+	        searchResult.append(cafeItem); // 카페 리스트에 카페 아이템 추가
 	    });	// end cafeList.forEach    	
     }
-    
-	searchResult.append(cafeItem); // 카페 리스트에 카페 아이템 추가
-    
-    cafeList.forEach(function(cafe) { // 각 카페에 대해 반복
-        var cafeItem = $(`
-        		
-            <div class="cafe-item">
-                <a href="cafeDetail?id=`+cafe.id+`" class="linkbox１">
-                    <div class="content-info-box" style="margin-bottom: 50px">
-                        <div class="cafe-img-box">
-                            <img src="`+cafe.cafeImgUrl1+`" alt="카페 이미지" />
-                        </div>
-                        <div class="name-address">
-                            <div class="cafe-name equal-filter">`+cafe.name+`</div>
-                            <p class="cafe-address equal-filter">`+cafe.address+`</p>
-                        </div>
-                        <div class="like-count">
-                            <span class="material-symbols-outlined"> favorite </span>
-                            <div class="like-count-num">`+cafe.cafeScrapCount+`</div>
-                        </div>
-                        <div class="review-count">
-                            <div class="title-review">리뷰</div>
-                            <div class="review-count-num">`+cafe.reviewCount+`</div>
-                        </div>
-                        <div class="hashtag equal-filter">`+cafe.hashtag+`</div>
-                    </div>
-                </a>
-            </div>
-        `);	// end var cafeItem
-        searchResult.append(cafeItem); // 카페 리스트에 카페 아이템 추가
-    });	// end cafeList.forEach
     
     applyStyleToMatchingText(selectedKeywords); // 선택된 키워드와 일치하는 텍스트에 스타일 적용
     
@@ -222,6 +196,15 @@ function updateCafeList(cafeList, selectedKeywords) {
 
 //선택된 키워드와 일치하는 텍스트에 스타일 적용하는 함수
 function applyStyleToMatchingText(selectedKeywords) {
+	
+ 	if (typeof selectedKeywords === 'string') {
+        // selectedKeywords가 문자열인 경우에 대한 처리
+        // 예를 들어, 문자열을 배열로 변환하거나 다른 작업을 수행할 수 있습니다.
+        if ( selectedKeywords.trim() != "" ) {
+        	selectedKeywords = selectedKeywords.split(" ");
+        }
+ 	}
+	
     // 선택된 키워드가 배열인지 확인
     if (Array.isArray(selectedKeywords)) {
        	// console.error("selectedKeywords must be an array");

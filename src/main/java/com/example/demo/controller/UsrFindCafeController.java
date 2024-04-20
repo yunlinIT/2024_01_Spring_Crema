@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,7 +57,7 @@ public class UsrFindCafeController {
 	@ResponseBody
 	public Map<String, Object> filterCafes(@RequestBody Map<String, Object> filterData) {
 
-		Map<String, Object> returnMap = new HashMap<>();
+		Map<String, Object> returnDataMap = new HashMap<>();
 		List<String> selectedKeywords = new ArrayList<String>();
 
 		// String keyword = filterData.get("keyword"); // 키워드 다중선택 아닌 단일선택 시
@@ -65,20 +66,30 @@ public class UsrFindCafeController {
 		// 때 String)
 		Object selectedKeywordsObject = filterData.get("selectedKeywords"); // 키워드 선택 안했을 때 String으로 넘어오고, 키워드 선택 했을 땐
 																			// List로 넘어와서 변수타입을 Object로 선언.
-		
+
+		// 아래에서 타입체크
 		// 키워드 선택 안했을 시 빈값이 String으로 들어와서 String(빈값) 여부 판단 후
-		if (selectedKeywordsObject instanceof String == true) { 	
+		if (selectedKeywordsObject instanceof String == true) {
+			// *** 검색창 전용
+			// String -> array(배열) -> List
 			// 검색창을 통한 키워드 검색 또는 빈값(카페찾기 page 바로 접근 시) 용도
 			// 빈값인 경우 전체카페 리스트 보여줌
-			String keyword = selectedKeywordsObject.toString();
+			String keyword = selectedKeywordsObject.toString(); // 대관 바보
 			
-			if(!"".equals(keyword)) {
-				selectedKeywords.add(keyword);
+			if (!"".equals(keyword)) {
+																	// keyword = "아늑한 분위기의 카페"
+				keyword = keyword.replace("카페", "");				// keyword = "아늑한 분위기의 "
+				keyword.trim();										// keyword = "아늑한 분위기의"
+				
+				String[] splitKeywords = keyword.split(" ");		// {아늑한, 분위기의}
+				selectedKeywords = Arrays.asList(splitKeywords);	// [아늑한, 분위기의]
+				//selectedKeywords.add(keyword);
 			}
-			
+
 		} else {
-			// 필터 전용
-			selectedKeywords = (List<String>) selectedKeywordsObject;
+			// *** 필터 전용
+			// array(배열) -> List 
+			selectedKeywords = (List<String>) selectedKeywordsObject; // {아늑한, 대관, 중구} -> [아늑한, 대관, 중구]
 		}
 
 		int page = Integer.parseInt(filterData.get("page").toString());
@@ -87,24 +98,19 @@ public class UsrFindCafeController {
 		cafeRepository.updateReviewCount();
 
 		int cafesCount = 0;
+		int itemsInAPage = 5;
 		if (selectedKeywords.isEmpty()) {
 			cafesCount = cafeService.getCafesCount();
+			cafesList  = cafeService.getForPrintCafes(itemsInAPage, page); // 키워드가 선택 되지 않았을 경우에 대한 전체카페 리스팅
 		} else {
 			cafesCount = cafeService.getCafesCountKeyword(selectedKeywords);
+			cafesList  = cafeService.getForPrintCafesKeyword(itemsInAPage, page, selectedKeywords); // 키워드가 선택 되었을 경우에 대한 키워드별 카페 리스팅
 		}
 
-		int itemsInAPage = 5;
+		returnDataMap.put("cafesTotalCount", cafesCount);
+		returnDataMap.put("cafesCurrentList", cafesList);
 
-		if (selectedKeywords.isEmpty()) { // 키워드가 선택 되지 않았을 경우에 대한 전체카페 리스팅
-			cafesList = cafeService.getForPrintCafes(itemsInAPage, page);
-		} else { // 키워드가 선택 되었을 경우에 대한 키워드별 카페 리스팅
-			cafesList = cafeService.getForPrintCafesKeyword(itemsInAPage, page, selectedKeywords);
-		}
-
-		returnMap.put("cafesTotalCount", cafesCount);
-		returnMap.put("cafesCurrentList", cafesList);
-
-		return returnMap;
+		return returnDataMap;
 	}
 
 //	@RequestMapping("/usr/findcafe/filterCafes")
@@ -233,7 +239,7 @@ public class UsrFindCafeController {
 		Double myLon = requestMap.get("myLon");
 		Double cafeLat = requestMap.get("cafeLat");
 		Double cafeLon = requestMap.get("cafeLon");
-		
+
 		double theta = myLon - cafeLon;
 		double dist = Math.sin(deg2rad(myLat)) * Math.sin(deg2rad(cafeLat))
 				+ Math.cos(deg2rad(myLat)) * Math.cos(deg2rad(cafeLat)) * Math.cos(deg2rad(theta));
