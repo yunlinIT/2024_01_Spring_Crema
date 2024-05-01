@@ -184,15 +184,6 @@ function updateCafeList(cafeList, selectedKeywords) {
 }	// end function updateCafeList
 
 
-// <div class="show-distance">
-// <div class="num-km-group">
-//     <div class="km">km</div>
-//     <div class="distance-num">1.8</div>
-// </div>
-// </div>
-
-
-
 
 //선택된 키워드와 일치하는 텍스트에 스타일 적용하는 함수
 function applyStyleToMatchingText(selectedKeywords) {
@@ -241,8 +232,6 @@ function applyStyleToMatchingText(selectedKeywords) {
 <!-- end function Area -->
 
 
-
-
 </script>
 <!-- End | java script -->
 
@@ -264,8 +253,10 @@ function applyStyleToMatchingText(selectedKeywords) {
 		<!-- 검색창 -->
 		<form action="/usr/findcafe/searchCafes" method="get" id="searchForm">
 
-			<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs" style="width: 65%; margin-left: 10px"> 
-				<input type="text" class="searchInput" id="keyword" name="keyword" autocomplete="off" placeholder="Search" value="${keyword }" /> 
+			<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs"
+				style="width: 65%; margin-left: 10px">
+				<input type="text" class="searchInput" id="keyword" name="keyword" autocomplete="off" placeholder="Search"
+					value="${keyword }" />
 				<a href='javascript:loadFilteredCafes( $("#keyword").val() , 1 );'>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
 	                    <path fill-rule="evenodd"
@@ -393,11 +384,8 @@ function applyStyleToMatchingText(selectedKeywords) {
 		</div>
 	</section>
 
-
-
-	<!-- 검색결과 -->
-	<section class="search-result" id="search-result"></section>
-
+<!-- 검색결과 -->
+<section class="search-result" id="search-result"></section>
 </section>
 
 
@@ -405,12 +393,6 @@ function applyStyleToMatchingText(selectedKeywords) {
 <div class="pagination flex justify-center mt-3" style="margin-top: 50px; margin-left: 200px;"></div>
 
 
-
-
-
-
-
-<!-- 페이지제목 css -->
 
 <style>
 .search-box {
@@ -420,9 +402,7 @@ function applyStyleToMatchingText(selectedKeywords) {
 	background-color: #ffffff;
 	z-index: 1; /* 다른 요소 위에 표시 */
 }
-</style>
 
-<style>
 .page-title {
 	position: relative;
 	top: 100px;
@@ -446,10 +426,10 @@ function applyStyleToMatchingText(selectedKeywords) {
 	margin-top: 150px
 }
 }
-</style>
 
-<!-- 필터 css -->
-<style>
+
+/* 필터 css */
+
 .active {
 	background-color: #dfdfdf !important; /* 클릭된 버튼의 배경색을 변경. */
 }
@@ -752,12 +732,10 @@ function applyStyleToMatchingText(selectedKeywords) {
 	letter-spacing: 0;
 	line-height: normal;
 }
-</style>
 
 
 <!-- 검색결과 css -->
 
-<style>
 .search-result {
 	position: relative;
 	margin-left: 100px;

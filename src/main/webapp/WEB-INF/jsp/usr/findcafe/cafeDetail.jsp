@@ -27,24 +27,15 @@
 	
 	var isAlreadyAddCafeScrap = ${isAlreadyAddCafeScrap};
 	
-	//var isAlreadyAddBadRp = ${isAlreadyAddBadRp};
 	
 	
-</script>
 
-
-<!-- 좋아요 싫어요  -->
-<script>
-
-	<!-- 좋아요 싫어요 버튼	-->
+	<!-- 좋아요 버튼	-->
 	function checkCafeScrap() {
 		if(isAlreadyAddCafeScrap == true){
 			$('#likeButton').toggleClass('btn-outline');
 		}
-// 		else if(isAlreadyAddBadRp == true){
-// 			$('#DislikeButton').toggleClass('btn-outline');
-// 		}
-		
+
 		else {
 			return;
 		}
@@ -108,70 +99,9 @@
 	}
 	
 	
-	
-// 	function doBadReaction(articleId) {
-		
-// 		if(isNaN(params.memberId) == true){
-// 			if(confirm('로그인 해야해. 로그인 페이지로 가실???')){
-// 				var currentUri = encodeURIComponent(window.location.href);
-// 				window.location.href = '../member/login?afterLoginUri=' + currentUri; // 로그인 페이지에 원래 페이지의 uri를 같이 보냄
-// 			}
-// 			return;
-// 		}
-		
-// 	 $.ajax({
-// 			url: '/usr/reactionPoint/doBadReaction',
-// 			type: 'POST',
-// 			data: {relTypeCode: 'article', relId: articleId},
-// 			dataType: 'json',
-// 			success: function(data){
-// 				console.log(data);
-// 				console.log('data.data1Name : ' + data.data1Name);
-// 				console.log('data.data1 : ' + data.data1);
-// 				console.log('data.data2Name : ' + data.data2Name);
-// 				console.log('data.data2 : ' + data.data2);
-// 				if(data.resultCode.startsWith('S-')){
-// 					var likeButton = $('#likeButton');
-// 					var likeCount = $('#likeCount');
-// 					var DislikeButton = $('#DislikeButton');
-// 					var DislikeCount = $('#DislikeCount');
-					
-// 					if(data.resultCode == 'S-1'){
-// 						DislikeButton.toggleClass('btn-outline');
-// 						DislikeCount.text(data.data2);
-// 					}else if(data.resultCode == 'S-2'){
-// 						likeButton.toggleClass('btn-outline');
-// 						likeCount.text(data.data1);
-// 						DislikeButton.toggleClass('btn-outline');
-// 						DislikeCount.text(data.data2);
-		
-// 					}else {
-// 						DislikeButton.toggleClass('btn-outline');
-// 						DislikeCount.text(data.data2);
-// 					}
-			
-// 				}else {
-// 					alert(data.msg);
-// 				}
-// 			},
-// 			error: function(jqXHR,textStatus,errorThrown) {
-// 				alert('싫어요 오류 발생 : ' + textStatus);
-// 			}
-			
-// 		});
-// 	}
-	
-	$(function() {
-		checkCafeScrap();
-	});
-	
-	
-	
-</script>
-
 
 <!-- 댓글 수정 -->
-<script>
+
 function toggleModifybtn(cafeReviewId) {
 	
 	console.log(cafeReviewId);
@@ -217,303 +147,6 @@ function doModifyCafeReview(cafeReviewId) {
 
 
 
-<section class="cafe-detail-page">
-
-	<div class="cafe-detail-page">
-		<div class="detail-imgs">
-			<div class="cafe-img-box-big li">
-				<a href="${cafe.cafeImgUrl1}">
-					<img class="big-img" src="${cafe.cafeImgUrl1}" alt="이미지1" />
-				</a>
-			</div>
-			<div class="cafe-img-box1 li">
-				<a href="${cafe.cafeImgUrl2}">
-					<img class="sm-img1" src="${cafe.cafeImgUrl2}" alt=" 이미지2" />
-				</a>
-			</div>
-			<div class="cafe-img-box2 li">
-				<a href="${cafe.cafeImgUrl3}">
-					<img class="sm-img2" src="${cafe.cafeImgUrl3}" alt="이미지3" />
-				</a>
-			</div>
-			<div class="cafe-img-box3 li">
-				<a href="${cafe.cafeImgUrl4}">
-					<img class="sm-img3" src="${cafe.cafeImgUrl4}" alt="이미지4" />
-				</a>
-			</div>
-			<div class="cafe-img-box4 li">
-				<a href="${cafe.cafeImgUrl5}">
-					<img class="sm-img4" src="${cafe.cafeImgUrl5}" alt="이미지5" />
-				</a>
-			</div>
-		</div>
-
-
-
-	</div>
-
-
-	<!-- 사진 아래 부분 -->
-
-	<div class="info-and-review section-under-imgs">
-		<!-- 카페 정보 -->
-		<div class="cafe-info">
-			<div class="cafe-name">${cafe.name}</div>
-			<div class="cafe-address">${cafe.address}</div>
-			<div class="cafe-distance">
-				<div class="num-km-group">
-					<div class="km"></div>
-					<div class="distance-num">0 km</div>
-				</div>
-			</div>
-
-
-			<div class="cafe-phone">${cafe.phoneNum}</div>
-			<div class="cafe-facility">${cafe.facilities}</div>
-			<div class="cafe-businessHours">
-				<script>
-            		// ${cafe.businessHours}를 세미콜론으로 분할하여 배열로 만듭니다.
-            var businessHoursArray = "${cafe.businessHours}".split(';');
-
-            		// 분할된 각 시간대를 화면에 표시합니다.
-            businessHoursArray.forEach(function(hour) {
-                document.write('<div>' + hour + '</div>');
-            });
-            
-            console.log('${cafe.businessHours}');
-       			</script>
-			</div>
-			<div class="like-count">
-				<button class="material-symbols-outlined heart" id="likeButton" onclick="doCafeScrap(${param.id})">
-					favorite</button>
-				<div class="cafeScrapCount" id="scrapCount">${cafe.cafeScrapCount}</div>
-			</div>
-			<div class="review-count">
-				<div class="review-badge">리뷰</div>
-				<div class="review-count-num">${cafeReviewsCount}</div>
-			</div>
-
-			<span class="material-symbols-outlined clock-circle" style="color: #a9a9a9"> schedule </span>
-			<span class="material-symbols-outlined phone" style="color: #a9a9a9"> call </span>
-			<span class="material-symbols-outlined store" style="color: #a9a9a9"> storefront </span>
-
-			<p class="hashtag">${cafe.hashtag}</p>
-		</div>
-
-
-		<!-- 카페 지도 -->
-		<div class="cafe-map">
-			<!-- 			<img class="map-img" src="/" /> -->
-			<div class="map-title">지도보기</div>
-
-			<div id="map" style="width: 525px; height: 323px; top: 63px;"></div>
-		</div>
-
-		<!-- JavaScript 코드가 HTML 문서의 DOM 구조에 의존.
-		 HTML 코드와 자바스크립트 코드가 상호 작용하기 때문에 자바스크립트 코드가 HTML 문서가 완전히 로드된 후 실행.
-		 따라서 자바스크립트 코드를 HTML 문서의 아래에 배치. 
-		 페이지의 모든 요소가 로드되고 DOM이 완전히 준비된 후에 자바스크립트 코드가 실행됨. -->
-
-		<!-- 카페 지도API Javascript -->
-		<script>
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    		mapOption = {
-        		center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        		level: 3 // 지도의 확대 레벨
-   		 	};  
-
-		// 지도를 생성합니다    
-		var map = new kakao.maps.Map(mapContainer, mapOption); 
-
-		// 주소-좌표 변환 객체를 생성합니다
-		var geocoder = new kakao.maps.services.Geocoder();
-
-		// 주소로 좌표를 검색합니다
-		geocoder.addressSearch('${cafe.address}', function(result, status) {
-   			// 정상적으로 검색이 완료됐으면 
-     		if (status === kakao.maps.services.Status.OK) {
-		        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-		        
-		        //카페의 위도(lat|y) 경도(long|x)를 콘솔에 출력
-		       	console.log("위도(lat|y) : " + result[0].y);
-		       	console.log("경도(long|x) : " + result[0].x);
-		       	
-		       	lat2 = String(result[0].y);
-		       	lon2 = String(result[0].x);
-		       	
-		       	console.log("new위도(lat|y) : " + lat2)
-		        console.log("new경도(long|x) : " + lon2);
-		       	
-		       	showLatLon(lat2,lon2);
-		
-		        // 결과값으로 받은 위치를 마커로 표시합니다
-		
-		        var marker = new kakao.maps.Marker({
-		    		map: map,
-		    		position: coords,
-		    		image: new kakao.maps.MarkerImage(
-		        	'https://velog.velcdn.com/images/yunlinit/post/8c994474-03a4-481f-9294-a3a3e201cb72/image.png',
-		        new kakao.maps.Size(39, 39),
-		        { offset: new kakao.maps.Point(16, 32) }
-				    )
-				});
-		        	
-		        // 인포윈도우로 장소에 대한 설명을 표시합니다
-		        var infowindow = new kakao.maps.InfoWindow({
-		            content: '<div style="width:150px;text-align:center;padding:6px 0; font-size: 15px; color: black;">${cafe.name}</div>'
-		        });
-		        infowindow.open(map, marker);
-		
-		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-		        map.setCenter(coords);
-    		} 
-		});    
-		
-		function showLatLon(lat2, lon2) {
-			var myLat, myLon;
-			
-			// 크롬브라우저 전용 사용자의 위도와 경도를 불러오는 함수
-			navigator.geolocation.getCurrentPosition(function(position) {
-	            myLat = position.coords.latitude;
-	            myLon = position.coords.longitude;
-	            
-	            $.ajax({
-			        type: "POST",
-			        url: "/usr/findcafe/distance", // 요청을 처리할 컨트롤러의 URL
-			        contentType: "application/json", // id도 넘겨줘........ 
-			        data: JSON.stringify({
-			        	'myLat': myLat,
-			        	'myLon': myLon,
-			        	'cafeLat': lat2,
-			        	'cafeLon': lon2
-			        }),
-			        //dataType: 'json',
-			        success: function(distanceInKm) {
-			            //alert("위도와 경도를 서버로 전송했습니다.\n * distanceInKm_Response : " + distanceInKm);
-			            // 성공적으로 처리되었을 때 실행할 코드
-			            $('.distance-num').text(distanceInKm+"km");
-			        },
-			        error: function(xhr, status, error) {
-			            alert("에러면 표시 " + JSON.stringify(lat2));
-			            // 오류 발생 시 실행할 코드
-			            //JSON.stringify(lat2)
-			        }
-			    });
-			});
-		}
-		
-		</script>
-
-
-
-		<!-- 카페정보 하단 -->
-		<div class="review-group reviewlist-and-write">
-			<!-- 리뷰 부분 -->
-			<div class="review-section">
-				<!-- 리뷰 작성 -->
-
-				<div class="write-review-section">
-					<div class="write-review">리뷰 작성</div>
-
-					<c:if test="${rq.isLogined() }">
-						<div class="review-input-area">
-
-							<form action="../cafeReview/doWrite" method="POST">
-								<input type="hidden" name="cafeId" value="${cafe.id }" />
-								<input type="text" autocomplete="off" placeholder="리뷰를 남겨주세요" name="body"
-									class="review-input-box input input-bordered input-md w-full " />
-								<!-- 								<button class="review-write-btn btn btn-sm">등록</button> -->
-								<input class="review-write-btn btn btn-sm" type="submit" value="등록" />
-							</form>
-						</div>
-					</c:if>
-					<c:if test="${!rq.isLogined() }">
-						<a href="${rq.loginUri }" style="text-decoration: underline; font-weight: 600;">로그인</a> 후 이용해주세요.
-				</c:if>
-				</div>
-
-				<!-- 리뷰 목록 -->
-				<div class="review-list">
-					<div class="review-title">리뷰 (${cafeReviewsCount})</div>
-
-					<c:forEach var="cafeReview" items="${cafeReviews }">
-						<div class="show-review-box">
-							<div class="user-nickname 리뷰작성자">${cafeReview.extra__writer }
-								<div id="reviewRegDate-${cafeReview.id }" style="font-size: 11px; font-weight: 300; color: #a9a9a9;">${cafeReview.regDate.substring(0,10) }</div>
-							</div>
-
-
-							<div class="review-body 리뷰내용">
-								<span id="review-${cafeReview.id }">${cafeReview.body }</span>
-								<form method="POST" id="modify-form-${cafeReview.id }"
-									style="display: none; position: absolute; top: 20px; left: 0; width: 100%; z-index: 1;"
-									action="/usr/cafeReview/doModify">
-									<input style="width: 1110px; height: 35px; margin-top: -17px;" type="text" value="${cafeReview.body }"
-										name="cafeReview-text-${cafeReview.id }" />
-								</form>
-							</div>
-
-							<!-- 	수정 삭제 버튼		 -->
-							<div class="mod-del-btns"
-								style="font-weight: 500; color: #a9a9a9; margin-top: 89px; margin-left: 17px; font-size: 11px;">
-								<c:if test="${cafeReview.userCanModify }">
-									<button onclick="toggleModifybtn('${cafeReview.id}');" id="modify-btn-${cafeReview.id }"
-										style="white-space: nowrap;">수정</button>
-									<button onclick="doModifyCafeReview('${cafeReview.id}');" style="white-space: nowrap; display: none;"
-										id="save-btn-${cafeReview.id }">저장</button>
-
-								</c:if>
-
-								<c:if test="${cafeReview.userCanDelete }">
-									<a style="white-space: nowrap; margin-left: 10px;" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
-										href="../cafeReview/doDelete?id=${cafeReview.id }">삭제</a>
-								</c:if>
-							</div>
-
-						</div>
-					</c:forEach>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-
-
-
-
-<div class="slide-overlay">
-	<button class="close-btn">
-		<span class="material-symbols-outlined close"> close </span>
-	</button>
-	<button class="slide-btn --prev">
-		<span class="material-symbols-outlined left "> chevron_left </span>
-	</button>
-	<button class="slide-btn --next">
-		<span class="material-symbols-outlined right"> chevron_right </span>
-	</button>
-	<div class="slide__container">
-		<ul class="slides">
-			<li>
-				<img src="" alt="이미지1">
-			</li>
-			<li>
-				<img src="" alt="이미지2">
-			</li>
-			<li>
-				<img src="" alt="이미지3">
-			</li>
-			<li>
-				<img src="" alt="이미지4">
-			</li>
-			<li>
-				<img src="" alt="이미지5">
-			</li>
-		</ul>
-	</div>
-</div>
-
-
 
 <style>
 /* 슬라이드 팝업창 */
@@ -531,29 +164,21 @@ function doModifyCafeReview(cafeReviewId) {
 .slide__container {
 	position: absolute;
 	height: 100%; /* 이미지에 맞게 자동 조정되도록 변경 */
-	max-width: 80%; /* 최대 너비 설정 */
-	max-height: 70%; /* 최대 높이 설정 */
+ 	max-width: 90%; /* 최대 너비 설정 */ 
+	max-height: 80%; /* 최대 높이 설정 */
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -45%);
 	overflow: hidden;
 }
 
-.slide__container>img {
-	position: absolute;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	max-width: 100%; /* 이미지의 원본 비율을 유지하면서 이미지의 더 긴쪽에 맞춤 */
-	max-height: 100%; /* 이미지의 원본 비율을 유지하면서 이미지의 더 긴쪽에 맞춤 */
-}
-
-.slide__container>img {
-	position: absolute;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	max-width: 100%; /* 이미지의 원본 비율을 유지하면서 이미지의 더 긴쪽에 맞춤 */
-	max-height: 100%; /* 이미지의 원본 비율을 유지하면서 이미지의 더 긴쪽에 맞춤 */
-}
+/* .slide__container>img { */
+/* 	position: absolute; */
+/* 	left: 50%; */
+/* 	transform: translate(-50%, -50%); */
+/* 	max-width: 100%; /* 이미지의 원본 비율을 유지하면서 이미지의 더 긴쪽에 맞춤 */ */
+/* 	max-height: 100%; /* 이미지의 원본 비율을 유지하면서 이미지의 더 긴쪽에 맞춤 */ */
+/* } */
 
 .slides {
 	display: flex; /* Flexbox를 사용하여 이미지를 가로로 나열 */
@@ -1151,6 +776,297 @@ function doModifyCafeReview(cafeReviewId) {
 }
 </style>
 
+
+<section class="cafe-detail-page">
+
+	<div class="cafe-detail-page">
+		<div class="detail-imgs">
+			<div class="cafe-img-box-big li">
+				<a href="${cafe.cafeImgUrl1}">
+					<img class="big-img" src="${cafe.cafeImgUrl1}" alt="이미지1" />
+				</a>
+			</div>
+			<div class="cafe-img-box1 li">
+				<a href="${cafe.cafeImgUrl2}">
+					<img class="sm-img1" src="${cafe.cafeImgUrl2}" alt=" 이미지2" />
+				</a>
+			</div>
+			<div class="cafe-img-box2 li">
+				<a href="${cafe.cafeImgUrl3}">
+					<img class="sm-img2" src="${cafe.cafeImgUrl3}" alt="이미지3" />
+				</a>
+			</div>
+			<div class="cafe-img-box3 li">
+				<a href="${cafe.cafeImgUrl4}">
+					<img class="sm-img3" src="${cafe.cafeImgUrl4}" alt="이미지4" />
+				</a>
+			</div>
+			<div class="cafe-img-box4 li">
+				<a href="${cafe.cafeImgUrl5}">
+					<img class="sm-img4" src="${cafe.cafeImgUrl5}" alt="이미지5" />
+				</a>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- 사진 아래 부분 -->
+
+	<div class="info-and-review section-under-imgs">
+		<!-- 카페 정보 -->
+		<div class="cafe-info">
+			<div class="cafe-name">${cafe.name}</div>
+			<div class="cafe-address">${cafe.address}</div>
+			<div class="cafe-distance">
+				<div class="num-km-group">
+					<div class="km"></div>
+					<div class="distance-num">0 km</div>
+				</div>
+			</div>
+
+
+			<div class="cafe-phone">${cafe.phoneNum}</div>
+			<div class="cafe-facility">${cafe.facilities}</div>
+			<div class="cafe-businessHours">
+				<script>
+            		// ${cafe.businessHours}를 세미콜론으로 분할하여 배열로 만듭니다.
+            var businessHoursArray = "${cafe.businessHours}".split(';');
+
+            		// 분할된 각 시간대를 화면에 표시합니다.
+            businessHoursArray.forEach(function(hour) {
+                document.write('<div>' + hour + '</div>');
+            });
+            
+            console.log('${cafe.businessHours}');
+       			</script>
+			</div>
+			<div class="like-count">
+				<button class="material-symbols-outlined heart" id="likeButton" onclick="doCafeScrap(${param.id})">
+					favorite</button>
+				<div class="cafeScrapCount" id="scrapCount">${cafe.cafeScrapCount}</div>
+			</div>
+			<div class="review-count">
+				<div class="review-badge">리뷰</div>
+				<div class="review-count-num">${cafeReviewsCount}</div>
+			</div>
+
+			<span class="material-symbols-outlined clock-circle" style="color: #a9a9a9"> schedule </span>
+			<span class="material-symbols-outlined phone" style="color: #a9a9a9"> call </span>
+			<span class="material-symbols-outlined store" style="color: #a9a9a9"> storefront </span>
+
+			<p class="hashtag">${cafe.hashtag}</p>
+		</div>
+
+
+		<!-- 카페 지도 -->
+		<div class="cafe-map">
+			<!-- 			<img class="map-img" src="/" /> -->
+			<div class="map-title">지도보기</div>
+
+			<div id="map" style="width: 525px; height: 323px; top: 63px;"></div>
+		</div>
+
+		<!-- JavaScript 코드가 HTML 문서의 DOM 구조에 의존.
+		 HTML 코드와 자바스크립트 코드가 상호 작용하기 때문에 자바스크립트 코드가 HTML 문서가 완전히 로드된 후 실행.
+		 따라서 자바스크립트 코드를 HTML 문서의 아래에 배치. 
+		 페이지의 모든 요소가 로드되고 DOM이 완전히 준비된 후에 자바스크립트 코드가 실행됨. -->
+
+		<!-- 카페 지도API Javascript -->
+		<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    		mapOption = {
+        		center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        		level: 3 // 지도의 확대 레벨
+   		 	};  
+
+		// 지도를 생성합니다    
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+		// 주소-좌표 변환 객체를 생성합니다
+		var geocoder = new kakao.maps.services.Geocoder();
+
+		// 주소로 좌표를 검색합니다
+		geocoder.addressSearch('${cafe.address}', function(result, status) {
+   			// 정상적으로 검색이 완료됐으면 
+     		if (status === kakao.maps.services.Status.OK) {
+		        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+		        
+		        //카페의 위도(lat|y) 경도(long|x)를 콘솔에 출력
+		       	console.log("위도(lat|y) : " + result[0].y);
+		       	console.log("경도(long|x) : " + result[0].x);
+		       	
+		       	lat2 = String(result[0].y);
+		       	lon2 = String(result[0].x);
+		       	
+		       	console.log("new위도(lat|y) : " + lat2)
+		        console.log("new경도(long|x) : " + lon2);
+		       	
+		       	showLatLon(lat2,lon2);
+		
+		        // 결과값으로 받은 위치를 마커로 표시합니다
+		
+		        var marker = new kakao.maps.Marker({
+		    		map: map,
+		    		position: coords,
+		    		image: new kakao.maps.MarkerImage(
+		        	'https://velog.velcdn.com/images/yunlinit/post/8c994474-03a4-481f-9294-a3a3e201cb72/image.png',
+		        new kakao.maps.Size(39, 39),
+		        { offset: new kakao.maps.Point(16, 32) }
+				    )
+				});
+		        	
+		        // 인포윈도우로 장소에 대한 설명을 표시합니다
+		        var infowindow = new kakao.maps.InfoWindow({
+		            content: '<div style="width:150px;text-align:center;padding:6px 0; font-size: 15px; color: black;">${cafe.name}</div>'
+		        });
+		        infowindow.open(map, marker);
+		
+		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+		        map.setCenter(coords);
+    		} 
+		});    
+		
+		function showLatLon(lat2, lon2) {
+			var myLat, myLon;
+			
+			// 크롬브라우저 전용 사용자의 위도와 경도를 불러오는 함수
+			navigator.geolocation.getCurrentPosition(function(position) {
+	            myLat = position.coords.latitude;
+	            myLon = position.coords.longitude;
+	            
+	            $.ajax({
+			        type: "POST",
+			        url: "/usr/findcafe/distance", // 요청을 처리할 컨트롤러의 URL
+			        contentType: "application/json", // id도 넘겨줘........ 
+			        data: JSON.stringify({
+			        	'myLat': myLat,
+			        	'myLon': myLon,
+			        	'cafeLat': lat2,
+			        	'cafeLon': lon2
+			        }),
+			        //dataType: 'json',
+			        success: function(distanceInKm) {
+			            //alert("위도와 경도를 서버로 전송했습니다.\n * distanceInKm_Response : " + distanceInKm);
+			            // 성공적으로 처리되었을 때 실행할 코드
+			            $('.distance-num').text(distanceInKm+"km");
+			        },
+			        error: function(xhr, status, error) {
+			            alert("에러면 표시 " + JSON.stringify(lat2));
+			            // 오류 발생 시 실행할 코드
+			            //JSON.stringify(lat2)
+			        }
+			    });
+			});
+		}
+		
+		</script>
+
+
+		<!-- 카페정보 하단 -->
+		<div class="review-group reviewlist-and-write">
+			<!-- 리뷰 부분 -->
+			<div class="review-section">
+				<!-- 리뷰 작성 -->
+
+				<div class="write-review-section">
+					<div class="write-review">리뷰 작성</div>
+
+					<c:if test="${rq.isLogined() }">
+						<div class="review-input-area">
+
+							<form action="../cafeReview/doWrite" method="POST">
+								<input type="hidden" name="cafeId" value="${cafe.id }" />
+								<input type="text" autocomplete="off" placeholder="리뷰를 남겨주세요" name="body"
+									class="review-input-box input input-bordered input-md w-full " />
+								<!-- 								<button class="review-write-btn btn btn-sm">등록</button> -->
+								<input class="review-write-btn btn btn-sm" type="submit" value="등록" />
+							</form>
+						</div>
+					</c:if>
+					<c:if test="${!rq.isLogined() }">
+						<a href="${rq.loginUri }" style="text-decoration: underline; font-weight: 600;">로그인</a> 후 이용해주세요.
+				</c:if>
+				</div>
+
+				<!-- 리뷰 목록 -->
+				<div class="review-list">
+					<div class="review-title">리뷰 (${cafeReviewsCount})</div>
+
+					<c:forEach var="cafeReview" items="${cafeReviews }">
+						<div class="show-review-box">
+							<div class="user-nickname 리뷰작성자">${cafeReview.extra__writer }
+								<div id="reviewRegDate-${cafeReview.id }" style="font-size: 11px; font-weight: 300; color: #a9a9a9;">${cafeReview.regDate.substring(0,10) }</div>
+							</div>
+
+
+							<div class="review-body 리뷰내용">
+								<span id="review-${cafeReview.id }">${cafeReview.body }</span>
+								<form method="POST" id="modify-form-${cafeReview.id }"
+									style="display: none; position: absolute; top: 20px; left: 0; width: 100%; z-index: 1;"
+									action="/usr/cafeReview/doModify">
+									<input style="width: 1110px; height: 35px; margin-top: -17px;" type="text" value="${cafeReview.body }"
+										name="cafeReview-text-${cafeReview.id }" />
+								</form>
+							</div>
+
+							<!-- 	수정 삭제 버튼		 -->
+							<div class="mod-del-btns"
+								style="font-weight: 500; color: #a9a9a9; margin-top: 89px; margin-left: 17px; font-size: 11px;">
+								<c:if test="${cafeReview.userCanModify }">
+									<button onclick="toggleModifybtn('${cafeReview.id}');" id="modify-btn-${cafeReview.id }"
+										style="white-space: nowrap;">수정</button>
+									<button onclick="doModifyCafeReview('${cafeReview.id}');" style="white-space: nowrap; display: none;"
+										id="save-btn-${cafeReview.id }">저장</button>
+
+								</c:if>
+
+								<c:if test="${cafeReview.userCanDelete }">
+									<a style="white-space: nowrap; margin-left: 10px;" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
+										href="../cafeReview/doDelete?id=${cafeReview.id }">삭제</a>
+								</c:if>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+
+<div class="slide-overlay">
+	<button class="close-btn">
+		<span class="material-symbols-outlined close"> close </span>
+	</button>
+	<button class="slide-btn --prev">
+		<span class="material-symbols-outlined left "> chevron_left </span>
+	</button>
+	<button class="slide-btn --next">
+		<span class="material-symbols-outlined right"> chevron_right </span>
+	</button>
+	<div class="slide__container">
+		<ul class="slides">
+			<li>
+				<img src="" alt="이미지1">
+			</li>
+			<li>
+				<img src="" alt="이미지2">
+			</li>
+			<li>
+				<img src="" alt="이미지3">
+			</li>
+			<li>
+				<img src="" alt="이미지4">
+			</li>
+			<li>
+				<img src="" alt="이미지5">
+			</li>
+		</ul>
+	</div>
+</div>
+
 <script>
 
 
@@ -1268,4 +1184,4 @@ function bulletClassReset() {
 
 
 
-<%-- <%@ include file="../common/foot.jspf"%> --%>
+<%@ include file="../common/foot.jspf"%>

@@ -99,46 +99,50 @@
 		<div class="JoinBox">
 			<div class="Rectangle6">
 				<section class="mt-8 text-xl px-4">
-						<form action="../member/doJoin" method="POST">
-<!-- 					<form method="POST" action="../member/doJoin" onsubmit="submitJoinForm(this); return false;"> -->
-<!-- 					내가 뭔가 잘못 복붙해온듯.... -->
+					<form action="../member/doJoin" method="POST">
+						<!-- 					<form method="POST" action="../member/doJoin" onsubmit="submitJoinForm(this); return false;"> -->
+						<!-- 					내가 뭔가 잘못 복붙해온듯.... -->
 
 						<input type="hidden" name="afterLoginUri" value="${param.afterLoginUri}" />
 						<div class="title">회원가입</div>
 
 						<div class="IdBox">
-							<span class="material-symbols-outlined"> person_edit </span> <input id="loginId"
-								onkeyup="checkLoginIdDupDebounced(this);" class="input input-sm w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="아이디를 입력해주세요" name="loginId" />
+							<span class="material-symbols-outlined"> person_edit </span>
+							<input id="loginId" onkeyup="checkLoginIdDupDebounced(this);" class="input input-sm w-full max-w-xs"
+								autocomplete="off" type="text" placeholder="아이디를 입력해주세요" name="loginId" />
 						</div>
 						<div class="checkDup-msg "></div>
 
 						<div class="PwBox">
-							<span class="material-symbols-outlined"> lock </span> <input id="loginPw" class="input input-sm w-full max-w-xs"
-								autocomplete="off" type="password" placeholder="비밀번호를 입력해주세요" name="loginPw" />
+							<span class="material-symbols-outlined"> lock </span>
+							<input id="loginPw" class="input input-sm w-full max-w-xs" autocomplete="off" type="password"
+								placeholder="비밀번호를 입력해주세요" name="loginPw" />
 						</div>
 
 						<div class="PwCheckBox">
-							<span class="material-symbols-outlined"> check_circle </span> <input id="loginPwCheck"
-								class="input input-sm w-full max-w-xs" autocomplete="off" type="password" placeholder="비밀번호를 확인해주세요"
-								name="loginPwCheck" />
+							<span class="material-symbols-outlined"> check_circle </span>
+							<input id="loginPwCheck" class="input input-sm w-full max-w-xs" autocomplete="off" type="password"
+								placeholder="비밀번호를 확인해주세요" name="loginPwCheck" />
 						</div>
 						<div class="NameBox">
-							<span class="material-symbols-outlined"> person </span> <input id="name" class="input input-sm w-full max-w-xs"
-								autocomplete="off" type="text" placeholder="이름을 입력해주세요" name="name" />
+							<span class="material-symbols-outlined"> person </span>
+							<input id="name" class="input input-sm w-full max-w-xs" autocomplete="off" type="text" placeholder="이름을 입력해주세요"
+								name="name" />
 						</div>
 						<div class="NicknameBox">
-							<span class="material-symbols-outlined"> person_edit </span> <input id="name"
-								class="input input-sm w-full max-w-xs" autocomplete="off" type="text" placeholder="닉네임 입력해주세요" name="nickname" />
+							<span class="material-symbols-outlined"> person_edit </span>
+							<input id="name" class="input input-sm w-full max-w-xs" autocomplete="off" type="text" placeholder="닉네임 입력해주세요"
+								name="nickname" />
 						</div>
 						<div class="PhoneNumBox">
-							<span class="material-symbols-outlined"> call </span> <input id="cellphoneNum"
-								class="input input-sm w-full max-w-xs" autocomplete="off" type="text" placeholder="전화번호를 입력해주세요"
-								name="cellphoneNum" />
+							<span class="material-symbols-outlined"> call </span>
+							<input id="cellphoneNum" class="input input-sm w-full max-w-xs" autocomplete="off" type="text"
+								placeholder="전화번호를 입력해주세요" name="cellphoneNum" />
 						</div>
 						<div class="EmailBox">
-							<span class="material-symbols-outlined"> mail </span> <input id="email" class="input input-sm w-full max-w-xs"
-								autocomplete="off" type="text" placeholder="이메일을 입력해주세요" name="email" />
+							<span class="material-symbols-outlined"> mail </span>
+							<input id="email" class="input input-sm w-full max-w-xs" autocomplete="off" type="text" placeholder="이메일을 입력해주세요"
+								name="email" />
 						</div>
 
 						<input class="joinBtn btn btn-sm" type="submit" value="회원가입" />
@@ -149,10 +153,10 @@
 						<a class="loginBtn" href="../member/login">로그인</a>
 
 					</div>
-</section>
-</div>
-</div>
-</div>
+				</section>
+			</div>
+		</div>
+	</div>
 </section>
 
 <style>
@@ -199,7 +203,6 @@
 	display: flex;
 	align-items: center;
 }
-
 
 .PwBox {
 	width: 222px;

@@ -1,12 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<style>
+header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
+	background-color: transparent; /* 투명한 배경색 설정 */
+	opacity: 0; /* 처음에는 투명도를 0으로 설정하여 숨김 */
+	transition: opacity 0.5s ease; /* 투명도 변화에 애니메이션 적용 */
+}
+</style>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 
 <title>${pageTitle }</title>
+
+
 
 <link rel="stylesheet" href="/resource/common.css" />
 <script src="/resource/common.js" defer="defer"></script>
@@ -47,18 +61,6 @@
 </script>
 
 
-<style>
-header {
-	position: fixed;
-	top: 0;
-	width: 100%;
-	z-index: 1000;
-	background-color: transparent; /* 투명한 배경색 설정 */
-	opacity: 0; /* 처음에는 투명도를 0으로 설정하여 숨김 */
-	transition: opacity 0.5s ease; /* 투명도 변화에 애니메이션 적용 */
-}
-</style>
-
 <script>
 	window.addEventListener('scroll', function() {
 		var scroll = window.scrollY;
@@ -74,6 +76,7 @@ header {
 		}
 	});
 </script>
+
 
 </head>
 
@@ -122,3 +125,4 @@ header {
 			</ul>
 		</div>
 </header>
+

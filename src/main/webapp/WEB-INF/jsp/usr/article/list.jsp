@@ -7,7 +7,6 @@
 <section class="mt-8 text-xl px-4">
 	<div class="mx-auto overflow-x-auto">
 
-
 		<h1 style="text-align: center; font-size: 25; margin-top: 100px;">${board.name}</h1>
 		<div class="area-for-badge mx-auto" style="width: 50%; position: relative;">
 			<div class="badge badge-outline" style="margin-bottom: 10px;">${articlesCount }개</div>
@@ -58,15 +57,15 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	
+
 	<!-- 	글쓰기버튼 -->
 	<div class="area-for-writeBtn mx-auto" style="width: 50%; position: relative;">
-		
+
 		<a class="writeBtn btn btn-sm
 		" href="../article/write" style="position: absolute; right: 15px; top: 15px;">글쓰기</a>
 	</div>
-	
-	
+
+
 	<!-- 	동적 페이징 -->
 	<div class="pagination flex justify-center mt-3" style="margin-top: 50px;">
 		<c:set var="paginationLen" value="3" />
@@ -94,8 +93,8 @@
 		</c:if>
 
 	</div>
-	
-	
+
+
 	<!-- 검색창 -->
 	<div class="mb-4 flex justify-center" style="margin-top: 50px;">
 		<div class="flex"></div>

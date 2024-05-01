@@ -3,47 +3,6 @@
 <c:set var="pageTitle" value=""></c:set>
 <%@ include file="../common/head.jspf"%>
 
-
-<section>
-	<div class="checkPw">
-		<div class="checkPwBox">
-			<div class="Rectangle6">
-				<section class="mt-8 text-xl px-4">
-					<div class="mx-auto">
-						<form action="../member/doCheckPw" method="POST">
-
-
-							<div class="title">회원정보 수정</div>
-							<div class="oneMoreTime">본인확인을 위해 비밀번호를 한번 더 입력해주세요</div>
-
-
-								<div class="IdBox">
-									<span class="material-symbols-outlined"> person </span>
-									<div class="loginId">${rq.loginedMember.loginId }</div>
-								</div>
-
-
-								<div class="PwBox">
-									<span class="material-symbols-outlined"> lock </span> <input id="loginPw"
-										class="input input-sm w-full max-w-xs" autocomplete="off" type="password" placeholder="비밀번호를 입력해주세요"
-										name="loginPw" />
-								</div>
-
-
-							<input class="loginBtn btn btn-sm" type="submit" value="확인" />
-
-						</form>
-						<div class="btns">
-							<button class="backBtn" type="button" onclick="history.back();">뒤로가기</button>
-
-						</div>
-					</div>
-				</section>
-			</div>
-		</div>
-	</div>
-</section>
-
 <style>
 .title {
 	font-weight: 600;
@@ -56,10 +15,7 @@
 	color: #a9a9a9;
 	margin-left: 10px;
 	font-size: 13px;
-	
 }
-
-
 
 .checkPw {
 	width: 100%;
@@ -152,6 +108,49 @@
 	bottom: 30px;
 }
 </style>
+
+
+
+<section>
+	<div class="checkPw">
+		<div class="checkPwBox">
+			<div class="Rectangle6">
+				<section class="mt-8 text-xl px-4">
+					<div class="mx-auto">
+						<form action="../member/doCheckPw" method="POST">
+
+
+							<div class="title">회원정보 수정</div>
+							<div class="oneMoreTime">본인확인을 위해 비밀번호를 한번 더 입력해주세요</div>
+
+
+							<div class="IdBox">
+								<span class="material-symbols-outlined"> person </span>
+								<div class="loginId">${rq.loginedMember.loginId }</div>
+							</div>
+
+
+							<div class="PwBox">
+								<span class="material-symbols-outlined"> lock </span>
+								<input id="loginPw" class="input input-sm w-full max-w-xs" autocomplete="off" type="password"
+									placeholder="비밀번호를 입력해주세요" name="loginPw" />
+							</div>
+
+
+							<input class="loginBtn btn btn-sm" type="submit" value="확인" />
+
+						</form>
+						<div class="btns">
+							<button class="backBtn" type="button" onclick="history.back();">뒤로가기</button>
+
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+</section>
+
 
 
 <%@ include file="../common/foot.jspf"%>

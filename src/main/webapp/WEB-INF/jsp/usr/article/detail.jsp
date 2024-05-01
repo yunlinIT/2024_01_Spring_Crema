@@ -4,7 +4,6 @@
 <%@ include file="../common/head.jspf"%>
 <%@ include file="../common/toastUiEditorLib.jspf"%>
 
-<!-- <iframe src="http://localhost:8081/usr/article/doIncreaseHitCountRd?id=372" frameborder="0"></iframe> -->
 
 <!-- 변수 -->
 <script>
@@ -19,10 +18,9 @@
 	var isAlreadyAddBadRp = ${isAlreadyAddBadRp};
 	
 	
-</script>
 
 <!-- 조회수 -->
-<script>
+
 	function ArticleDetail__doIncreaseHitCount() {
 		const localStorageKey = 'article__' + params.id + '__alreadyView';
 
@@ -44,10 +42,10 @@
 		// 		ArticleDetail__doIncreaseHitCount();
 		setTimeout(ArticleDetail__doIncreaseHitCount, 2000);
 	});
-</script>
+
 
 <!-- 좋아요 싫어요  -->
-<script>
+
 	<!-- 좋아요 싫어요 버튼	-->
 	function checkRP() {
 		if(isAlreadyAddGoodRp == true){
@@ -168,10 +166,10 @@
 	$(function() {
 		checkRP();
 	});
-</script>
+
 
 <!-- 댓글 -->
-<script>
+
 		var ReplyWrite__submitDone = false;
 
 		function ReplyWrite__submit(form) {
@@ -193,9 +191,9 @@
 			form.submit();
 
 		}
-</script>
+
 <!-- 댓글 수정 -->
-<script>
+
 function toggleModifybtn(replyId) {
 	
 	console.log(replyId);
@@ -238,135 +236,6 @@ function doModifyReply(replyId) {
 	})
 }
 </script>
-
-<!-- 상세보기페이지 -->
-
-<section class="detail-page">
-
-	<!-- 글 상세보기 부분 -->
-
-	<div class="page-title">자유게시판</div>
-
-	<!-- 	상단버튼들 -->
-
-
-	<div class="page-btns">
-		<div class="modify-delete-btns">
-			<c:if test="${article.userCanModify }">
-				<a class="modify-btn" href="../article/modify?id=${article.id }">수정</a>
-			</c:if>
-			<c:if test="${article.userCanDelete }">
-				<a class="delete-btn" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
-					href="../article/doDelete?id=${article.id }">삭제</a>
-			</c:if>
-		</div>
-		<button class="list-btn" type="button" onclick="history.back();">목록</button>
-	</div>
-
-	<!-- 	본문 부분 -->
-
-	<div class="detail-section">
-		<div class="title">${article.title }</div>
-		<div class="writer">${article.extra__writer }</div>
-		<div class="regDate">${article.regDate }</div>
-		<div class="view-count"> 조회수
-			<div class="viewcount-name article-detail__hit-count">${article.hitCount }</div>
-<%-- 			<div class="viewcount-num">${article.hitCount }</div> --%>
-		</div>
-		<div class="top-line"></div>
-		<div class="body"><div class="toast-ui-viewer">
-							<script type="text/x-template">${article.body}</script></div>
-		<div class="like-dislike-btns">
-			<!-- 좋아요 버튼 -->
-			<span class="img-2 material-symbols-outlined heart"> favorite </span>
-			<button class="like" id="likeButton" onclick="doGoodReaction(${param.id})">좋아요</button>
-			<div class="like-count-num" id="likeCount">${article.goodReactionPoint }</div>
-
-			<!-- 싫어요 버튼 -->
-
-			<span class="img material-symbols-outlined thumb_down"> thumb_down </span>
-			<button class="dislike" id="DislikeButton" onclick="doBadReaction(${param.id})">싫어요</button>
-			<div class="dislike-count-num" id="DislikeCount">${article.badReactionPoint }</div>
-		</div>
-		<div class="bottom-line"></div>
-	</div>
-
-
-
-	<!-- 댓글 작성 부분 -->
-
-	<div class="reply-section">
-		<div class="write-review" style="font-weight: 600; width: 1050px">댓글 작성</div>
-		</br>
-
-		<c:if test="${rq.isLogined() }">
-			<form action="../reply/doWrite" method="POST" onsubmit="ReplyWrite__submit(this); return false;">
-				<input type="hidden" name="relTypeCode" value="article" /> <input type="hidden" name="relId" value="${article.id }" />
-
-				<textarea class="input input input-bordered input-md w-full" autocomplete="off" placeholder="댓글을 남겨주세요" name="body"
-					style="height: 83px; width:1064px;"> </textarea>
-
-				<div></div>
-				<input class="btn btn-sm mt-4" type="submit" value="등록" />
-			</form>
-		</c:if>
-		<c:if test="${!rq.isLogined() }">
-			<a href="${rq.loginUri }" style="text-decoration: underline; font-weight: 600;">로그인</a> 후 이용해주세요.
-				</c:if>
-		</br>
-
-
-
-
-		<!-- 댓글 목록 부분 -->
-
-		<div class="reply-count">
-			<div class="reply-title" style="font-weight: 600; font-size: 17px;">댓글</div>
-			<div class=" reply-count-num" style="font-weight: 700; font-size: 13px">(${repliesCount })</div>
-		</div>
-
-		<c:forEach var="reply" items="${replies }">
-			<div class="reply">
-				<div class="reply-box">
-					<div class="reply-writer 댓글작성자" style="font-size: 13px;">${reply.extra__writer }</div>
-
-					<div class="reply-body 댓글내용" style="font-size: 14px; margin-top:4px;">
-						<span id="reply-${reply.id }">${reply.body }</span>
-						<form method="POST" id="modify-form-${reply.id }" style="display: none;" action="/usr/reply/doModify">
-							<input style="width: 1064px;"type="text" value="${reply.body }" name="reply-text-${reply.id }" />
-						</form>
-					</div>
-					
-					<div class="reply-regDate 날짜" style="margin-top:5px;">${reply.regDate.substring(0,10) }</div>
-				
-
-					<!-- 	수정 삭제 버튼		 -->
-					<div class="mod-del-btns" style="font-weight: 600; color: #666666; margin-top:10px;">
-						<c:if test="${reply.userCanModify }">
-							<button onclick="toggleModifybtn('${reply.id}');" id="modify-btn-${reply.id }" style="white-space: nowrap;">수정</button>
-							<button onclick="doModifyReply('${reply.id}');" style="white-space: nowrap; display: none;"
-								id="save-btn-${reply.id }">저장</button>
-
-						</c:if>
-
-						<c:if test="${reply.userCanDelete }">
-							<a style="white-space: nowrap; margin-left: 10px;" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
-								href="../reply/doDelete?id=${reply.id }">삭제</a>
-						</c:if>
-					</div>
-					<div class="reply-box-bottom-line"></div>
-				</div>
-
-			</div>
-		</c:forEach>
-
-	</div>
-</section>
-
-<script>
-
-</script>
-
 
 <style>
 .detail-page {
@@ -810,9 +679,129 @@ function doModifyReply(replyId) {
 </style>
 
 
+<!-- 상세보기페이지 -->
+
+<section class="detail-page">
+
+	<!-- 글 상세보기 부분 -->
+
+	<div class="page-title">자유게시판</div>
+
+	<!-- 	상단버튼들 -->
+
+
+	<div class="page-btns">
+		<div class="modify-delete-btns">
+			<c:if test="${article.userCanModify }">
+				<a class="modify-btn" href="../article/modify?id=${article.id }">수정</a>
+			</c:if>
+			<c:if test="${article.userCanDelete }">
+				<a class="delete-btn" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
+					href="../article/doDelete?id=${article.id }">삭제</a>
+			</c:if>
+		</div>
+		<button class="list-btn" type="button" onclick="history.back();">목록</button>
+	</div>
+
+	<!-- 	본문 부분 -->
+
+	<div class="detail-section">
+		<div class="title">${article.title }</div>
+		<div class="writer">${article.extra__writer }</div>
+		<div class="regDate">${article.regDate }</div>
+		<div class="view-count"> 조회수
+			<div class="viewcount-name article-detail__hit-count">${article.hitCount }</div>
+<%-- 			<div class="viewcount-num">${article.hitCount }</div> --%>
+		</div>
+		<div class="top-line"></div>
+		<div class="body"><div class="toast-ui-viewer">
+							<script type="text/x-template">${article.body}</script></div>
+		<div class="like-dislike-btns">
+			<!-- 좋아요 버튼 -->
+			<span class="img-2 material-symbols-outlined heart"> favorite </span>
+			<button class="like" id="likeButton" onclick="doGoodReaction(${param.id})">좋아요</button>
+			<div class="like-count-num" id="likeCount">${article.goodReactionPoint }</div>
+
+			<!-- 싫어요 버튼 -->
+
+			<span class="img material-symbols-outlined thumb_down"> thumb_down </span>
+			<button class="dislike" id="DislikeButton" onclick="doBadReaction(${param.id})">싫어요</button>
+			<div class="dislike-count-num" id="DislikeCount">${article.badReactionPoint }</div>
+		</div>
+		<div class="bottom-line"></div>
+	</div>
 
 
 
+	<!-- 댓글 작성 부분 -->
+
+	<div class="reply-section">
+		<div class="write-review" style="font-weight: 600; width: 1050px">댓글 작성</div>
+		</br>
+
+		<c:if test="${rq.isLogined() }">
+			<form action="../reply/doWrite" method="POST" onsubmit="ReplyWrite__submit(this); return false;">
+				<input type="hidden" name="relTypeCode" value="article" /> <input type="hidden" name="relId" value="${article.id }" />
+
+				<textarea class="input input input-bordered input-md w-full" autocomplete="off" placeholder="댓글을 남겨주세요" name="body"
+					style="height: 83px; width:1064px;"> </textarea>
+
+				<div></div>
+				<input class="btn btn-sm mt-4" type="submit" value="등록" />
+			</form>
+		</c:if>
+		<c:if test="${!rq.isLogined() }">
+			<a href="${rq.loginUri }" style="text-decoration: underline; font-weight: 600;">로그인</a> 후 이용해주세요.
+				</c:if>
+		</br>
+
+
+
+
+		<!-- 댓글 목록 부분 -->
+
+		<div class="reply-count">
+			<div class="reply-title" style="font-weight: 600; font-size: 17px;">댓글</div>
+			<div class=" reply-count-num" style="font-weight: 700; font-size: 13px">(${repliesCount })</div>
+		</div>
+
+		<c:forEach var="reply" items="${replies }">
+			<div class="reply">
+				<div class="reply-box">
+					<div class="reply-writer 댓글작성자" style="font-size: 13px;">${reply.extra__writer }</div>
+
+					<div class="reply-body 댓글내용" style="font-size: 14px; margin-top:4px;">
+						<span id="reply-${reply.id }">${reply.body }</span>
+						<form method="POST" id="modify-form-${reply.id }" style="display: none;" action="/usr/reply/doModify">
+							<input style="width: 1064px;"type="text" value="${reply.body }" name="reply-text-${reply.id }" />
+						</form>
+					</div>
+					
+					<div class="reply-regDate 날짜" style="margin-top:5px;">${reply.regDate.substring(0,10) }</div>
+				
+
+					<!-- 	수정 삭제 버튼		 -->
+					<div class="mod-del-btns" style="font-weight: 600; color: #666666; margin-top:10px;">
+						<c:if test="${reply.userCanModify }">
+							<button onclick="toggleModifybtn('${reply.id}');" id="modify-btn-${reply.id }" style="white-space: nowrap;">수정</button>
+							<button onclick="doModifyReply('${reply.id}');" style="white-space: nowrap; display: none;"
+								id="save-btn-${reply.id }">저장</button>
+
+						</c:if>
+
+						<c:if test="${reply.userCanDelete }">
+							<a style="white-space: nowrap; margin-left: 10px;" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
+								href="../reply/doDelete?id=${reply.id }">삭제</a>
+						</c:if>
+					</div>
+					<div class="reply-box-bottom-line"></div>
+				</div>
+
+			</div>
+		</c:forEach>
+
+	</div>
+</section>
 
 
 <%@ include file="../common/foot.jspf"%>

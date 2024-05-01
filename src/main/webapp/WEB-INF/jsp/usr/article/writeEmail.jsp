@@ -8,52 +8,14 @@
 		src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js"></script>
 
 
-
-<!-- 시도해봤는데 안됨 ㅠ_ㅠ -->
-<script>
-// let submitWriteEmailFormDone = false;
-// let validAgree = "";
-
-// function submitWriteEmailForm(form) {
-	
-// 	if (!checkbox.checked) {
-// 		alert('개인정보 수집 및 이용에 동의해야 합니다.');
-// 		return;
-// 	}
-// 	submitWriteEmailFormDone = true;
-// 	form.submit();
-// }
-
-</script>
-
-
+<style>
+.backBtn {
+	color: #a9a9a9;
+}
+</style>
 
 
 <!-- Article write 관련 -->
-<script type="text/javascript">
-	// 	let ArticleWrite__submitFormDone = false;
-	// 	function ArticleWrite__submit(form) {
-	// 		if (ArticleWrite__submitFormDone) {
-	// 			return;
-	// 		}
-	// 		form.title.value = form.title.value.trim();
-	// 		if (form.title.value == 0) {
-	// 			alert('제목을 입력해주세요');
-	// 			return;
-	// 		}
-	// 		const editor = $(form).find('.toast-ui-editor').data(
-	// 				'data-toast-editor');
-	// 		const markdown = editor.getMarkdown().trim();
-	// 		if (markdown.length == 0) {
-	// 			alert('내용을 입력해주세요');
-	// 			editor.focus();
-	// 			return;
-	// 		}
-	// 		form.body.value = markdown;
-	// 		ArticleWrite__submitFormDone = true;
-	// 		form.submit();
-	// 	}
-</script>
 
 <section class="mt-8 text-xl px-4">
     <h1 style="text-align: center; font-size: 25; margin-top: 100px; font-weight: 600;">제휴 문의하기</h1>
@@ -123,27 +85,6 @@
 
 
 <script>
-
-// document.querySelector(".gform").addEventListener("submit", function(event) {
-//     var checkbox = document.getElementById("checkbox");
-//     if (!checkbox.checked) {
-//         //event.preventDefault(); // 양식 제출 방지
-//         event.stopPropagation();
-//         alert("개인정보 수집 및 이용에 동의해야 합니다.");
-//         document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
-//         document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
-//         return;
-//     } else {
-//         // 이메일 전송 알림
-//         setTimeout(function() {
-//             alert("이메일이 성공적으로 전송되었습니다!");
-//             document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
-//             document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
-//         }, 100); // 1초 후에 알림을 표시합니다.
-//     }
-// });
-
-
 document.querySelector(".gform").addEventListener("submit", function(event) {
     var checkbox = document.getElementById("checkbox");
         // 이메일 전송 알림
@@ -154,43 +95,8 @@ document.querySelector(".gform").addEventListener("submit", function(event) {
         }, 100); // 1초 후에 알림을 표시합니다.
   
 });
-
-// function showSuccessMessage() {
-//     alert("이메일이 성공적으로 전송되었습니다!");
-//     document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
-//     document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
-// }
-
-// document.querySelector(".gform").addEventListener("submit", function() {
-//     setTimeout(showSuccessMessage, 1000); // 1초 후에 알림을 표시합니다.
-// });
-
-
-// document.querySelector(".gform").addEventListener("submit", function(event) {
-//     var checkbox = document.getElementById("checkbox");
-//     if (!checkbox.checked) {
-//         event.preventDefault(); // 양식 제출 방지
-//         alert("개인정보 수집 및 이용에 동의해야 합니다.");
-//     } else {
-//         // 이메일 전송 알림
-//         setTimeout(function() {
-//             alert("이메일이 성공적으로 전송되었습니다!");
-//             document.getElementById("submitBtn").disabled = false; // 문의하기 버튼 활성화
-//             document.getElementById("backBtn").disabled = false; // 뒤로가기 버튼 활성화
-//         }, 1000); // 1초 후에 알림을 표시합니다.
-//     }
-// });
-
-
-
 </script> 
 
 
-
-<style>
-.backBtn {
-	color: #a9a9a9;
-}
-</style>
 
 <%@ include file="../common/foot.jspf"%>

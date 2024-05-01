@@ -3,6 +3,7 @@
 <c:set var="pageTitle" value="게시글 작성"></c:set>
 <%@ include file="../common/head.jspf"%>
 <%@ include file="../common/toastUiEditorLib.jspf"%>
+
 <!-- Article write 관련 -->
 <script type="text/javascript">
 	let ArticleWrite__submitFormDone = false;
@@ -28,6 +29,12 @@
 		form.submit();
 	}
 </script>
+
+<style>
+.backBtn {
+	color: #a9a9a9;
+}
+</style>
 
 <section class="mt-8 text-xl px-4">
 	<h1 style="text-align: center; font-size: 25; margin-top: 100px; font-weight: 600;">게시글 작성</h1>
@@ -64,12 +71,10 @@
 						<th style="font-weight: 600">내용</th>
 						<td>
 							<div class="toast-ui-editor">
-								<script type="text/x-template">
-      </script>
+								<script type="text/x-template"></script>
 							</div>
 						</td>
 					</tr>
-
 
 					<tr>
 						<th></th>
@@ -88,11 +93,5 @@
 	</div>
 </section>
 
-
-<style>
-.backBtn {
-	color: #a9a9a9;
-}
-</style>
 
 <%@ include file="../common/foot.jspf"%>

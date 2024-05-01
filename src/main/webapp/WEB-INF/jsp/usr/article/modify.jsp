@@ -20,7 +20,7 @@
 				'data-toast-editor');
 		const markdown = editor.getMarkdown().trim();
 		if (markdown.length == 0) {
-			alert('내용 써라');
+			alert('내용을 입력해주세요);
 			editor.focus();
 			return;
 		}

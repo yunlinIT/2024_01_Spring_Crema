@@ -6,7 +6,6 @@
 
 
 
-
 <section>
 	<div class="Login">
 		<div class="LoginBox">
@@ -134,7 +133,6 @@
 	bottom: 30px;
 }
 </style>
-
 
 
 

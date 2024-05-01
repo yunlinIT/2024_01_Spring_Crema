@@ -6,8 +6,7 @@
 
 <section class="mt-8 text-xl px-4">
 	<div class="mx-auto overflow-x-auto">
-
-
+	
 		<h1 style="text-align: center; font-size: 25; margin-top: 100px;">나의 댓글</h1>
 		<div class="area-for-badge mx-auto" style="width: 50%; position: relative;">
 			<div class="badge badge-outline" style="margin-bottom: 10px;">나의 댓글 ${articlesCount }개</div>
@@ -72,7 +71,6 @@
 		<c:set var="startPage" value="${page -  paginationLen  >= 1 ? page - paginationLen : 1}" />
 		<c:set var="endPage" value="${page +  paginationLen  <= pagesCount ? page + paginationLen : pagesCount}" />
 
-<%-- 		<c:set var="baseUri" value="?boardId=${boardId }" /> --%>
 		<c:set var="baseUri" value="${baseUri }&searchKeywordTypeCode=${searchKeywordTypeCode}" />
 		<c:set var="baseUri" value="${baseUri }&searchKeyword=${searchKeyword}" />
 
@@ -99,7 +97,7 @@
 	<div class="mb-4 flex justify-center" style="margin-top: 50px;">
 		<div class="flex"></div>
 		<form action="">
-<%-- 			<input type="hidden" name="boardId" value="${param.boardId }" /> --%>
+
 			<select data-value="${param.searchKeywordTypeCode }" class="select select-bordered select-sm w-full max-w-xs"
 				style="width: 100px;" name="searchKeywordTypeCode">
 				<option value="title">제목</option>
