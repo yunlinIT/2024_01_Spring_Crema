@@ -7,6 +7,30 @@
 
 <script>
 
+<!--  스크롤 내릴때 부드럽게 내려가는 효과  -->
+$(document).ready(function () {
+	  var win_h = $(window).height();
+
+	  $(".section").each(function (index) {
+	    $(this).attr("data-index", win_h * index);
+	  });
+
+	  $(".section").on("mousewheel", function (e) {
+	    var sectionPos = parseInt($(this).attr("data-index"));
+	    if (e.originalEvent.wheelDelta >= 0) {
+	      $("html, body")
+	        .stop()
+	        .animate({ scrollTop: sectionPos - win_h });
+	      return false;
+	    } else if (e.originalEvent.wheelDelta < 0) {
+	      $("html,body")
+	        .stop()
+	        .animate({ scrollTop: sectionPos + win_h });
+	      return false;
+	    }
+	  });
+	});
+
 <!-- 스크롤 내려갈때 배경이미지 확대되는 효과 -->
     // 스크롤 이벤트 리스너 등록
     window.addEventListener('scroll', function() {
@@ -132,7 +156,7 @@
 	/* overflow를 숨겨서 스크롤이 생기지 않도록 합니다. */
 	overflow: auto;
 	/* 배경 이미지 아래쪽에 간격 추가 */
-	margin-bottom: 235px;
+	margin-bottom: 100px;
 	/* 조절하고 싶은 간격(px)을 지정하세요. */
 }
 
@@ -195,13 +219,13 @@
 }
 
 /* 카페추천 섹션 */
-
 .CafeRecom {
 	width: 1440px;
-	height: 1129px;
+	height: 1000px;
 	position: relative;
 	background: white;
-	margin: auto;
+ 	margin: auto; 
+
 }
 
 .NewCafe, .PopularCafe, .RecomCafe {
@@ -294,11 +318,11 @@
 }
 
 /* 날씨테마 CSS  */
-
 .weather-section {
 	width: 100%;
 	height: auto;
 	background: rgba(232.69, 215.26, 202.63, 0.19);
+	margin-top: -150px;
 }
 
 .recommendation {
@@ -365,9 +389,7 @@
 	height: 100%;
 }
 
-
 /* 검색어박스 CSS */
-
 .search-box {
 	/*   width: 350px; */
 	height: 82px;
@@ -456,7 +478,7 @@
 	max-width: 225px !important;
 	background-color: transparent !important;
 	margin-left: 30px !important;
-	margin-bottom: 30px !important;
+	margin-bottom: 150px !important;
 }
 </style>
 <script>
@@ -464,9 +486,9 @@
 </script>
 <!-- 날씨 위젯 여기까지 -->
 
-
-<!-- 메인 대문 -->
-<div class="background-image">
+<div class="section">
+	<!-- 메인 대문 -->
+	<div class="background-image">
 		<div class="Main1">
 			<div class="Vector">〉〉</div>
 			<div class="CrMa">
@@ -479,84 +501,91 @@
 			<div class="MyCafeFinder">MY CAFE FINDER</div>
 		</div>
 	</div>
-	
-<!-- 날씨위젯 -->
+</div>
+<div class="section">
+	<!-- 날씨위젯 -->
 	<a class="weatherwidget-io"
 		href="https://forecast7.com/en/36d35127d38/daejeon/"
 		data-icons="Climacons Animated" data-mode="Current" data-days="3"
 		data-theme="pure">Daejeon, South Korea</a>
 
-
-<!-- 날씨 테마 섹션 -->
-<div class="weather-section mx-auto">
-	<div class="recommendation mx-auto">
-		<div class="indent">
-			<div class="cremaRecommends">
-				<span> CREMA <br />
-				</span> <span>RECOMMENDS</span>
+	<!-- 날씨 테마 섹션 -->
+	<div class="weather-section mx-auto">
+		<div class="recommendation mx-auto">
+			<div class="indent">
+				<div class="cremaRecommends">
+					<span> CREMA <br />
+					</span> <span>RECOMMENDS</span>
+				</div>
+				<div class="Recommends mx-auto">크레마는 오늘같은 날씨에 가기 좋은 카페를
+					추천해드려요.</div>
+				<div class="weather-comment">-</div>
 			</div>
-			<div class="Recommends mx-auto">크레마는 오늘같은 날씨에 가기 좋은 카페를 추천해드려요.</div>
-			<div class="weather-comment">-</div>
-		</div>
-		<div class="weather-img-box">
-			<img class="Weather-img" src="-" />
-		</div>
+			<div class="weather-img-box">
+				<img class="Weather-img" src="-" />
+			</div>
 
-		<!-- 		날씨조건에 따라 추천검색어를 보여주는 검색창 -->
-		<div class="search-box">
-			<div class="how-about-here">오늘은 이런 카페 어떠세요?</div>
-			<form action="/usr/findcafe/searchCafes" method="get" id="searchForm">
-				<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs max-w-xs"> <input
-					type="text" class="grow" id="keyword" name="keyword" autocomplete="off" placeholder="검색어를 입력해주세요" value=""
-					style="color: black;" ;/> <a href="javascript:;" onclick="submitSearchForm()">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
+			<!-- 		날씨조건에 따라 추천검색어를 보여주는 검색창 -->
+			<div class="search-box">
+				<div class="how-about-here">오늘은 이런 카페 어떠세요?</div>
+				<form action="/usr/findcafe/searchCafes" method="get"
+					id="searchForm">
+					<label
+						class="search-menu-item input input-bordered flex items-center gap-2 input-xs max-w-xs">
+						<input type="text" class="grow" id="keyword" name="keyword"
+						autocomplete="off" placeholder="검색어를 입력해주세요" value=""
+						style="color: black;" ;/> <a href="javascript:;"
+						onclick="submitSearchForm()"> <svg
+								xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+								fill="currentColor" class="w-4 h-4 opacity-70">
                     <path fill-rule="evenodd"
-								d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-								clip-rule="evenodd" />
+									d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+									clip-rule="evenodd" />
                 </svg>
 					</a>
-				</label>
-			</form>
+					</label>
+				</form>
+			</div>
 		</div>
 	</div>
-
 </div>
 
-
-<!-- 카페추천 섹션 -->
-<div class="CafeRecom mx-auto">
-	<a href="../findcafe/cafeDetail?id=${getNewestCafe.id}" class="NewCafe">
-		<div>크레마 신규 카페</div>
-		<div class="hover-img-zoom-in">
-			<img class="NewCafeImg" src="${getNewestCafe.cafeImgUrl1}" />
-			<div class="InfoBox">
-				<div class="name">${getNewestCafe.name}</div>
-				<div class="address">${getNewestCafe.address}</div>
+<div class="section">
+	<!-- 카페추천 섹션 -->
+	<div class="CafeRecom mx-auto">
+		<a href="../findcafe/cafeDetail?id=${getNewestCafe.id}"
+			class="NewCafe">
+			<div>크레마 신규 카페</div>
+			<div class="hover-img-zoom-in">
+				<img class="NewCafeImg" src="${getNewestCafe.cafeImgUrl1}" />
+				<div class="InfoBox">
+					<div class="name">${getNewestCafe.name}</div>
+					<div class="address">${getNewestCafe.address}</div>
+				</div>
 			</div>
-		</div>
-	</a> <a href="../findcafe/cafeDetail?id=${getPopularCafe.id}"
-		class="PopularCafe">
-		<div>크레마 인기 카페</div>
-		<div class="hover-img-zoom-in">
-			<img class="PopularCafeImg" src="${getPopularCafe.cafeImgUrl1}" />
-			<div class="InfoBox">
-				<div class="name">${getPopularCafe.name}</div>
-				<div class="address">${getPopularCafe.address}</div>
+		</a> <a href="../findcafe/cafeDetail?id=${getPopularCafe.id}"
+			class="PopularCafe">
+			<div>크레마 인기 카페</div>
+			<div class="hover-img-zoom-in">
+				<img class="PopularCafeImg" src="${getPopularCafe.cafeImgUrl1}" />
+				<div class="InfoBox">
+					<div class="name">${getPopularCafe.name}</div>
+					<div class="address">${getPopularCafe.address}</div>
+				</div>
 			</div>
-		</div>
-	</a> <a href="../findcafe/cafeDetail?id=${getRecommendedCafe.id}"
-		class="RecomCafe">
-		<div>크레마 추천 카페</div>
-		<div class="hover-img-zoom-in">
-			<img class="RecomCafeImg" src="${getRecommendedCafe.cafeImgUrl1}" />
-			<div class="InfoBox">
-				<div class="name">${getRecommendedCafe.name}</div>
-				<div class="address">${getRecommendedCafe.address}</div>
+		</a> <a href="../findcafe/cafeDetail?id=${getRecommendedCafe.id}"
+			class="RecomCafe">
+			<div>크레마 추천 카페</div>
+			<div class="hover-img-zoom-in">
+				<img class="RecomCafeImg" src="${getRecommendedCafe.cafeImgUrl1}" />
+				<div class="InfoBox">
+					<div class="name">${getRecommendedCafe.name}</div>
+					<div class="address">${getRecommendedCafe.address}</div>
+				</div>
 			</div>
-		</div>
-	</a>
+		</a>
+	</div>
 </div>
-
 
 
 <!-- 대문 로고 서서히 나타나는 함수 -->
@@ -587,6 +616,11 @@
     appearOnScroll();
 </script>
 
+
+<script>
+
+
+</script>
 
 
 <%@ include file="../common/foot.jspf"%>
