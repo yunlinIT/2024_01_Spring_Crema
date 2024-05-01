@@ -1,10 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value=""></c:set>
+<c:set var="pageTitle" value="메인"></c:set>
+
 <%@ include file="../common/mainHead.jspf"%>
 
-
 <script>
+
+<!-- 스크롤 내려갈때 배경이미지 확대되는 효과 -->
     // 스크롤 이벤트 리스너 등록
     window.addEventListener('scroll', function() {
         // 스크롤된 양 계산
@@ -18,155 +21,10 @@
     });
     
 
-</script>
-
-<script>
     function submitSearchForm() {
         document.getElementById("searchForm").submit();
     }
-</script>
 
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Main Page</title>
-<style>
-/* 배경 이미지 스타일 설정 */
-.background-image {
-	/* 배경 이미지 URL 지정 */
-	background-image:
-		url('https://velog.velcdn.com/images/yunlinit/post/19af9bf9-7b10-4c41-abaf-7af2ac3991d4/image.jpg');
-	/* 이미지를 가득 채우도록 설정 */
-	background-size: cover;
-	/* 이미지가 반복되지 않도록 설정 */
-	background-repeat: no-repeat;
-	/* 이미지의 위치를 가운데 정렬 */
-	background-position: center;
-	/* 선택적으로 이미지에 대한 기타 스타일을 지정할 수 있습니다. */
-	/* 페이지의 전체 높이를 이미지의 높이와 동일하게 설정하여 스크롤이 가능하도록 합니다. */
-	height: 100vh;
-	/* overflow를 숨겨서 스크롤이 생기지 않도록 합니다. */
-	overflow: auto;
-	/* 배경 이미지 아래쪽에 간격 추가 */
-	margin-bottom: 235px;
-	/* 조절하고 싶은 간격(px)을 지정하세요. */
-}
-
-.Main1 {
-	position: relative;
-	width: 100%;
-	height: 100%;
-}
-
-.CrMa, .ForTheBestCoffeeMoments, .MyCafeFinder {
-	color: white;
-	text-align: center;
-	word-wrap: break-word;
-	opacity: 0; /* 처음에는 투명하게 설정 */
-	transition: opacity 3s ease; /* 투명도 변화에 애니메이션 적용 */
-}
-
-.CrMa {
-	font-size: 220px;
-	/* 	font-family: Bavarian; */
-	font-weight: 400;
-	position: absolute;
-	top: 300px;
-	left: 50%;
-	transform: translateX(-50%);
-}
-
-.Vector {
-	font-size: 25px;
-	font-family: Gill Sans MT;
-	font-weight: 1000;
-	color: white;
-	letter-spacing: 3.20px;
-	position: absolute;
-	top: 705px;
-	left: 50%;
-	transform: translateX(-50%) rotate(90deg);
-}
-
-.ForTheBestCoffeeMoments {
-	font-size: 16px;
-	font-family: Cantarell;
-	font-weight: 400;
-	letter-spacing: 3.20px;
-	position: absolute;
-	top: 569px;
-	left: 50%;
-	transform: translateX(-50%);
-}
-
-.MyCafeFinder {
-	font-size: 32px;
-	font-family: "Julius Sans One", sans-serif;
-	/* 	font-weight: 500; */
-	letter-spacing: 6.40px;
-	position: absolute;
-	top: 214px;
-	left: 50%;
-	transform: translateX(-50%);
-}
-</style>
-</head>
-
-<body>
-
-	<div class="background-image">
-		<div class="Main1">
-			<div class="Vector">〉〉</div>
-			<div class="CrMa">
-				<img src="https://velog.velcdn.com/images/yunlinit/post/29de0688-d442-4346-8d16-16101822b4b3/image.png" alt="Crèma" />
-			</div>
-			<div class="ForTheBestCoffeeMoments">FOR THE BEST COFFEE MOMENTS</div>
-			<div class="MyCafeFinder">MY CAFE FINDER</div>
-		</div>
-	</div>
-
-	<script>
-    // 요소들이 화면에 나타나는 시점을 계산하는 함수
-    function appearOnScroll() {
-      var vector = document.querySelector('.Vector');
-      var crma = document.querySelector('.CrMa');
-      var coffeeMoments = document.querySelector('.ForTheBestCoffeeMoments');
-      var cafeFinder = document.querySelector('.MyCafeFinder');
-
-      var vectorDelay = vector.getBoundingClientRect().top - window.innerHeight;
-      var crmaDelay = crma.getBoundingClientRect().top - window.innerHeight;
-      var coffeeMomentsDelay = coffeeMoments.getBoundingClientRect().top - window.innerHeight;
-      var cafeFinderDelay = cafeFinder.getBoundingClientRect().top - window.innerHeight;
-
-      // 투명도를 0에서 1로 변경하여 나타나게 함
-      if (vectorDelay < 0) setTimeout(() => vector.style.opacity = 0.9, 150); // 0.15초 지연
-      if (crmaDelay < 0) setTimeout(() => crma.style.opacity = 0.9, 100); // 0.15초 지연
-      if (coffeeMomentsDelay < 0) setTimeout(() => coffeeMoments.style.opacity = 0.9, 150); // 0.15초 지연
-      if (cafeFinderDelay < 0) setTimeout(() => cafeFinder.style.opacity = 0.9, 150); // 0.15초 지연
-    }
-
-    // 스크롤 이벤트 리스너 등록
-    window.addEventListener('scroll', appearOnScroll);
-
-    // 초기에 한 번 호출하여 초기 화면에서도 적용되게 함
-    appearOnScroll();
-
-  </script>
-  
-</body>
-</html>
-
-
-
-<!-- 이미지 아래 페이지 내용 추가 -->
-
-
-<script>
 
 <!-- 조건에 따라 온도와 날씨 ID를 기반으로 날씨 코멘트와 이미지를 업데이트 -->
     function fetchWeather() {
@@ -252,309 +110,92 @@
 
 
     fetchWeather(); // Call the function to fetch weather on page load
-    
-    
-    
-    
 
-    
-    
 </script>
 
 
-
-
-
-<!-- 날씨위젯 -->
-<a class="weatherwidget-io" href="https://forecast7.com/en/36d35127d38/daejeon/" data-icons="Climacons Animated"
-	data-mode="Current" data-days="3" data-theme="pure">Daejeon, South Korea</a>
-<script>
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-</script>
-
 <style>
-.weatherwidget-io {
-	max-width: 225px !important;
-	background-color: transparent !important;
-	margin-left: 30px !important;
-	margin-bottom: 30px !important;
-}
-</style>
-
-
-<!-- 날씨 테마 섹션 -->
-
-
-<div class="weather-section mx-auto">
-	<div class="recommendation mx-auto">
-		<div class="indent">
-			<div class="cremaRecommends">
-				<span> CREMA <br />
-				</span> <span>RECOMMENDS</span>
-			</div>
-			<div class="Recommends mx-auto">크레마는 오늘같은 날씨에 가기 좋은 카페를 추천해드려요.</div>
-			<div class="weather-comment">-</div>
-		</div>
-		<div class="weather-img-box">
-			<img class="Weather-img" src="-" />
-		</div>
-
-		<!-- 		날씨조건에 따라 추천검색어를 보여주는 검색창 -->
-		<div class="search-box">
-			<div class="how-about-here">오늘은 이런 카페 어떠세요?</div>
-			<form action="/usr/findcafe/searchCafes" method="get" id="searchForm">
-				<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs max-w-xs"> <input
-					type="text" class="grow" id="keyword" name="keyword" autocomplete="off" placeholder="검색어를 입력해주세요" value=""
-					style="color: black;" ;/> <a href="javascript:;" onclick="submitSearchForm()">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
-                    <path fill-rule="evenodd"
-								d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-								clip-rule="evenodd" />
-                </svg>
-					</a>
-				</label>
-			</form>
-		</div>
-	</div>
-
-</div>
-
-
-
-
-
-
-<!-- 날씨테마 CSS -->
-
-<style>
-.weather-section {
-	width: 100%;
-	height: auto;
-	background: rgba(232.69, 215.26, 202.63, 0.19);
+/* 배경 이미지 스타일 설정 */
+.background-image {
+	/* 배경 이미지 URL 지정 */
+	background-image:
+		url('https://velog.velcdn.com/images/yunlinit/post/19af9bf9-7b10-4c41-abaf-7af2ac3991d4/image.jpg');
+	/* 이미지를 가득 채우도록 설정 */
+	background-size: cover;
+	/* 이미지가 반복되지 않도록 설정 */
+	background-repeat: no-repeat;
+	/* 이미지의 위치를 가운데 정렬 */
+	background-position: center;
+	/* 선택적으로 이미지에 대한 기타 스타일을 지정할 수 있습니다. */
+	/* 페이지의 전체 높이를 이미지의 높이와 동일하게 설정하여 스크롤이 가능하도록 합니다. */
+	height: 100vh;
+	/* overflow를 숨겨서 스크롤이 생기지 않도록 합니다. */
+	overflow: auto;
+	/* 배경 이미지 아래쪽에 간격 추가 */
+	margin-bottom: 235px;
+	/* 조절하고 싶은 간격(px)을 지정하세요. */
 }
 
-.recommendation {
-	width: 100%;
-	height: 600px;
+.Main1 {
 	position: relative;
+	width: 100%;
+	height: 100%;
 }
 
-.indent {
-	padding-left: 100px;
-	padding-top: 50px;
-}
-
-.cremaRecommends {
-	width: 595px;
-	height: 20px;
-	position: relative;
-}
-
-.cremaRecommends span {
-	font-size: 70px;
-	font-family: "Vidaloka", serif;
-	font-weight: 400;
-	letter-spacing: 1px;
+.CrMa, .ForTheBestCoffeeMoments, .MyCafeFinder {
+	color: white;
+	text-align: center;
 	word-wrap: break-word;
-	color: #66666;
+	opacity: 0; /* 처음에는 투명하게 설정 */
+	transition: opacity 3s ease; /* 투명도 변화에 애니메이션 적용 */
 }
 
-.Recommends {
-	color: #6D6D6D;
+.CrMa {
+	font-size: 220px;
+	/* 	font-family: Bavarian; */
+	font-weight: 400;
+	position: absolute;
+	top: 300px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.Vector {
+	font-size: 25px;
+	font-family: Gill Sans MT;
+	font-weight: 1000;
+	color: white;
+	letter-spacing: 3.20px;
+	position: absolute;
+	top: 705px;
+	left: 50%;
+	transform: translateX(-50%) rotate(90deg);
+}
+
+.ForTheBestCoffeeMoments {
 	font-size: 16px;
-	font-family: Pretendard;
-	font-weight: 300;
-	letter-spacing: 1px;
-	word-wrap: break-word;
-	position: relative;
-	top: 230px;
-}
-
-.weather-comment {
-	width: 490px;
-	height: 53px;
-	position: relative;
-	/* 	color: #6D6D6D; */
-	color: #755a44;
-	font-style: italic;
-	font-size: 18px;
-	font-family: Pretendard;
-	font-weight: 500;
-	letter-spacing: 1.5px;
-	word-wrap: break-word;
-	top: 270px;
-	font-size: 18px;
-}
-
-.weather-img-box {
-	position: absolute;
-	top: 0;
-	right: 0;
-	height: 100%;
-}
-
-.Weather-img {
-	height: 100%;
-}
-</style>
-
-
-<!-- 검색어박스 CSS-->
-<style>
-.search-box {
-	/*   width: 350px; */
-	height: 82px;
-	top: 75%;
-	position: absolute;
-	padding-left: 100px;
-	z-index: 999;
-}
-
-.search-menu-item {
-	margin-top: 30px;
-}
-
-.how-about-here {
-	width: 589px;
-	height: 39px;
-	/* 	padding-left: 100px; */
-	top: 0px;
-	position: absolute;
-	color: #6D6D6D;
-	font-size: 14px;
-	font-family: Pretendard;
-	font-weight: 500;
-	letter-spacing: 1.40px;
-	word-wrap: break-word;
-}
-
-.line {
-	height: 37px;
-	padding: 6px 0 6px 1px;
-	left: 3px;
-	top: 39px;
-	position: absolute;
-	background: rgba(255, 255, 255, 0);
-	justify-content: flex-start;
-	align-items: center;
-	display: flex; /* 수정된 부분 */
-	width: 100%;
-}
-
-.input-container {
-	width: calc(100% - 50px); /* 수정된 부분 */
-	position: relative;
-	margin-top: 30px;
-}
-
-.input {
-	width: 100%;
-	height: 43px;
-	color: #A9A9A9;
-	font-size: 14px;
-	font-family: Pretendard;
+	font-family: Cantarell;
 	font-weight: 400;
-	letter-spacing: 1.40px;
-	word-wrap: break-word;
-	padding-left: 6px;
-}
-
-.search-btn {
-	width: 50px;
-	height: 43px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.search-btn a {
-	color: #6D6D6D;
-	font-size: 20px;
-	font-family: Pretendard;
-	font-weight: 500;
-	letter-spacing: 1px;
-	word-wrap: break-word;
-}
-
-.search-btn {
+	letter-spacing: 3.20px;
 	position: absolute;
-	right: 0;
-	top: 30;
+	top: 569px;
+	left: 50%;
+	transform: translateX(-50%);
 }
-</style>
 
+.MyCafeFinder {
+	font-size: 32px;
+	font-family: "Julius Sans One", sans-serif;
+	/* 	font-weight: 500; */
+	letter-spacing: 6.40px;
+	position: absolute;
+	top: 214px;
+	left: 50%;
+	transform: translateX(-50%);
+}
 
+/* 카페추천 섹션 */
 
-
-<!--   <div class="cafe-item"> -->
-<!--                 <a href="cafeDetail?id=`+cafe.id+`" class="linkbox１"> -->
-<!--                     <div class="content-info-box" style="margin-bottom: 50px"> -->
-<!--                         <div class="cafe-img-box"> -->
-<!--                             <img src="`+cafe.cafeImgUrl1+`" alt="카페 이미지" /> -->
-<!--                         </div> -->
-<!--                         <div class="name-address"> -->
-<!--                             <div class="cafe-name">`+cafe.name+`</div> -->
-<!--                             <p class="cafe-address">`+cafe.address+`</p> -->
-<!--                         </div> -->
-<!--                         <div class="like-count"> -->
-<!--                             <span class="material-symbols-outlined"> favorite </span> -->
-<!--                             <div class="like-count-num">`+cafe.cafeScrapCount+`</div> -->
-<!--                         </div> -->
-<!--                         <div class="review-count"> -->
-<!--                             <div class="title-review">리뷰</div> -->
-<!--                             <div class="review-count-num">`+cafe.reviewCount+`</div> -->
-<!--                         </div> -->
-<!--                         <div class="show-distance"> -->
-<!--                             <div class="num-km-group"> -->
-<!--                                 <div class="km">km</div> -->
-<!--                                 <div class="distance-num">1.8</div> -->
-<!--                             </div> -->
-<!--                         </div> -->
-<!--                         <div class="hashtag">`+cafe.hashtag+`</div> -->
-<!--                     </div> -->
-<!--                 </a> -->
-<!--             </div> -->
-
-
-
-
-<!-- 카페추천 박스 -->
-
-<div class="CafeRecom mx-auto">
-	<a href="../findcafe/cafeDetail?id=${getNewestCafe.id}" class="NewCafe">
-		<div>크레마 신규 카페</div>
-		<div class="hover-img-zoom-in">
-			<img class="NewCafeImg" src="${getNewestCafe.cafeImgUrl1}" />
-			<div class="InfoBox">
-				<div class="name">${getNewestCafe.name}</div>
-				<div class="address">${getNewestCafe.address}</div>
-			</div>
-		</div>
-	</a>
-
-	<a href="../findcafe/cafeDetail?id=${getPopularCafe.id}" class="PopularCafe">
-		<div>크레마 인기 카페</div>
-		<div class="hover-img-zoom-in">
-			<img class="PopularCafeImg" src="${getPopularCafe.cafeImgUrl1}" />
-			<div class="InfoBox">
-				<div class="name">${getPopularCafe.name}</div>
-				<div class="address">${getPopularCafe.address}</div>
-			</div>
-		</div>
-	</a>
-	<a href="../findcafe/cafeDetail?id=${getRecommendedCafe.id}" class="RecomCafe">
-		<div>크레마 추천 카페</div>
-		<div class="hover-img-zoom-in">
-			<img class="RecomCafeImg" src="${getRecommendedCafe.cafeImgUrl1}" />
-			<div class="InfoBox">
-				<div class="name">${getRecommendedCafe.name}</div>
-				<div class="address">${getRecommendedCafe.address}</div>
-			</div>
-		</div>
-	</a>
-</div>
-
-<style>
 .CafeRecom {
 	width: 1440px;
 	height: 1129px;
@@ -651,12 +292,300 @@
 	overflow: hidden;
 	object-fit: cover;
 }
+
+/* 날씨테마 CSS  */
+
+.weather-section {
+	width: 100%;
+	height: auto;
+	background: rgba(232.69, 215.26, 202.63, 0.19);
+}
+
+.recommendation {
+	width: 100%;
+	height: 600px;
+	position: relative;
+}
+
+.indent {
+	padding-left: 100px;
+	padding-top: 50px;
+}
+
+.cremaRecommends {
+	width: 595px;
+	height: 20px;
+	position: relative;
+}
+
+.cremaRecommends span {
+	font-size: 70px;
+	font-family: "Vidaloka", serif;
+	font-weight: 400;
+	letter-spacing: 1px;
+	word-wrap: break-word;
+	color: #66666;
+}
+
+.Recommends {
+	color: #6D6D6D;
+	font-size: 16px;
+	font-family: Pretendard;
+	font-weight: 300;
+	letter-spacing: 1px;
+	word-wrap: break-word;
+	position: relative;
+	top: 230px;
+}
+
+.weather-comment {
+	width: 490px;
+	height: 53px;
+	position: relative;
+	/* 	color: #6D6D6D; */
+	color: #755a44;
+	font-style: italic;
+	font-size: 18px;
+	font-family: Pretendard;
+	font-weight: 500;
+	letter-spacing: 1.5px;
+	word-wrap: break-word;
+	top: 270px;
+	font-size: 18px;
+}
+
+.weather-img-box {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+}
+
+.Weather-img {
+	height: 100%;
+}
+
+
+/* 검색어박스 CSS */
+
+.search-box {
+	/*   width: 350px; */
+	height: 82px;
+	top: 75%;
+	position: absolute;
+	padding-left: 100px;
+	z-index: 999;
+}
+
+.search-menu-item {
+	margin-top: 30px;
+}
+
+.how-about-here {
+	width: 589px;
+	height: 39px;
+	/* 	padding-left: 100px; */
+	top: 0px;
+	position: absolute;
+	color: #6D6D6D;
+	font-size: 14px;
+	font-family: Pretendard;
+	font-weight: 500;
+	letter-spacing: 1.40px;
+	word-wrap: break-word;
+}
+
+.line {
+	height: 37px;
+	padding: 6px 0 6px 1px;
+	left: 3px;
+	top: 39px;
+	position: absolute;
+	background: rgba(255, 255, 255, 0);
+	justify-content: flex-start;
+	align-items: center;
+	display: flex; /* 수정된 부분 */
+	width: 100%;
+}
+
+.input-container {
+	width: calc(100% - 50px); /* 수정된 부분 */
+	position: relative;
+	margin-top: 30px;
+}
+
+.input {
+	width: 100%;
+	height: 43px;
+	color: #A9A9A9;
+	font-size: 14px;
+	font-family: Pretendard;
+	font-weight: 400;
+	letter-spacing: 1.40px;
+	word-wrap: break-word;
+	padding-left: 6px;
+}
+
+.search-btn {
+	width: 50px;
+	height: 43px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.search-btn a {
+	color: #6D6D6D;
+	font-size: 20px;
+	font-family: Pretendard;
+	font-weight: 500;
+	letter-spacing: 1px;
+	word-wrap: break-word;
+}
+
+.search-btn {
+	position: absolute;
+	right: 0;
+	top: 30;
+}
 </style>
 
+<!-- 날씨 위젯 여기부터-->
+<style>
+.weatherwidget-io {
+	max-width: 225px !important;
+	background-color: transparent !important;
+	margin-left: 30px !important;
+	margin-bottom: 30px !important;
+}
+</style>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>
+<!-- 날씨 위젯 여기까지 -->
+
+
+<!-- 메인 대문 -->
+<div class="background-image">
+		<div class="Main1">
+			<div class="Vector">〉〉</div>
+			<div class="CrMa">
+				<img
+					src="https://velog.velcdn.com/images/yunlinit/post/29de0688-d442-4346-8d16-16101822b4b3/image.png"
+					alt="Crèma" />
+			</div>
+			<div class="ForTheBestCoffeeMoments">FOR THE BEST COFFEE
+				MOMENTS</div>
+			<div class="MyCafeFinder">MY CAFE FINDER</div>
+		</div>
+	</div>
+	
+<!-- 날씨위젯 -->
+	<a class="weatherwidget-io"
+		href="https://forecast7.com/en/36d35127d38/daejeon/"
+		data-icons="Climacons Animated" data-mode="Current" data-days="3"
+		data-theme="pure">Daejeon, South Korea</a>
+
+
+<!-- 날씨 테마 섹션 -->
+<div class="weather-section mx-auto">
+	<div class="recommendation mx-auto">
+		<div class="indent">
+			<div class="cremaRecommends">
+				<span> CREMA <br />
+				</span> <span>RECOMMENDS</span>
+			</div>
+			<div class="Recommends mx-auto">크레마는 오늘같은 날씨에 가기 좋은 카페를 추천해드려요.</div>
+			<div class="weather-comment">-</div>
+		</div>
+		<div class="weather-img-box">
+			<img class="Weather-img" src="-" />
+		</div>
+
+		<!-- 		날씨조건에 따라 추천검색어를 보여주는 검색창 -->
+		<div class="search-box">
+			<div class="how-about-here">오늘은 이런 카페 어떠세요?</div>
+			<form action="/usr/findcafe/searchCafes" method="get" id="searchForm">
+				<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs max-w-xs"> <input
+					type="text" class="grow" id="keyword" name="keyword" autocomplete="off" placeholder="검색어를 입력해주세요" value=""
+					style="color: black;" ;/> <a href="javascript:;" onclick="submitSearchForm()">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
+                    <path fill-rule="evenodd"
+								d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+								clip-rule="evenodd" />
+                </svg>
+					</a>
+				</label>
+			</form>
+		</div>
+	</div>
 
 </div>
 
 
+<!-- 카페추천 섹션 -->
+<div class="CafeRecom mx-auto">
+	<a href="../findcafe/cafeDetail?id=${getNewestCafe.id}" class="NewCafe">
+		<div>크레마 신규 카페</div>
+		<div class="hover-img-zoom-in">
+			<img class="NewCafeImg" src="${getNewestCafe.cafeImgUrl1}" />
+			<div class="InfoBox">
+				<div class="name">${getNewestCafe.name}</div>
+				<div class="address">${getNewestCafe.address}</div>
+			</div>
+		</div>
+	</a> <a href="../findcafe/cafeDetail?id=${getPopularCafe.id}"
+		class="PopularCafe">
+		<div>크레마 인기 카페</div>
+		<div class="hover-img-zoom-in">
+			<img class="PopularCafeImg" src="${getPopularCafe.cafeImgUrl1}" />
+			<div class="InfoBox">
+				<div class="name">${getPopularCafe.name}</div>
+				<div class="address">${getPopularCafe.address}</div>
+			</div>
+		</div>
+	</a> <a href="../findcafe/cafeDetail?id=${getRecommendedCafe.id}"
+		class="RecomCafe">
+		<div>크레마 추천 카페</div>
+		<div class="hover-img-zoom-in">
+			<img class="RecomCafeImg" src="${getRecommendedCafe.cafeImgUrl1}" />
+			<div class="InfoBox">
+				<div class="name">${getRecommendedCafe.name}</div>
+				<div class="address">${getRecommendedCafe.address}</div>
+			</div>
+		</div>
+	</a>
+</div>
+
+
+
+<!-- 대문 로고 서서히 나타나는 함수 -->
+<script>
+    // 요소들이 화면에 나타나는 시점을 계산하는 함수
+    function appearOnScroll() {
+      var vector = document.querySelector('.Vector');
+      var crma = document.querySelector('.CrMa');
+      var coffeeMoments = document.querySelector('.ForTheBestCoffeeMoments');
+      var cafeFinder = document.querySelector('.MyCafeFinder');
+
+      var vectorDelay = vector.getBoundingClientRect().top - window.innerHeight;
+      var crmaDelay = crma.getBoundingClientRect().top - window.innerHeight;
+      var coffeeMomentsDelay = coffeeMoments.getBoundingClientRect().top - window.innerHeight;
+      var cafeFinderDelay = cafeFinder.getBoundingClientRect().top - window.innerHeight;
+
+      // 투명도를 0에서 1로 변경하여 나타나게 함
+      if (vectorDelay < 0) setTimeout(() => vector.style.opacity = 0.9, 150); // 0.15초 지연
+      if (crmaDelay < 0) setTimeout(() => crma.style.opacity = 0.9, 100); // 0.15초 지연
+      if (coffeeMomentsDelay < 0) setTimeout(() => coffeeMoments.style.opacity = 0.9, 150); // 0.15초 지연
+      if (cafeFinderDelay < 0) setTimeout(() => cafeFinder.style.opacity = 0.9, 150); // 0.15초 지연
+    }
+
+    // 스크롤 이벤트 리스너 등록
+    window.addEventListener('scroll', appearOnScroll);
+
+    // 초기에 한 번 호출하여 초기 화면에서도 적용되게 함
+    appearOnScroll();
+</script>
 
 
 
