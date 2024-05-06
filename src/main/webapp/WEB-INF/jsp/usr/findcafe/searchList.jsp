@@ -11,6 +11,7 @@
 var currentPage = 1; // 현재 페이지 초기화
 var totalPages = 1; // 전체 페이지 수 초기화
 var keyword = ""; // 검색 키워드 초기화
+var selectedKeywords = []; // 선택된 키워드를 저장할 배열
 
 
 <!-- 페이지 접속 시 최초 실행(onload) 함수 -->
@@ -21,14 +22,17 @@ window.onload = function() {
     
     keyword = '${keyword}';
     
-    loadFilteredCafes(keyword, currentPage);	// 카페검색 최초 리스팅
+    selectedKeywords = [];
+    selectedKeywords.push(keyword);
+    
+    loadFilteredCafes(selectedKeywords, currentPage);	// 카페검색 최초 리스팅
 };
 
 
 <!-- document ready Area -->
 
 $(document).ready(function() {
-    var selectedKeywords = []; // 선택된 키워드를 저장할 배열
+
 
     // 필터 버튼 클릭 이벤트 핸들러 등록
     $(".filterButton").on("click", function(event) {
@@ -62,9 +66,12 @@ $(document).ready(function() {
     // 검색 버튼 클릭 이벤트 핸들러 등록
     $("#searchForm").submit(function(event) {
         event.preventDefault(); // 기본 동작 방지 (페이지 이동 막기)
-        var keyword = $("#keyword").val(); // 검색어 입력값 가져오기
+        keyword = $("#keyword").val(); // 검색어 입력값 가져오기
         currentPage = 1; // 페이지를 1로 설정하여 검색이 변경되었음을 나타냄
-        loadFilteredCafes(keyword, currentPage); // 검색어로 필터된 카페들을 불러오는 함수 호출
+        
+        selectedKeywords = [];			// 검색 키워드 초기화
+        selectedKeywords.push(keyword);	// 검색 키워드 배열에 담기
+        loadFilteredCafes(selectedKeywords, currentPage); // 검색어로 필터된 카페들을 불러오는 함수 호출
     });
 
     $('.pagination').on('click', 'a', function(event) {
@@ -184,6 +191,15 @@ function updateCafeList(cafeList, selectedKeywords) {
 }	// end function updateCafeList
 
 
+// <div class="show-distance">
+// <div class="num-km-group">
+//     <div class="km">km</div>
+//     <div class="distance-num">1.8</div>
+// </div>
+// </div>
+
+
+
 
 //선택된 키워드와 일치하는 텍스트에 스타일 적용하는 함수
 function applyStyleToMatchingText(selectedKeywords) {
@@ -232,6 +248,8 @@ function applyStyleToMatchingText(selectedKeywords) {
 <!-- end function Area -->
 
 
+
+
 </script>
 <!-- End | java script -->
 
@@ -253,11 +271,9 @@ function applyStyleToMatchingText(selectedKeywords) {
 		<!-- 검색창 -->
 		<form action="/usr/findcafe/searchCafes" method="get" id="searchForm">
 
-			<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs"
-				style="width: 65%; margin-left: 10px">
-				<input type="text" class="searchInput" id="keyword" name="keyword" autocomplete="off" placeholder="Search"
-					value="${keyword }" />
-				<a href='javascript:loadFilteredCafes( $("#keyword").val() , 1 );'>
+			<label class="search-menu-item input input-bordered flex items-center gap-2 input-xs" style="width: 65%; margin-left: 10px"> 
+				<input type="text" class="searchInput" id="keyword" name="keyword" autocomplete="off" placeholder="Search" value="${keyword }" /> 
+				<a href='javascript:loadFilteredCafes( [$("#keyword").val()] , 1 );'>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70">
 	                    <path fill-rule="evenodd"
 							d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
@@ -384,8 +400,11 @@ function applyStyleToMatchingText(selectedKeywords) {
 		</div>
 	</section>
 
-<!-- 검색결과 -->
-<section class="search-result" id="search-result"></section>
+
+
+	<!-- 검색결과 -->
+	<section class="search-result" id="search-result"></section>
+
 </section>
 
 
@@ -393,6 +412,12 @@ function applyStyleToMatchingText(selectedKeywords) {
 <div class="pagination flex justify-center mt-3" style="margin-top: 50px; margin-left: 200px;"></div>
 
 
+
+
+
+
+
+<!-- 페이지제목 css -->
 
 <style>
 .search-box {
@@ -402,7 +427,9 @@ function applyStyleToMatchingText(selectedKeywords) {
 	background-color: #ffffff;
 	z-index: 1; /* 다른 요소 위에 표시 */
 }
+</style>
 
+<style>
 .page-title {
 	position: relative;
 	top: 100px;
@@ -426,10 +453,10 @@ function applyStyleToMatchingText(selectedKeywords) {
 	margin-top: 150px
 }
 }
+</style>
 
-
-/* 필터 css */
-
+<!-- 필터 css -->
+<style>
 .active {
 	background-color: #dfdfdf !important; /* 클릭된 버튼의 배경색을 변경. */
 }
@@ -732,10 +759,12 @@ function applyStyleToMatchingText(selectedKeywords) {
 	letter-spacing: 0;
 	line-height: normal;
 }
+</style>
 
 
 <!-- 검색결과 css -->
 
+<style>
 .search-result {
 	position: relative;
 	margin-left: 100px;

@@ -76,15 +76,15 @@ public class UsrFindCafeController {
 			// 빈값인 경우 전체카페 리스트 보여줌
 			String keyword = selectedKeywordsObject.toString(); // 대관 바보
 			
-			if (!"".equals(keyword)) {
-																	// keyword = "아늑한 분위기의 카페"
-				keyword = keyword.replace("카페", "");				// keyword = "아늑한 분위기의 "
-				keyword.trim();										// keyword = "아늑한 분위기의"
-				
-				String[] splitKeywords = keyword.split(" ");		// {아늑한, 분위기의}
-				selectedKeywords = Arrays.asList(splitKeywords);	// [아늑한, 분위기의]
-				//selectedKeywords.add(keyword);
-			}
+//			if (!"".equals(keyword)) {
+//																	// keyword = "아늑한 분위기의 카페"
+//				keyword = keyword.replace("카페", "");				// keyword = "아늑한 분위기의 "
+//				keyword.trim();										// keyword = "아늑한 분위기의"
+//				
+//				String[] splitKeywords = keyword.split(" ");		// {아늑한, 분위기의}
+//				selectedKeywords = Arrays.asList(splitKeywords);	// [아늑한, 분위기의]
+//				//selectedKeywords.add(keyword);
+//			}
 
 		} else {
 			// *** 필터 전용
