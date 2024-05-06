@@ -22,8 +22,11 @@ window.onload = function() {
     
     keyword = '${keyword}';
     
-    selectedKeywords = [];
-    selectedKeywords.push(keyword);
+    if (keyword != ""){
+        selectedKeywords = [];
+        selectedKeywords.push(keyword);
+    }
+    
     
     loadFilteredCafes(selectedKeywords, currentPage);	// 카페검색 최초 리스팅
 };
