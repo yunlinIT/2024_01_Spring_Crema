@@ -10,11 +10,11 @@
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=06da921fb5b3ede9c345d161a3364b4e&libraries=services"></script>
 
 
-<!-- 변수 -->
+
 
 
 <script>
-
+	<!-- 변수 -->
 	var lat2 = 0.0; 
 	var lon2 = 0.0;
 
@@ -26,18 +26,20 @@
 	console.log("params.memberId : "+params.memberId);
 	
 	var isAlreadyAddCafeScrap = ${isAlreadyAddCafeScrap};
-	
-	
+
+	<!-- ready function -->
+	window.onload = function() {
+		checkCafeScrap();
+	};
 	
 
 	<!-- 좋아요 버튼	-->
 	function checkCafeScrap() {
 		if(isAlreadyAddCafeScrap == true){
-			$('#likeButton').toggleClass('btn-outline');
-		}
-
-		else {
-			return;
+			//$('#likeButton').toggleClass('btn-outline');
+			$('.material-symbols-outlined').css('font-variation-settings', "'FILL' 1");
+		} else {
+			$('.material-symbols-outlined').css('font-variation-settings', "'FILL' 0");
 		}
 	}
 	
@@ -71,20 +73,22 @@
 					//var DislikeButton = $('#DislikeButton');
 					//var DislikeCount = $('#DislikeCount');
 					
-					if(data.resultCode == 'S-1'){
+					if(data.resultCode == 'S-1'){		// 찜 완료 ♥
 						likeButton.toggleClass('btn-outline');
 						scrapCount.text(data.data1);
+						isAlreadyAddCafeScrap = true;
 					}
-					else if(data.resultCode == 'S-2'){
+					else if(data.resultCode == 'S-2'){	// 찜 취소 ♡
 						//DislikeButton.toggleClass('btn-outline');
 						//DislikeCount.text(data.data2);
 						likeButton.toggleClass('btn-outline');
 						scrapCount.text(data.data1);
+						isAlreadyAddCafeScrap = false;
 					}else {
 						likeButton.toggleClass('btn-outline');
 						scrapCount.text(data.data1);
 					}
-					
+					checkCafeScrap();	// 찜 색상 fill 변경 func
 				}else {
 					alert(data.msg);
 				}

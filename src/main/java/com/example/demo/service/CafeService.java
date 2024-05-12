@@ -80,8 +80,9 @@ public class CafeService {
 //    }
 	
 	public ResultData decreaseCafeScrapCount(int cafeId) { //TODO
-		int affectedRow = cafeRepository.decreaseGoodReactionPoint(cafeId);
-
+		//int affectedRow = cafeRepository.decreaseCafeScrapCount(cafeId);
+		int affectedRow = 0;
+		
 		if (affectedRow == 0) {
 			return ResultData.from("F-1", "없는 카페");
 		}
@@ -90,8 +91,9 @@ public class CafeService {
 	}
 	
 	public ResultData increaseCafeScrapCount(int cafeId) { //TODO
-		int affectedRow = cafeRepository.increaseCafeScrapCount(cafeId);
-
+//		int affectedRow = cafeRepository.increaseCafeScrapCount(cafeId);
+		int affectedRow = 0;
+		
 		if (affectedRow == 0) {
 			return ResultData.from("F-1", "없는 카페");
 		}

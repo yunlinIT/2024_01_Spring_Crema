@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.repository.CafeRepository;
 import com.example.demo.repository.CafeScrapRepository;
 import com.example.demo.repository.ReactionPointRepository;
 import com.example.demo.vo.Cafe;
@@ -18,7 +19,9 @@ public class CafeScrapService {
 
 	@Autowired
 	private CafeScrapRepository cafeScrapRepository;
-
+	
+	@Autowired
+	private CafeRepository cafeRepository;
 
 
 //	public int getSumScrapCount(int cafeId) {
@@ -50,7 +53,8 @@ public class CafeScrapService {
 
 	public ResultData addCafeScrapCount(int loginedMemberId, int cafeId) {
 
-		int affectedRow = cafeScrapRepository.addCafeScrapCount(loginedMemberId, cafeId);
+		int affectedRow = cafeScrapRepository.addCafeScrapCount(loginedMemberId, cafeId);	// 내 찜 목록에서 A카페 추가
+		
 		
 		System.err.println(affectedRow);
 		
@@ -58,7 +62,8 @@ public class CafeScrapService {
 			return ResultData.from("F-1", "찜 실패ㅠㅠ");
 		}
 
-
+		cafeRepository.increaseCafeScrapCount(cafeId);	// A카페 전체 찜 목록 COUNT +1
+		
 		return ResultData.from("S-1", "찜!");
 	}
 
@@ -79,10 +84,10 @@ public class CafeScrapService {
 //	}
 
 	public ResultData deleteCafeScrapCount(int loginedMemberId, int cafeId) {
-		cafeScrapRepository.deleteCafeScrapCount(loginedMemberId, cafeId);
+		cafeScrapRepository.deleteCafeScrapCount(loginedMemberId, cafeId);	// 내 찜 목록에서 A카페 삭제
+		cafeRepository.decreaseCafeScrapCount(cafeId);						// A카페 전체 찜 목록 COUNT -1
 
-
-		return ResultData.from("S-1", "찜 취소!");
+		return ResultData.from("S-2", "찜 취소!");
 
 	}
 
@@ -110,6 +115,18 @@ public class CafeScrapService {
 	public List<Cafe> getForPrintScrapCafes(Integer memberId) {
 		
 		return cafeScrapRepository.getForPrintScrapCafes(memberId);
+	}
+
+	public boolean getBooleanCafeScrap(int loginedMemberId, int cafeId) {
+		boolean isAlreadyCafeScrap = true;
+		
+		int myScrapCount = cafeScrapRepository.getSumCafeScrapCount(loginedMemberId, cafeId);
+		
+		if(myScrapCount == 0) {
+			isAlreadyCafeScrap = false;
+		}
+			
+		return isAlreadyCafeScrap;
 	}
 	
 	

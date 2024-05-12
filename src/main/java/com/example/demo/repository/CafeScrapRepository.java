@@ -78,13 +78,5 @@ public interface CafeScrapRepository {
 
 	public List<Cafe> getForPrintScrapCafes(Integer memberId);
 	
-	
-	
-	
-
-	
-	
-	
-
 
 }

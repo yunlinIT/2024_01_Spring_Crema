@@ -188,14 +188,14 @@ public interface CafeRepository {
 			SET cafeScrapCount = cafeScrapCount - 1
 			WHERE id = #{cafeId}
 			""")
-	public int decreaseGoodReactionPoint(int cafeId); // TODO
+	public void decreaseCafeScrapCount(int cafeId); // TODO
 
 	@Update("""
 			UPDATE cafe
 			SET cafeScrapCount = cafeScrapCount + 1
 			WHERE id = #{cafeId}
 			""")
-	public int increaseCafeScrapCount(int cafeId); // TODO
+	public void increaseCafeScrapCount(int cafeId); // TODO
 
 	@Select("""
 			SELECT cafeScrapCount

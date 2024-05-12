@@ -725,6 +725,31 @@ function updatePagination(currentPage, totalPages) {
     $('.pagination').html(paginationHTML); // 페이지네이션 업데이트
 }
 
+function isAlreadyAddCafeScrap(cafeId){
+	var isAlreadyScrap = true;
+	
+	$.ajax({
+		url: '/usr/cafeScrap/isAlreadyCafeScrapForList', 
+		type: 'POST',
+		data: {cafeId: cafeId},
+		dataType: 'json',
+		success: function(booleanData){
+			console.log("cafeId : "+cafeId+"\n"+"booleanData : "+booleanData);
+			
+			isAlreadyScrap = booleanData;
+			if(isAlreadyScrap === true){
+				$(".material-symbols-outlined[data-cafeid="+cafeId+"]").css('font-variation-settings', "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24");
+			} else {
+				$(".material-symbols-outlined[data-cafeid="+cafeId+"]").css('font-variation-settings', "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24");
+			}
+		},
+		error: function(jqXHR,textStatus,errorThrown) {
+			alert('찜 확인 오류 : ' + textStatus);
+		}
+		
+	});
+	
+}
 
 // 카페 리스트 업데이트 함수
 function updateCafeList(cafeList, selectedKeywords) {
@@ -748,6 +773,9 @@ function updateCafeList(cafeList, selectedKeywords) {
         searchResult.append(cafeItem); // 카페 리스트에 카페 아이템 추가
     } else {
 	    cafeList.forEach(function(cafe) { // 각 카페에 대해 반복
+	    	// 나의 찜 카페들은 isAlreadyAddCafeScrap = true
+	    	isAlreadyAddCafeScrap(cafe.id);
+	    	
 	        cafeItem = $(`
 	        		
 	            <div class="cafe-item">
@@ -761,7 +789,7 @@ function updateCafeList(cafeList, selectedKeywords) {
 	                            <p class="cafe-address equal-filter">`+cafe.address+`</p>
 	                        </div>
 	                        <div class="like-count">
-	                            <span class="material-symbols-outlined"> favorite </span>
+	                            <span class="material-symbols-outlined" data-cafeid="`+cafe.id+`"> favorite </span>
 	                            <div class="like-count-num">`+cafe.cafeScrapCount+`</div>
 	                        </div>
 	                        <div class="review-count">
