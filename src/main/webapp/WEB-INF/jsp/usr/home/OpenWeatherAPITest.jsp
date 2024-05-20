@@ -16,7 +16,7 @@
     <script>
         function fetchWeather() {
             var city = "Daejeon";
-            var apiKey = "4aeb4c84293bc9b4109638849c3b309c";
+            var apiKey = "API key"; // https://home.openweathermap.org/api_keys에서 API key 발급
             var lang = "kr";
 
             var apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&lang=" + lang + "&units=metric";
