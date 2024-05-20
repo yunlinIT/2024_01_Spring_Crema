@@ -150,7 +150,7 @@ ___
 ![](https://velog.velcdn.com/images/yunlinit/post/626b5f23-ec4e-4997-97a4-6df797e09700/image.png)
 - 회원은 자신이 쓴 게시글을 수정 할 수 있습니다.
 
-### [제휴 문의하기]
+### [제휴 문의하기 - 관리자에게 이메일 작성] 
 ![](https://velog.velcdn.com/images/yunlinit/post/b4c9f0c2-c7c7-453c-9911-3a1e0be882bf/image.png)
 - 누구나 관리자에게 이메일을 보낼 수 있습니다. 
 
