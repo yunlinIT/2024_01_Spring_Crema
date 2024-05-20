@@ -36,7 +36,7 @@ ___
 # 🛠 사용기술 및 개발환경
 ___
 - **언어**
-  - Java, Python
+  - Java
 - **Front-end**
   - HTML, CSS, JavaScript, jQuery, Tailwind, daisyUI
   - API: Open Weather API
