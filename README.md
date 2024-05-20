@@ -146,7 +146,7 @@ ___
 ![](https://velog.velcdn.com/images/yunlinit/post/6cd71ad3-8a08-4985-83ec-8d3c69c17032/image.png)
 - 회원은 제휴문의를 제외한 게시판의 모든 게시글을 상세보기 할 수 있습니다.
 
-### [커뮤니티 게시판 - 게시글 상세보기]
+### [커뮤니티 게시판 - 게시글 수정]
 ![](https://velog.velcdn.com/images/yunlinit/post/626b5f23-ec4e-4997-97a4-6df797e09700/image.png)
 - 회원은 자신이 쓴 게시글을 수정 할 수 있습니다.
 
