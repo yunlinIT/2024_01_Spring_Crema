@@ -1,4 +1,4 @@
-## ☕ Crema : 날씨 기반 대전 카페 추천 및 테마별 카페검색 플랫폼
+## ☕ Crema : 날씨 기반 대전 카페 추천 및 테마별 카페검색 서비스
 ___
 
 ![](https://velog.velcdn.com/images/yunlinit/post/eb0b28e7-8bf8-42a0-b6a5-14ec0ecf4105/image.png)
