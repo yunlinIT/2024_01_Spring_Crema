@@ -53,7 +53,6 @@
 						<th style="font-weight: 600">게시판</th>
 						<td>
 							<select class="select select-bordered select-sm w-full max-w-xs" name="boardId">
-								<!-- 									<option selected="selected" disabled>게시판을 선택해주세요</option> -->
 								<option value="1">크레마 소식</option>
 								<option value="2">자유게시판</option>
 								<option value="3">질문게시판</option>

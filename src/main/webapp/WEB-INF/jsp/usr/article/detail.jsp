@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="게시글 상세보기"></c:set>
 <%@ include file="../common/head.jspf"%>
@@ -39,7 +40,6 @@
 	}
 
 	$(function() {
-		// 		ArticleDetail__doIncreaseHitCount();
 		setTimeout(ArticleDetail__doIncreaseHitCount, 2000);
 	});
 
@@ -59,7 +59,7 @@
 	
 	function doGoodReaction(articleId) {
 		if(isNaN(params.memberId) == true){
-			if(confirm('로그인 해야해. 로그인 페이지로 가실???')){
+			if(confirm('로그인이 필요합니다. 로그인 하시겠습니까?')){
 				var currentUri = encodeURIComponent(window.location.href);
 				window.location.href = '../member/login?afterLoginUri=' + currentUri; // 로그인 페이지에 원래 페이지의 uri를 같이 보냄
 			}
@@ -114,7 +114,7 @@
 	function doBadReaction(articleId) {
 		
 		if(isNaN(params.memberId) == true){
-			if(confirm('로그인 해야해. 로그인 페이지로 가실???')){
+			if(confirm('로그인이 필요합니다. 로그인 하시겠습니까?')){
 				var currentUri = encodeURIComponent(window.location.href);
 				window.location.href = '../member/login?afterLoginUri=' + currentUri; // 로그인 페이지에 원래 페이지의 uri를 같이 보냄
 			}
@@ -182,7 +182,7 @@
 			console.log(form.body.value);
 			
 			if (form.body.value.length < 3) {
-				alert('댓글은 3글자 이상 입력해');
+				alert('댓글은 3글자 이상 입력해주세요');
 				form.body.focus();
 				return;
 			}
@@ -696,7 +696,8 @@ function doModifyReply(replyId) {
 				<a class="modify-btn" href="../article/modify?id=${article.id }">수정</a>
 			</c:if>
 			<c:if test="${article.userCanDelete }">
-				<a class="delete-btn" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
+				<a class="delete-btn"
+					onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
 					href="../article/doDelete?id=${article.id }">삭제</a>
 			</c:if>
 		</div>
@@ -709,98 +710,112 @@ function doModifyReply(replyId) {
 		<div class="title">${article.title }</div>
 		<div class="writer">${article.extra__writer }</div>
 		<div class="regDate">${article.regDate }</div>
-		<div class="view-count"> 조회수
+		<div class="view-count">
+			조회수
 			<div class="viewcount-name article-detail__hit-count">${article.hitCount }</div>
-<%-- 			<div class="viewcount-num">${article.hitCount }</div> --%>
 		</div>
 		<div class="top-line"></div>
-		<div class="body"><div class="toast-ui-viewer">
-							<script type="text/x-template">${article.body}</script></div>
-		<div class="like-dislike-btns">
-			<!-- 좋아요 버튼 -->
-			<span class="img-2 material-symbols-outlined heart"> favorite </span>
-			<button class="like" id="likeButton" onclick="doGoodReaction(${param.id})">좋아요</button>
-			<div class="like-count-num" id="likeCount">${article.goodReactionPoint }</div>
-
-			<!-- 싫어요 버튼 -->
-
-			<span class="img material-symbols-outlined thumb_down"> thumb_down </span>
-			<button class="dislike" id="DislikeButton" onclick="doBadReaction(${param.id})">싫어요</button>
-			<div class="dislike-count-num" id="DislikeCount">${article.badReactionPoint }</div>
-		</div>
-		<div class="bottom-line"></div>
-	</div>
-
-
-
-	<!-- 댓글 작성 부분 -->
-
-	<div class="reply-section">
-		<div class="write-review" style="font-weight: 600; width: 1050px">댓글 작성</div>
-		</br>
-
-		<c:if test="${rq.isLogined() }">
-			<form action="../reply/doWrite" method="POST" onsubmit="ReplyWrite__submit(this); return false;">
-				<input type="hidden" name="relTypeCode" value="article" /> <input type="hidden" name="relId" value="${article.id }" />
-
-				<textarea class="input input input-bordered input-md w-full" autocomplete="off" placeholder="댓글을 남겨주세요" name="body"
-					style="height: 83px; width:1064px;"> </textarea>
-
-				<div></div>
-				<input class="btn btn-sm mt-4" type="submit" value="등록" />
-			</form>
-		</c:if>
-		<c:if test="${!rq.isLogined() }">
-			<a href="${rq.loginUri }" style="text-decoration: underline; font-weight: 600;">로그인</a> 후 이용해주세요.
-				</c:if>
-		</br>
-
-
-
-
-		<!-- 댓글 목록 부분 -->
-
-		<div class="reply-count">
-			<div class="reply-title" style="font-weight: 600; font-size: 17px;">댓글</div>
-			<div class=" reply-count-num" style="font-weight: 700; font-size: 13px">(${repliesCount })</div>
-		</div>
-
-		<c:forEach var="reply" items="${replies }">
-			<div class="reply">
-				<div class="reply-box">
-					<div class="reply-writer 댓글작성자" style="font-size: 13px;">${reply.extra__writer }</div>
-
-					<div class="reply-body 댓글내용" style="font-size: 14px; margin-top:4px;">
-						<span id="reply-${reply.id }">${reply.body }</span>
-						<form method="POST" id="modify-form-${reply.id }" style="display: none;" action="/usr/reply/doModify">
-							<input style="width: 1064px;"type="text" value="${reply.body }" name="reply-text-${reply.id }" />
-						</form>
-					</div>
-					
-					<div class="reply-regDate 날짜" style="margin-top:5px;">${reply.regDate.substring(0,10) }</div>
-				
-
-					<!-- 	수정 삭제 버튼		 -->
-					<div class="mod-del-btns" style="font-weight: 600; color: #666666; margin-top:10px;">
-						<c:if test="${reply.userCanModify }">
-							<button onclick="toggleModifybtn('${reply.id}');" id="modify-btn-${reply.id }" style="white-space: nowrap;">수정</button>
-							<button onclick="doModifyReply('${reply.id}');" style="white-space: nowrap; display: none;"
-								id="save-btn-${reply.id }">저장</button>
-
-						</c:if>
-
-						<c:if test="${reply.userCanDelete }">
-							<a style="white-space: nowrap; margin-left: 10px;" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
-								href="../reply/doDelete?id=${reply.id }">삭제</a>
-						</c:if>
-					</div>
-					<div class="reply-box-bottom-line"></div>
-				</div>
-
+		<div class="body">
+			<div class="toast-ui-viewer">
+				<script type="text/x-template">${article.body}</script>
 			</div>
-		</c:forEach>
+			<div class="like-dislike-btns">
+				<!-- 좋아요 버튼 -->
+				<span class="img-2 material-symbols-outlined heart"> favorite
+				</span>
+				<button class="like" id="likeButton"
+					onclick="doGoodReaction(${param.id})">좋아요</button>
+				<div class="like-count-num" id="likeCount">${article.goodReactionPoint }</div>
+				<!-- 싫어요 버튼 -->
+				<span class="img material-symbols-outlined thumb_down">
+					thumb_down </span>
+				<button class="dislike" id="DislikeButton"
+					onclick="doBadReaction(${param.id})">싫어요</button>
+				<div class="dislike-count-num" id="DislikeCount">${article.badReactionPoint }</div>
+			</div>
+			<div class="bottom-line"></div>
+		</div>
 
-	</div>
+
+
+		<!-- 댓글 작성 부분 -->
+		<div class="reply-section">
+			<div class="write-review" style="font-weight: 600; width: 1050px">댓글
+				작성</div>
+			<br>
+			<c:if test="${rq.isLogined() }">
+				<form action="../reply/doWrite" method="POST"
+					onsubmit="ReplyWrite__submit(this); return false;">
+					<input type="hidden" name="relTypeCode" value="article" /> <input
+						type="hidden" name="relId" value="${article.id }" />
+
+					<textarea class="input input input-bordered input-md w-full"
+						autocomplete="off" placeholder="댓글을 남겨주세요" name="body"
+						style="height: 83px; width: 1064px;"> </textarea>
+
+					<div></div>
+					<input class="btn btn-sm mt-4" type="submit" value="등록" />
+				</form>
+			</c:if>
+			<c:if test="${!rq.isLogined() }">
+				<a href="${rq.loginUri }"
+					style="text-decoration: underline; font-weight: 600;">로그인</a> 후 이용해주세요.
+				</c:if>
+			</br>
+
+
+
+
+			<!-- 댓글 목록 부분 -->
+
+			<div class="reply-count">
+				<div class="reply-title" style="font-weight: 600; font-size: 17px;">댓글</div>
+				<div class=" reply-count-num"
+					style="font-weight: 700; font-size: 13px">(${repliesCount })</div>
+			</div>
+
+			<c:forEach var="reply" items="${replies }">
+				<div class="reply">
+					<div class="reply-box">
+						<div class="reply-writer 댓글작성자" style="font-size: 13px;">${reply.extra__writer }</div>
+
+						<div class="reply-body 댓글내용"
+							style="font-size: 14px; margin-top: 4px;">
+							<span id="reply-${reply.id }">${reply.body }</span>
+							<form method="POST" id="modify-form-${reply.id }"
+								style="display: none;" action="/usr/reply/doModify">
+								<input style="width: 1064px;" type="text" value="${reply.body }"
+									name="reply-text-${reply.id }" />
+							</form>
+						</div>
+
+						<div class="reply-regDate 날짜" style="margin-top: 5px;">${reply.regDate.substring(0,10) }</div>
+
+
+						<!-- 	수정 삭제 버튼		 -->
+						<div class="mod-del-btns"
+							style="font-weight: 600; color: #666666; margin-top: 10px;">
+							<c:if test="${reply.userCanModify }">
+								<button onclick="toggleModifybtn('${reply.id}');"
+									id="modify-btn-${reply.id }" style="white-space: nowrap;">수정</button>
+								<button onclick="doModifyReply('${reply.id}');"
+									style="white-space: nowrap; display: none;"
+									id="save-btn-${reply.id }">저장</button>
+							</c:if>
+
+							<c:if test="${reply.userCanDelete }">
+								<a style="white-space: nowrap; margin-left: 10px;"
+									onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;"
+									href="../reply/doDelete?id=${reply.id }">삭제</a>
+							</c:if>
+						</div>
+						<div class="reply-box-bottom-line"></div>
+					</div>
+
+				</div>
+			</c:forEach>
+
+		</div>
 </section>
 
 

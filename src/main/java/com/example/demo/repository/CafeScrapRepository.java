@@ -13,21 +13,6 @@ import com.example.demo.vo.Cafe;
 public interface CafeScrapRepository {
 	
 	
-	
-	
-//수정중....... memberId가 필요할까? 고민즁... memberID not found error 떠서  memberId 삭제
-//	@Select("""
-//			SELECT IFNULL(SUM(CS.scrap),0)
-//			FROM cafeScrap AS CS
-//			WHERE CS.cafeId = #{cafeId}
-//			""")
-//	public int getSumScrapCount(int cafeId);
-	
-	
-	//AND CS.memberId = #{memberId}
-	
-	
-	
 	@Select("""
 			SELECT IFNULL(SUM(CS.scrap),0)
 			FROM cafeScrap AS CS
@@ -46,16 +31,7 @@ public interface CafeScrapRepository {
 			""")
 	public int addCafeScrapCount(int memberId, int cafeId); //addGoodReactionPoint
 
-//	@Insert("""
-//			INSERT INTO reactionPoint
-//			SET regDate = NOW(),
-//			updateDate = NOW(),
-//			relTypeCode = #{relTypeCode},
-//			relId = #{relId},
-//			memberId = #{memberId},
-//			`point` = -1
-//			""")
-//	public int addBadReactionPoint(int memberId, String relTypeCode, int relId);
+
 
 	@Delete("""
 			DELETE FROM cafeScrap

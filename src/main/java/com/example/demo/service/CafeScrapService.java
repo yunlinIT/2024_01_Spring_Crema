@@ -22,19 +22,6 @@ public class CafeScrapService {
 	
 	@Autowired
 	private CafeRepository cafeRepository;
-
-
-//	public int getSumScrapCount(int cafeId) {
-//		int getScrapCountByMemberId = cafeScrapRepository.getSumScrapCount(cafeId);
-//
-//		if (getScrapCountByMemberId > 0) {
-//			return getScrapCountByMemberId;
-//		}
-//
-//		return 0;
-//	}
-	
-	
 	
 	public ResultData usersCafeScrap(int loginedMemberId, int cafeId) {
 
@@ -67,21 +54,6 @@ public class CafeScrapService {
 		return ResultData.from("S-1", "찜!");
 	}
 
-//	public ResultData addBadReactionPoint(int loginedMemberId, String relTypeCode, int relId) {
-//		int affectedRow = cafeScrapRepository.addBadReactionPoint(loginedMemberId, relTypeCode, relId);
-//
-//		if (affectedRow != 1) {
-//			return ResultData.from("F-1", "싫어요 실패");
-//		}
-//
-//		switch (relTypeCode) {
-//		case "cafe":
-//			cafeService.increaseBadReactionPoint(relId);
-//			break;
-//		}
-//
-//		return ResultData.from("S-1", "싫어요!");
-//	}
 
 	public ResultData deleteCafeScrapCount(int loginedMemberId, int cafeId) {
 		cafeScrapRepository.deleteCafeScrapCount(loginedMemberId, cafeId);	// 내 찜 목록에서 A카페 삭제
@@ -90,17 +62,6 @@ public class CafeScrapService {
 		return ResultData.from("S-2", "찜 취소!");
 
 	}
-
-//	public ResultData deleteBadReactionPoint(int loginedMemberId, String relTypeCode, int relId) {
-//		cafeScrapRepository.deleteReactionPoint(loginedMemberId, relTypeCode, relId);
-//
-//		switch (relTypeCode) {
-//		case "cafe":
-//			cafeService.decreaseBadReactionPoint(relId);
-//			break;
-//		}
-//		return ResultData.from("S-1", "싫어요 취소 됨");
-//	}
 
 	public boolean isAlreadyAddCafeScrap(int memberId, int cafeId) { //isAlreadyAddGoodRp
 		int getScrapStatusByMemberId = cafeScrapRepository.getSumCafeScrapCount(memberId, cafeId);
@@ -129,20 +90,7 @@ public class CafeScrapService {
 		return isAlreadyCafeScrap;
 	}
 	
-	
-	
 
-//	public boolean isAlreadyAddBadRp(int memberId, int relId, String relTypeCode) {
-//		int getPointTypeCodeByMemberId = cafeScrapRepository.getSumReactionPoint(memberId, relTypeCode, relId);
-//
-//		if (getPointTypeCodeByMemberId < 0) {
-//			return true;
-//		}
-//
-//		return false;
-//	}
-
-	
 	
 	
 	

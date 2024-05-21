@@ -28,31 +28,7 @@ public class UsrCafeScrapController {
 	@Autowired
 	private CafeScrapService cafeScrapService;
 	
-	
-	
-	
-//	
-//	@RequestMapping("/usr/member/myPage")
-//	public String showMyPage(HttpServletRequest req, Model model) {
-//		
-//		Rq rq = (Rq) req.getAttribute("rq");
-//		
-//		Integer memberId = rq.getLoginedMemberId();
-//		
-//		int myWriteCount = memberService.getMyWriteCount(memberId);
-//		int myReplyCount = memberService.getMyReplyCount(memberId);
-//		int myQuestionCount = memberService.getMyQuestionCount(memberId);
-//		int myScrapCount = memberService.getMyScrapCount(memberId);
-//		
-//		model.addAttribute("myWriteCount", myWriteCount);
-//		model.addAttribute("myReplyCount", myReplyCount);
-//		model.addAttribute("myQuestionCount", myQuestionCount);
-//		model.addAttribute("myScrapCount", myScrapCount);
-//		
-//
-//		return "usr/member/myPage";
-//	}
-	
+
 	@RequestMapping("/usr/findcafe/scrapList")
 	public String cafeScrapList(HttpServletRequest req, Model model) {
 		
@@ -60,15 +36,6 @@ public class UsrCafeScrapController {
 		
 		Integer memberId = rq.getLoginedMemberId();
 		
-//		int myWriteCount = memberService.getMyWriteCount(memberId);
-//		int myReplyCount = memberService.getMyReplyCount(memberId);
-//		int myQuestionCount = memberService.getMyQuestionCount(memberId);
-//		int myScrapCount = memberService.getMyScrapCount(memberId);
-//		
-//		model.addAttribute("myWriteCount", myWriteCount);
-//		model.addAttribute("myReplyCount", myReplyCount);
-//		model.addAttribute("myQuestionCount", myQuestionCount);
-//		model.addAttribute("myScrapCount", myScrapCount);
 		
 		List<Cafe> cafes = cafeScrapService.getForPrintScrapCafes(memberId);
 		

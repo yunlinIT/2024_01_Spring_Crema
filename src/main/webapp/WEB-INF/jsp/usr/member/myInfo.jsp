@@ -1,64 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="나의 회원정보"></c:set>
 <%@ include file="../common/head.jspf"%>
-
-
-<section>
-	<div class="MyInfo">
-		<div class="MyInfoBox">
-			<div class="Rectangle6">
-				<section class="mt-8 text-xl px-4">
-
-
-					<div class="title">회원정보</div>
-
-					<div class="regDate">
-						<span class="material-symbols-outlined"> calendar_month </span>
-						<div class="ContentName">가입날짜</div>
-						<div class="content">${rq.loginedMember.regDate }</div>
-					</div>
-					<div class="loginId">
-						<span class="material-symbols-outlined"> person_edit </span>
-						<div class="ContentName">아이디</div>
-						<div class="content">${rq.loginedMember.loginId }</div>
-					</div>
-					<div class="name">
-						<span class="material-symbols-outlined"> person </span>
-						<div class="ContentName">이름</div>
-						<div class="content">${rq.loginedMember.name }</div>
-					</div>
-					<div class="nickname">
-						<span class="material-symbols-outlined"> person_edit </span>
-						<div class="ContentName">닉네임</div>
-						<div class="content">${rq.loginedMember.nickname }</div>
-					</div>
-					<div class="cellphoneNum">
-						<span class="material-symbols-outlined"> call </span>
-						<div class="ContentName">전화번호</div>
-						<div class="content">${rq.loginedMember.cellphoneNum }</div>
-					</div>
-					<div class="email">
-						<span class="material-symbols-outlined"> mail </span>
-						<div class="ContentName">이메일</div>
-						<div class="content">${rq.loginedMember.email }</div>
-					</div>
-
-
-					<a class="modifyBtn btn btn-sm" href="../member/checkPw">회원정보 수정</a>
-
-					<div class="btns">
-
-						<button class="backBtn" type="button" onclick="history.back();">뒤로가기</button>
-						<a class="toMyPageBtn" href="../member/myPage">마이페이지로 이동</a>
-						
-						<a class="loginBtn" href="../member/doDeleteId">회원탈퇴</a>
-
-
-					</div>
-			</div>
-
-</section>
 
 <style>
 .title {
@@ -224,17 +168,62 @@
 	font-size: 12px;
 	font-weight: 600;
 }
-
 </style>
 
 
 
+<section>
+	<div class="MyInfo">
+		<div class="MyInfoBox">
+			<div class="Rectangle6">
+				<div class="mt-8 text-xl px-4">
+					<div class="title">회원정보</div>
 
-<div>1${loginedMember }</div>
-<div>2${rq.loginedMember }</div>
-<div>${loginedMember.loginId }</div>
-<div>${rq.loginedMember.loginId }</div>
-<div>${rq.loginedMember.getLoginId() }</div>
+					<div class="regDate">
+						<span class="material-symbols-outlined"> calendar_month </span>
+						<div class="ContentName">가입날짜</div>
+						<div class="content">${rq.loginedMember.regDate }</div>
+					</div>
+					<div class="loginId">
+						<span class="material-symbols-outlined"> person_edit </span>
+						<div class="ContentName">아이디</div>
+						<div class="content">${rq.loginedMember.loginId }</div>
+					</div>
+					<div class="name">
+						<span class="material-symbols-outlined"> person </span>
+						<div class="ContentName">이름</div>
+						<div class="content">${rq.loginedMember.name }</div>
+					</div>
+					<div class="nickname">
+						<span class="material-symbols-outlined"> person_edit </span>
+						<div class="ContentName">닉네임</div>
+						<div class="content">${rq.loginedMember.nickname }</div>
+					</div>
+					<div class="cellphoneNum">
+						<span class="material-symbols-outlined"> call </span>
+						<div class="ContentName">전화번호</div>
+						<div class="content">${rq.loginedMember.cellphoneNum }</div>
+					</div>
+					<div class="email">
+						<span class="material-symbols-outlined"> mail </span>
+						<div class="ContentName">이메일</div>
+						<div class="content">${rq.loginedMember.email }</div>
+					</div>
+
+					<a class="modifyBtn btn btn-sm" href="../member/checkPw">회원정보
+						수정</a>
+
+					<div class="btns">
+
+						<button class="backBtn" type="button" onclick="history.back();">뒤로가기</button>
+						<a class="toMyPageBtn" href="../member/myPage">마이페이지로 이동</a> <a
+							class="loginBtn" href="../member/doDeleteId">회원탈퇴</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
 
 

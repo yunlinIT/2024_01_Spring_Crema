@@ -19,9 +19,9 @@ public class NeedLogoutInterceptor implements HandlerInterceptor {
 		Rq rq = (Rq) req.getAttribute("rq");
 
 		if (rq.isLogined()) {
-			System.out.println("==============로그아웃 하고 써============");
+			System.out.println("============== 로그아웃 후 이용해주세요 ============");
 
-			rq.printHistoryBack("로그아웃 하고 써라");
+			rq.printHistoryBack("로그아웃 후 이용해주세요");
 
 			return false;
 

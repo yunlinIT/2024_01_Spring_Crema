@@ -69,16 +69,6 @@ public class CafeService {
 		return cafeRepository.searchCafes(keyword);
 	}
 
-//    @Transactional(readOnly = true)
-//    public List<Cafe> getAllCafes() {
-//        return cafeRepository.getForPrintCafes(0, Integer.MAX_VALUE);
-//    }
-
-//    @Transactional(readOnly = true)
-//    public List<Cafe> filterCafesByKeyword(String keyword) {
-//        return cafeRepository.searchCafes(keyword);
-//    }
-	
 	public ResultData decreaseCafeScrapCount(int cafeId) { //TODO
 		//int affectedRow = cafeRepository.decreaseCafeScrapCount(cafeId);
 		int affectedRow = 0;
@@ -106,7 +96,6 @@ public class CafeService {
 	}
 	
 	
-
 	public Cafe getNewestCafe() {
 		
 		return cafeRepository.getNewestCafe();

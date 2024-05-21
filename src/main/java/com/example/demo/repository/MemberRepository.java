@@ -103,22 +103,6 @@ public interface MemberRepository {
 	public void deleteId(String loginId);
 
 	
-	
-	
-	
-	
-//	@Select("""
-//			SELECT COUNT(*)
-//			FROM `article` AS A
-//			INNER JOIN `member` AS M
-//			ON A.memberId = M.id
-//			WHERE (A.boardId = 1 OR A.boardId = 2)
-//			AND M.loginId = #{loginId};
-//
-//			""")
-//	public int getMyWriteCount(int loginId);
-
-	
 	@Select("""
 			SELECT COUNT(*)
 			FROM `article` 

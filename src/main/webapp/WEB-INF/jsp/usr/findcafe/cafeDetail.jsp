@@ -5,13 +5,8 @@
 
 <meta charset="utf-8">
 
-
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=06da921fb5b3ede9c345d161a3364b4e&libraries=services"></script>
-
-
-
-
 
 <script>
 	<!-- 변수 -->
@@ -151,7 +146,6 @@ function doModifyCafeReview(cafeReviewId) {
 
 
 
-
 <style>
 /* 슬라이드 팝업창 */
 .slide-overlay {
@@ -175,14 +169,6 @@ function doModifyCafeReview(cafeReviewId) {
 	transform: translate(-50%, -45%);
 	overflow: hidden;
 }
-
-/* .slide__container>img { */
-/* 	position: absolute; */
-/* 	left: 50%; */
-/* 	transform: translate(-50%, -50%); */
-/* 	max-width: 100%; /* 이미지의 원본 비율을 유지하면서 이미지의 더 긴쪽에 맞춤 */ */
-/* 	max-height: 100%; /* 이미지의 원본 비율을 유지하면서 이미지의 더 긴쪽에 맞춤 */ */
-/* } */
 
 .slides {
 	display: flex; /* Flexbox를 사용하여 이미지를 가로로 나열 */

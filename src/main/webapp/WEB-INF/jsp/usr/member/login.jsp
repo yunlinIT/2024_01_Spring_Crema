@@ -3,44 +3,6 @@
 <c:set var="pageTitle" value="로그인"></c:set>
 <%@ include file="../common/head.jspf"%>
 
-
-
-
-<section>
-	<div class="Login">
-		<div class="LoginBox">
-			<div class="Rectangle6">
-				<section class="mt-8 text-xl px-4">
-					<div class="mx-auto">
-						<form action="../member/doLogin" method="POST">
-
-							<input type="hidden" name="afterLoginUri" value="${param.afterLoginUri}" />
-							<div class="title">로그인</div>
-
-							<div class="IdBox">
-								<span class="material-symbols-outlined"> person </span> <input id="loginId"
-									class="input input-sm w-full max-w-xs" autocomplete="off" type="text" placeholder="아이디를 입력해주세요" name="loginId" />
-							</div>
-							<div class="PwBox">
-								<span class="material-symbols-outlined"> lock </span> <input id="loginPw" class="input input-sm w-full max-w-xs"
-									autocomplete="off" type="password" placeholder="비밀번호를 입력해주세요" name="loginPw" />
-							</div>
-
-							<input class="loginBtn btn btn-sm" type="submit" value="로그인" />
-
-						</form>
-						<div class="btns">
-							<button class="backBtn" type="button" onclick="history.back();">뒤로가기</button>
-							<a class="joinBtn" href="../member/join">회원가입</a>
-
-						</div>
-					</div>
-				</section>
-			</div>
-		</div>
-	</div>
-</section>
-
 <style>
 .title {
 	font-weight: 600;
@@ -134,6 +96,40 @@
 }
 </style>
 
+<section>
+	<div class="Login">
+		<div class="LoginBox">
+			<div class="Rectangle6">
+				<section class="mt-8 text-xl px-4">
+					<div class="mx-auto">
+						<form action="../member/doLogin" method="POST">
+
+							<input type="hidden" name="afterLoginUri" value="${param.afterLoginUri}" />
+							<div class="title">로그인</div>
+
+							<div class="IdBox">
+								<span class="material-symbols-outlined"> person </span> <input id="loginId"
+									class="input input-sm w-full max-w-xs" autocomplete="off" type="text" placeholder="아이디를 입력해주세요" name="loginId" />
+							</div>
+							<div class="PwBox">
+								<span class="material-symbols-outlined"> lock </span> <input id="loginPw" class="input input-sm w-full max-w-xs"
+									autocomplete="off" type="password" placeholder="비밀번호를 입력해주세요" name="loginPw" />
+							</div>
+
+							<input class="loginBtn btn btn-sm" type="submit" value="로그인" />
+
+						</form>
+						<div class="btns">
+							<button class="backBtn" type="button" onclick="history.back();">뒤로가기</button>
+							<a class="joinBtn" href="../member/join">회원가입</a>
+
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+</section>
 
 
 

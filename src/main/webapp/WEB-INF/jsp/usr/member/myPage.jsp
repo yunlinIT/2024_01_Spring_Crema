@@ -1,56 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="마이페이지"></c:set>
 <%@ include file="../common/head.jspf"%>
-
-
-
-<section>
-	<div class="MyPage">
-		<div class="MyPageBox">
-			<div class="Rectangle6">
-				<section class="mt-8 text-xl px-4">
-
-
-					<div class="title">마이페이지</div>
-
-					<div class="MyInfo">
-						<span class="material-symbols-outlined"> person_edit </span>
-						<div class="ContentName">나의 회원정보</div>
-						<a class="MyInfoBtn" href="../member/myInfo">바로가기</a>
-					</div>
-					<div class="MyWrite">
-						<span class="material-symbols-outlined"> edit_note </span>
-						<a class="ContentName" href="../article/myList?page=1">나의 게시글</a>
-						<a class="MyWriteBtn" href="../article/myList?page=1">${myWriteCount} 개</a>
-					</div>
-					<div class="MyReply">
-						<span class="material-symbols-outlined"> mode_comment </span>
-						<a class="ContentName" href="../article/myReply?page=1">나의 댓글</a>
-						<a class="MyReplyBtn" href="../article/myReply?page=1">${myReplyCount} 개</a>
-					</div>
-					<div class="MyQna">
-						<span class="material-symbols-outlined"> live_help </span>
-						<a class="ContentName" href="../article/myQnA?page=1">나의 질문</a>
-						<a class="MyQnaBtn" href="../article/myQnA?page=1">${myQuestionCount} 개</a>
-					</div>
-					<div class="MyLike">
-						<span class="material-symbols-outlined"> favorite </span>
-						<a class="ContentName" href="../findcafe/scrapList">나의 찜 목록</a>
-						<a class="MyLikeBtn" href="../findcafe/scrapList">${myScrapCount} 개</a>
-					</div>
-
-
-					<div class="btns">
-						<button class="backBtn btn btn-sm" type="button" onclick="history.back();">뒤로가기</button>
-
-					</div>
-
-				</section>
-			</div>
-		</div>
-	</div>
-</section>
 
 <style>
 .title {
@@ -209,6 +161,55 @@
 }
 </style>
 
+<section>
+	<div class="MyPage">
+		<div class="MyPageBox">
+			<div class="Rectangle6">
+				<section class="mt-8 text-xl px-4">
+
+
+					<div class="title">마이페이지</div>
+
+					<div class="MyInfo">
+						<span class="material-symbols-outlined"> person_edit </span>
+						<div class="ContentName">나의 회원정보</div>
+						<a class="MyInfoBtn" href="../member/myInfo">바로가기</a>
+					</div>
+					<div class="MyWrite">
+						<span class="material-symbols-outlined"> edit_note </span> <a
+							class="ContentName" href="../article/myList?page=1">나의 게시글</a> <a
+							class="MyWriteBtn" href="../article/myList?page=1">${myWriteCount}
+							개</a>
+					</div>
+					<div class="MyReply">
+						<span class="material-symbols-outlined"> mode_comment </span> <a
+							class="ContentName" href="../article/myReply?page=1">나의 댓글</a> <a
+							class="MyReplyBtn" href="../article/myReply?page=1">${myReplyCount}
+							개</a>
+					</div>
+					<div class="MyQna">
+						<span class="material-symbols-outlined"> live_help </span> <a
+							class="ContentName" href="../article/myQnA?page=1">나의 질문</a> <a
+							class="MyQnaBtn" href="../article/myQnA?page=1">${myQuestionCount}
+							개</a>
+					</div>
+					<div class="MyLike">
+						<span class="material-symbols-outlined"> favorite </span> <a
+							class="ContentName" href="../findcafe/scrapList">나의 찜 목록</a> <a
+							class="MyLikeBtn" href="../findcafe/scrapList">${myScrapCount}
+							개</a>
+					</div>
+
+
+					<div class="btns">
+						<button class="backBtn btn btn-sm" type="button"
+							onclick="history.back();">뒤로가기</button>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+</section>
 
 
 

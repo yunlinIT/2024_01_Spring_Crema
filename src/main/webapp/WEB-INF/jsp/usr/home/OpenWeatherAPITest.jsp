@@ -6,13 +6,13 @@
 
 
 
-
+<!-- WeatherAPI Test를 위한 테스트용 jsp -->
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Weather</title>
+    <title>WeatherAPI Test를 위한 테스트용 jsp</title>
     <script>
         function fetchWeather() {
             var city = "Daejeon";

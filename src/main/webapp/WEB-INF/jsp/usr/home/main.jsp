@@ -7,32 +7,6 @@
 
 <script>
 
-
-// <!--  스크롤 내릴때 부드럽게 내려가는 효과  -->
-// $(document).ready(function () {
-// 	  var win_h = $(window).height();
-
-// 	  $(".section").each(function (index) {
-// 	    $(this).attr("data-index", win_h * index);
-// 	  });
-
-// 	  $(".section").on("mousewheel", function (e) {
-// 	    var sectionPos = parseInt($(this).attr("data-index"));
-// 	    if (e.originalEvent.wheelDelta >= 0) {
-// 	      $("html, body")
-// 	        .stop()
-// 	        .animate({ scrollTop: sectionPos - win_h });
-// 	      return false;
-// 	    } else if (e.originalEvent.wheelDelta < 0) {
-// 	      $("html,body")
-// 	        .stop()
-// 	        .animate({ scrollTop: sectionPos + win_h });
-// 	      return false;
-// 	    }
-// 	  });
-// 	});
-
-
 <!-- 스크롤 내려갈때 배경이미지 확대되는 효과 -->
     // 스크롤 이벤트 리스너 등록
     window.addEventListener('scroll', function() {
@@ -46,12 +20,10 @@
         backgroundImage.style.backgroundSize = 100 + scroll / 5 + '%';
     });
     
-
     function submitSearchForm() {
         document.getElementById("searchForm").submit();
     }
-
-    
+ 
 <!-- 조건에 따라 온도와 날씨 ID를 기반으로 날씨 코멘트와 이미지를 업데이트 -->
     function fetchWeather() {
         var city = "Daejeon";
@@ -597,8 +569,6 @@ header {
 			</a>
 		</div>
 	</div>
-
-
 
 
 <!-- 대문 로고 서서히 나타나는 함수 -->

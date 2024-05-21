@@ -21,10 +21,7 @@
     <h1 style="text-align: center; font-size: 25; margin-top: 100px; font-weight: 600;">제휴 문의하기</h1>
     <div class="mx-auto">
         <form class="gform" method="POST" data-email="yunlinit@gmail.com"
-            action="https://script.google.com/macros/s/AKfycbxkZTwkACh8C2St2dGm8mxtr3Yuj91yE1f92s-gEhghKd0kle5RHSEXSTuwGjPdZwlmxA/exec">
-            
-<!--             <form class="gform" method="POST" data-email="yunlinit@gmail.com" action="https://script.google.com/macros/s/AKfycbxkZTwkACh8C2St2dGm8mxtr3Yuj91yE1f92s-gEhghKd0kle5RHSEXSTuwGjPdZwlmxA/exec" onsubmit="submitWriteEmailFormDone(this); return false;"> -->
-            <!-- 이메일 전송 기능 구현 시 여기 수정해야함 -->
+            action="https://script.google.com/macros/s/AKfycbxkZTwkACh8C2St2dGm8mxtr3Yuj91yE1f92s-gEhghKd0kle5RHSEXSTuwGjPdZwlmxA/exec"> <!-- 이메일 전송 기능 구현 시 여기 수정해야함 -->
 
             <table class="write-box table-box-1 mx-auto mt-10" border="1">
                 <tbody>
@@ -35,9 +32,7 @@
                             <div style="display: inline-block; font-weight: 600; margin-left: 4em;">연락처</div> <input
                             class="title input input-bordered input-md w-full max-w-xs" autocomplete="off" type="text"
                             placeholder="전화번호를 입력해주세요" name="contact" style="margin-left: 1.8em" /></td>
-
                     </tr>
-
                     <tr>
                         <th style="font-weight: 600">이메일</th>
                         <td><input class="title input input-bordered input-md w-full " autocomplete="off" type="text"
@@ -46,24 +41,12 @@
                     <tr>
                         <th style="font-weight: 600">내용</th>
                         <td><textarea placeholder="내용을 입력해주세요" name="body" class="textarea textarea-bordered textarea-lg"
-                                style="width: 780px; height: 300px;"></textarea> </script>
-                            </div></td>
+                                style="width: 780px; height: 300px;"></textarea>
+                            </td>
                     </tr>
-<!--                     <tr> -->
-<!--                         <th style="font-weight: 600"></th> -->
-<!--                         <td><p style="font-weight: 700;">개인정보 수집 및 이용안내</p> <br /> 1. 목적: 제휴 문의에 따른 연락처 정보 확인 <br /> 2. 항목: 이름, -->
-<!--                             연락처, 이메일 <br /> 3. 보유기간: 제휴 가능성 판단을 위해 검토 완료 후 3개월 간 보관하며, 이후 해당 정보를 지체없이 파기합니다. <br /></td> -->
-<!--                     </tr> -->
-<!--                     <tr> -->
-<!--                         <th style="font-weight: 600"></th> -->
-<!--                         <td><input type="checkbox" id="checkbox" checked="checked" class="checkbox checkbox-xs" style="margin-right: 10px;" /> 개인정보 -->
-<!--                             수집 및 이용에 동의합니다.</td> -->
-<!--                     </tr> -->
-
-
                     <tr>
                         <th></th>
-                        </br>
+                        <bㄹr>
                         <td style="text-align: left;">
                             <button class="writeBtn btn btn-sm" id="submitBtn" type="submit" value="등록" style="margin-left: 320px; margin-top: 10px;">문의하기</button> <span
                             style="float: right;">

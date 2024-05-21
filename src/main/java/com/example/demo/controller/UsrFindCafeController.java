@@ -62,8 +62,7 @@ public class UsrFindCafeController {
 
 		// String keyword = filterData.get("keyword"); // 키워드 다중선택 아닌 단일선택 시
 		// List<String> selectedKeywords = (List<String>)
-		// filterData.get("selectedKeywords"); // 키워드 선택하지 않았을 경우 리스트 보이지 않음 (키워드가 빈값 일
-		// 때 String)
+		// filterData.get("selectedKeywords"); // 키워드 선택하지 않았을 경우 리스트 보이지 않음 (키워드가 빈값 일 때 String)
 		Object selectedKeywordsObject = filterData.get("selectedKeywords"); // 키워드 선택 안했을 때 String으로 넘어오고, 키워드 선택 했을 땐
 																			// List로 넘어와서 변수타입을 Object로 선언.
 

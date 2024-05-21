@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="회원정보 수정"></c:set>
 <%@ include file="../common/head.jspf"%>
@@ -33,91 +34,6 @@
 		form.submit();
 	}
 </script>
-
-
-
-
-
-<section>
-	<div class="Modify">
-		<div class="ModifyBox">
-			<div class="Rectangle6">
-				<section class="mt-8 text-xl px-4">
-					<form action="../member/doModify" method="POST" onsubmit="MemberModify__submit(this); return false;">
-
-						<div class="title">회원정보</div>
-
-						<div class="regDate">
-							<span class="material-symbols-outlined"> calendar_month </span>
-							<div class="ContentName">가입날짜</div>
-							<div class="content">${rq.loginedMember.regDate }</div>
-						</div>
-						<div class="loginId">
-							<span class="material-symbols-outlined"> person_edit </span>
-							<div class="ContentName">아이디</div>
-							<div class="content">${rq.loginedMember.loginId }</div>
-						</div>
-
-
-						<!-- 						일단 여기 수정 -->
-						<div class="loginPw">
-							<span class="material-symbols-outlined"> lock </span>
-							<div class="ContentName">새 비밀번호</div>
-
-							<input id="inputBox" class="input input-sm w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="비밀번호를 입력해주세요" name="loginPw" />
-
-
-						</div>
-						<div class="loginPwConfirm">
-							<span class="material-symbols-outlined"> check_circle </span>
-							<div class="ContentName">비밀번호확인</div>
-							
-							<input id="inputBox" class="input input-sm w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="비밀번호 확인을 입력해주세요" name="loginPwConfirm" />
-						</div>
-
-
-						<div class="name">
-							<span class="material-symbols-outlined"> person </span>
-							<div class="ContentName">이름</div>
-							<input id="inputBox" class="input input-sm w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="이름을 입력해주세요" name="name" value="${rq.loginedMember.name }"/>
-						</div>
-						
-						<div class="nickname">
-							<span class="material-symbols-outlined"> person_edit </span>
-							<div class="ContentName">닉네임</div>
-							<input id="inputBox" class="input input-sm w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="닉네임을 입력해주세요" name="nickname" value="${rq.loginedMember.nickname }"/>
-						</div>
-						
-						<div class="cellphoneNum">
-							<span class="material-symbols-outlined"> call </span>
-							<div class="ContentName">전화번호</div>
-							<input id="inputBox" class="input input-sm w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="전화번호 입력해주세요" name="cellphoneNum" value="${rq.loginedMember.cellphoneNum }"/>
-						</div>
-						
-						<div class="email">
-							<span class="material-symbols-outlined"> mail </span>
-							<div class="ContentName">이메일</div>
-							<input id="inputBox" class="input input-sm w-full max-w-xs" autocomplete="off" type="text"
-								placeholder="이메일을 입력해주세요" name="email" value="${rq.loginedMember.email }"/>
-						</div>
-
-
-
-						<input class="modifyBtn btn btn-sm" type="submit" value="수정" />
-
-						<div class="btns">
-
-							<button class="backBtn" type="button" onclick="history.back();">뒤로가기</button>
-
-						</div>
-			</div>
-</section>
-
 
 <style>
 .title {
@@ -190,8 +106,8 @@
 }
 
 #inputBox {
-	width: 200px; 
-	left : 150px;
+	width: 200px;
+	left: 150px;
 	position: absolute;
 	display: flex;
 }
@@ -297,6 +213,97 @@
 	font-weight: 600;
 }
 </style>
+
+
+<section>
+	<div class="Modify">
+		<div class="ModifyBox">
+			<div class="Rectangle6">
+				<section class="mt-8 text-xl px-4">
+					<form action="../member/doModify" method="POST"
+						onsubmit="MemberModify__submit(this); return false;">
+
+						<div class="title">회원정보</div>
+
+						<div class="regDate">
+							<span class="material-symbols-outlined"> calendar_month </span>
+							<div class="ContentName">가입날짜</div>
+							<div class="content">${rq.loginedMember.regDate }</div>
+						</div>
+						<div class="loginId">
+							<span class="material-symbols-outlined"> person_edit </span>
+							<div class="ContentName">아이디</div>
+							<div class="content">${rq.loginedMember.loginId }</div>
+						</div>
+
+						<!-- 일단 여기 수정 -->
+						<div class="loginPw">
+							<span class="material-symbols-outlined"> lock </span>
+							<div class="ContentName">새 비밀번호</div>
+
+							<input id="inputBox" class="input input-sm w-full max-w-xs"
+								autocomplete="off" type="text" placeholder="비밀번호를 입력해주세요"
+								name="loginPw" />
+
+						</div>
+						<div class="loginPwConfirm">
+							<span class="material-symbols-outlined"> check_circle </span>
+							<div class="ContentName">비밀번호확인</div>
+
+							<input id="inputBox" class="input input-sm w-full max-w-xs"
+								autocomplete="off" type="text" placeholder="비밀번호 확인을 입력해주세요"
+								name="loginPwConfirm" />
+						</div>
+
+
+						<div class="name">
+							<span class="material-symbols-outlined"> person </span>
+							<div class="ContentName">이름</div>
+							<input id="inputBox" class="input input-sm w-full max-w-xs"
+								autocomplete="off" type="text" placeholder="이름을 입력해주세요"
+								name="name" value="${rq.loginedMember.name }" />
+						</div>
+
+						<div class="nickname">
+							<span class="material-symbols-outlined"> person_edit </span>
+							<div class="ContentName">닉네임</div>
+							<input id="inputBox" class="input input-sm w-full max-w-xs"
+								autocomplete="off" type="text" placeholder="닉네임을 입력해주세요"
+								name="nickname" value="${rq.loginedMember.nickname }" />
+						</div>
+
+						<div class="cellphoneNum">
+							<span class="material-symbols-outlined"> call </span>
+							<div class="ContentName">전화번호</div>
+							<input id="inputBox" class="input input-sm w-full max-w-xs"
+								autocomplete="off" type="text" placeholder="전화번호 입력해주세요"
+								name="cellphoneNum" value="${rq.loginedMember.cellphoneNum }" />
+						</div>
+
+						<div class="email">
+							<span class="material-symbols-outlined"> mail </span>
+							<div class="ContentName">이메일</div>
+							<input id="inputBox" class="input input-sm w-full max-w-xs"
+								autocomplete="off" type="text" placeholder="이메일을 입력해주세요"
+								name="email" value="${rq.loginedMember.email }" />
+						</div>
+
+
+						<input class="modifyBtn btn btn-sm" type="submit" value="수정" />
+					</form>
+				</section>
+				<div class="btns">
+
+					<button class="backBtn" type="button" onclick="history.back();">뒤로가기</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</section>
+
+
 
 
 

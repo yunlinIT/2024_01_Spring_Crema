@@ -85,11 +85,7 @@ public class ArticleService {
 	public int getArticlesCount(int boardId, String searchKeywordTypeCode, String searchKeyword) {
 		return articleRepository.getArticlesCount(boardId, searchKeywordTypeCode, searchKeyword);
 	}
-//
-//	public List<Article> getForPrintArticles(int boardId) {
-//		return articleRepository.getForPrintArticles(boardId);
-//	}
-	
+
 	
 	public int getMyListCount(Integer memberId, String searchKeywordTypeCode, String searchKeyword) {
 		return articleRepository.getMyListCount(memberId,searchKeywordTypeCode, searchKeyword);
@@ -120,9 +116,6 @@ public class ArticleService {
 
 	public List<Article> getForPrintArticles(int boardId, int itemsInAPage, int page, String searchKeywordTypeCode,
 			String searchKeyword) {
-
-//		SELECT * FROM article WHERE boardId = 1 ORDER BY id DESC LIMIT 0, 10; 1page
-//		SELECT * FROM article WHERE boardId = 1 ORDER BY id DESC LIMIT 10, 10; 2page
 
 		int limitFrom = (page - 1) * itemsInAPage;
 		int limitTake = itemsInAPage;

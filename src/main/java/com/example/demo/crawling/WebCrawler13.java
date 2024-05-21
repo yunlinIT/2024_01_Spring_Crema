@@ -128,29 +128,11 @@ public class WebCrawler13 {
 				facilities = null;
 			}
 
-//            List<String> imageUrls = new ArrayList<>();
-//            List<WebElement> imageElements = driver.findElements(By.cssSelector("div.K0PDV._div"));
-//
-//            for (WebElement imageElement : imageElements) {
-//                String styleAttribute = imageElement.getAttribute("style");
-//                // 스타일 속성에서 URL 추출
-//                String imageUrl = extractImageUrlFromStyleAttribute(styleAttribute);
-//                imageUrls.add(imageUrl); // 이미지 URL을 리스트에 추가
-//            }
-
-//            String imageUrl = "";
-//            List<WebElement> imageElements = driver.findElements(By.cssSelector("div.K0PDV._div"));
-//            for (WebElement imageElement : imageElements) {
-//                String styleAttribute = imageElement.getAttribute("style");
-//                // 스타일 속성에서 URL 추출
-//                imageUrl = extractImageUrlFromStyleAttribute(styleAttribute);
-//                System.out.println("Image URL: " + imageUrl);
-//            }
 			Cafe cafe = new Cafe();
 
 			String imageUrl = "";
 			List<WebElement> imageElements = driver.findElements(By.cssSelector("div.K0PDV._div"));
-//            List<String> imageUrls = new ArrayList<>();
+
 			for (int i = 0; i < imageElements.size(); i++) {
 				WebElement imageElement = imageElements.get(i);
 
@@ -158,8 +140,6 @@ public class WebCrawler13 {
 
 				// 스타일 속성에서 URL 추출
 				imageUrl = extractImageUrlFromStyleAttribute(styleAttribute);
-
-//                imageUrls.add(i, imageUrl);
 
 				switch (i) {
 				case 0:
@@ -187,11 +167,6 @@ public class WebCrawler13 {
 			cafe.setPhoneNum(phoneNumber);
 			cafe.setBusinessHours(businessHours);
 			cafe.setFacilities(facilities);
-//			cafe.setCafeImgUrl1(imageUrls.get(0)); // Cafe 객체에 이미지 URL 리스트 설정
-//			cafe.setCafeImgUrl2(imageUrls.get(1));
-//			cafe.setCafeImgUrl3(imageUrls.get(2));
-//			cafe.setCafeImgUrl4(imageUrls.get(3));
-//			cafe.setCafeImgUrl5(imageUrls.get(4));
 			cafes.add(cafe);
 
 			// Output data
@@ -201,14 +176,11 @@ public class WebCrawler13 {
 			System.out.println("Business Hours: " + businessHours);
 			System.out.println("Menu Info: " + menuInfo);
 			System.out.println("Facilities: " + facilities);
-//            System.out.println("Image URL: " + imageUrls);
-//            System.out.println("Image URL: " + imageUrls);
 
 			driver.switchTo().parentFrame();
 			driver.switchTo().frame("searchIframe");
 		}
 
-//        driver.quit();
 
 		return cafes;
 	}
@@ -224,8 +196,5 @@ public class WebCrawler13 {
 		return imageUrl;
 	}
 
-//	public static void main(String[] args) {
-//        WebCrawler13 crawler = new WebCrawler13();
-//        crawler.crawlCafes();
-//    }
+
 }

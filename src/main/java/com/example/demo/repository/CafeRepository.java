@@ -83,39 +83,6 @@ public interface CafeRepository {
 			""")
 	public List<Cafe> getForPrintCafesKeyword(int limitFrom, int limitTake, List<String> selectedKeywords);
 
-//	@Select("""
-//			<script>
-//			     SELECT id, name, address, cafeScrapCount, reviewCount, hashtag, cafeImgUrl1
-//			     FROM cafe
-//				 WHERE
-//			        `name` LIKE CONCAT('%', #{keyword}, '%')
-//				 OR `address` LIKE CONCAT('%', #{keyword}, '%')
-//				 OR `hashtag` LIKE CONCAT('%', #{keyword}, '%')
-//			     GROUP BY id
-//			     ORDER BY id DESC
-//			     <if test="limitFrom >= 0 ">
-//			         LIMIT #{limitFrom}, #{limitTake}
-//			     </if>
-//			     </script>
-//			""")
-//	public List<Cafe> getForPrintCafesKeyword(int limitFrom, int limitTake, String keyword);
-//	@Select("""
-//		    <script>
-//		        SELECT id, name, address, cafeScrapCount, reviewCount, hashtag, cafeImgUrl1
-//		        FROM cafe
-//		        WHERE
-//		        <foreach item="item" index="index" collection="keywords" open="(" separator=" OR " close=")">
-//		            `name` LIKE CONCAT('%', #{item}, '%') OR `address` LIKE CONCAT('%', #{item}, '%') OR `hashtag` LIKE CONCAT('%', #{item}, '%')
-//		        </foreach>
-//		        GROUP BY id
-//		        ORDER BY id DESC
-//		        <if test="limitFrom >= 0 ">
-//		            LIMIT #{limitFrom}, #{limitTake}
-//		        </if>
-//		    </script>
-//		""")
-//		public List<Cafe> getForPrintCafesKeyword(@Param("limitTake") int limitTake, @Param("limitFrom") int limitFrom, @Param("keywords") List<String> keywords);
-
 	@Select("""
 			SELECT COUNT(*)
 			FROM cafe
@@ -136,31 +103,6 @@ public interface CafeRepository {
 			""")
 	public int getCafesCountKeyword(List<String> selectedKeywords);
 
-//	 selectedKeywords = {'유성구', '모던', '단체'}
-//	 1번째 item인 keyword에 유성구 세팅
-//	 (`name` LIKE CONCAT('%', '유성구', '%')
-//        OR `address` LIKE CONCAT('%', '유성구', '%')
-//        OR `hashtag` LIKE CONCAT('%', '유성구', '%')
-//    ) 
-//    OR
-//    (`name` LIKE CONCAT('%', '모던', '%')
-//        OR `address` LIKE CONCAT('%', '모던', '%')
-//        OR `hashtag` LIKE CONCAT('%', '모던', '%')
-//        ) 
-//  	OR
-//    (`name` LIKE CONCAT('%', '단체', '%')
-//		OR `address` LIKE CONCAT('%', '단체', '%')
-//		OR `hashtag` LIKE CONCAT('%', '단체', '%')
-//    ) 
-
-//	@Select("""
-//			SELECT COUNT(*)
-//			FROM cafe
-//			WHERE `name` LIKE CONCAT('%', #{keyword}, '%')
-//			OR `address` LIKE CONCAT('%', #{keyword}, '%')
-//			OR `hashtag` LIKE CONCAT('%', #{keyword}, '%')
-//			""")
-//	public int getCafesCountKeyword(String keyword);
 
 	@Select("""
 			UPDATE cafe AS C
@@ -233,14 +175,6 @@ public interface CafeRepository {
 			""")
 	public Cafe getPopularCafe();
 
-//	@Select("""
-//			SELECT * 
-//			FROM cafe 
-//			WHERE hashtag LIKE CONCAT('%', #{keyword}, '%')
-//			ORDER BY RAND() 
-//			LIMIT 1;
-//					""")
-//	public Cafe getRecommendedCafe();
 
 	@Select("""
 			SELECT *

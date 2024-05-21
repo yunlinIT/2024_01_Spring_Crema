@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+// 필요한 스프링 프레임워크 클래스들을 임포트합니다.
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,24 +23,31 @@ import com.example.demo.vo.Rq;
 
 import jakarta.servlet.http.HttpServletRequest;
 
+// 이 클래스를 컨트롤러로 표시합니다.
 @Controller
 public class UsrArticleController {
 
+	// Rq 빈을 자동 주입합니다.
 	@Autowired
 	private Rq rq;
 
+	// ArticleService 빈을 자동 주입합니다.
 	@Autowired
 	private ArticleService articleService;
 
+	// BoardService 빈을 자동 주입합니다.
 	@Autowired
 	private BoardService boardService;
 
+	// ReplyService 빈을 자동 주입합니다.
 	@Autowired
 	private ReplyService replyService;
 
+	// ReactionPointService 빈을 자동 주입합니다.
 	@Autowired
 	private ReactionPointService reactionPointService;
 
+	// 기본 생성자
 	public UsrArticleController() {
 
 	}
@@ -48,7 +56,7 @@ public class UsrArticleController {
 	
 	@RequestMapping("/usr/article/writeEmail")
 	public String sendEmail(HttpServletRequest req) {
-
+		// 이메일 작성 페이지를 반환합니다.
 		return "usr/article/writeEmail";
 	}
 
@@ -58,26 +66,31 @@ public class UsrArticleController {
 			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
 			@RequestParam(defaultValue = "") String searchKeyword) {
 
+		// rq 객체를 요청 속성에서 가져옵니다.
 		Rq rq = (Rq) req.getAttribute("rq");
 
+		// 주어진 boardId로 게시판 정보를 가져옵니다.
 		Board board = boardService.getBoardById(boardId);
 
+		// 주어진 검색 조건에 맞는 게시글 수를 가져옵니다.
 		int articlesCount = articleService.getArticlesCount(boardId, searchKeywordTypeCode, searchKeyword);
 
+		// 게시판이 존재하지 않는 경우
 		if (board == null) {
 			return rq.historyBackOnView("없는 게시판이야");
 		}
 
-		// 한페이지에 글 10개씩이야
-		// 글 20개 -> 2 page
-		// 글 24개 -> 3 page
+		// 한 페이지에 표시할 항목 수를 설정합니다.
 		int itemsInAPage = 10;
 
+		// 총 페이지 수를 계산합니다.
 		int pagesCount = (int) Math.ceil(articlesCount / (double) itemsInAPage);
 
+		// 주어진 조건에 맞는 게시글 리스트를 가져옵니다.
 		List<Article> articles = articleService.getForPrintArticles(boardId, itemsInAPage, page, searchKeywordTypeCode,
 				searchKeyword);
 
+		// 모델에 속성들을 추가합니다.
 		model.addAttribute("board", board);
 		model.addAttribute("boardId", boardId);
 		model.addAttribute("page", page);
@@ -87,10 +100,9 @@ public class UsrArticleController {
 		model.addAttribute("articlesCount", articlesCount);
 		model.addAttribute("articles", articles);
 
+		// 게시글 리스트 페이지를 반환합니다.
 		return "usr/article/list";
 	}
-	
-	
 	
 	@RequestMapping("/usr/article/myList")
 	public String showMyList(HttpServletRequest req, Model model,
@@ -98,20 +110,26 @@ public class UsrArticleController {
 			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
 			@RequestParam(defaultValue = "") String searchKeyword) {
 
+		// rq 객체를 요청 속성에서 가져옵니다.
 		Rq rq = (Rq) req.getAttribute("rq");
 		
+		// 로그인된 회원의 ID를 가져옵니다.
 		Integer memberId = rq.getLoginedMemberId();
 
-		int articlesCount = articleService.getMyListCount(memberId, searchKeywordTypeCode, searchKeyword); 
+		// 주어진 검색 조건에 맞는 회원의 게시글 수를 가져옵니다.
+		int articlesCount = articleService.getMyListCount(memberId, searchKeywordTypeCode, searchKeyword);
 
+		// 한 페이지에 표시할 항목 수를 설정합니다.
 		int itemsInAPage = 10;
 
+		// 총 페이지 수를 계산합니다.
 		int pagesCount = (int) Math.ceil(articlesCount / (double) itemsInAPage);
 
+		// 주어진 조건에 맞는 회원의 게시글 리스트를 가져옵니다.
 		List<Article> articles = articleService.getForPrintMyList(memberId, itemsInAPage, page, searchKeywordTypeCode,
 				searchKeyword);
 
-
+		// 모델에 속성들을 추가합니다.
 		model.addAttribute("page", page);
 		model.addAttribute("pagesCount", pagesCount);
 		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
@@ -119,14 +137,12 @@ public class UsrArticleController {
 		model.addAttribute("articlesCount", articlesCount);
 		model.addAttribute("articles", articles);
 		
-		
+		// 디버깅을 위해 회원 ID를 출력합니다.
 		System.err.println(memberId);
 		
-
+		// 회원의 게시글 리스트 페이지를 반환합니다.
 		return "usr/article/myList";
 	}
-	
-	
 	
 	@RequestMapping("/usr/article/myQnA")
 	public String showMyQnA(HttpServletRequest req, Model model,
@@ -134,24 +150,26 @@ public class UsrArticleController {
 			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
 			@RequestParam(defaultValue = "") String searchKeyword) {
 
+		// rq 객체를 요청 속성에서 가져옵니다.
 		Rq rq = (Rq) req.getAttribute("rq");
 		
+		// 로그인된 회원의 ID를 가져옵니다.
 		Integer memberId = rq.getLoginedMemberId();
 
-		int articlesCount = articleService.getMyQnACount(memberId, searchKeywordTypeCode, searchKeyword); 
+		// 주어진 검색 조건에 맞는 회원의 QnA 게시글 수를 가져옵니다.
+		int articlesCount = articleService.getMyQnACount(memberId, searchKeywordTypeCode, searchKeyword);
 
-
-		// 한페이지에 글 10개씩이야
-		// 글 20개 -> 2 page
-		// 글 24개 -> 3 page
+		// 한 페이지에 표시할 항목 수를 설정합니다.
 		int itemsInAPage = 10;
 
+		// 총 페이지 수를 계산합니다.
 		int pagesCount = (int) Math.ceil(articlesCount / (double) itemsInAPage);
 
+		// 주어진 조건에 맞는 회원의 QnA 게시글 리스트를 가져옵니다.
 		List<Article> articles = articleService.getForPrintMyQnA(memberId, itemsInAPage, page, searchKeywordTypeCode,
 				searchKeyword);
 
-
+		// 모델에 속성들을 추가합니다.
 		model.addAttribute("page", page);
 		model.addAttribute("pagesCount", pagesCount);
 		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
@@ -159,10 +177,10 @@ public class UsrArticleController {
 		model.addAttribute("articlesCount", articlesCount);
 		model.addAttribute("articles", articles);
 		
-		
+		// 디버깅을 위해 회원 ID를 출력합니다.
 		System.err.println(memberId);
 		
-
+		// 회원의 QnA 게시글 리스트 페이지를 반환합니다.
 		return "usr/article/myQnA";
 	}
 	
@@ -172,24 +190,26 @@ public class UsrArticleController {
 			@RequestParam(defaultValue = "title,body") String searchKeywordTypeCode,
 			@RequestParam(defaultValue = "") String searchKeyword) {
 
+		// rq 객체를 요청 속성에서 가져옵니다.
 		Rq rq = (Rq) req.getAttribute("rq");
 		
+		// 로그인된 회원의 ID를 가져옵니다.
 		Integer memberId = rq.getLoginedMemberId();
 
-		int articlesCount = articleService.getMyRepliesCount(memberId, searchKeywordTypeCode, searchKeyword); 
+		// 주어진 검색 조건에 맞는 회원의 댓글 수를 가져옵니다.
+		int articlesCount = articleService.getMyRepliesCount(memberId, searchKeywordTypeCode, searchKeyword);
 
-
-		// 한페이지에 글 10개씩이야
-		// 글 20개 -> 2 page
-		// 글 24개 -> 3 page
+		// 한 페이지에 표시할 항목 수를 설정합니다.
 		int itemsInAPage = 10;
 
+		// 총 페이지 수를 계산합니다.
 		int pagesCount = (int) Math.ceil(articlesCount / (double) itemsInAPage);
 
+		// 주어진 조건에 맞는 회원의 댓글 리스트를 가져옵니다.
 		List<Article> articles = articleService.getForPrintMyReplies(memberId, itemsInAPage, page, searchKeywordTypeCode,
 				searchKeyword);
 
-
+		// 모델에 속성들을 추가합니다.
 		model.addAttribute("page", page);
 		model.addAttribute("pagesCount", pagesCount);
 		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
@@ -197,29 +217,36 @@ public class UsrArticleController {
 		model.addAttribute("articlesCount", articlesCount);
 		model.addAttribute("articles", articles);
 		
-		
+		// 디버깅을 위해 회원 ID를 출력합니다.
 		System.err.println(memberId);
 		
-
+		// 회원의 댓글 리스트 페이지를 반환합니다.
 		return "usr/article/myReply";
 	}
 	
-
 	@RequestMapping("/usr/article/detail")
 	public String showDetail(HttpServletRequest req, Model model, int id) {
+		// rq 객체를 요청 속성에서 가져옵니다.
 		Rq rq = (Rq) req.getAttribute("rq");
 
+		// 게시글 ID로 게시글 정보를 가져옵니다.
 		Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
+		
+		// 사용자의 반응 정보를 가져옵니다.
 		ResultData usersReactionRd = reactionPointService.usersReaction(rq.getLoginedMemberId(), "article", id);
 
+		// 사용자가 반응할 수 있는지 확인합니다.
 		if (usersReactionRd.isSuccess()) {
 			model.addAttribute("userCanMakeReaction", usersReactionRd.isSuccess());
 		}
 
+		// 게시글에 대한 댓글 리스트를 가져옵니다.
 		List<Reply> replies = replyService.getForPrintReplies(rq.getLoginedMemberId(), "article", id);
 
+		// 댓글 수를 가져옵니다.
 		int repliesCount = replies.size();
 
+		// 모델에 속성들을 추가합니다.
 		model.addAttribute("article", article);
 		model.addAttribute("replies", replies);
 		model.addAttribute("repliesCount", repliesCount);
@@ -228,6 +255,7 @@ public class UsrArticleController {
 		model.addAttribute("isAlreadyAddBadRp",
 				reactionPointService.isAlreadyAddBadRp(rq.getLoginedMemberId(), id, "article"));
 
+		// 게시글 상세 페이지를 반환합니다.
 		return "usr/article/detail";
 	}
 
@@ -235,23 +263,27 @@ public class UsrArticleController {
 	@ResponseBody
 	public ResultData doIncreaseHitCountRd(int id) {
 
+		// 게시글 조회수 증가 요청을 처리합니다.
 		ResultData increaseHitCountRd = articleService.increaseHitCount(id);
 
+		// 요청이 실패한 경우, 해당 결과를 반환합니다.
 		if (increaseHitCountRd.isFail()) {
 			return increaseHitCountRd;
 		}
 
+		// 조회수 증가 후의 게시글 조회수를 가져옵니다.
 		ResultData rd = ResultData.newData(increaseHitCountRd, "hitCount", articleService.getArticleHitCount(id));
 
+		// 게시글 ID를 추가합니다.
 		rd.setData2("id", id);
 
+		// 최종 결과를 반환합니다.
 		return rd;
-
 	}
 
 	@RequestMapping("/usr/article/write")
 	public String showJoin(HttpServletRequest req) {
-
+		// 게시글 작성 페이지를 반환합니다.
 		return "usr/article/write";
 	}
 
@@ -259,81 +291,102 @@ public class UsrArticleController {
 	@ResponseBody
 	public String doWrite(HttpServletRequest req, String title, String body, int boardId) {
 
+		// rq 객체를 요청 속성에서 가져옵니다.
 		Rq rq = (Rq) req.getAttribute("rq");
 
+		// 제목이 비어있는 경우
 		if (Ut.isNullOrEmpty(title)) {
 			return Ut.jsHistoryBack("F-1", "제목을 입력해주세요");
 		}
+		// 내용이 비어있는 경우
 		if (Ut.isNullOrEmpty(body)) {
 			return Ut.jsHistoryBack("F-2", "내용을 입력해주세요");
 		}
 
+		// 게시글 작성 요청을 처리합니다.
 		ResultData<Integer> writeArticleRd = articleService.writeArticle(rq.getLoginedMemberId(), title, body, boardId);
 
+		// 작성된 게시글의 ID를 가져옵니다.
 		int id = (int) writeArticleRd.getData1();
 
+		// 작성된 게시글 정보를 가져옵니다.
 		Article article = articleService.getArticle(id);
 
+		// 게시글 상세 페이지로 리다이렉트합니다.
 		return Ut.jsReplace(writeArticleRd.getResultCode(), writeArticleRd.getMsg(), "../article/detail?id=" + id);
-
 	}
 
 	@RequestMapping("/usr/article/modify")
 	public String showModify(HttpServletRequest req, Model model, int id) {
+		// rq 객체를 요청 속성에서 가져옵니다.
 		Rq rq = (Rq) req.getAttribute("rq");
 
+		// 게시글 ID로 게시글 정보를 가져옵니다.
 		Article article = articleService.getForPrintArticle(rq.getLoginedMemberId(), id);
 
+		// 게시글이 존재하지 않는 경우
 		if (article == null) {
 			return Ut.jsHistoryBack("F-1", Ut.f("%d번 글은 존재하지 않습니다", id));
 		}
 
+		// 모델에 게시글 정보를 추가합니다.
 		model.addAttribute("article", article);
 
+		// 게시글 수정 페이지를 반환합니다.
 		return "usr/article/modify";
 	}
 
 	@RequestMapping("/usr/article/doModify")
 	@ResponseBody
 	public String doModify(HttpServletRequest req, int id, String title, String body) {
+		// rq 객체를 요청 속성에서 가져옵니다.
 		Rq rq = (Rq) req.getAttribute("rq");
 
+		// 게시글 ID로 게시글 정보를 가져옵니다.
 		Article article = articleService.getArticle(id);
 
+		// 게시글이 존재하지 않는 경우
 		if (article == null) {
 			return Ut.jsHistoryBack("F-1", Ut.f("%d번 글은 존재하지 않습니다", id));
 		}
 
+		// 로그인된 회원이 수정 권한이 있는지 확인합니다.
 		ResultData loginedMemberCanModifyRd = articleService.userCanModify(rq.getLoginedMemberId(), article);
 
+		// 수정 권한이 있는 경우, 게시글을 수정합니다.
 		if (loginedMemberCanModifyRd.isSuccess()) {
 			articleService.modifyArticle(id, title, body);
 		}
 
+		// 게시글 상세 페이지로 리다이렉트합니다.
 		return Ut.jsReplace(loginedMemberCanModifyRd.getResultCode(), loginedMemberCanModifyRd.getMsg(),
 				"../article/detail?id=" + id);
 	}
 
-	// 로그인 체크 -> 유무 체크 -> 권한 체크 -> 삭제
 	@RequestMapping("/usr/article/doDelete")
 	@ResponseBody
 	public String doDelete(HttpServletRequest req, int id) {
+		// rq 객체를 요청 속성에서 가져옵니다.
 		Rq rq = (Rq) req.getAttribute("rq");
 
+		// 게시글 ID로 게시글 정보를 가져옵니다.
 		Article article = articleService.getArticle(id);
 
+		// 게시글이 존재하지 않는 경우
 		if (article == null) {
 			return Ut.jsHistoryBack("F-1", Ut.f("%d번 글은 존재하지 않습니다", id));
 		}
 
+		// 로그인된 회원이 삭제 권한이 있는지 확인합니다.
 		ResultData loginedMemberCanDeleteRd = articleService.userCanDelete(rq.getLoginedMemberId(), article);
 
+		// 삭제 권한이 있는 경우, 게시글을 삭제합니다.
 		if (loginedMemberCanDeleteRd.isSuccess()) {
 			articleService.deleteArticle(id);
 		}
 
+		// 게시글 리스트 페이지로 리다이렉트합니다.
 		return Ut.jsReplace(loginedMemberCanDeleteRd.getResultCode(), loginedMemberCanDeleteRd.getMsg(),
 				"../article/list");
 	}
-
 }

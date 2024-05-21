@@ -71,20 +71,7 @@ public interface ArticleRepository {
 			""")
 	public List<Article> getArticles();
 
-//	@Select("""
-//			<script>
-//			SELECT A.*, M.nickname AS extra__writer
-//			FROM article AS A
-//			INNER JOIN `member` AS M
-//			ON A.memberId = M.id
-//			WHERE 1
-//			<if test="boardId != 0">
-//				AND A.boardId = #{boardId}
-//			</if>
-//			ORDER BY A.id DESC
-//			</script>
-//			""")
-//	public List<Article> getForPrintArticles(int boardId);
+
 
 	@Select("""
 			<script>
@@ -350,24 +337,7 @@ public interface ArticleRepository {
 			""")	
 	public List<Article> getForPrintMyReplies(Integer memberId, int limitFrom, int limitTake,
 			String searchKeywordTypeCode, String searchKeyword);
-//	@Select("""
-//	SELECT A.*, M.nickname AS extra__writer, IFNULL(COUNT(R.id),0) AS extra__repliesCnt
-//	FROM `reply` AS R
-//	INNER JOIN `member` AS M 
-//	ON R.memberId = M.id
-//	LEFT JOIN article AS A 
-//	ON A.id = R.relId
-//	WHERE R.memberId = 2
-//	AND (
-//	    A.title LIKE CONCAT('%',#{searchKeyword},'%')
-//	    OR A.body LIKE CONCAT('%',#{searchKeyword},'%')
-//	)
-//	GROUP BY A.id
-//	ORDER BY R.id DESC
-//""")
-	
 
-	
 
 	@Update("""
 			UPDATE article
