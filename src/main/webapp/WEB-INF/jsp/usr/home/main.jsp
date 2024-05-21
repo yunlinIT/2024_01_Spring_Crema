@@ -534,7 +534,7 @@ header {
 						</span>
 						<span>RECOMMENDS</span>
 					</div>
-					<div class="Recommends mx-auto">크레마는 오늘같은 날씨에 가기 좋은 카페를 추천해드려요.</div>
+					<div class="Recommends mx-auto">OpenWeather API Key를 발급받아 입력해주세요. <br> 크레마는 오늘같은 날씨에 가기 좋은 카페를 추천해드려요.</div>
 					<div class="weather-comment">-</div>
 				</div>
 				<div class="weather-img-box">
@@ -553,7 +553,7 @@ header {
                     <path fill-rule="evenodd"
 										d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
 										clip-rule="evenodd" />
-                </svg>
+                				</svg>
 							</a>
 						</label>
 					</form>
@@ -629,6 +629,5 @@ header {
     appearOnScroll();
 </script>
 
-
-
 <%@ include file="../common/foot.jspf"%>
+

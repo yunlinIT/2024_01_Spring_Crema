@@ -1188,4 +1188,3 @@ function bulletClassReset() {
 
 
 
-<%@ include file="../common/foot.jspf"%>

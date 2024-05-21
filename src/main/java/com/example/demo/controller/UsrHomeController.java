@@ -78,5 +78,12 @@ public class UsrHomeController {
 		
 		return "redirect:/usr/home/main";
 	}
+	
+	// 윤린에게 이메일 쓰기 페이지 요청 처리
+    @RequestMapping("/usr/home/writeEmailToYunlin")
+    public String writeEmailToYunlin() {
+        // 윤린에게 이메일 쓰기 페이지로 이동
+        return "/usr/home/writeEmailToYunlin";
+    }
 
 }
