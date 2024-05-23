@@ -43,29 +43,35 @@ public class UsrFindCafeController {
 	private CafeScrapService cafeScrapService;
 
 	@RequestMapping("/crawl")
+	// /crawl 경로로 들어오는 요청을 처리하는 메서드
 	public String crawlAndSaveData() {
-		List<Cafe> cafes = WebCrawler13.crawlCafes();
+		List<Cafe> cafes = WebCrawler13.crawlCafes(); // WebCrawler13를 사용하여 카페 데이터를 크롤링
 
-		// System.out.println(cafes);
+		// System.out.println(cafes); // 크롤링한 카페 데이터를 출력하는 코드
 
-		cafeService.saveCafeDataFromWebCrawler(cafes);
+		cafeService.saveCafeDataFromWebCrawler(cafes); // 크롤링한 카페 데이터를 데이터베이스에 저장
 
-		return "/usr/home/main";
+		return "/usr/home/main"; // 작업 완료 후 /usr/home/main 페이지로 이동
 	}
+
 
 	@RequestMapping("/usr/findcafe/filterCafes")
 	@ResponseBody
-	public Map<String, Object> filterCafes(@RequestBody Map<String, Object> filterData) {
+	// 이 메서드의 반환값은 JSON 형식으로 변환되어 HTTP 응답의 본문에 작성
+		public Map<String, Object> filterCafes(@RequestBody Map<String, Object> filterData) {
+			// HTTP 요청 본문에서 필터 데이터를 받아옴
+		
+		Map<String, Object> returnDataMap = new HashMap<>(); // 반환할 데이터를 저장할 맵을 생성
+		List<String> selectedKeywords = new ArrayList<String>(); // 선택된 키워드를 저장할 리스트를 생성
 
-		Map<String, Object> returnDataMap = new HashMap<>();
-		List<String> selectedKeywords = new ArrayList<String>();
-
+		
+		// HTTP 요청에서 선택된 키워드를 가져옴
 		// String keyword = filterData.get("keyword"); // 키워드 다중선택 아닌 단일선택 시
 		// List<String> selectedKeywords = (List<String>)
 		// filterData.get("selectedKeywords"); // 키워드 선택하지 않았을 경우 리스트 보이지 않음 (키워드가 빈값 일 때 String)
 		Object selectedKeywordsObject = filterData.get("selectedKeywords"); // 키워드 선택 안했을 때 String으로 넘어오고, 키워드 선택 했을 땐
 																			// List로 넘어와서 변수타입을 Object로 선언.
-
+		// 키워드 선택이 단일일 경우와 다중일 경우를 구분하여 처리
 		// 아래에서 타입체크
 		// 키워드 선택 안했을 시 빈값이 String으로 들어와서 String(빈값) 여부 판단 후
 		if (selectedKeywordsObject instanceof String == true) {
@@ -86,29 +92,35 @@ public class UsrFindCafeController {
 //			}
 
 		} else {
-			// *** 필터 전용
+			// *** 필터를 통해 선택된 키워드들인 경우
 			// array(배열) -> List 
 			selectedKeywords = (List<String>) selectedKeywordsObject; // {아늑한, 대관, 중구} -> [아늑한, 대관, 중구]
 		}
 
-		int page = Integer.parseInt(filterData.get("page").toString());
-		List<Cafe> cafesList;
+		int page = Integer.parseInt(filterData.get("page").toString()); // 페이지 번호를 가져옴
+		List<Cafe> cafesList; // 반환할 카페 목록을 담을 리스트
 
-		cafeRepository.updateReviewCount();
+		cafeRepository.updateReviewCount(); // 카페 리뷰 수를 업데이트
 
-		int cafesCount = 0;
-		int itemsInAPage = 5;
+		int cafesCount = 0; // 전체 카페 수를 초기화
+		int itemsInAPage = 5; // 페이지 당 표시할 카페 수를 설정
+		
+		// 선택된 키워드가 없는 경우와 있는 경우를 구분하여 처리
 		if (selectedKeywords.isEmpty()) {
-			cafesCount = cafeService.getCafesCount();
+			// 선택된 키워드가 없는 경우 전체 카페 목록을 가져옴
+			cafesCount = cafeService.getCafesCount();  // 전체 카페 수를 가져옴
 			cafesList  = cafeService.getForPrintCafes(itemsInAPage, page); // 키워드가 선택 되지 않았을 경우에 대한 전체카페 리스팅
 		} else {
+			// 선택된 키워드가 있는 경우 해당 키워드로 필터링된 카페 목록을 가져옴
 			cafesCount = cafeService.getCafesCountKeyword(selectedKeywords);
 			cafesList  = cafeService.getForPrintCafesKeyword(itemsInAPage, page, selectedKeywords); // 키워드가 선택 되었을 경우에 대한 키워드별 카페 리스팅
 		}
 
+		// 반환할 데이터 맵에 전체 카페 수와 현재 페이지의 카페 목록을 추가
 		returnDataMap.put("cafesTotalCount", cafesCount);
 		returnDataMap.put("cafesCurrentList", cafesList);
 
+		// 처리된 결과를 반환
 		return returnDataMap;
 	}
 
@@ -173,7 +185,7 @@ public class UsrFindCafeController {
 //		model.addAttribute("cafesCount", cafesCount);
 //		model.addAttribute("cafes", cafes);
 
-		return "/usr/findcafe/searchList";
+		return "/usr/findcafe/searchList"; // "usr/findcafe/searchList" 뷰를 반환
 	}
 
 	@RequestMapping("/usr/findcafe/cafeDetail")
