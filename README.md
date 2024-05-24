@@ -3,6 +3,17 @@ ___
 
 ![](https://velog.velcdn.com/images/yunlinit/post/eb0b28e7-8bf8-42a0-b6a5-14ec0ecf4105/image.png)
 
+## 🗂 README 목차
+1. 프로젝트 소개
+2. 개발기간
+3. 팀원 & 담당파트
+4. 사용기술 및 개발환경
+5. ERD 구조
+6. 기능
+7. 페이지별 기능 설명
+8. 날씨 별 추천 카페의 분위기 선정 배경
+9. Crema 환경설정 가이드 북
+---
 
 # 📌 프로젝트 소개
 ___
