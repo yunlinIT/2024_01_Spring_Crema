@@ -65,6 +65,8 @@ ___
   - Figma
 - **자료 관리 툴**
   - Google Form, Google Sheets
+- **ERD**
+  - AQueryTool
 - **개발 환경**
   - JDK, MAVEN, Spring Tool Suit 4, Window 10
   - 웹-프레임워크: 구글 앱 스크립트
