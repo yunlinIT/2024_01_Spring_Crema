@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="pageTitle" value="메인"></c:set>
+<c:set var="pageTitle" value="Crema | 메인"></c:set>
 
 
 <%@ include file="../common/mainHead.jspf"%>
@@ -27,7 +27,7 @@
 <!-- 조건에 따라 온도와 날씨 ID를 기반으로 날씨 코멘트와 이미지를 업데이트 -->
     function fetchWeather() {
         var city = "Daejeon";
-        var apiKey = "API key"; <!-- https://home.openweathermap.org/api_keys에서 API key 발급 -->
+        var apiKey = "0815402fb71fc4b23c48ae09eefa43a4"; <!-- https://home.openweathermap.org/api_keys에서 API key 발급 -->
         var lang = "kr";
 
         var apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&lang=" + lang + "&units=metric";
