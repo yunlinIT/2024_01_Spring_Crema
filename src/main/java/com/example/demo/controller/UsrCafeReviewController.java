@@ -16,10 +16,10 @@ import jakarta.servlet.http.HttpServletRequest;
 @Controller 
 public class UsrCafeReviewController {
 
-	@Autowired // 의존성 주입
+	@Autowired 
 	private Rq rq;
 
-	@Autowired // 의존성 주입
+	@Autowired 
 	private CafeReviewService cafeReviewService;
 
 	@RequestMapping("/usr/cafeReview/doWrite") // /usr/cafeReview/doWrite URL로 요청이 오면 이 메서드가 처리

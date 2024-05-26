@@ -124,156 +124,115 @@ public class UsrFindCafeController {
 		return returnDataMap;
 	}
 
-//	@RequestMapping("/usr/findcafe/filterCafes")
-//	@ResponseBody
-//	public Map<String, Object> filterCafes(@RequestBody Map<String, Object> filterData) {
-//	    Map<String, Object> returnMap = new HashMap<>();
-//	    
-//	    List<String> keywords = (List<String>) filterData.get("keywords");
-//	    int page = 0;
-//	    if (filterData.get("page") instanceof Integer) {
-//	        page = (Integer) filterData.get("page");
-//	    } else if (filterData.get("page") instanceof String) {
-//	        page = Integer.parseInt((String) filterData.get("page"));
-//	    }
-//	    
-//	    List<Cafe> cafesList;
-//
-//	    int cafesCount = 0;
-//	    if (keywords == null || keywords.isEmpty()) {
-//	        cafesCount = cafeService.getCafesCount();
-//	    } else {
-//	        cafesCount = cafeService.getCafesCountKeyword(keywords);
-//	    }
-//	    
-//	    int itemsInAPage = 5;
-//
-//	    if (keywords == null || keywords.isEmpty()) {
-//	        cafesList = cafeService.getForPrintCafes(itemsInAPage, page);
-//	    } else {
-//	        cafesList = cafeService.getForPrintCafesKeyword(itemsInAPage, page, keywords);
-//	    }
-//	    
-//	    returnMap.put("cafesTotalCount", cafesCount);
-//	    returnMap.put("cafesCurrentList", cafesList);
-//	    
-//	    return returnMap;
-//	}
 
 	@RequestMapping("/usr/findcafe/searchList")
 	public String showSearchList(HttpServletRequest req) {
 
-//		Rq rq = (Rq) req.getAttribute("rq");
-//
-//		int cafesCount = cafeService.getCafesCount();
-//
-//		cafeRepository.updateReviewCount();
-//		
-//		//@RequestParam(defaultValue = "1")
-//
-//		// 한페이지에 글 10개씩이야
-//		// 글 20개 -> 2 page
-//		// 글 24개 -> 3 page
-//		int itemsInAPage = 5;
-//
-//		int pagesCount = (int) Math.ceil(cafesCount / (double) itemsInAPage);
-//
-//		List<Cafe> cafes = cafeService.getForPrintCafes(itemsInAPage, page);
-//
-//		model.addAttribute("page", page);
-//		model.addAttribute("pagesCount", pagesCount);
-//		model.addAttribute("cafesCount", cafesCount);
-//		model.addAttribute("cafes", cafes);
-
 		return "/usr/findcafe/searchList"; // "usr/findcafe/searchList" 뷰를 반환
 	}
 
+
+	
+
 	@RequestMapping("/usr/findcafe/cafeDetail")
-	// @RequestMapping(value = "/usr/findcafe/cafeDetail", method =
-	// {RequestMethod.GET, RequestMethod.POST})
+	// HttpServletRequest, Model, 그리고 int 타입의 'id' 매개변수를 받음
 	public String showcafeDetail(HttpServletRequest req, Model model, int id) {
 
-		// @RequestParam Map<String, Object> MapForLocation //매개변수안에 작성
+	    // 요청 속성에서 "rq"라는 이름으로 Rq 객체를 가져옴
+	    Rq rq = (Rq) req.getAttribute("rq");
 
-		Rq rq = (Rq) req.getAttribute("rq");
+	    // cafeService를 사용하여 ID로 카페 객체를 가져옴
+	    Cafe cafe = cafeService.getForPrintCafe(id);
 
-		Cafe cafe = cafeService.getForPrintCafe(id);
+	    // cafeScrapService를 사용하여 사용자가 해당 카페를 스크랩했는지 여부를 ResultData 객체로 가져옴
+	    ResultData usersScrapRd = cafeScrapService.usersCafeScrap(rq.getLoginedMemberId(), id);
 
-		ResultData usersScrapRd = cafeScrapService.usersCafeScrap(rq.getLoginedMemberId(), id);
+	    // 사용자가 해당 카페를 스크랩했다면, 모델에 사용자가 스크랩할 수 있다는 속성을 추가
+	    if (usersScrapRd.isSuccess()) {
+	        model.addAttribute("userCanScrap", usersScrapRd.isSuccess());
+	    }
 
-		if (usersScrapRd.isSuccess()) {
-			model.addAttribute("userCanScrap", usersScrapRd.isSuccess());
-		}
+	    // 카페의 스크랩 수를 업데이트
+	    cafeRepository.updateCafeScrapCount();
 
-		cafeRepository.updateCafeScrapCount();
+	    // 해당 카페에 대한 리뷰 목록을 가져옴
+	    List<CafeReview> cafeReviews = cafeReviewService.getForPrintCafeReviews(rq.getLoginedMemberId(), id);
 
-		List<CafeReview> cafeReviews = cafeReviewService.getForPrintCafeReviews(rq.getLoginedMemberId(), id);
+	    // 리뷰의 개수를 계산
+	    int cafeReviewsCount = cafeReviews.size();
 
-		int cafeReviewsCount = cafeReviews.size();
+	    // 모델에 카페, 카페 리뷰, 리뷰 개수를 속성으로 추가
+	    model.addAttribute("cafe", cafe);
+	    model.addAttribute("cafeReviews", cafeReviews);
+	    model.addAttribute("cafeReviewsCount", cafeReviewsCount);
 
-		model.addAttribute("cafe", cafe);
-		model.addAttribute("cafeReviews", cafeReviews);
-		model.addAttribute("cafeReviewsCount", cafeReviewsCount);
+	    // 사용자가 이미 카페를 스크랩했는지 여부를 모델에 속성으로 추가
+	    model.addAttribute("isAlreadyAddCafeScrap",
+	            cafeScrapService.isAlreadyAddCafeScrap(rq.getLoginedMemberId(), id));
 
-		model.addAttribute("isAlreadyAddCafeScrap",
-				cafeScrapService.isAlreadyAddCafeScrap(rq.getLoginedMemberId(), id));
-
-		return "usr/findcafe/cafeDetail";
-
+	    // 렌더링할 뷰 템플릿의 이름을 반환, 이 경우 "usr/findcafe/cafeDetail"
+	    return "usr/findcafe/cafeDetail";
 	}
+
+	
+
 
 	@RequestMapping("/usr/findcafe/searchCafes")
+	//  @RequestParam으로 'keyword'를 선택적으로 받고, Model 객체를 받음
 	public String searchCafes(@RequestParam(required = false) String keyword, Model model) {
-//		if (keyword != null) {
-//			List<Cafe> cafes = cafeService.searchCafes(keyword);
-//			if (cafes.isEmpty()) {
-//	            //model.addAttribute("message", "검색 결과가 없습니다.");
-//				//return "usr/findcafe/searchList2";
-//			} else {
-//				model.addAttribute("cafes", cafes);
-//			}
-//		}
 
-		model.addAttribute("keyword", keyword);
+	    // 모델에 'keyword'를 속성으로 추가
+	    model.addAttribute("keyword", keyword);
 
-		return "/usr/findcafe/searchList";
+	    // 렌더링할 뷰 템플릿의 이름을 반환, 이 경우 "/usr/findcafe/searchList"
+	    return "/usr/findcafe/searchList";
 	}
+
 
 	// 두 좌표 사이의 거리를 구하는 함수
 	// distance(첫번쨰 좌표의 위도, 첫번째 좌표의 경도, 두번째 좌표의 위도, 두번째 좌표의 경도)
+	// 이 어노테이션은 반환되는 값이 HTTP 응답 본문에 직접 쓰이도록 지정
 	@ResponseBody
+	// 이 어노테이션은 URL "/usr/findcafe/distance"를 이 메서드에 매핑
 	@RequestMapping("/usr/findcafe/distance")
+	// 이 메서드는 요청 본문을 Map으로 받아 처리
 	public String distance(@RequestBody Map<String, Double> requestMap) {
 
-		// 학원 위도경도
-		Double myLat = requestMap.get("myLat");
-		Double myLon = requestMap.get("myLon");
-		Double cafeLat = requestMap.get("cafeLat");
-		Double cafeLon = requestMap.get("cafeLon");
+	    // 학원 위도와 경도를 Map에서 가져옴
+	    Double myLat = requestMap.get("myLat");
+	    Double myLon = requestMap.get("myLon");
+	    // 카페 위도와 경도를 Map에서 가져옴
+	    Double cafeLat = requestMap.get("cafeLat");
+	    Double cafeLon = requestMap.get("cafeLon");
 
-		double theta = myLon - cafeLon;
-		double dist = Math.sin(deg2rad(myLat)) * Math.sin(deg2rad(cafeLat))
-				+ Math.cos(deg2rad(myLat)) * Math.cos(deg2rad(cafeLat)) * Math.cos(deg2rad(theta));
-		dist = Math.acos(dist);
-		dist = rad2deg(dist);
-		dist = dist * 60 * 1.1515 * 1609.344;
+	    // 경도 차이 계산
+	    double theta = myLon - cafeLon;
+	    // 두 지점 간의 거리 계산
+	    double dist = Math.sin(deg2rad(myLat)) * Math.sin(deg2rad(cafeLat))
+	            + Math.cos(deg2rad(myLat)) * Math.cos(deg2rad(cafeLat)) * Math.cos(deg2rad(theta));
+	    dist = Math.acos(dist);
+	    dist = rad2deg(dist);
+	    // 거리 계산 결과를 마일 단위에서 미터 단위로 변환
+	    dist = dist * 60 * 1.1515 * 1609.344;
 
-		String distanceInKm = String.format("%.1f", dist / 1000);
+	    // 거리 계산 결과를 킬로미터 단위로 포맷팅
+	    String distanceInKm = String.format("%.1f", dist / 1000);
 
-		System.out.println(distanceInKm + "km");
+	    // 거리 정보를 콘솔에 출력
+	    System.out.println(distanceInKm + "km");
 
-		return distanceInKm; // 단위 kilometer
+	    // 킬로미터 단위의 거리 정보를 반환
+	    return distanceInKm;
 	}
 
-	// 10진수를 radian(라디안)으로 변환
-	private static double deg2rad(double deg) {
-		return (deg * Math.PI / 180.0);
+	// 도(degree)를 라디안(radian)으로 변환하는 메서드
+	private double deg2rad(double deg) {
+	    return (deg * Math.PI / 180.0);
 	}
 
-	// radian(라디안)을 10진수로 변환
-	private static double rad2deg(double rad) {
-
-		return (rad * 180 / Math.PI);
+	// 라디안(radian)을 도(degree)로 변환하는 메서드
+	private double rad2deg(double rad) {
+	    return (rad * 180.0 / Math.PI);
 	}
 
 }

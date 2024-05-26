@@ -16,10 +16,10 @@ import com.example.demo.vo.Rq;
 
 import jakarta.servlet.http.HttpServletRequest;
 
-@Controller // Spring의 Controller임을 명시
+@Controller 
 public class UsrCafeScrapController {
 
-	@Autowired // 의존성 주입
+	@Autowired 
 	private Rq rq;
 
 	@Autowired 
