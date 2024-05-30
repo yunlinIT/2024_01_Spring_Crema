@@ -50,12 +50,14 @@ ___
   - Java
 - **Front-end**
   - HTML, CSS, JavaScript, jQuery, Tailwind, daisyUI
-  - API: Open Weather API
 - **Back-end**
   - 프레임워크 : SpringBoot, Selenium
   - 라이브러리 : Lombok, Tomcat
   - 템플릿 엔진 : JSP
   - ORM : MyBatis
+- **API**
+  - Open Weather API
+  - 다음지도 API
 - **DB**
   - MySQL
   - 쿼리 브라우저 : SQLyog
