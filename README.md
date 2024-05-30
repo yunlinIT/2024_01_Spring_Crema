@@ -97,9 +97,6 @@ ___
 ![](https://velog.velcdn.com/images/yunlinit/post/4faba7fd-7c72-4d57-9969-0b81647cdb11/image.png)
 - 세번째 섹션은, 신규 카페(신규 등록), 인기 카페(찜 수가 높은 카페), 추천카페(랜덤)를 보여줍니다. 
 
-![](/)
-- Crema 프로젝트를 만든 본인의 정보와 contact 할 수단을 작성해놓은 섹션입니다.
-
 ### [회원가입]
 ![](https://velog.velcdn.com/images/yunlinit/post/358ec3f0-86dc-41d3-9d52-1f080a661ff2/image.png)
 - 기본 정보 입력 후 회원가입을 합니다.
