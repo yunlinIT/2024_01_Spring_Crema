@@ -15,13 +15,13 @@ var keyword = ""; // 검색 키워드 초기화
 var selectedKeywords = []; // 선택된 키워드를 저장할 배열
 
 
-<!-- 페이지 접속 시 최초 실행(onload) 함수 -->
+<!-- 페이지 접속 시 최초 한번만 실행(onload) 함수 -->
 window.onload = function() {
     // 페이지가 완전히 로드되면 이 함수가 실행
     
    // alert('페이지가 로드되었습니다!'); 
     
-    keyword = '${keyword}';
+    keyword = '${keyword}'; //메인페이지 검색창에서 키워드가 입력됐을 시 해당 키워드관련 카페리스팅을 위한 EL변수
     
     if (keyword != ""){
 
@@ -33,7 +33,7 @@ window.onload = function() {
 };
 
 
-<!-- document ready Area -->
+<!-- document ready Area  실시간 대기(준비)하고 있는 애 -->
 
 $(document).ready(function() {
 
