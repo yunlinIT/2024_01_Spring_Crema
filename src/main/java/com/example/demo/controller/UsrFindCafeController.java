@@ -42,7 +42,7 @@ public class UsrFindCafeController {
 	@Autowired
 	private CafeScrapService cafeScrapService;
 
-	// ** crawling 전용 method
+	// * crawling 전용 method
 	@RequestMapping("/crawl")
 	// /crawl 경로로 들어오는 요청을 처리하는 메서드
 	public String crawlAndSaveData() {
@@ -55,14 +55,14 @@ public class UsrFindCafeController {
 		return "/usr/home/main"; // 작업 완료 후 /usr/home/main 페이지로 이동
 	}
 
-	// ** View 이동 method -> '카페찾기'버튼 클릭 시 실행되는 함수
+	// Step1-1. View 이동 method -> '카페찾기'버튼 클릭 시 실행되는 함수
 	@RequestMapping("/usr/findcafe/searchList")
 	public String showSearchList(HttpServletRequest req) {
 
 		return "/usr/findcafe/searchList"; // "usr/findcafe/searchList" 뷰를 반환
 	}
 	
-	// ** 메인페이지 검색 키워드 method -> 메인검색창에서 []이던 [키워드]이던 돋보기클릭(검색)시 실행되는 함수
+	// Step1-2. 메인페이지 검색 키워드 method -> 메인검색창에서 []이던 [키워드]이던 돋보기클릭(검색)시 실행되는 함수
 	@RequestMapping("/usr/findcafe/searchCafes") // 메인페이지에서 키워드로 검색하는 검색창 관련 메서드
 	// @RequestParam으로 'keyword'를 선택적으로 받고, Model 객체를 받음
 	public String searchCafes(@RequestParam(required = false) String keyword, Model model) {
@@ -74,7 +74,7 @@ public class UsrFindCafeController {
 		return "/usr/findcafe/searchList";
 	}
 	
-	// ** 카페리스트 통합검색 method
+	// Step2. 카페리스트 통합검색 method -> '카페찾기'리스트에서 검색창 검색 / 필터검색 시 실행되는 함수
 	@ResponseBody
 	@RequestMapping("/usr/findcafe/filterCafes") // 카페찾기 페이지에서 필터 and 검색창 기능 관련
 	// 이 메서드의 반환값은 JSON 형식으로 변환되어 HTTP 응답의 본문에 작성
@@ -142,7 +142,7 @@ public class UsrFindCafeController {
 		return returnDataMap;
 	}
 
-	// ** 상세페이지 method
+	// Step3. 상세페이지 method
 	@RequestMapping("/usr/findcafe/cafeDetail")
 	// HttpServletRequest, Model, 그리고 int 타입의 'id' 매개변수를 받음
 	public String showcafeDetail(HttpServletRequest req, Model model, int id) {
@@ -184,8 +184,7 @@ public class UsrFindCafeController {
 	}
 
 
-
-	// 두 좌표 사이의 거리를 구하는 함수
+	// Step4. 두 좌표 사이의 거리를 구하는 함수
 	// distance(첫번쨰 좌표의 위도, 첫번째 좌표의 경도, 두번째 좌표의 위도, 두번째 좌표의 경도)
 	// 이 어노테이션은 반환되는 값이 HTTP 응답 본문에 직접 쓰이도록 지정
 	@ResponseBody
